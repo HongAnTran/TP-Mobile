@@ -1,7 +1,10 @@
+import BannerLarge from '@/components/feature/BannerLarge'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>Hello tp</div>
+    <div>
+      <BannerLarge />
+    </div>
   )
 }
