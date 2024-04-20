@@ -8,7 +8,6 @@ interface Product {
   id: ProductId;
   title: string;
   slug: string
-  price: number;
   body_html: string
   product_type: string
   vendor: string
@@ -65,8 +64,9 @@ interface ProductOption {
   values: string[]
 }
 
-type ProductOrder = Pick<Product, "title" | "price" | "slug" | "product_type" | "vendor" | "barcode" | "body_html"> & {
+type ProductOrder = Pick<Product, "title"   | "slug" | "product_type" | "vendor" | "barcode" | "body_html"> & {
   line_price: number
+  price  : number
   price_original: number
   line_price_orginal: number
   variant_id: number

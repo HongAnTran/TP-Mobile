@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'theme.hstatic.net',
+        hostname: '**',
         port: '',
         pathname: '/**',
       },

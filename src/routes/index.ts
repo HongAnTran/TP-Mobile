@@ -2,8 +2,9 @@ const routes = {
   home: "/",
   api: "/api",
   blogs: "/blogs",
+  products: "/products",
   about : "/about",
-  shop:"/shop"
+  stores:"/stores"
 };
 
 export default routes;

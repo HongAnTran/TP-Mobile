@@ -1,51 +1,57 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Logo from '@/components/common/Logo'
 import SearchInput from './SearchInput'
 import { PersonIcon } from "@radix-ui/react-icons"
 import Link from 'next/link'
 import StoreIcon from '../icons/StoreIcon'
 import { CartIcon, PhoneFilledIcon } from '../icons'
+import { TypographyP } from '../ui/typography'
+
+interface HeaderItemProps { icon: ReactNode, text: string, href?: string }
+
 export default async function Header() {
+  const items: HeaderItemProps[] = [
+    {
+      icon: <PhoneFilledIcon />,
+      text: "0886723413",
+      href: "tel:0886723413"
+    },
+    {
+      icon: <StoreIcon />,
+      text: "Cửa hàng",
+      href: "/stores"
+    },
+    {
+      icon: <CartIcon />,
+      text: "Giỏ hàng",
+      href: "/cart"
+    },
+    {
+      icon: <PersonIcon width={20} height={20} />,
+      text: "Đăng nhập",
+      href: "/login"
+    },
+
+  ]
 
   return (
-    <header className='  bg-black  text-white shadow-md '>
+    <header className='  bg-black  text-white  shadow-md '>
       <div className=' container'>
-        <div className=' flex gap-10 items-center h-[80px] '>
+        <div className=' flex gap-10 items-center  py-4 '>
           <div className=' flex-shrink-0'>
             <Logo />
           </div>
           <div className=' flex-1 max-w-[400px] '>
             <SearchInput />
           </div>
-          <div className=' flex-1 flex  gap-8'>
-            <div className=' flex  gap-2   items-center'>
-              <PhoneFilledIcon />
-              <div>
+          <div className='  flex-1 '>
+            <div className='flex  gap-8 h-full'>
+              {
+                items.map((item, index) => {
+                  return <HeaderItem {...item} key={index} />
+                })
+              }
 
-                <Link href='tel:0886723413' className='  font-medium '>0886723413</Link>
-              </div>
-            </div>
-            <div className=' flex  gap-2   items-center'>
-              <StoreIcon />
-              <div>
-                <Link href="/stores" className='text-sm  font-medium '>Cửa hàng</Link>
-
-              </div>
-            </div>
-
-            <div className=' flex  gap-2   items-center'>
-              <PersonIcon width={20} height={20} />
-              <div>
-
-                <Link href={"/login"} className=' text-sm  font-medium '>Đăng nhập</Link>
-              </div>
-            </div>
-            <div className=' flex  gap-2   items-center'>
-              <CartIcon />
-              <div>
-
-                <Link href={"/cart"} className=' text-sm  font-medium '>Giỏ hàng</Link>
-              </div>
             </div>
           </div>
 
@@ -53,4 +59,18 @@ export default async function Header() {
       </div>
     </header>
   )
+}
+
+
+function HeaderItem({ icon, text, href }: HeaderItemProps) {
+  return <div className=' flex  gap-2   items-center'>
+    {icon}
+    <div>
+      {
+        href ?
+          <Link href={href} className=' text-sm  hover:text-blue-500 transition-colors font-medium '>{text}</Link> :
+          <TypographyP >{text}</TypographyP>
+      }
+    </div>
+  </div>
 }
