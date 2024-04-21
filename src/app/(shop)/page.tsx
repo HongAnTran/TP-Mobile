@@ -1,15 +1,25 @@
 import BannerLarge from '@/components/feature/BannerLarge'
-import SectionCategory from '@/components/feature/SectionCategory'
+import BannerMedium from '@/components/feature/BannerMedium'
+import SectionCategoryCarousel from '@/components/feature/SectionCategoryCarousel'
+import SectionCategoryGrid from '@/components/feature/SectionCategoryGrid'
+import SectionCategoryGrid2 from '@/components/feature/SectionCategoryGrid2'
+import SectionFeedback from '@/components/feature/SectionFeedback'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
       <BannerLarge />
-      <div className=' container py-4'>
-
-        <SectionCategory title='Bạn có thể thích' productIds={[]} />
-
+      <div className=' container py-4 mt-10'>
+        <div className=' flex flex-col   gap-16'>
+          <BannerMedium />
+          <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[]} />
+          <SectionCategoryCarousel title='Sản phẩm mới' productIds={[]} />
+          <SectionCategoryGrid title='Ipad' productIds={[]} />
+          <SectionCategoryGrid title='Iphone' productIds={[]} />
+          <SectionCategoryGrid2  title='Phụ kiện' productIds={[]} />
+          <SectionFeedback />
+        </div>
       </div>
     </div>
   )

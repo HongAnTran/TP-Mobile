@@ -1,10 +1,12 @@
 const routes = {
   home: "/",
   api: "/api",
-  blogs: "/blogs",
-  products: "/products",
-  about : "/about",
-  stores:"/stores"
+  blogs: "/bai-viet",
+  products: "/san-pham",
+  about : "/ve-chung-toi",
+  stores:"/cua-hang",
+  cart:"gio-hang",
+  login :"dang-nhap"
 };
 
 export default routes;

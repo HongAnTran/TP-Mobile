@@ -21,4 +21,18 @@ function convetNumberToPriceVND(priceNumber: ProductVariant["price"]) {
   return output + "₫"
 }
 
-export { convetNumberToPriceVND}
+function findVariantMinPrice(variants: ProductVariant[]) {
+  let minPriceVariant = variants[0];
+  let minPrice = Infinity;
+
+  variants.forEach(variant => {
+    const price = variant.price;
+    if (price < minPrice) {
+      minPrice = price;
+      minPriceVariant = variant;
+    }
+  });
+
+  return minPriceVariant;
+}
+export { convetNumberToPriceVND , findVariantMinPrice}

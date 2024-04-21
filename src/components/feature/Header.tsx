@@ -6,6 +6,7 @@ import Link from 'next/link'
 import StoreIcon from '../icons/StoreIcon'
 import { CartIcon, PhoneFilledIcon } from '../icons'
 import { TypographyP } from '../ui/typography'
+import routes from '@/routes'
 
 interface HeaderItemProps { icon: ReactNode, text: string, href?: string }
 
@@ -19,17 +20,17 @@ export default async function Header() {
     {
       icon: <StoreIcon />,
       text: "Cửa hàng",
-      href: "/stores"
+      href: routes.stores
     },
     {
       icon: <CartIcon />,
       text: "Giỏ hàng",
-      href: "/cart"
+      href: routes.cart
     },
     {
       icon: <PersonIcon width={20} height={20} />,
       text: "Đăng nhập",
-      href: "/login"
+      href: routes.login
     },
 
   ]

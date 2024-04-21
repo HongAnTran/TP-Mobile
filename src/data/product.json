@@ -44,7 +44,7 @@
       {
         "id": 1,
         "title": "iPhone X",
-        "price": 999,
+        "price": 9998989,
         "sku": "IPHONEX01",
         "inventory_quantity": 100,
         "barcode": null,
@@ -102,7 +102,7 @@
       {
         "id": 2,
         "title": "iPad Air",
-        "price": 699,
+        "price": 6990000,
         "sku": "IPADAIR01",
         "inventory_quantity": 50,
         "barcode": null,
@@ -160,7 +160,7 @@
       {
         "id": 3,
         "title": "MacBook Pro",
-        "price": 1999,
+        "price": 19999999,
         "sku": "MACBOOKPRO01",
         "inventory_quantity": 30,
         "barcode": null,
@@ -223,7 +223,375 @@
       {
         "id": 4,
         "title": "iPhone X",
-        "price": 999.999,
+        "price": 9999999,
+        "sku": "IPHONEX01",
+        "inventory_quantity": 100,
+        "barcode": null,
+        "compare_at_price": 0,
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "position": 1,
+        "updated_at": null,
+        "inventory_management": null,
+        "old_inventory_quantity": 0,
+        "image_id": 1,
+        "available": true
+      }
+    ],
+    "category_title": "Smartphones"
+  },
+  {
+    "id": 5,
+    "title": "iPhone X",
+    "slug": "iphone-x",
+    "body_html": "The latest iPhone model with advanced features.",
+    "product_type": "Smartphone",
+    "vendor": "Apple",
+    "available": true,
+    "status": "SHOW",
+    "tags": "iphone, smartphone, apple",
+    "created_at": "2024-04-20T12:00:00Z",
+    "updated_at": "2024-04-20T12:00:00Z",
+    "published_at": "2024-04-20T12:00:00Z",
+    "barcode": null,
+    "options": [],
+    "create_id": 1,
+    "store_id": 1,
+    "category_id": 1,
+    "images": [
+      {
+        "id": 1,
+        "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+        "position": 1,
+        "product_id": 4,
+        "variant_ids": [1]
+      },
+      {
+        "id": 2,
+        "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+        "position": 2,
+        "product_id": 1,
+        "variant_ids": [1]
+      }
+    ],
+    "image": {
+      "id": 1,
+      "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+      "position": 1,
+      "product_id": 4,
+      "variant_ids": []
+    },
+    "variants": [
+      {
+        "id": 4,
+        "title": "iPhone X",
+        "price": 9999999,
+        "sku": "IPHONEX01",
+        "inventory_quantity": 100,
+        "barcode": null,
+        "compare_at_price": 0,
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "position": 1,
+        "updated_at": null,
+        "inventory_management": null,
+        "old_inventory_quantity": 0,
+        "image_id": 1,
+        "available": true
+      }
+    ],
+    "category_title": "Smartphones"
+  },
+  {
+    "id": 1,
+    "title": "iPhone X",
+    "slug": "iphone-x",
+    "body_html": "The latest iPhone model with advanced features.",
+    "product_type": "Smartphone",
+    "vendor": "Apple",
+    "available": true,
+    "status": "SHOW",
+    "tags": "iphone, smartphone, apple",
+    "created_at": "2024-04-20T12:00:00Z",
+    "updated_at": "2024-04-20T12:00:00Z",
+    "published_at": "2024-04-20T12:00:00Z",
+    "barcode": null,
+    "options": [],
+    "create_id": 1,
+    "store_id": 1,
+    "category_id": 1,
+    "images": [
+      {
+        "id": 1,
+        "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+        "position": 1,
+        "product_id": 1,
+        "variant_ids": [1]
+      },
+      {
+        "id": 2,
+        "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+        "position": 2,
+        "product_id": 1,
+        "variant_ids": [1]
+      }
+    ],
+    "image": {
+      "id": 1,
+      "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+      "position": 1,
+      "product_id": 1,
+      "variant_ids": []
+    },
+    "variants": [
+      {
+        "id": 1,
+        "title": "iPhone X",
+        "price": 9998989,
+        "sku": "IPHONEX01",
+        "inventory_quantity": 100,
+        "barcode": null,
+        "compare_at_price": 0,
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "position": 1,
+        "updated_at": null,
+        "inventory_management": null,
+        "old_inventory_quantity": 0,
+        "image_id": 1,
+        "available": true
+      }
+    ],
+    "category_title": "Smartphones"
+  },
+  {
+    "id": 2,
+    "title": "iPad Air",
+    "slug": "ipad-air",
+    "body_html": "Thin, light, and powerful tablet.",
+    "product_type": "Tablet",
+    "vendor": "Apple",
+    "available": true,
+    "status": "SHOW",
+    "tags": "ipad, tablet, apple",
+    "created_at": "2024-04-20T12:00:00Z",
+    "updated_at": "2024-04-20T12:00:00Z",
+    "published_at": "2024-04-20T12:00:00Z",
+    "barcode": null,
+    "options": [],
+    "create_id": 1,
+    "store_id": 1,
+    "category_id": 2,
+    "images": [
+      {
+        "id": 2,
+        "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+
+        "position": 1,
+        "product_id": 2,
+        "variant_ids": []
+      }
+    ],
+    "image": {
+      "id": 2,
+      "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+
+      "position": 1,
+      "product_id": 2,
+      "variant_ids": []
+    },
+    "variants": [
+      {
+        "id": 2,
+        "title": "iPad Air",
+        "price": 6990000,
+        "sku": "IPADAIR01",
+        "inventory_quantity": 50,
+        "barcode": null,
+        "compare_at_price": 0,
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "position": 1,
+        "updated_at": null,
+        "inventory_management": null,
+        "old_inventory_quantity": 0,
+        "image_id": 2,
+        "available": true
+      }
+    ],
+    "category_title": "Tablets"
+  },
+  {
+    "id": 3,
+    "title": "MacBook Pro",
+    "slug": "macbook-pro",
+    "body_html": "Powerful laptop for professionals.",
+    "product_type": "Laptop",
+    "vendor": "Apple",
+    "available": true,
+    "status": "SHOW",
+    "tags": "macbook, laptop, apple",
+    "created_at": "2024-04-20T12:00:00Z",
+    "updated_at": "2024-04-20T12:00:00Z",
+    "published_at": "2024-04-20T12:00:00Z",
+    "barcode": null,
+    "options": [],
+    "create_id": 1,
+    "store_id": 1,
+    "category_id": 3,
+    "images": [
+      {
+        "id": 3,
+        "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+
+        "position": 1,
+        "product_id": 3,
+        "variant_ids": []
+      }
+    ],
+    "image": {
+      "id": 3,
+      "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+
+      "position": 1,
+      "product_id": 3,
+      "variant_ids": []
+    },
+    "variants": [
+      {
+        "id": 3,
+        "title": "MacBook Pro",
+        "price": 19999999,
+        "sku": "MACBOOKPRO01",
+        "inventory_quantity": 30,
+        "barcode": null,
+        "compare_at_price": 0,
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "position": 1,
+        "updated_at": null,
+        "inventory_management": null,
+        "old_inventory_quantity": 0,
+        "image_id": 3,
+        "available": true
+      }
+    ],
+    "category_title": "Laptops"
+  },
+  {
+    "id": 4,
+    "title": "iPhone X",
+    "slug": "iphone-x",
+    "body_html": "The latest iPhone model with advanced features.",
+    "product_type": "Smartphone",
+    "vendor": "Apple",
+    "available": true,
+    "status": "SHOW",
+    "tags": "iphone, smartphone, apple",
+    "created_at": "2024-04-20T12:00:00Z",
+    "updated_at": "2024-04-20T12:00:00Z",
+    "published_at": "2024-04-20T12:00:00Z",
+    "barcode": null,
+    "options": [],
+    "create_id": 1,
+    "store_id": 1,
+    "category_id": 1,
+    "images": [
+      {
+        "id": 1,
+        "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+        "position": 1,
+        "product_id": 4,
+        "variant_ids": [1]
+      },
+      {
+        "id": 2,
+        "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+        "position": 2,
+        "product_id": 1,
+        "variant_ids": [1]
+      }
+    ],
+    "image": {
+      "id": 1,
+      "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+      "position": 1,
+      "product_id": 4,
+      "variant_ids": []
+    },
+    "variants": [
+      {
+        "id": 4,
+        "title": "iPhone X",
+        "price": 9999999,
+        "sku": "IPHONEX01",
+        "inventory_quantity": 100,
+        "barcode": null,
+        "compare_at_price": 0,
+        "option1": "",
+        "option2": "",
+        "option3": "",
+        "position": 1,
+        "updated_at": null,
+        "inventory_management": null,
+        "old_inventory_quantity": 0,
+        "image_id": 1,
+        "available": true
+      }
+    ],
+    "category_title": "Smartphones"
+  },
+  {
+    "id": 5,
+    "title": "iPhone X",
+    "slug": "iphone-x",
+    "body_html": "The latest iPhone model with advanced features.",
+    "product_type": "Smartphone",
+    "vendor": "Apple",
+    "available": true,
+    "status": "SHOW",
+    "tags": "iphone, smartphone, apple",
+    "created_at": "2024-04-20T12:00:00Z",
+    "updated_at": "2024-04-20T12:00:00Z",
+    "published_at": "2024-04-20T12:00:00Z",
+    "barcode": null,
+    "options": [],
+    "create_id": 1,
+    "store_id": 1,
+    "category_id": 1,
+    "images": [
+      {
+        "id": 1,
+        "src": "https://product.hstatic.net/200000458129/product/upload_a6f85088641441abbaf0ebd92740aec9.jpg",
+        "position": 1,
+        "product_id": 4,
+        "variant_ids": [1]
+      },
+      {
+        "id": 2,
+        "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+        "position": 2,
+        "product_id": 1,
+        "variant_ids": [1]
+      }
+    ],
+    "image": {
+      "id": 1,
+      "src": "https://product.hstatic.net/200000458129/product/upload_753d9fac134c4c72981cbf410f5374d9.jpg",
+      "position": 1,
+      "product_id": 4,
+      "variant_ids": []
+    },
+    "variants": [
+      {
+        "id": 4,
+        "title": "iPhone X",
+        "price": 9999999,
         "sku": "IPHONEX01",
         "inventory_quantity": 100,
         "barcode": null,
