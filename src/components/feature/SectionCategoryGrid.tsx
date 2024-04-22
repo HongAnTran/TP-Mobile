@@ -16,6 +16,9 @@ interface SectionCategoryGridProps {
 
 export default function SectionCategoryGrid({ title, productIds }: SectionCategoryGridProps) {
   const products = JSON.parse(JSON.stringify(productsJson)) as Product[]
+  if (!products.length) {
+    return null
+  }
   return (
     <section className=' flex flex-col gap-4'>
       <TypographyH3 className=' text-center uppercase text-primary'>{title}</TypographyH3>

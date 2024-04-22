@@ -12,18 +12,20 @@ import { ReactNode } from "react"
 
 interface PopupProps {
   animate?: "tran" | "fade",
-   classNameContent?: string,
-    children?: ReactNode, 
-    title?: string, 
-    open:
-     boolean, onOpenChange: () => void
+  classNameContent?: string,
+  children?: ReactNode,
+  title?: string,
+  open:
+  boolean, onOpenChange: () => void
   , closeOnMark?: boolean,
   isDrawerMobile?: boolean
   classNameDrawerMobile?: string
+  closeButton?: React.ReactNode
+
 }
 
 
-export default function Modal({ children, title, open, onOpenChange, classNameContent, animate = "tran", closeOnMark = true, isDrawerMobile, classNameDrawerMobile }: PopupProps
+export default function Modal({ children, title, open, onOpenChange, classNameContent, animate = "fade", closeOnMark = true, closeButton, isDrawerMobile, classNameDrawerMobile }: PopupProps
 ) {
   // const { isMobile } = useDeviceSize()
 
@@ -46,9 +48,10 @@ export default function Modal({ children, title, open, onOpenChange, classNameCo
     <Dialog
       open={open}
       onOpenChange={onOpenChange}
-    
+
     >
       <DialogContent
+        closeButton={closeButton}
         onInteractOutside={(e: any) => {
           if (closeOnMark) {
             return;
@@ -59,9 +62,9 @@ export default function Modal({ children, title, open, onOpenChange, classNameCo
           "data-[state=open]:animate-modal-down data-[state=closed]:animate-modal-up": animate === "tran",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]": animate === "fade",
         }, classNameContent)}>
-        <DialogHeader>
+        {title ? <DialogHeader>
           <DialogTitle className=" text-center">{title}</DialogTitle>
-        </DialogHeader>
+        </DialogHeader> : null}
         {children}
       </DialogContent>
     </Dialog>

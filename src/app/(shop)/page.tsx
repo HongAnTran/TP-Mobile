@@ -1,5 +1,6 @@
 import BannerLarge from '@/components/feature/BannerLarge'
 import BannerMedium from '@/components/feature/BannerMedium'
+import SectionArticles from '@/components/feature/SectionArticles'
 import SectionCategoryCarousel from '@/components/feature/SectionCategoryCarousel'
 import SectionCategoryGrid from '@/components/feature/SectionCategoryGrid'
 import SectionCategoryGrid2 from '@/components/feature/SectionCategoryGrid2'
@@ -19,6 +20,7 @@ export default function page() {
           <SectionCategoryGrid title='Iphone' productIds={[]} />
           <SectionCategoryGrid2  title='Phụ kiện' productIds={[]} />
           <SectionFeedback />
+          <SectionArticles />
         </div>
       </div>
     </div>

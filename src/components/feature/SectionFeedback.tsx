@@ -6,18 +6,14 @@ import Link from 'next/link'
 import { Button } from '../ui/button'
 import { StarFilledIcon } from '@radix-ui/react-icons'
 import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import f1 from "../../../public/f1.jpg"
 import f2 from "../../../public/f2.jpg"
 import f3 from "../../../public/f3.jpg"
+import f4 from "../../../public/f4.jpg"
+import { Feedback } from '@/types/feedback'
 
-interface Feedback {
-  id: number
-  content: string,
-  customerName: string,
-  image: StaticImageData,
-  rate: number
-}
+
 export default function SectionFeedback() {
   const feedbacks: Feedback[] = [
     {
@@ -31,6 +27,12 @@ export default function SectionFeedback() {
       id: 2,
       customerName: "Anh Toại ngu",
       image: f1,
+      content: "Tôi rất hài lòng với dịch vụ của cửa hàng. Sản phẩm chất lượng và giá cả hợp lý.",
+      rate: 5
+    },    {
+      id: 4,
+      customerName: "Anh Sơn ngu",
+      image: f4,
       content: "Tôi rất hài lòng với dịch vụ của cửa hàng. Sản phẩm chất lượng và giá cả hợp lý.",
       rate: 5
     },

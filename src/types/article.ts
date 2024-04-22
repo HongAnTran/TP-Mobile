@@ -1,8 +1,8 @@
 
 enum ArticleStatus {
   HIDDEN,
+  SHOW,
   DRAFT,
-  SHOW
 }
 interface Article {
   id: number; // ID của bài viết

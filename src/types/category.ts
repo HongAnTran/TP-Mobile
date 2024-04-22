@@ -1,7 +1,7 @@
 enum CategoryStatus {
   HIDDEN,
+  SHOW,
   DRAFT,
-  SHOW
 }
 
 enum CategoryType {

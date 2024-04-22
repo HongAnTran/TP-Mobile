@@ -13,7 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { TypographyP, TypographySpan } from '../ui/typography'
+import { TypographyH3, TypographyP, TypographySpan } from '../ui/typography'
 import badgeBG from "../../../public/productTagBg.png"
 import { motion } from "framer-motion";
 import { Button } from '../ui/button'
@@ -34,7 +34,7 @@ export default function ProductCard({ product }: { product: Product }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <Link passHref legacyBehavior href={`${routes.products}/${product.slug}`}>
+        <Link href={`${routes.products}/${product.slug}`}>
 
           <Card className=' border border-gray-300 group relative'>
             <CardContent className="flex flex-col gap-2 aspect-square py-4">
@@ -83,7 +83,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </Link>
       </motion.div>
 
-      <Modal open={open} onOpenChange={() => setOpen(false)} closeOnMark={false}>
+      <Modal closeButton={null} open={open} onOpenChange={() => setOpen(false)} >
         <ProductQuickView product={product} />
       </Modal>
     </>
@@ -120,9 +120,18 @@ function ProductQuickView({ product }: { product: Product }) {
 
   return (
 
-    <h1>
-      {product.title}
-    </h1>
+    <div className='grid grid-cols-12'>
+      <div className=' col-span-6'>
+        <Image src={product.image.src} alt={product.title} width={600} height={600} />
+      </div>
+      <div className=' col-span-6'>
+          <div>
+              <TypographyH3>{product.title}</TypographyH3>
+          <TypographyP >Thương hiệu: {product.vendor}</TypographyP>
+          <TypographyP >Mã sản phẩm: {product.variants[0].sku}</TypographyP>
+          </div>
+      </div>
+    </div>
 
   )
 }

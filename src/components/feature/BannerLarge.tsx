@@ -5,7 +5,7 @@ import { CaretRightIcon } from '@radix-ui/react-icons'
 import banner from "../../../public/ipad_pro_hero__bh3eq6sqfjw2_large.jpg"
 import Link from 'next/link'
 
-import { motion  } from "framer-motion"
+import { motion } from "framer-motion"
 export default function BannerLarge() {
 
   return (
@@ -14,9 +14,16 @@ export default function BannerLarge() {
         <div className=' grid grid-cols-12'>
           <div className=' col-span-4'>
             <div className=' flex flex-col  justify-center items-center w-full h-full'>
-              <h2 className=' text-white  text-6xl font-bold'> TP MOBILE</h2>
-              <p className=' text-white text-xl font-bold'>Bán Ipad có tâm nhứt Sài Gòn</p>
-              <Link href={"/"}  className=' flex items-center  text-blue-700' >Tìm hiểu thêm <CaretRightIcon /> </Link>
+              <motion.div
+                initial={{ y:10, opacity: 0 }}
+                whileInView={{ y:0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+              >
+                <h2 className=' text-white  text-6xl font-bold'> TP MOBILE</h2>
+                <p className=' text-white text-xl font-bold'>Bán Ipad có tâm nhứt Sài Gòn</p>
+                <Link href={"/"} className=' flex items-center  text-blue-700' >Tìm hiểu thêm <CaretRightIcon /> </Link>
+              </motion.div>
             </div>
           </div>
           <div className=' col-span-8'>

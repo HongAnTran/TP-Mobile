@@ -15,6 +15,9 @@ interface SectionCategoryCarouselProps {
 export default function SectionCategoryCarousel({ title, productIds }: SectionCategoryCarouselProps) {
   const products = JSON.parse(JSON.stringify(productsJson)) as Product[]
 
+  if (!products.length) {
+    return null
+  }
   return (
     <section className=' flex flex-col gap-4'>
       <div className=' flex flex-col items-center justify-center'>
@@ -30,9 +33,9 @@ export default function SectionCategoryCarousel({ title, productIds }: SectionCa
           className="w-full"
         >
           <CarouselContent>
-            {products.map((product , index) => (
+            {products.map((product, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4 ">
-                  <ProductCard product={product} />
+                <ProductCard product={product} />
               </CarouselItem>
             ))}
           </CarouselContent>

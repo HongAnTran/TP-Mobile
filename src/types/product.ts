@@ -1,8 +1,8 @@
 type ProductId = number
 enum ProductStatus {
   HIDDEN,
+  SHOW,
   DRAFT,
-  SHOW
 }
 interface Product {
   id: ProductId;
@@ -27,6 +27,7 @@ interface Product {
   image: ProductImage,
   variants: ProductVariant[]
   category_title: string
+  rating : ProductRating
 }
 
 interface ProductVariant {
@@ -64,9 +65,9 @@ interface ProductOption {
   values: string[]
 }
 
-type ProductOrder = Pick<Product, "title"   | "slug" | "product_type" | "vendor" | "barcode" | "body_html"> & {
+type ProductOrder = Pick<Product, "title" | "slug" | "product_type" | "vendor" | "barcode" | "body_html"> & {
   line_price: number
-  price  : number
+  price: number
   price_original: number
   line_price_orginal: number
   variant_id: number
@@ -78,6 +79,10 @@ type ProductOrder = Pick<Product, "title"   | "slug" | "product_type" | "vendor"
   variant_options: string[]
   quantity: number
 }
-
-export {ProductStatus}
-export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant };
+interface ProductRating {
+  id: number,
+  count: number
+  rate : number
+}
+export { ProductStatus }
+export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant , ProductRating };

@@ -1,7 +1,7 @@
 const routes = {
   home: "/",
   api: "/api",
-  blogs: "/bai-viet",
+  article: "/bai-viet",
   products: "/san-pham",
   about : "/ve-chung-toi",
   stores:"/cua-hang",
