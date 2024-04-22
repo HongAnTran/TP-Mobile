@@ -36,7 +36,7 @@ export default async function Header() {
   ]
 
   return (
-    <header className='  bg-black  text-white  shadow-md '>
+    <header className='  bg-black   text-white  shadow-md '>
       <div className=' container'>
         <div className=' flex gap-10 items-center  py-4 '>
           <div className=' flex-shrink-0'>

@@ -7,7 +7,7 @@ export default function NavigationCategory() {
   const categories = JSON.parse(JSON.stringify(categoriesJson)) as Category[]
 
   return (
-    <div className=' bg-black py-2'>
+    <div className=' bg-black  py-2'>
       <div className=' container'>
         <ul className=' flex  justify-center gap-8 items-center'>
           {categories.map(category => {

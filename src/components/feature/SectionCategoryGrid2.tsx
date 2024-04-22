@@ -2,10 +2,6 @@ import React from 'react'
 import { TypographyH3, TypographyP } from '../ui/typography'
 import productsJson from "@/data/product.json"
 import { Product } from '@/types/product'
-import ProductCard from '../common/ProductCard'
-import Link from 'next/link'
-import routes from '@/routes'
-import { Button } from '../ui/button'
 import Image from 'next/image'
 
 interface SectionCategoryGridProps {

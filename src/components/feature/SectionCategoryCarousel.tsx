@@ -3,7 +3,7 @@ import { TypographyH3 } from '../ui/typography'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
 import productsJson from "@/data/product.json"
 import { Product } from '@/types/product'
-import ProductCard from '../common/ProductCard'
+import ProductCard from '@/components/common/product/ProductCard'
 
 
 interface SectionCategoryCarouselProps {

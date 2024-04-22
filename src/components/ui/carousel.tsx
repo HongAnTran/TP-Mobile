@@ -9,13 +9,6 @@ import useEmblaCarousel, {
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import  {
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useState
-} from 'react'
-import { EmblaCarouselType } from 'embla-carousel'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -62,16 +55,19 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      onSelect : onChange,
       ...props
     },
     ref
   ) => {
-    const [carouselRef, api] = useEmblaCarousel(
+    const [carouselRef, api] = useEmblaCarousel(  
       {
+
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
-      plugins
+      plugins,
+
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
@@ -80,7 +76,6 @@ const Carousel = React.forwardRef<
       if (!api) {
         return
       }
-
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }, [])

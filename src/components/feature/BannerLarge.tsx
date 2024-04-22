@@ -20,9 +20,11 @@ export default function BannerLarge() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
               >
-                <h2 className=' text-white  text-6xl font-bold'> TP MOBILE</h2>
-                <p className=' text-white text-xl font-bold'>Bán Ipad có tâm nhứt Sài Gòn</p>
-                <Link href={"/"} className=' flex items-center  text-blue-700' >Tìm hiểu thêm <CaretRightIcon /> </Link>
+              <div>
+              <h2 className=' text-white  text-6xl font-bold'> TP MOBILE</h2>
+                <p className=' text-white text-center  text-xl font-bold'>Bán Ipad có tâm nhứt Sài Gòn</p>
+              </div>
+                {/* <Link href={"/"} className=' flex items-center  text-blue-700' >Tìm hiểu thêm <CaretRightIcon /> </Link> */}
               </motion.div>
             </div>
           </div>

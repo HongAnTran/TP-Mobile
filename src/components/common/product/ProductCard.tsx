@@ -2,9 +2,9 @@
 
 import { Product } from '@/types/product'
 import React, { useState } from 'react'
-import { Card, CardBadge, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
+import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
-import ProductPrice from './ProductPrice'
+import ProductPrice from "@/components/common/product/ProductPrice"
 import { cn } from '@/lib/utils'
 import { HeartIcon, StarFilledIcon } from '@radix-ui/react-icons'
 import {
@@ -13,14 +13,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { TypographyH3, TypographyP, TypographySpan } from '../ui/typography'
-import badgeBG from "../../../public/productTagBg.png"
+import { TypographyP, TypographySpan } from '../../ui/typography'
+import badgeBG from "../../../../public/productTagBg.png"
 import { motion } from "framer-motion";
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import { findVariantMinPrice } from '@/utils'
-import Modal from '../ui/Modal'
+import Modal from '@/components/ui/Modal'
 import Link from 'next/link'
 import routes from '@/routes'
+import ProductQuickView from './ProductQuickView'
+import Rating from '../Rating'
 
 export default function ProductCard({ product }: { product: Product }) {
   const variantMinPrice = findVariantMinPrice(product.variants)
@@ -47,18 +49,13 @@ export default function ProductCard({ product }: { product: Product }) {
                 }} className='   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
               </div>
               <CardTitle className='   group-hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
-              <div className=' flex gap-1'>
+              <div className=' flex gap-2'>
                 <ProductPrice className='text-red-500 font-bold' price={variantMinPrice.price} />
-                {variantMinPrice.compare_at_price ? <ProductPrice price={variantMinPrice.compare_at_price} /> : null}
+                {variantMinPrice.compare_at_price ? <ProductPrice  className=' line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
               </div>
               <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
-                <div className=' flex gap-1 items-center'>
-                  <StarFilledIcon className=' text-yellow-500' />
-                  <StarFilledIcon className=' text-yellow-500' />
-                  <StarFilledIcon className=' text-yellow-500' />
-                  <StarFilledIcon className=' text-yellow-500' />
-                  <StarFilledIcon className=' text-yellow-500' />
-                </div>
+                <Rating rate={product.rating.rate} count={product.rating.count} />
+
                 <TooltipProvider>
                   <Tooltip delayDuration={100} disableHoverableContent  >
                     <TooltipTrigger >
@@ -116,22 +113,3 @@ function ProductCardImage({ images, title }: Pick<Product, "images" | "title">) 
   )
 }
 
-function ProductQuickView({ product }: { product: Product }) {
-
-  return (
-
-    <div className='grid grid-cols-12'>
-      <div className=' col-span-6'>
-        <Image src={product.image.src} alt={product.title} width={600} height={600} />
-      </div>
-      <div className=' col-span-6'>
-          <div>
-              <TypographyH3>{product.title}</TypographyH3>
-          <TypographyP >Thương hiệu: {product.vendor}</TypographyP>
-          <TypographyP >Mã sản phẩm: {product.variants[0].sku}</TypographyP>
-          </div>
-      </div>
-    </div>
-
-  )
-}
