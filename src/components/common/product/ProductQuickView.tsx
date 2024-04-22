@@ -3,7 +3,6 @@ import ProductImageCarousel from "./ProductImageCarousel";
 import { TypographyH3, TypographyP } from "@/components/ui/typography";
 import { useEffect, useState } from "react";
 import Rating from "../Rating";
-import ProductPrice from "./ProductPrice";
 import ProductShowPrice from "./ProductShowPrice";
 import ProductOptions from "./ProductOptions";
 
