@@ -35,4 +35,9 @@ function findVariantMinPrice(variants: ProductVariant[]) {
 
   return minPriceVariant;
 }
-export { convetNumberToPriceVND , findVariantMinPrice}
+
+function findVariantActiveOption(variants: ProductVariant[], optionActive: string[]) {
+  return variants.find(pro => optionActive.includes(pro.option1) && optionActive.includes(pro.option2) && optionActive.includes(pro.option3))
+
+}
+export { convetNumberToPriceVND, findVariantMinPrice  , findVariantActiveOption}

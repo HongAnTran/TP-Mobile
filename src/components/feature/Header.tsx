@@ -7,6 +7,7 @@ import StoreIcon from '../icons/StoreIcon'
 import { CartIcon, PhoneFilledIcon } from '../icons'
 import { TypographyP } from '../ui/typography'
 import routes from '@/routes'
+import NavigationCategory from './NavigationCategory'
 
 interface HeaderItemProps { icon: ReactNode, text: string, href?: string }
 
@@ -36,7 +37,7 @@ export default async function Header() {
   ]
 
   return (
-    <header className='  bg-black   text-white  shadow-md '>
+    <header className='  bg-black   text-white   shadow-lg '>
       <div className=' container'>
         <div className=' flex gap-10 items-center  py-4 '>
           <div className=' flex-shrink-0'>
@@ -57,6 +58,8 @@ export default async function Header() {
           </div>
 
         </div>
+
+        <NavigationCategory />
       </div>
     </header>
   )

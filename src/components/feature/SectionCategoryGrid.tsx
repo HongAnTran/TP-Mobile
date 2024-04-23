@@ -1,21 +1,21 @@
-"use client"
 
 import React from 'react'
 import { TypographyH3 } from '../ui/typography'
-import productsJson from "@/data/product.json"
-import { Product } from '@/types/product'
 import ProductCard from '@/components/common/product/ProductCard'
 
 import Link from 'next/link'
 import { Button } from '../ui/button'
+import ProductsServiceApi from '@/services/productService/productService'
 
 interface SectionCategoryGridProps {
   title: string
   productIds: number[]
 }
 
-export default function SectionCategoryGrid({ title, productIds }: SectionCategoryGridProps) {
-  const products = JSON.parse(JSON.stringify(productsJson)) as Product[]
+export default async  function SectionCategoryGrid({ title, productIds }: SectionCategoryGridProps) {
+
+  const products = await ProductsServiceApi.getList()
+
   if (!products.length) {
     return null
   }

@@ -1,16 +1,16 @@
 import React from 'react'
 import { TypographyH3, TypographyP } from '../ui/typography'
-import productsJson from "@/data/product.json"
-import { Product } from '@/types/product'
 import Image from 'next/image'
+import ProductsServiceApi from '@/services/productService/productService'
 
 interface SectionCategoryGridProps {
   title: string
   productIds: number[]
 }
 
-export default function SectionCategoryGrid2({ title, productIds }: SectionCategoryGridProps) {
-  const products = JSON.parse(JSON.stringify(productsJson)) as Product[]
+export default async function SectionCategoryGrid2({ title, productIds }: SectionCategoryGridProps) {
+  const products = await ProductsServiceApi.getList()
+
   if (!products.length) {
     return null
   }

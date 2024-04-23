@@ -4,7 +4,7 @@ import { Product } from '@/types/product'
 import React, { useState } from 'react'
 import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
-import ProductPrice from "@/components/common/product/ProductPrice"
+import PriceText from "@/components/common/PriceText"
 import { cn } from '@/lib/utils'
 import { HeartIcon, StarFilledIcon } from '@radix-ui/react-icons'
 import {
@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: Product }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <Link href={`${routes.products}/${product.slug}`}>
+        <Link href={`${routes.products}/${product.slug}`} >
 
           <Card className=' border border-gray-300 group relative'>
             <CardContent className="flex flex-col gap-2 aspect-square py-4">
@@ -49,12 +49,12 @@ export default function ProductCard({ product }: { product: Product }) {
                 }} className='   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
               </div>
               <CardTitle className='   group-hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
-              <div className=' flex gap-2'>
-                <ProductPrice className='text-red-500 font-bold' price={variantMinPrice.price} />
-                {variantMinPrice.compare_at_price ? <ProductPrice  className=' line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
+              <div className=' flex  gap-2'>
+                <PriceText className='text-red-500 font-bold' price={variantMinPrice.price} />
+                {variantMinPrice.compare_at_price > 0 ? <PriceText  className=' line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
               </div>
               <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
-                <Rating rate={product.rating.rate} count={product.rating.count} />
+                 { product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />}
 
                 <TooltipProvider>
                   <Tooltip delayDuration={100} disableHoverableContent  >

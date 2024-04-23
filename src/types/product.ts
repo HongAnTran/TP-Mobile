@@ -8,7 +8,8 @@ interface Product {
   id: ProductId;
   title: string;
   slug: string
-  body_html: string
+  description_html: string
+  technical_html: string
   product_type: string
   vendor: string
   available: boolean
@@ -19,6 +20,7 @@ interface Product {
   published_at: string
   barcode: string | null
   options: ProductOption[]
+  short_description: string
   // metadata
   create_id: number
   store_id: number
@@ -27,7 +29,7 @@ interface Product {
   image: ProductImage,
   variants: ProductVariant[]
   category_title: string
-  rating : ProductRating
+  rating: ProductRating | null
 }
 
 interface ProductVariant {
@@ -65,7 +67,7 @@ interface ProductOption {
   values: string[]
 }
 
-type ProductOrder = Pick<Product, "title" | "slug" | "product_type" | "vendor" | "barcode" | "body_html"> & {
+type ProductOrder = Pick<Product, "title" | "slug" | "product_type" | "vendor" | "barcode" | "description_html"> & {
   line_price: number
   price: number
   price_original: number
@@ -82,7 +84,7 @@ type ProductOrder = Pick<Product, "title" | "slug" | "product_type" | "vendor" |
 interface ProductRating {
   id: number,
   count: number
-  rate : number
+  rate: number
 }
 export { ProductStatus }
-export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant , ProductRating };
+export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating };

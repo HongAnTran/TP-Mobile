@@ -6,7 +6,7 @@ import React from 'react'
 import { type CarouselApi } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils'
 
-export default function ProductImageCarousel({ images, alt, imageActive ,setImageActive }:
+export default function ProductImageCarousel({ images, alt, imageActive, setImageActive }:
   { images: ProductImage[], alt: string, imageActive: number, setImageActive: (index: number) => void }) {
   const [api, setApi] = React.useState<CarouselApi>()
 
@@ -17,11 +17,13 @@ export default function ProductImageCarousel({ images, alt, imageActive ,setImag
     api.on("select", (api, event) => {
       setImageActive(api.selectedScrollSnap())
     })
-  }, [api])
+  }, [api, setImageActive])
   React.useEffect(() => {
-    api?.scrollTo(imageActive)
+    if (api) {
+      api?.scrollTo(imageActive)
+    }
 
-  }, [imageActive])
+  }, [api, imageActive])
 
   return (
     <div>
@@ -43,8 +45,8 @@ export default function ProductImageCarousel({ images, alt, imageActive ,setImag
       <div className=' flex gap-2 flex-wrap overflow-auto mt-2'>
         {images.map((img, index) => (
 
-          <div key={index} className={cn('  w-[60px] h-[60px] p-1 rounded-sm cursor-pointer', {
-            " border border-primary ": index === imageActive
+          <div key={index} className={cn('  transition-all  w-[60px] h-[60px] p-1 rounded-sm cursor-pointer', {
+            " border border-red-500 ": index === imageActive
           })}
 
             onClick={() => {
