@@ -5,7 +5,7 @@ import ProductCard from '@/components/common/product/ProductCard'
 
 import Link from 'next/link'
 import { Button } from '../ui/button'
-import ProductsServiceApi from '@/services/productService/productService'
+import ProductsServiceApi from '@/services/productService'
 
 interface SectionCategoryGridProps {
   title: string

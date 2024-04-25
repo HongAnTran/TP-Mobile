@@ -9,8 +9,12 @@ class ProductsService {
 
   constructor() { }
 
-  async getList(params?: { limit: number }) {
+  async getList(params?: { limit: number , category_id : number }) {
+    if(params){
 
+
+      return   this.products.filter(item=>item.category_id === params.category_id).slice(0,params.limit)
+    }
     return this.products
     // return fetchApi.get<Product[]>(this.url, {
     //   params: params,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TypographyH3, TypographyP } from '../ui/typography'
 import Image from 'next/image'
-import ProductsServiceApi from '@/services/productService/productService'
+import ProductsServiceApi from '@/services/productService'
 
 interface SectionCategoryGridProps {
   title: string

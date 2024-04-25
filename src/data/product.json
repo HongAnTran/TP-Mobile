@@ -15,6 +15,8 @@
     "available": true,
     "tags": "baohanh_Tặng gói bảo hành Gold trị giá 300K,soluong_1000,Đen,tragop_Trả góp 0%,lienquan_iphone,Đỏ,lienquan_android,lienquaniphone,video_LZwIN1MNp-0,dienthoaiapple,tragop",
     "sole_quantity": 2,
+    "category_id": 4,
+
     "images": [
       {
         "created_at": null,
@@ -234,6 +236,8 @@
     "vendor": "Apple",
     "not_allow_promotion": false,
     "available": true,
+    "category_id": 4,
+
     "tags": "mtbipad,lienquaniphone,lienquan_iphone",
     "sole_quantity": 0,
     "images": [
@@ -575,7 +579,6 @@
     "options": [],
     "create_id": 1,
     "store_id": 1,
-    "category_id": 1,
     "images": [
       {
         "id": 1,

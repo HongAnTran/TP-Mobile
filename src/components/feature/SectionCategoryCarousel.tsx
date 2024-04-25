@@ -2,7 +2,7 @@ import React from 'react'
 import { TypographyH3 } from '../ui/typography'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
 import ProductCard from '@/components/common/product/ProductCard'
-import ProductsServiceApi from '@/services/productService/productService'
+import ProductsServiceApi from '@/services/productService'
 
 
 interface SectionCategoryCarouselProps {

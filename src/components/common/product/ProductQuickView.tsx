@@ -56,7 +56,7 @@ export default function ProductQuickView({ product }: { product: Product }) {
               handleQuantity={handleQuantity}
             />
           </div>
-        <div className=' mt-8 '>
+        <div className=' mt-8    '>
             <ProductActionButton />
           </div>
       </div>

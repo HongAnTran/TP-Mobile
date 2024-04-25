@@ -1,12 +1,13 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 
-import ProductsServiceApi from '@/services/productService/productService'
+import ProductsServiceApi from '@/services/productService'
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import ProductDetail from '../_components/ProductDetail'
 import ProductDescription from '../_components/ProductDescription'
 import SectionCategoryCarousel from '@/components/feature/SectionCategoryCarousel'
+import routes from '@/routes'
 
 export default async function page({ params }: { params: { slug: string } }) {
   const slug = params.slug
@@ -19,10 +20,20 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <div className=' my-8'>
       <div className=' container'>
-        <Breadcrumbs breadcrumbsList={[{
+        <Breadcrumbs breadcrumbsList={[
+          
+          {
+            label: "Sản phẩm",
+            slug : routes.products
+          },
+
+          {
           label: product.title,
           isActive: true
-        }]} />
+        }
+      ]
+        
+        } />
 
         <div className=' mt-8'>
         <ProductDetail product={product} />
