@@ -19,15 +19,27 @@ export default function useHandleVariant(product: Product) {
   useEffect(() => {
     const findVariantActive = findVariantActiveOption(product.variants, optionActive)
     if (!findVariantActive) return
+
     setVariantActive(findVariantActive)
 
   }, [optionActive, product.variants])
+
+  useEffect(() => {
+    const imageActive = product.images.find((img) => img.variant_ids.some(va => va === variantActive.id))
+    if (!imageActive) return
+
+    const index = product.images.findIndex(img => img.id === imageActive.id)
+    if (index >= 0) {
+      setIndexImageActive(index)
+    }
+
+  }, [product.images, variantActive])
 
   return {
     handleSelectOption,
     variantActive,
     optionActive,
-    indexImageActive, 
+    indexImageActive,
     setIndexImageActive
   }
 

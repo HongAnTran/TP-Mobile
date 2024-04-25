@@ -8,19 +8,11 @@ import CategoryServiceApi from '@/services/categoryService'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
 import routes from '@/routes'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
-const filters = [
-  {
-    title: "Màu sắc",
-    content: "Yes. It adheres to the WAI-ARIA design pattern."
-  }
-]
+import FilterProduct from '@/components/feature/FilterProduct'
+import { SortProduct } from '@/components/feature/SortProduct'
+
+
 export default async function page({ params }: { params: { slug: string } }) {
   const slug = params.slug
   const caregory = await CategoryServiceApi.getDetail(slug)
@@ -52,23 +44,14 @@ export default async function page({ params }: { params: { slug: string } }) {
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
             <div className='  col-span-3'>
-              <TypographyP className=' font-bold  text-xl'>Bộ lọc</TypographyP>
-              <Accordion type="multiple" >
-                {filters.map((item, index) => {
-                  return (
-                    <AccordionItem value={`fil-${index}`} key={index}>
-                      <AccordionTrigger className=' hover:text-blue-500 hover:font-bold  transition-colors'>{item.title}</AccordionTrigger>
-                      <AccordionContent>
-                        {item.content}
-                      </AccordionContent>
-                    </AccordionItem>
-                  )
-                })}
-
-
-              </Accordion>
+          <FilterProduct />
             </div>
             <div className=' col-span-9'>
+              <div  className=' flex items-center'>
+                <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
+              <SortProduct />
+
+              </div>
               <div className=' grid grid-cols-4 gap-4'>
                 {products.map((pro) => {
                   return <ProductCard key={pro.id} product={pro} />

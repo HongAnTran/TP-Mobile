@@ -14,7 +14,7 @@ export default function ProductImageCarousel({ images, alt, imageActive, setImag
     if (!api) {
       return
     }
-    api.on("select", (api, event) => {
+    api.on("select", (api) => {
       setImageActive(api.selectedScrollSnap())
     })
   }, [api, setImageActive])

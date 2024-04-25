@@ -1,12 +1,11 @@
 "use client"
-import { Product, ProductOption, ProductVariant } from "@/types/product";
+import { Product  } from "@/types/product";
 import ProductImageCarousel from "./ProductImageCarousel";
 import { TypographyH3, TypographyP } from "@/components/ui/typography";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Rating from "../Rating";
 import ProductShowPrice from "./ProductShowPrice";
 import ProductOptions from "./ProductOptions";
-import { findVariantActiveOption } from "@/utils";
 import useHandleVariant from "@/hooks/useHandleVariant";
 import ProductActionButton from "./ProductActionButton";
 import ProductQuantity, { ProductQuantityProps } from "./ProductQuantity";
@@ -56,7 +55,7 @@ export default function ProductQuickView({ product }: { product: Product }) {
               handleQuantity={handleQuantity}
             />
           </div>
-        <div className=' mt-8    '>
+        <div className=' mt-8  pr-8   '>
             <ProductActionButton />
           </div>
       </div>
