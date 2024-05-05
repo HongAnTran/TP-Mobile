@@ -3,7 +3,7 @@ import React from "react";
 
 const TiktokIcon = ({ className }: { className?: string }) => {
   return (
-    <span className={cn("block w-12 h-12", className)}>
+    <span className={cn(" inline-block w-6 h-6", className)}>
       <svg
         width="100%"
         height="100%"
@@ -44,7 +44,7 @@ const TiktokIcon = ({ className }: { className?: string }) => {
           fill="white"
         />
       </svg>
-      ;
+      
     </span>
   );
 };

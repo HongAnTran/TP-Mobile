@@ -1,3 +1,4 @@
+import CompareProductProvider from "@/components/providers/CompareProductProvider";
 import MainLayout from "@/layouts/MainLayout";
 
 export default function ShopLayout({
@@ -6,8 +7,10 @@ export default function ShopLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <MainLayout>
-      {children}
-    </MainLayout>
+    <CompareProductProvider >
+      <MainLayout>
+        {children}
+      </MainLayout>
+    </CompareProductProvider>
   );
 }

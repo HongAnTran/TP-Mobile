@@ -3,9 +3,8 @@ import React from 'react'
 import ProductsServiceApi from '@/services/productService'
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import { TypographyH1, TypographyP } from '@/components/ui/typography'
+import { TypographyH1, TypographyH2, TypographyH3, TypographyP } from '@/components/ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
-import routes from '@/routes'
 
 
 import { SortProduct } from '@/components/feature/SortProduct'
@@ -26,7 +25,7 @@ export default async function page() {
           }]} />
 
         <div className=' mt-16'>
-          <TypographyH1 className=' text-center'>Tất cả sản phẩm</TypographyH1>
+          <TypographyH1 className=' text-center   lg:text-2xl'>Có 44 kết quả theo từ khóa a</TypographyH1>
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
@@ -34,15 +33,29 @@ export default async function page() {
               <FilterProduct />
             </div>
             <div className=' col-span-10'>
+              <div className=' flex justify-between'>
+
               <div className=' flex items-center mb-4'>
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
                 <SortProduct />
 
               </div>
-              <div className=' grid grid-cols-4 gap-4'>
-                {products.map((pro) => {
-                  return <ProductCard key={pro.id} product={pro} />
-                })}
+              <TypographyH3 className='  '>Bài viết liên quan</TypographyH3>
+
+              </div>
+              <div className='  grid-cols-4  grid gap-4'>
+                <div className='  col-span-3'>
+                  <div className=' grid grid-cols-3 gap-4'>
+                    {products.map((pro) => {
+                      return <ProductCard key={pro.id} product={pro} />
+                    })}
+                  </div>
+                </div>
+                <div className='  col-span-1'>
+                  {/* <ArticleCard article={{
+
+                  }} /> */}
+                </div>
               </div>
             </div>
           </div>

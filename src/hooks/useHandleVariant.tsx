@@ -25,7 +25,7 @@ export default function useHandleVariant(product: Product) {
   }, [optionActive, product.variants])
 
   useEffect(() => {
-    const imageActive = product.images.find((img) => img.variant_ids.some(va => va === variantActive.id))
+    const imageActive = product.images.find((img) => img.id === variantActive.image_id)
     if (!imageActive) return
 
     const index = product.images.findIndex(img => img.id === imageActive.id)

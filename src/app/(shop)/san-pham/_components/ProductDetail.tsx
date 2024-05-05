@@ -11,9 +11,10 @@ import ProductBenefits from './ProductBenefits'
 import ProductQuantity, { ProductQuantityProps } from '@/components/common/product/ProductQuantity'
 import ProductActionButton from '@/components/common/product/ProductActionButton'
 import { MAX_SALE, MIN_SALE } from '@/consts/product'
+import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 
 export default function ProductDetail({ product }: { product: Product }) {
- 
+
 
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
   const [quantity, setQuantity] = useState(MIN_SALE)
@@ -49,6 +50,8 @@ export default function ProductDetail({ product }: { product: Product }) {
             {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />}
             <TypographyP >Thương hiệu: <b className=' text-blue-500'>{product.vendor}</b></TypographyP>
             <TypographyP >Mã sản phẩm: <b className=' text-blue-500'>{variantActive.sku}</b></TypographyP>
+            <ButtonCompareProduct product={product} />
+
             <TypographyP >{product.short_description}</TypographyP>
 
 

@@ -10,27 +10,26 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { itemFilterColor, itemFilterDisk, itemFilterRam } from '@/data/filter'
 import { Range } from '@/components/ui/slider'
-import { TypographyP } from '../ui/typography'
-import MutipleCheckbox from '../common/MutipleCheckbox'
+import { TypographyP } from '../../../../components/ui/typography'
+import MutipleCheckbox from '../../../../components/common/MutipleCheckbox'
 import { Category } from '@/types/category'
-import CategoryServiceApi from '@/services/categoryService'
+import PriceText from '@/components/common/PriceText'
 interface ValueFiter {
   color: string;
   price: number[];
   disk: string[]
   ram: string[]
-  categories: Category["slug"][]
 }
 export default function FilterProduct() {
 
-  const [categories , setCategories] = useState<Category[]>([])
+  const ONE_HUN = 1000000
 
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
     color: itemFilterColor[0].value,
     price: [0, 100],
     disk: [],
     ram: [],
-    categories: [],
+
 
   })
 
@@ -40,34 +39,12 @@ export default function FilterProduct() {
     setValueFilter(value)
 
   }
-
-
   useEffect(() => {
     console.log(valueFiter)
   }, [valueFiter])
 
-
-  useEffect(() => {
-
-    (async () => {
-      try {
-        const categories = await CategoryServiceApi.getList()
-        setCategories(categories)
-      } catch (error) {
-
-      }
-    })()
-
-  }, [])
-
   const filters = [
-    {
-      title: "Loại sản phẩm",
-      content:
-        <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.map((item)=>({value : item.slug , label : item.title}))} defaultValue={valueFiter.categories} />
 
-
-    },
     {
       title: "Màu sắc",
       content: <RadioGroup value={valueFiter.color}
@@ -88,11 +65,11 @@ export default function FilterProduct() {
     {
       title: "Mức giá",
       content: <div>
-        <Range defaultValue={valueFiter.price} step={1} onValueCommit={(value) => {
+        <Range defaultValue={valueFiter.price} step={0.1} onValueCommit={(value) => {
           onChageValueFilter("price", value)
         }}
         />
-        <p className=' text-center'>Từ {valueFiter.price[0]} đến {valueFiter.price[1]}</p>
+        <p className=' text-center'>Từ <PriceText price={valueFiter.price[0] * ONE_HUN} /> đến <PriceText price={valueFiter.price[1] * ONE_HUN} /></p>
       </div>
     },
     {

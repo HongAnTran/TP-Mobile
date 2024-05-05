@@ -6,7 +6,7 @@ import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
 import PriceText from "@/components/common/PriceText"
 import { cn } from '@/lib/utils'
-import { HeartIcon, StarFilledIcon } from '@radix-ui/react-icons'
+import { HeartIcon} from '@radix-ui/react-icons'
 import {
   Tooltip,
   TooltipContent,

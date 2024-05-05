@@ -3,7 +3,7 @@ import React from "react";
 
 const InstagramIcon = ({ className }: { className?: string }) => {
   return (
-    <span className={cn("block w-4 h-4 text-gray-200 ", className)}>
+    <span className={cn("inline-block w-4 h-4 text-white", className)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={"100%"}

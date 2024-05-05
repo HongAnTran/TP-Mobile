@@ -9,13 +9,30 @@ class ProductsService {
 
   constructor() { }
 
-  async getList(params?: { limit: number , category_id : number }) {
-    if(params){
+  async getList(params?: { limit?: number, category_id?: number, keyword?: string }) {
+    let resuilt = [...this.products]
+    if (params) {
+
+      if (params.category_id) {
+        resuilt = resuilt.filter(item => item.category_id === params.category_id)
+      }
+
+      if (typeof params.keyword === "string") {
+        if (!params.keyword) {
+          resuilt = []
+        } else {
+          resuilt = resuilt.filter(item => item.title.toLocaleLowerCase().includes(params.keyword?.toLocaleLowerCase() || ""))
+        }
+      }
+
+      if (params.limit) {
+        resuilt = resuilt.slice(0, params.limit)
+
+      }
 
 
-      return   this.products.filter(item=>item.category_id === params.category_id).slice(0,params.limit)
     }
-    return this.products
+    return resuilt
     // return fetchApi.get<Product[]>(this.url, {
     //   params: params,
 

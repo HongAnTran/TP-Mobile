@@ -3,7 +3,7 @@ import React from "react";
 
 function FacebookOutlineIcon({ className }: { className?: string }) {
   return (
-    <span className={cn("block w-4 h-4 text-gray-200", className)}>
+    <span className={cn("inline-block w-4 h-4 text-white", className)}>
       <svg
         width={"100%"}
         height={"100%"}

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Hệ điều hành",
+    "description": "Hệ điều hành của sản phẩm"
+  },
+  {
+    "id": 2,
+    "name": "CPU & RAM",
+    "description": "Hệ điều hành của sản phẩm"
+  }
+]

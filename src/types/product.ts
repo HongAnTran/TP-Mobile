@@ -4,17 +4,16 @@ enum ProductStatus {
   SHOW,
   DRAFT,
 }
+
 interface Product {
   id: ProductId;
   title: string;
   slug: string
   description_html: string
-  technical_html: string
-  product_type: string
   vendor: string
   available: boolean
   status: ProductStatus,
-  tags: string
+  tagsSpecifications: ProductTags[]
   created_at: string
   updated_at: string
   published_at: string
@@ -30,6 +29,11 @@ interface Product {
   variants: ProductVariant[]
   category_title: string
   rating: ProductRating | null
+  specifications: ProductSpecifications[]
+  // meta
+  meta_title: string
+  meta_description: string
+  meta_keywords: string
 }
 
 interface ProductVariant {
@@ -67,7 +71,26 @@ interface ProductOption {
   values: string[]
 }
 
-type ProductOrder = Pick<Product, "title" | "slug" | "product_type" | "vendor" | "barcode" | "description_html"> & {
+interface ProductTags {
+  id: number
+  value: string | number
+  type_id: number
+}
+interface ProductSpecifications {
+  id: number
+  type_id : number
+  name: string
+  value: string | number
+  description?: string
+}
+interface ProductTypeSpecifications {
+  id: number
+  name: string
+  description?: string
+}
+
+
+type ProductOrder = Pick<Product, "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode" | "description_html"> & {
   line_price: number
   price: number
   price_original: number
@@ -87,4 +110,4 @@ interface ProductRating {
   rate: number
 }
 export { ProductStatus }
-export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating };
+export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating , ProductTypeSpecifications  , ProductSpecifications};

@@ -22,6 +22,7 @@ export default function InputController<
 >({ control, name, inputProps, label }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
   const id = useId()
 
+
   return (
     <Controller
       control={control}
@@ -35,7 +36,13 @@ export default function InputController<
             name={name}
 
             ref={ref}
-            onBlur={onBlur}
+            onBlur={(e) => {
+              if (inputProps?.onBlur) {
+                inputProps.onBlur(e)
+              }
+
+              onBlur()
+            }}
             onChange={onChange}
             value={value}
             disabled={disabled}

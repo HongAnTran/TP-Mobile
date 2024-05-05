@@ -9,7 +9,7 @@ import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
 import routes from '@/routes'
 
-import FilterProduct from '@/components/feature/FilterProduct'
+import FilterProduct from "../_components/FilterProduct"
 import { SortProduct } from '@/components/feature/SortProduct'
 
 
@@ -43,11 +43,11 @@ export default async function page({ params }: { params: { slug: string } }) {
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
-            <div className='  col-span-3'>
+            <div className='  col-span-2'>
           <FilterProduct />
             </div>
-            <div className=' col-span-9'>
-              <div  className=' flex items-center'>
+            <div className=' col-span-10'>
+              <div  className=' flex items-center mb-4'>
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
               <SortProduct />
 
