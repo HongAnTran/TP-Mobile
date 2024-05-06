@@ -54,7 +54,7 @@ export default function SectionFeedback() {
         ))}
       </div>
       <div className=' flex gap-4 justify-center mt-2'>
-        <Link href={"/"}>
+        <Link target="_blank" href={"https://www.google.com/maps/place/TP+MOBILE+STORE/@10.7827711,106.618124,17z/data=!4m18!1m9!3m8!1s0x31752d5f330ea7c7:0x1e87e39b41c64ce2!2sTP+MOBILE+STORE!8m2!3d10.7827711!4d106.6206989!9m1!1b1!16s%2Fg%2F11t59jrvk9!3m7!1s0x31752d5f330ea7c7:0x1e87e39b41c64ce2!8m2!3d10.7827711!4d106.6206989!9m1!1b1!16s%2Fg%2F11t59jrvk9?authuser=1&entry=ttu"}>
           <Button className=' bg-primary text-white hover:scale-110 transition-all'>Viết đánh giá</Button>
         </Link>
       </div>

@@ -16,7 +16,7 @@ export default function ButtonCompareProduct({ product }: { product: Product }) 
   }
 
   if (products.find(item => item.id === product.id)) {
-    return <Button size="sm" variant="default" className='  w-fit' onClick={()=>{
+    return <Button size="sm" variant="default" className='  w-fit h-7' onClick={()=>{
       router.push(routes.compareProduct)
     }}>
      Xem so sánh
@@ -27,7 +27,7 @@ export default function ButtonCompareProduct({ product }: { product: Product }) 
 
 
 
-    <Button size="sm" variant="outline" className=' w-[100px]' onClick={addProductToCompare}>
+    <Button size="sm" variant="outline" className=' w-[60px] h-7' onClick={addProductToCompare}>
       So sánh
     </Button>
 

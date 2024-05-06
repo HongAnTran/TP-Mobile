@@ -21,8 +21,9 @@ import Rating from '@/components/common/Rating'
 import Image from 'next/image'
 import { findVariantMinPrice } from '@/utils'
 import typesJson from "@/data/tagType.json"
-import { TypographySpan } from '@/components/ui/typography'
+import { TypographyH3, TypographySpan } from '@/components/ui/typography'
 import { PlusCircledIcon } from '@radix-ui/react-icons'
+import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
 
 export default function CompareProductPage() {
   const { removeProduct, products } = useCompareProduct()
@@ -52,10 +53,23 @@ export default function CompareProductPage() {
               <TableHead className="w-[200px]">So sánh</TableHead>
               {fillArrayToLength([...products], 2).map((pro, index) => {
                 if (pro) {
-                  return <TableHead className=' flex-1  text-center' key={index}>{pro.title}</TableHead>
+                  return <TableHead className=' flex-1  text-center' key={index}>
+                    <div className=' flex items-center justify-center gap-4'>
+                   <TypographyH3  className=' text-center'> {pro.title}</TypographyH3>
+                   <div onClick={()=>{removeProduct(pro.id)}}>
+                   <CloseCircleIcon className=' hover:cursor-pointer'/>
+
+                   </div>
+                    </div>
+                  </TableHead>
 
                 }
-                return <TableHead className=' flex-1  text-center' key={index}>Thêm sản phẩm</TableHead>
+                return <TableHead className=' flex-1 items-center text-center' key={index}>
+                   <div className=' flex justify-center items-center'>
+                   <TypographyH3> Thêm sản phẩm</TypographyH3>
+                   {/* <PlusCircledIcon /> */}
+                    </div>
+                </TableHead>
               })}
             </TableRow>
           </TableHeader>
@@ -74,9 +88,9 @@ export default function CompareProductPage() {
 
                   return <>
                     <TableCell key={index} className=' flex-1 '>
-                    <div className=' text-center'>
+                    {/* <div className=' text-center'>
                     <PlusCircledIcon />
-                    </div>
+                    </div> */}
                     </TableCell>
                   </>
 

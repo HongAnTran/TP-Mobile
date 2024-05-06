@@ -1,4 +1,5 @@
 import CompareProductProvider from "@/components/providers/CompareProductProvider";
+import WishListProvider from "@/components/providers/WishListProvider";
 import MainLayout from "@/layouts/MainLayout";
 
 export default function ShopLayout({
@@ -8,9 +9,11 @@ export default function ShopLayout({
 }>) {
   return (
     <CompareProductProvider >
-      <MainLayout>
-        {children}
-      </MainLayout>
+      <WishListProvider>
+        <MainLayout>
+          {children}
+        </MainLayout>
+      </WishListProvider>
     </CompareProductProvider>
   );
 }

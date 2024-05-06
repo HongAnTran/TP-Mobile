@@ -6,13 +6,7 @@ import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
 import PriceText from "@/components/common/PriceText"
 import { cn } from '@/lib/utils'
-import { HeartIcon} from '@radix-ui/react-icons'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+
 import { TypographyP, TypographySpan } from '../../ui/typography'
 import badgeBG from "../../../../public/productTagBg.png"
 import { motion } from "framer-motion";
@@ -23,6 +17,7 @@ import Link from 'next/link'
 import routes from '@/routes'
 import ProductQuickView from './ProductQuickView'
 import Rating from '../Rating'
+import ButtonWishlist from '@/components/feature/ButtonWishlist'
 
 export default function ProductCard({ product }: { product: Product }) {
   const variantMinPrice = findVariantMinPrice(product.variants)
@@ -62,16 +57,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
               {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />}
 
-              <TooltipProvider>
-                <Tooltip delayDuration={100} disableHoverableContent  >
-                  <TooltipTrigger >
-                    <HeartIcon className=' text-red-600 w-5 h-5' />
-                  </TooltipTrigger>
-                  <TooltipContent >
-                    <TypographyP>Yêu thích sản phẩm</TypographyP>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+             <ButtonWishlist id={product.id} />
             </div>
           </CardContent>
           <CardBadge className=' top-2 -left-[3px] z-20 '>

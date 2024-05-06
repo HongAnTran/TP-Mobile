@@ -3,7 +3,7 @@ import React from "react";
 
 const ZaloIcon = ({ className }: { className?: string }) => {
   return (
-    <span className={cn("block w-[52px] h-[52px]", className)}>
+    <span className={cn(" inline-block w-[52px] h-[52px]", className)}>
       <svg
         width="100%"
         height="100%"
@@ -329,9 +329,9 @@ const ZaloIcon = ({ className }: { className?: string }) => {
           />
         </defs>
       </svg>
-      ;
+      
     </span>
-  );
+  )
 };
 
 export default ZaloIcon;

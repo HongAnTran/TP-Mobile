@@ -115,5 +115,5 @@ export { default as YoutubeIcon } from "./YoutubeIcon";
 export { default as YoutubeOutlineIcon } from "./YoutubeOutlineIcon";
 export { default as ZaloIcon } from "./ZaloIcon";
 export { default as ZaloOutlineIcon } from "./ZaloOutlineIcon";
-export { default as InstagramOutlineIcon } from "./InstagramOutlineIcon";
 export { default as Share2Icon } from "./Share2Icon";
+export { default as InstagramLogoIcon } from "./InstagramLogoIcon";

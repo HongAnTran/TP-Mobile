@@ -3,13 +3,7 @@ import { Product } from '@/types/product';
 import React, { ReactNode, useState } from 'react'
 import { createContext } from 'react';
 import {  useToast } from '../ui/use-toast';
-import Link from 'next/link';
-import routes from '@/routes';
-import Image from 'next/image';
-import compareIMG from "../../../public/compare.png"
-import { TypographySpan } from '../ui/typography';
-
-interface CompareProductValue {
+interface WishListValue {
   products: Product[]
   addProduct: (product: Product) => void
   removeProduct: (id: Product["id"]) => void
@@ -17,12 +11,12 @@ interface CompareProductValue {
 
 
 
-export const CompareProduct = createContext<CompareProductValue>({} as CompareProductValue);
+export const WishListContext = createContext<WishListValue>({} as WishListValue);
 
 const MAX = 2
 
 
-export default function CompareProductProvider({ children }: { children: ReactNode }) {
+export default function WishListProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<Product[]>([])
   const { toast } = useToast()
   function addProduct(product: Product) {
@@ -55,21 +49,13 @@ export default function CompareProductProvider({ children }: { children: ReactNo
 
 
   return (
-    <CompareProduct.Provider value={{
+    <WishListContext.Provider value={{
       products,
       addProduct,
       removeProduct
     }}>
       {children}
 
-      {products.length ? <Link title='So sánh sản phẩm' href={routes.compareProduct} className='   fixed  bottom-20 left-20 w-[40px] h-[40px] rounded-full shadow-xl bg-black text-white'>
-        <div className=' w-full h-full flex items-center justify-center relative'>
-
-          <Image src={compareIMG} alt='compare' width={40} height={40} />
-          <TypographySpan className=' flex items-center justify-center  rounded-full w-5 h-5   bg-red-600 absolute top-0 -right-1 text-white'>{products.length}</TypographySpan>
-        </div>
-      </Link> : null}
-
-    </CompareProduct.Provider>
+    </WishListContext.Provider>
   )
 }

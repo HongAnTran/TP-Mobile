@@ -12,6 +12,7 @@ import ProductQuantity, { ProductQuantityProps } from '@/components/common/produ
 import ProductActionButton from '@/components/common/product/ProductActionButton'
 import { MAX_SALE, MIN_SALE } from '@/consts/product'
 import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
+import ButtonWishlist from '@/components/feature/ButtonWishlist'
 
 export default function ProductDetail({ product }: { product: Product }) {
 
@@ -41,8 +42,11 @@ export default function ProductDetail({ product }: { product: Product }) {
   return (
     <div >
       <div className=' grid  gap-4 grid-cols-12'>
-        <div className=' col-span-4 product-images product-detail-left'>
+        <div className=' col-span-4 product-images product-detail-left  relative'>
           <ProductImageCarousel setImageActive={setIndexImageActive} images={product.images} alt={product.title} imageActive={indexImageActive} />
+          <div className=' absolute top-1 right-1  w-8 h-8 flex justify-center items-center bg-white shadow-lg rounded-full'>
+            <ButtonWishlist id={product.id} />
+          </div>
         </div>
         <div className=' col-span-5'>
           <div className=" flex flex-col gap-2">

@@ -1,13 +1,16 @@
 import React, { ReactNode } from 'react'
 import Logo from '@/components/common/Logo'
 import SearchInput from './SearchInput'
-import { NotionLogoIcon, PersonIcon } from "@radix-ui/react-icons"
+import { PersonIcon } from "@radix-ui/react-icons"
 import Link from 'next/link'
 import StoreIcon from '../icons/StoreIcon'
-import { CartIcon, FacebookIcon, FacebookOutlineIcon, InstagramIcon, NotificationIcon, PhoneFilledIcon, TiktokIcon, TiktokOutlineIcon, ZaloIcon, ZaloOutlineIcon } from '../icons'
-import { TypographyP } from '../ui/typography'
+import { CartIcon,  PhoneFilledIcon } from '../icons'
+import { TypographyH4, TypographyP } from '../ui/typography'
 import routes from '@/routes'
 import NavigationCategory from './NavigationCategory'
+import Notification from './Notification'
+import SocialList from './SocialList'
+
 
 interface HeaderItemProps { icon: ReactNode, text: string, href?: string }
 
@@ -84,40 +87,14 @@ function HeaderItem({ icon, text, href }: HeaderItemProps) {
 }
 
 function HeaderTop() {
-  const items = [
-    {
-      icon: <FacebookOutlineIcon />,
-      href: "https://www.facebook.com/store.tpmobile"
-    },
-    {
-      icon: <ZaloOutlineIcon />,
-      href: "https://zalo.me/0347907042"
-    },
-    {
-      icon: <TiktokOutlineIcon />,
-      href: "https://www.tiktok.com/@tpmobilestore"
-    },
-    {
-      icon: <InstagramIcon />,
-      href: "https://www.instagram.com/tpmobile.store/"
-    },
-
-  ]
-
   return (
-    <div className=' flex justify-between  items-center  py-2  '>
+    <div className=' flex   justify-between  items-center  py-2    bg-secondary '>
+      <TypographyH4 className=' text-xs  font-semibold' >TP Mobile Store - Bán Ipad có tâm nhứt Sài Gòn</TypographyH4>
       <div className=' flex gap-4'>
-        {
-          items.map((item, index) => {
-            return <Link target="_blank" href={item.href} key={index} className='  border border-white   w-7 h-7 flex justify-center items-center rounded'>
-              {item.icon}
-            </Link>
-          })
-        }
+        <SocialList  />
+        <Notification />
       </div>
-      <div>
-        <NotificationIcon className=' text-white' />
-      </div>
+
     </div>
   )
 }
