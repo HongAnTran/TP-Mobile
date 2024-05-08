@@ -22,7 +22,7 @@ export default function useWishlist() {
 
     }
     setWishlist(datas)
-    LocalStorageService.setItem(KEYS.RECENT_VIEW, datas)
+    LocalStorageService.setItem(KEYS.WISHLIST, datas)
   }, [setWishlist, wishlist])
 
   const checkIsContainWishlist = useCallback((id: number, type: WishlistType) => {
