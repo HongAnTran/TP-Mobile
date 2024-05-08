@@ -8,7 +8,8 @@ const routes = {
   stores:"/cua-hang",
   cart:"/gio-hang",
   login :"/dang-nhap",
-  compareProduct :"/so-sanh-san-pham"
+  compareProduct :"/so-sanh-san-pham",
+  wishlist :"/yeu-thich"
 };
 
 export default routes;

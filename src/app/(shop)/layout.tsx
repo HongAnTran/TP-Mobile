@@ -1,19 +1,17 @@
-import CompareProductProvider from "@/components/providers/CompareProductProvider";
-import WishListProvider from "@/components/providers/WishListProvider";
-import MainLayout from "@/layouts/MainLayout";
 
+import MainLayout from "@/layouts/MainLayout";
+import { ShopStoreProvider } from '@/providers/shop-store-provider'
 export default function ShopLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <CompareProductProvider >
-      <WishListProvider>
-        <MainLayout>
-          {children}
-        </MainLayout>
-      </WishListProvider>
-    </CompareProductProvider>
+    <ShopStoreProvider>
+      <MainLayout>
+        {children}
+      </MainLayout>
+    </ShopStoreProvider>
+
   );
 }

@@ -1,6 +1,14 @@
-enum WishlistType{
+enum WishlistType {
   PRODUCT,
   ARTICE
 }
 
-export {WishlistType}
+interface Wishlist {
+  id: number,
+  customer_id: number
+  item_id: number
+  type : WishlistType
+}
+
+export { WishlistType }
+export type { Wishlist }

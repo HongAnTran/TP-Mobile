@@ -6,38 +6,48 @@ import Rating from '@/components/common/Rating'
 import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import useHandleVariant from '@/hooks/useHandleVariant'
 import { Product } from '@/types/product'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductBenefits from './ProductBenefits'
 import ProductQuantity, { ProductQuantityProps } from '@/components/common/product/ProductQuantity'
 import ProductActionButton from '@/components/common/product/ProductActionButton'
-import { MAX_SALE, MIN_SALE } from '@/consts/product'
+import SETTINGS from '@/consts/settings'
 import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
+import useProductRecentView from '@/hooks/useProductRecentView'
 
 export default function ProductDetail({ product }: { product: Product }) {
 
-
+  
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
-  const [quantity, setQuantity] = useState(MIN_SALE)
+
+  const { addProductToRecentView} = useProductRecentView()
+
+  const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
 
   const handleQuantity: ProductQuantityProps["handleQuantity"] = {
     add() {
-      setQuantity(pre => pre < MAX_SALE ? pre + 1 : pre)
+      setQuantity(pre => pre < SETTINGS.MAX_SALE_PRODUCT ? pre + 1 : pre)
     },
     minus() {
-      setQuantity(pre => pre > MIN_SALE ? pre - 1 : pre)
+      setQuantity(pre => pre > SETTINGS.MIN_SALE_PRODUCT ? pre - 1 : pre)
 
     },
     change(quantity: number) {
       let quantityNew = quantity
-      if (quantityNew > MAX_SALE) {
-        quantityNew = MAX_SALE
+      if (quantityNew > SETTINGS.MAX_SALE_PRODUCT) {
+        quantityNew = SETTINGS.MAX_SALE_PRODUCT
       } else if (quantityNew <= 0) {
-        quantityNew = MIN_SALE
+        quantityNew = SETTINGS.MIN_SALE_PRODUCT
       }
       setQuantity(quantityNew)
     }
   }
+
+  useEffect(()=>{
+    if(product){
+      addProductToRecentView(product)
+    }
+  },[ product])
 
   return (
     <div >

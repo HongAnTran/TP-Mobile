@@ -21,11 +21,11 @@ import ButtonWishlist from '@/components/feature/ButtonWishlist'
 
 export default function ProductCard({ product }: { product: Product }) {
   const variantMinPrice = findVariantMinPrice(product.variants)
-
   const [open, setOpen] = useState(false)
 
   return (
     <>
+
       <motion.div
         initial={{ opacity: 0.2 }}
         whileInView={{ opacity: 1 }}
@@ -57,7 +57,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
               {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />}
 
-             <ButtonWishlist id={product.id} />
+              <ButtonWishlist id={product.id} />
             </div>
           </CardContent>
           <CardBadge className=' top-2 -left-[3px] z-20 '>

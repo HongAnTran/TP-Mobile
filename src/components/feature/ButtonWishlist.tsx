@@ -1,6 +1,6 @@
 "use client"
-import React from 'react'
-import { HeartIcon } from '@radix-ui/react-icons'
+import React, { useEffect } from 'react'
+import { HeartIcon, HeartFilledIcon } from '@radix-ui/react-icons'
 import {
   Tooltip,
   TooltipContent,
@@ -9,15 +9,21 @@ import {
 } from "@/components/ui/tooltip"
 import { TypographyP } from '../ui/typography'
 import { WishlistType } from '@/types/wishlist'
+import { useShopStore } from '@/providers/shop-store-provider'
+import LocalStorageService from '@/utils/localStorage'
+import { KEYS } from '@/consts/localStorage'
+import useWishlist from '@/hooks/useWishlist'
 
-export default function ButtonWishlist({ id, type = WishlistType.PRODUCT }: { id: number, type?: WishlistType}) {
-
-  
+export default function ButtonWishlist({ id, type = WishlistType.PRODUCT }: { id: number, type?: WishlistType }) {
+  const { toggleItemToWishlist, checkIsContainWishlist } = useWishlist()
   return (
     <TooltipProvider>
       <Tooltip delayDuration={100} disableHoverableContent  >
         <TooltipTrigger >
-          <HeartIcon className=' text-red-600 w-5 h-5' />
+          {checkIsContainWishlist(id, type) ?
+            <HeartFilledIcon className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} /> :
+            <HeartIcon className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} />}
+
         </TooltipTrigger>
         <TooltipContent >
           <TypographyP>Yêu thích sản phẩm</TypographyP>

@@ -1,7 +1,6 @@
 "use client"
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import useCompareProduct from '@/hooks/useCompareProduct'
 import React from 'react'
 import {
   Table,
@@ -11,7 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import ProductsServiceApi from '@/services/productService'
 import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
 import routes from '@/routes'
@@ -22,15 +20,14 @@ import Image from 'next/image'
 import { findVariantMinPrice } from '@/utils'
 import typesJson from "@/data/tagType.json"
 import { TypographyH3, TypographySpan } from '@/components/ui/typography'
-import { PlusCircledIcon } from '@radix-ui/react-icons'
 import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
+import { useShopStore } from '@/providers/shop-store-provider'
+import useCompareProduct from '@/hooks/useCompareProduct'
 
 export default function CompareProductPage() {
-  const { removeProduct, products } = useCompareProduct()
+  const { productsCompare , removeProductToCompare} = useCompareProduct()
+
   const types = JSON.parse(JSON.stringify(typesJson)) as ProductTypeSpecifications[]
-
-  // const products = await ProductsServiceApi.getList({ limit: 1 })
-
   function fillArrayToLength(arr: any[], length: number) {
     while (arr.length < length) {
       arr.push(null);
@@ -51,24 +48,24 @@ export default function CompareProductPage() {
           <TableHeader>
             <TableRow>
               <TableHead className="w-[200px]">So sánh</TableHead>
-              {fillArrayToLength([...products], 2).map((pro, index) => {
+              {fillArrayToLength([...productsCompare], 2).map((pro, index) => {
                 if (pro) {
                   return <TableHead className=' flex-1  text-center' key={index}>
                     <div className=' flex items-center justify-center gap-4'>
-                   <TypographyH3  className=' text-center'> {pro.title}</TypographyH3>
-                   <div onClick={()=>{removeProduct(pro.id)}}>
-                   <CloseCircleIcon className=' hover:cursor-pointer'/>
+                      <TypographyH3 className=' text-center'> {pro.title}</TypographyH3>
+                      <div onClick={() => { removeProductToCompare(pro.id) }}>
+                        <CloseCircleIcon className=' hover:cursor-pointer' />
 
-                   </div>
+                      </div>
                     </div>
                   </TableHead>
 
                 }
                 return <TableHead className=' flex-1 items-center text-center' key={index}>
-                   <div className=' flex justify-center items-center'>
-                   <TypographyH3> Thêm sản phẩm</TypographyH3>
-                   {/* <PlusCircledIcon /> */}
-                    </div>
+                  <div className=' flex justify-center items-center'>
+                    <TypographyH3> Thêm sản phẩm</TypographyH3>
+                    {/* <PlusCircledIcon /> */}
+                  </div>
                 </TableHead>
               })}
             </TableRow>
@@ -77,10 +74,10 @@ export default function CompareProductPage() {
             <TableRow >
               <TableCell className="w-[200px]"></TableCell>
               {
-                fillArrayToLength([...products], 2).map((product, index) => {
+                fillArrayToLength([...productsCompare], 2).map((product, index) => {
                   if (product) {
                     return (
-                      <TableCell key={index}   className=' flex-1 '>
+                      <TableCell key={index} className=' flex-1 '>
                         <ProductCardCompare product={product} />
                       </TableCell>
                     )
@@ -88,7 +85,7 @@ export default function CompareProductPage() {
 
                   return <>
                     <TableCell key={index} className=' flex-1 '>
-                    {/* <div className=' text-center'>
+                      {/* <div className=' text-center'>
                     <PlusCircledIcon />
                     </div> */}
                     </TableCell>
@@ -98,11 +95,11 @@ export default function CompareProductPage() {
                 })
               }
             </TableRow>
-            {products.length > 0 && types.map(type => {
+            {productsCompare.length > 0 && types.map(type => {
               return (<TableRow key={type.id}>
                 <TableCell>{type.name}</TableCell>
                 {
-                  products.map(product => {
+                  productsCompare.map(product => {
                     return (
                       <TableCell className=' text-center' key={product.id}>
                         {product.specifications.filter((item) => item.type_id === type.id).map(item => {

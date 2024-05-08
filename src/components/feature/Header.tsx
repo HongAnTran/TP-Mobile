@@ -4,7 +4,7 @@ import SearchInput from './SearchInput'
 import { PersonIcon } from "@radix-ui/react-icons"
 import Link from 'next/link'
 import StoreIcon from '../icons/StoreIcon'
-import { CartIcon,  PhoneFilledIcon } from '../icons'
+import { CartIcon, PhoneFilledIcon, HeartIcon } from '../icons'
 import { TypographyH4, TypographyP } from '../ui/typography'
 import routes from '@/routes'
 import NavigationCategory from './NavigationCategory'
@@ -91,10 +91,11 @@ function HeaderTop() {
     <div className=' flex   justify-between  items-center  py-2    bg-secondary '>
       <TypographyH4 className=' text-xs  font-semibold' >TP Mobile Store - Bán Ipad có tâm nhứt Sài Gòn</TypographyH4>
       <div className=' flex gap-4'>
-        <SocialList  />
+        <SocialList />
+        <Link href={routes.wishlist} title='Yêu thích của bạn'>
+          <HeartIcon className=' text-white' /></Link>
         <Notification />
       </div>
-
     </div>
   )
 }

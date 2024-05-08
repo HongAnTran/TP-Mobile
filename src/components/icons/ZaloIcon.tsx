@@ -281,8 +281,8 @@ const ZaloIcon = ({ className }: { className?: string }) => {
             y2="49"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-opacity="0" />
-            <stop offset="1" stop-opacity="0.2" />
+            <stop stopOpacity="0" />
+            <stop offset="1" stopOpacity="0.2" />
           </linearGradient>
           <radialGradient
             id="paint1_angular_348_7222"
@@ -292,11 +292,11 @@ const ZaloIcon = ({ className }: { className?: string }) => {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(26 25) rotate(90) scale(13.3398)"
           >
-            <stop stop-color="#EB5757" />
-            <stop offset="0.25" stop-color="#F2994A" />
-            <stop offset="0.5" stop-color="#219653" />
-            <stop offset="0.75" stop-color="#2D9CDB" />
-            <stop offset="1" stop-color="#EB5757" />
+            <stop stopColor="#EB5757" />
+            <stop offset="0.25" stopColor="#F2994A" />
+            <stop offset="0.5" stopColor="#219653" />
+            <stop offset="0.75" stopColor="#2D9CDB" />
+            <stop offset="1" stopColor="#EB5757" />
           </radialGradient>
           <radialGradient
             id="paint2_radial_348_7222"
@@ -306,9 +306,9 @@ const ZaloIcon = ({ className }: { className?: string }) => {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(26 25) rotate(90) scale(13.3398)"
           >
-            <stop stop-color="#EB5757" />
-            <stop offset="0.265625" stop-color="#EB5757" stop-opacity="0.67" />
-            <stop offset="1" stop-color="#EB5757" stop-opacity="0" />
+            <stop stopColor="#EB5757" />
+            <stop offset="0.265625" stopColor="#EB5757" stopOpacity="0.67" />
+            <stop offset="1" stopColor="#EB5757" stopOpacity="0" />
           </radialGradient>
           <linearGradient
             id="paint3_linear_348_7222"
@@ -318,8 +318,8 @@ const ZaloIcon = ({ className }: { className?: string }) => {
             y2="38.3398"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" stop-opacity="0.9" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" stopOpacity="0.9" />
+            <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
           <image
             id="image0_348_7222"

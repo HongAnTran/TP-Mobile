@@ -9,7 +9,7 @@ class ProductsService {
 
   constructor() { }
 
-  async getList(params?: { limit?: number, category_id?: number, keyword?: string }) {
+  async getList(params?: { limit?: number, category_id?: number, keyword?: string, ids?: Product["id"][] }) {
     let resuilt = [...this.products]
     if (params) {
 
@@ -24,10 +24,19 @@ class ProductsService {
           resuilt = resuilt.filter(item => item.title.toLocaleLowerCase().includes(params.keyword?.toLocaleLowerCase() || ""))
         }
       }
+      if (params.ids) {
+        const data: Product[] = []
+        params.ids.forEach(id => {
+          const find = resuilt.find(item => id === item.id)
+          if (find) {
+            data.push(find)
+          }
+        })
+        resuilt = data
+      }
 
       if (params.limit) {
         resuilt = resuilt.slice(0, params.limit)
-
       }
 
 
