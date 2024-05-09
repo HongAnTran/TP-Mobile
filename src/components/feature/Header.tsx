@@ -91,9 +91,10 @@ function HeaderTop() {
     <div className=' flex   justify-between  items-center  py-2    bg-secondary '>
       <TypographyH4 className=' text-xs  font-semibold' >TP Mobile Store - Bán Ipad có tâm nhứt Sài Gòn</TypographyH4>
       <div className=' flex gap-4'>
-        <SocialList />
+        {/* <SocialList /> */}
         <Link href={routes.wishlist} title='Yêu thích của bạn'>
-          <HeartIcon className=' text-white' /></Link>
+          <HeartIcon className=' text-white' />
+          </Link>
         <Notification />
       </div>
     </div>

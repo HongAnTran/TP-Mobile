@@ -40,4 +40,11 @@ function findVariantActiveOption(variants: ProductVariant[], optionActive: strin
   return variants.find(pro => optionActive.includes(pro.option1) && optionActive.includes(pro.option2) && optionActive.includes(pro.option3))
 
 }
-export { convetNumberToPriceVND, findVariantMinPrice  , findVariantActiveOption}
+
+function fillArrayToLength(arr: any[], length: number , data: any = null) {
+  while (arr.length < length) {
+    arr.push(data);
+  }
+  return arr;
+}
+export { convetNumberToPriceVND, findVariantMinPrice  , findVariantActiveOption , fillArrayToLength}

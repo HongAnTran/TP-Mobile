@@ -17,23 +17,17 @@ import { Product, ProductTypeSpecifications } from '@/types/product'
 import PriceText from '@/components/common/PriceText'
 import Rating from '@/components/common/Rating'
 import Image from 'next/image'
-import { findVariantMinPrice } from '@/utils'
+import { fillArrayToLength, findVariantMinPrice } from '@/utils'
 import typesJson from "@/data/tagType.json"
 import { TypographyH3, TypographySpan } from '@/components/ui/typography'
 import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
-import { useShopStore } from '@/providers/shop-store-provider'
 import useCompareProduct from '@/hooks/useCompareProduct'
 
 export default function CompareProductPage() {
   const { productsCompare , removeProductToCompare} = useCompareProduct()
 
   const types = JSON.parse(JSON.stringify(typesJson)) as ProductTypeSpecifications[]
-  function fillArrayToLength(arr: any[], length: number) {
-    while (arr.length < length) {
-      arr.push(null);
-    }
-    return arr;
-  }
+
 
   return (
     <div className=' my-8'>

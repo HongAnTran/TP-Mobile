@@ -1,22 +1,24 @@
 "use client"
 
 import { toast } from '@/components/ui/use-toast'
-import setting from '@/consts/settings'
+import SETTINGS from '@/consts/settings'
 import { useShopStore } from '@/providers/shop-store-provider'
 import { Product } from '@/types/product'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 
 export default function useCompareProduct() {
   const { productsCompare, setProductsCompare } = useShopStore(state => state)
+  const [open, setOpen] = useState(true)
 
   const addProductToCompare = useCallback((product: Product) => {
-    if (productsCompare.length === setting.MAX_COMPARE_PRODUCT) {
-      toast({ title: `Bạn chỉ được so sánh tối đa ${setting.MAX_COMPARE_PRODUCT} sản phẩm` })
+    if (productsCompare.length === SETTINGS.MAX_COMPARE_PRODUCT) {
+      toast({ title: `Bạn chỉ được so sánh tối đa ${SETTINGS.MAX_COMPARE_PRODUCT} sản phẩm` })
       return
     }
     setProductsCompare([...productsCompare, product])
-    toast({ title: "Đã thêm vào so sánh" })
+    setOpen(true)
+
   }, [productsCompare, setProductsCompare])
 
   const removeProductToCompare = useCallback((id: Product["id"]) => {
@@ -29,11 +31,17 @@ export default function useCompareProduct() {
     return productsCompare.some(item => item.id === id)
   }, [productsCompare])
 
+  const removeAll = useCallback(() => {
+    setProductsCompare([])
+  }, [setProductsCompare])
 
   return {
+    setOpen,
+    open,
     productsCompare,
     addProductToCompare,
     checkIsContainCompare,
-    removeProductToCompare
+    removeProductToCompare,
+    removeAll
   }
 }

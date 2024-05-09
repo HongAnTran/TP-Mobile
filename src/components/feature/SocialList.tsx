@@ -1,8 +1,8 @@
 import React from 'react'
-import {  FacebookIcon, InstagramLogoIcon, TiktokIcon, ZaloIcon, } from '../icons'
+import { FacebookIcon, InstagramLogoIcon, TiktokIcon, ZaloIcon, } from '../icons'
 import Link from 'next/link'
 
-export default function SocialList({itemClass = "w-4 h-4"} : {itemClass?: string}) {
+export default function SocialList({ itemClass = "w-4 h-4" }: { itemClass?: string }) {
   const items = [
     {
       icon: <FacebookIcon className={itemClass} />,
@@ -33,7 +33,11 @@ export default function SocialList({itemClass = "w-4 h-4"} : {itemClass?: string
     <div className=' flex gap-4'>
       {
         items.map((item, index) => {
-          return <Link title={item.title} target="_blank" href={item.href} key={index} className='   w-7 h-7 flex justify-center items-center rounded'>
+          return <Link title={item.title} target="_blank" href={item.href} key={index} className=' 
+          flex items-center justify-center duration-200  rounded-full w-8 h-8  border border-black
+             hover:scale-110
+             transition-transform
+          '>
             {item.icon}
           </Link>
         })
