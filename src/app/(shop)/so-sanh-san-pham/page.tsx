@@ -49,7 +49,6 @@ export default function CompareProductPage() {
                       <TypographyH3 className=' text-center'> {pro.title}</TypographyH3>
                       <div onClick={() => { removeProductToCompare(pro.id) }}>
                         <CloseCircleIcon className=' hover:cursor-pointer' />
-
                       </div>
                     </div>
                   </TableHead>

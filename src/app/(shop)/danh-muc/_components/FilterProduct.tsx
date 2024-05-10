@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -10,38 +10,45 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { itemFilterColor, itemFilterDisk, itemFilterRam } from '@/data/filter'
 import { Range } from '@/components/ui/slider'
-import { TypographyP } from '../../../../components/ui/typography'
-import MutipleCheckbox from '../../../../components/common/MutipleCheckbox'
-import { Category } from '@/types/category'
 import PriceText from '@/components/common/PriceText'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { objectToSearchParams, objectToSearchParamsValue } from '@/utils'
+import MutipleCheckbox from '@/components/common/MutipleCheckbox'
+import { TypographyP } from '@/components/ui/typography'
 interface ValueFiter {
   color: string;
   price: number[];
   disk: string[]
   ram: string[]
 }
+
+
+
 export default function FilterProduct() {
 
   const ONE_HUN = 1000000
+  const router = useRouter()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
 
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
     color: itemFilterColor[0].value,
     price: [0, 100],
     disk: [],
     ram: [],
-
-
   })
 
   function onChageValueFilter(key: keyof ValueFiter, data: any) {
     const value = { ...valueFiter }
     value[key] = data
     setValueFilter(value)
-
+    const valueSearch = objectToSearchParams(objectToSearchParamsValue(value))
+    const query = valueSearch ? `?${valueSearch}` : "";
+    window.history.pushState(null, '', query)
+    router.push(pathname + query)
   }
-  useEffect(() => {
-    console.log(valueFiter)
-  }, [valueFiter])
+
 
   const filters = [
 
@@ -64,12 +71,12 @@ export default function FilterProduct() {
     },
     {
       title: "Mức giá",
-      content: <div>
+      content: <div className=' flex flex-col gap-2'>
         <Range defaultValue={valueFiter.price} step={0.1} onValueCommit={(value) => {
           onChageValueFilter("price", value)
         }}
         />
-        <p className=' text-center'>Từ <PriceText price={valueFiter.price[0] * ONE_HUN} /> đến <PriceText price={valueFiter.price[1] * ONE_HUN} /></p>
+        <p className=' text-center '>Từ <PriceText className='text-xs' price={valueFiter.price[0] * ONE_HUN} /> đến <PriceText className='text-xs' price={valueFiter.price[1] * ONE_HUN} /></p>
       </div>
     },
     {

@@ -35,7 +35,7 @@ const MessengerIcon = ({ className }: { className?: string }) => {
           </radialGradient>
         </defs>
       </svg>
-      ;
+      
     </span>
   );
 };

@@ -1,6 +1,7 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { Product } from "@/types/product";
 import productsJson from "@/data/product.json"
+import { sleep } from "@/utils";
 
 
 class ProductsService {
@@ -10,6 +11,7 @@ class ProductsService {
   constructor() { }
 
   async getList(params?: { limit?: number, category_id?: number, keyword?: string, ids?: Product["id"][] }) {
+
     let resuilt = [...this.products]
     if (params) {
 
@@ -41,6 +43,9 @@ class ProductsService {
 
 
     }
+
+
+    // await sleep(3000)
     return resuilt
     // return fetchApi.get<Product[]>(this.url, {
     //   params: params,
@@ -49,6 +54,8 @@ class ProductsService {
   }
 
   async getDetail(slug: string) {
+    // await sleep(3000)
+
     return this.products.find(item => item.slug === slug)
     // return fetchApi.get<Product>(`${this.url}/${id}`, {});
   }

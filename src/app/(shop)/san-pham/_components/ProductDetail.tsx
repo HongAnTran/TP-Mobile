@@ -47,6 +47,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     if(product){
       addProductToRecentView(product)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[ product])
 
   return (

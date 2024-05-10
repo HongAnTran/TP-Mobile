@@ -41,10 +41,38 @@ function findVariantActiveOption(variants: ProductVariant[], optionActive: strin
 
 }
 
-function fillArrayToLength(arr: any[], length: number , data: any = null) {
+function fillArrayToLength(arr: any[], length: number, data: any = null) {
   while (arr.length < length) {
     arr.push(data);
   }
   return arr;
 }
-export { convetNumberToPriceVND, findVariantMinPrice  , findVariantActiveOption , fillArrayToLength}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+interface ObjectWithArrayValues {
+  [key: string]: string | string[] | number[];
+}
+function objectToSearchParamsValue(obj: ObjectWithArrayValues): ObjectWithArrayValues {
+  const processedObj: { [key: string]: string } = {};
+  for (const key in obj) {
+    if (Array.isArray(obj[key])) {
+      processedObj[key] = (obj[key] as (string | number)[]).join(',');
+    } else {
+      processedObj[key] = obj[key].toString();
+    }
+  }
+  return processedObj
+}
+
+function objectToSearchParams(obj: any): string {
+  return Object.keys(obj)
+    .filter(key => obj[key] !== undefined && obj[key] !== null && obj[key] !== '')
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
+    .join('&');
+}
+
+export { convetNumberToPriceVND, findVariantMinPrice, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams }
