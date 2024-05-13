@@ -13,7 +13,8 @@ import { motion } from "framer-motion";
 import { Button } from '../../ui/button'
 import { findVariantMinPrice } from '@/utils'
 import Modal from '@/components/ui/Modal'
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 import routes from '@/routes'
 import ProductQuickView from './ProductQuickView'
 import Rating from '../Rating'

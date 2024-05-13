@@ -1,6 +1,7 @@
 import React from 'react'
 import { FacebookIcon, InstagramLogoIcon, TiktokIcon, ZaloIcon, } from '../icons'
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 
 export default function SocialList({ itemClass = "w-4 h-4" }: { itemClass?: string }) {
   const items = [

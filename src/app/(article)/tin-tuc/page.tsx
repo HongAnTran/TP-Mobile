@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/common/Link";
 import PostList from "@/components/common/ArticleCardList";
 import { Article } from "@/types/article";
 import ArticeServiceApi from "@/services/articeService";

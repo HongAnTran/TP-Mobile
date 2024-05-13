@@ -1,5 +1,4 @@
-import Link from "next/link";
-import PostList from "@/components/common/ArticleCardList";
+import Link from "@/components/common/Link";
 import { Article } from "@/types/article";
 import ArticleCardList from "@/components/common/ArticleCardList";
 

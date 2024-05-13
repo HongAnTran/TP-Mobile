@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { TypographyH3, TypographyP } from '../ui/typography'
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 import { Button } from '../ui/button'
 import { StarFilledIcon } from '@radix-ui/react-icons'
 import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'

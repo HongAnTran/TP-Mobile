@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react'
 import Logo from '@/components/common/Logo'
 import { PersonIcon } from "@radix-ui/react-icons"
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 import StoreIcon from '../icons/StoreIcon'
 import { CartIcon, HeartIcon} from '../icons'
 import { TypographyH4, TypographyP } from '../ui/typography'

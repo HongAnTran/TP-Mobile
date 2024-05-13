@@ -1,6 +1,6 @@
 
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import Link from "@/components/common/Link";
 import React from "react";
 
 

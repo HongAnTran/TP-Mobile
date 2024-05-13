@@ -11,7 +11,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardContent, CardTitle } from '@/components/ui/card'
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 import routes from '@/routes'
 import { Product, ProductTypeSpecifications } from '@/types/product'
 import PriceText from '@/components/common/PriceText'

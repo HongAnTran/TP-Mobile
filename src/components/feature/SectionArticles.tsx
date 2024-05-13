@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { TypographyH3 } from '../ui/typography'
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 import { Button } from '../ui/button'
 import { Article } from '@/types/article'
 import ArticleCard from '../common/ArticleCard'

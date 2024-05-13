@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/hover-card"
 import Image from 'next/image';
 import { TypographyP, TypographySpan } from '../ui/typography';
-import Link from 'next/link';
+import Link from "@/components/common/Link";
+
 import routes from '@/routes';
 
 

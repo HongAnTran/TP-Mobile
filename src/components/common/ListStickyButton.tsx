@@ -2,7 +2,8 @@ import React from 'react'
 import ButtonUpToTop from '../feature/ButtonUpToTop'
 import { Button } from '../ui/button'
 import {  MessengerIcon, PhoneFilledIcon, PhoneIcon, ZaloIcon } from '../icons'
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 
 export default function ListStickyButton() {
   return (

@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
  
 export default function NotFound() {
   return (

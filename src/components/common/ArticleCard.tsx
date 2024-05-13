@@ -4,7 +4,8 @@
 import React from 'react'
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card'
 import { motion } from "framer-motion";
-import Link from 'next/link'
+import Link from "@/components/common/Link";
+
 import routes from '@/routes'
 import { Article } from '@/types/article';
 import Image from 'next/image';
