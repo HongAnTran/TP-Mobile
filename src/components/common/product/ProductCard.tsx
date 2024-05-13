@@ -7,7 +7,7 @@ import Image from 'next/image'
 import PriceText from "@/components/common/PriceText"
 import { cn } from '@/lib/utils'
 
-import { TypographyP, TypographySpan } from '../../ui/typography'
+import { TypographySpan } from '../../ui/typography'
 import badgeBG from "../../../../public/productTagBg.png"
 import { motion } from "framer-motion";
 import { Button } from '../../ui/button'

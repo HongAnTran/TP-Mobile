@@ -12,18 +12,18 @@ import { itemFilterColor, itemFilterDisk, itemFilterRam } from '@/data/filter'
 import { Range } from '@/components/ui/slider'
 import { TypographyP } from '../ui/typography'
 import MutipleCheckbox from '../common/MutipleCheckbox'
-import { Category } from '@/types/categoryProduct'
+import { CategoryProduct } from '@/types/categoryProduct'
 import CategoryServiceApi from '@/services/categoryService'
 interface ValueFiter {
   color: string;
   price: number[];
   disk: string[]
   ram: string[]
-  categories: Category["slug"][]
+  categories: CategoryProduct["slug"][]
 }
 export default function FilterProduct() {
 
-  const [categories , setCategories] = useState<Category[]>([])
+  const [categories , setCategories] = useState<CategoryProduct[]>([])
 
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
     color: itemFilterColor[0].value,
