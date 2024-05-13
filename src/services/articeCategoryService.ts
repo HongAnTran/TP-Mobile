@@ -1,11 +1,12 @@
+import { CategoryArtice } from '@/types/categoryArtice';
 
-import categorysJson from "@/data/categoryProduct.json";
-import {  CategoryProduct} from "@/types/categoryProduct";
+import categorysJson from "@/data/categoryArtice.json";
 
 
-class CategoryService {
+
+class ArticeCategoryService {
   private url: string = "/categorys";
-  private categorys = JSON.parse(JSON.stringify(categorysJson)) as CategoryProduct[]
+  private categorys = JSON.parse(JSON.stringify(categorysJson)) as CategoryArtice[]
 
   constructor() { }
 
@@ -24,5 +25,5 @@ class CategoryService {
   }
 }
 
-const CategoryServiceApi = new CategoryService();
-export default CategoryServiceApi;
+const ArticeCategoryServiceApi = new ArticeCategoryService();
+export default ArticeCategoryServiceApi;

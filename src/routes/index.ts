@@ -1,7 +1,8 @@
 const routes = {
   home: "/",
   api: "/api",
-  article: "/bai-viet",
+  artice: "/tin-tuc",
+  articeCategory: "/danh-muc-tin-tuc",
   products: "/san-pham",
   category: "/danh-muc",
   about : "/ve-chung-toi",

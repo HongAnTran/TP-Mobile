@@ -19,7 +19,7 @@ export default function ArticleCard({ article  ,classNameImage}: { article: Arti
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <Link href={`${routes.article}/${article.slug}`}>
+        <Link href={`${routes.artice}/${article.slug}`}>
           <Card className=' border border-gray-300 group relative'>
             <CardContent className="flex flex-col gap-2  py-4">
               <div >

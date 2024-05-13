@@ -1,13 +1,8 @@
 import React from 'react'
-
 import ProductsServiceApi from '@/services/productService'
-
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
-import routes from '@/routes'
-
-
 import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 

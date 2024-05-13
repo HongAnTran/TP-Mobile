@@ -1,0 +1,28 @@
+[
+  {
+    "id": 10,
+    "title": "Công nghệ",
+    "description": "Stay up-to-date with the latest iOS features and improvements",
+    "image": "ios-updates.jpg",
+    "slug": "cong-nghe",
+    "status": 1,
+    "type": 2
+  },{
+    "id": 11,
+    "title": "Mới nhất",
+    "description": "Tông hợp các bài viết mới nhất",
+    "image": "ios-updates.jpg",
+    "slug": "moi-nhat",
+    "status": 1,
+    "type": 2
+  },
+  {
+    "id": 12,
+    "title": "Tin tức hot",
+    "description": "Tin tuc",
+    "image": "ios-updates.jpg",
+    "slug": "tin-tuc-hot",
+    "status": 1,
+    "type": 2
+  }
+]

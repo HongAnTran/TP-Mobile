@@ -12,7 +12,7 @@ import { itemFilterColor, itemFilterDisk, itemFilterRam } from '@/data/filter'
 import { Range } from '@/components/ui/slider'
 import { TypographyP } from '../ui/typography'
 import MutipleCheckbox from '../common/MutipleCheckbox'
-import { Category } from '@/types/category'
+import { Category } from '@/types/categoryProduct'
 import CategoryServiceApi from '@/services/categoryService'
 interface ValueFiter {
   color: string;

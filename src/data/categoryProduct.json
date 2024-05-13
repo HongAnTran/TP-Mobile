@@ -5,8 +5,8 @@
     "description": "Thin, light, and powerful",
     "image": "ipad-air.jpg",
     "slug": "ipad-air",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
   {
     "id": 4,
@@ -14,8 +14,8 @@
     "description": "The ultimate iPad experience",
     "image": "ipad-pro.jpg",
     "slug": "ipad-pro",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
   {
     "id": 7,
@@ -23,8 +23,8 @@
     "description": "A great iPhone for everyday use",
     "image": "iphone-11.jpg",
     "slug": "iphone-11",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
   {
     "id": 1,
@@ -32,8 +32,8 @@
     "description": "The latest iPhone model",
     "image": "iphone-x.jpg",
     "slug": "iphone-x",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
   {
     "id": 2,
@@ -41,8 +41,8 @@
     "description": "Powerful iPhone with advanced features",
     "image": "iphone-12-pro.jpg",
     "slug": "iphone-12-pro",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
 
 
@@ -52,8 +52,8 @@
     "description": "Learn how to get the most out of your iPhone and iPad",
     "image": "ios-tips-tricks.jpg",
     "slug": "apple-pencil",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
   {
     "id": 6,
@@ -61,8 +61,8 @@
     "description": "Stay up-to-date with the latest iOS features and improvements",
     "image": "ios-updates.jpg",
     "slug": "macbook-pro",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   },
 
   {
@@ -71,7 +71,7 @@
     "description": "Protect your iPhone and iPad with these security tips",
     "image": "ios-security.jpg",
     "slug": "macbook-air",
-    "status": "SHOW",
-    "type": "PRODUCT"
+    "status": 1,
+    "type": 1
   }
 ]

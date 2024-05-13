@@ -36,7 +36,7 @@ export default function SectionArticles() {
       </div>
 
       <div className=' flex gap-4 justify-center mt-2'>
-        <Link href={routes.article}>
+        <Link href={routes.artice}>
           <Button className=' bg-primary text-white hover:scale-110 transition-all'>Xem Thêm</Button>
         </Link>
       </div>

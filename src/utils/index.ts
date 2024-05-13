@@ -75,4 +75,17 @@ function objectToSearchParams(obj: any): string {
     .join('&');
 }
 
-export { convetNumberToPriceVND, findVariantMinPrice, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams }
+function formatDate(date: string): string {
+  const dateObj = new Date(date);
+  const day = dateObj.getDate();  // Lấy ngày từ 1-31
+  const month = dateObj.getMonth() + 1;  // Lấy tháng từ 0-11, cộng thêm 1 để phù hợp với tháng thực tế từ 1-12
+  const year = dateObj.getFullYear();  // Lấy năm đầy đủ
+
+  // Chuyển ngày và tháng thành chuỗi và thêm '0' phía trước nếu chỉ có một chữ số
+  const dayFormatted = day < 10 ? `0${day}` : day.toString();
+  const monthFormatted = month < 10 ? `0${month}` : month.toString();
+
+  // Trả về chuỗi định dạng DD/MM/YYYY
+  return `${dayFormatted}/${monthFormatted}/${year}`;
+}
+export { convetNumberToPriceVND, findVariantMinPrice,   findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams  , formatDate}

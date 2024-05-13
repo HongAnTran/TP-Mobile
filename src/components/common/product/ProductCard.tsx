@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <Card className=' border border-gray-300 group relative'>
           <CardContent className="flex flex-col gap-2 aspect-square py-4">
             <div className=' relative w-full aspect-square overflow-hidden' >
-              <Link href={`${routes.products}/${product.slug}`} >
+              <Link href={`${routes.products}/${product.slug}`} prefetch={false} >
                 <ProductCardImage images={product.images} title={product.title} />
               </Link>
               <Button onClick={(e) => {

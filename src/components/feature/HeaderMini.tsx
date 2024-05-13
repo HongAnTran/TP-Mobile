@@ -1,64 +1,41 @@
-
-import {  ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import Logo from '@/components/common/Logo'
-import SearchInput from './SearchInput'
 import { PersonIcon } from "@radix-ui/react-icons"
 import Link from 'next/link'
 import StoreIcon from '../icons/StoreIcon'
-import { CartIcon, HeartIcon, NewsIcon } from '../icons'
+import { CartIcon, HeartIcon} from '../icons'
 import { TypographyH4, TypographyP } from '../ui/typography'
 import routes from '@/routes'
 import Notification from './Notification'
-import { cn } from '@/lib/utils'
 
 interface HeaderItemProps { icon: ReactNode, text: string, href?: string }
 
-export default function Header() {
-
-
+export default async function HeaderMini() {
   const items: HeaderItemProps[] = [
+    {
+      icon: <CartIcon  />,
+      text: "Sản phẩm",
+      href: routes.products
+    },
     {
       icon: <StoreIcon />,
       text: "Cửa hàng TPMobile",
       href: routes.stores
     },
-    {
-      icon: <NewsIcon />,
-      text: "Tin tức",
-      href: routes.artice
-    },
-
-    {
-      icon: <CartIcon />,
-      text: "Giỏ hàng",
-      // href: routes.cart
-      href: "#"
-
-    },
-    {
-      icon: <PersonIcon width={20} height={20} />,
-      text: "Đăng nhập",
-      href: routes.login
 
 
-    },
   ]
 
-
-
   return (
-    <header className={cn('  bg-black   text-white   shadow-lg  transition-transform duration-300')}>
-      <div className=' container'>
-        <HeaderTop />
-        <div className=' flex gap-10 items-center  pt-0 py-3 '>
+    <header className='  bg-black   text-white   shadow-lg '>
+      <div className=' container '>
+        <div className=' flex gap-10 items-center  py-4'>
           <div className=' flex-shrink-0'>
             <Logo />
           </div>
-          <div className=' flex-1 max-w-[400px] '>
-            <SearchInput />
-          </div>
-          <div className='  flex-1   flex-shrink-0   '>
-            <div className='flex justify-end  gap-8 h-full'>
+          <div className=' flex-1  '>
+
+            <div className='flex  gap-8 h-full'>
               {
                 items.map((item, index) => {
                   return <HeaderItem {...item} key={index} />
@@ -66,6 +43,13 @@ export default function Header() {
               }
 
             </div>
+          </div>
+          <div>
+            <HeaderItem    {...{
+              icon: <PersonIcon width={20} height={20} />,
+              text: "Đăng nhập",
+              href: routes.login
+            }} />
           </div>
 
         </div>
