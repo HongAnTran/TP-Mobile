@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import { ReactNode } from "react"
 interface Props {
-  children: ReactNode
+  children?: ReactNode
   className?: string
 
 }

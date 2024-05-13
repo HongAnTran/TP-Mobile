@@ -6,17 +6,16 @@ import { PersonIcon } from "@radix-ui/react-icons"
 import Link from "@/components/common/Link";
 
 import StoreIcon from '../icons/StoreIcon'
-import { CartIcon, HeartIcon, NewsIcon } from '../icons'
+import {  HeartIcon, NewsIcon } from '../icons'
 import { TypographyH4, TypographyP } from '../ui/typography'
 import routes from '@/routes'
 import Notification from './Notification'
 import { cn } from '@/lib/utils'
+import CartHeader from './CartHeader';
 
 interface HeaderItemProps { icon: ReactNode, text: string, href?: string }
 
 export default function Header() {
-
-
   const items: HeaderItemProps[] = [
     {
       icon: <StoreIcon />,
@@ -30,10 +29,10 @@ export default function Header() {
     },
 
     {
-      icon: <CartIcon />,
+      icon: <CartHeader />,
       text: "Giỏ hàng",
-      // href: routes.cart
-      href: "#"
+      href: routes.cart
+      // href: "#"
 
     },
     {

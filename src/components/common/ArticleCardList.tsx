@@ -8,6 +8,7 @@ import { formatDate } from "@/utils";
 // import { parseISO, format } from "date-fns";
 // import { PhotoIcon } from "@heroicons/react/24/outline";
 // import CategoryLabel from "@/components/blog/category";
+import { Badge } from "@/components/ui/badge"
 
 
 interface Props {
@@ -31,7 +32,7 @@ export default function ArticleCardList({
     <>
       <div
         className={cn(
-          "group cursor-pointer",
+          "group cursor-pointer relative",
           minimal && "grid gap-10 md:grid-cols-2"
         )}>
         <div
@@ -66,12 +67,9 @@ export default function ArticleCardList({
           </Link>
         </div>
 
-        <div className={cn(minimal && "flex items-center")}>
+        <div className={cn(minimal && "flex items-center" , " absolute bottom-0 left-0  right-0 p-4")}>
           <div>
-            {/* <CategoryLabel
-              categories={article.categories}
-              nomargin={minimal}
-            /> */}
+            <Badge >{article.category_id}</Badge>
             <h2
               className={cn(
                 fontSize === "large"
@@ -80,7 +78,7 @@ export default function ArticleCardList({
                     ? "text-3xl"
                     : "text-lg",
                 fontWeight === "normal"
-                  ? "line-clamp-2 font-medium  tracking-normal text-black"
+                  ? "line-clamp-2 font-medium  tracking-normal text-white"
                   : "font-semibold leading-snug tracking-tight",
                 "mt-2    dark:text-white"
               )}>
@@ -88,12 +86,13 @@ export default function ArticleCardList({
                 href={`${routes.artice}/${article.slug}`}>
 
                 <span
-                  className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
+                  className="text-white bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
       transition-[background-size]
       duration-500
       hover:bg-[length:100%_3px]
       group-hover:bg-[length:100%_10px]
+
       dark:from-purple-800 dark:to-purple-900">
                   {article.title}
                 </span>
@@ -104,7 +103,7 @@ export default function ArticleCardList({
 
             <div className="mt-3 ">
               <time
-                className="truncate text-sm"
+                className="truncate text-sm text-white"
                 dateTime={formatDate(article.published_date || article.created_at)}>
 
                 {formatDate(article.published_date || article.created_at)}

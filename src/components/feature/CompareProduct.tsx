@@ -22,7 +22,7 @@ export default function CompareProduct() {
   }
 
   if (!open) {
-    return <div onClick={() => setOpen(true)} className=' cursor-pointer   fixed  bottom-20 left-20 w-[40px] h-[40px] rounded-full shadow-xl bg-black text-white'>
+    return <div onClick={() => setOpen(true)} className=' z-50 cursor-pointer   fixed  bottom-20 left-20 w-[40px] h-[40px] rounded-full shadow-xl bg-black text-white'>
       <div className=' w-full h-full flex items-center justify-center relative'>
 
         <Image src={compareIMG} alt='compare' width={40} height={40} />
@@ -32,7 +32,7 @@ export default function CompareProduct() {
   }
 
   return (
-    <div className=' fixed bottom-0 left-0 right-0 '>
+    <div className=' fixed bottom-0 left-0 right-0  z-50'>
       <div className=' container bg-white  shadow-2xl border  rounded-t-md relative'>
         <div className='  grid grid-cols-3'>
           {fillArrayToLength([...productsCompare], 2).map((product, index) => {

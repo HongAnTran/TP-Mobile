@@ -3,7 +3,7 @@
 import { type ReactNode, createContext, useRef, useContext, useEffect } from 'react'
 import { type StoreApi, useStore } from 'zustand'
 
-import { type ShopStore, createShopStore } from '@/stores/shop-store'
+import { type ShopStore, createShopStore , initShopStore } from '@/stores/shop-store'
 import LocalStorageService from '@/utils/localStorage'
 import { KEYS } from '@/consts/localStorage'
 export const ShopStoreContext = createContext<StoreApi<ShopStore> | null>(
@@ -19,7 +19,7 @@ export const ShopStoreProvider = ({
 }: ShopStoreProviderProps) => {
   const storeRef = useRef<StoreApi<ShopStore>>()
   if (!storeRef.current) {
-    storeRef.current = createShopStore()
+    storeRef.current = createShopStore(initShopStore())
   }
   return (
     <ShopStoreContext.Provider value={storeRef.current}>
@@ -36,9 +36,5 @@ export const useShopStore = <T,>(
   if (!shopStoreContext) {
     throw new Error(`useShopStore must be use within ShopStoreProvider`)
   }
-  useEffect(() => {
-    shopStoreContext.setState({ wishlist: (LocalStorageService.getItem(KEYS.WISHLIST, [])) })
-  }, [shopStoreContext])
-
   return useStore(shopStoreContext, selector)
 }

@@ -1,15 +1,18 @@
-import Link from "@/components/common/Link";
-import PostList from "@/components/common/ArticleCardList";
-import { Article } from "@/types/article";
+
 import ArticeServiceApi from "@/services/articeService";
-import Artice from "./Artice";
+import Artice from "../_components/Artice";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export default async function page() {
   const artices = await ArticeServiceApi.getList()
 
   return (
-    <div className=" py-8">
-      <Artice artices={artices}  />
-    </div>
+    <>
+      <div className=' mb-8'>
+        <Breadcrumbs breadcrumbsList={[{ label: "Tin tức", isActive: true }]} />
+      </div>
+      <Artice artices={artices} title="Tin tức" />
+    </>
+
   );
 }

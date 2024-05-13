@@ -1,33 +1,69 @@
+import { KEYS } from '@/consts/localStorage'
+import CartServiceApi from '@/services/cartService'
+import { Cart } from '@/types/cart'
 import { Product } from '@/types/product'
 import { Wishlist } from '@/types/wishlist'
+import LocalStorageService from '@/utils/localStorage'
 import { createStore } from 'zustand/vanilla'
 
 export type ShopState = {
   wishlist: Wishlist[],
   productsCompare: Product[]
+  cart: Cart,
+  isLoadingCard: boolean
 }
 
 export type ShopActions = {
   setWishlist: (list: Wishlist[]) => void
   setProductsCompare: (list: Product[]) => void
+  setCart: (cart: Cart) => void
 }
 
 export type ShopStore = ShopState & ShopActions
 
 export const defaultInitState: ShopState = {
   wishlist: [],
-  productsCompare: []
+  productsCompare: [],
+  cart: {} as Cart,
+  isLoadingCard: true
 }
 
+export const initShopStore = async (): Promise<ShopState> => {
+  try {
+    const response = await CartServiceApi.getDetail(1)
+    const wishlist = (LocalStorageService.getItem(KEYS.WISHLIST, []))
+    return {
+      productsCompare: [],
+      wishlist: wishlist,
+      cart: response,
+      isLoadingCard: false
+    };
+  } catch (error) {
+    const wishlist = (LocalStorageService.getItem(KEYS.WISHLIST, []))
+    return {
+      ...defaultInitState,
+      isLoadingCard: false,
+      wishlist: wishlist
+    };
+  }
+};
+
+
+
+
 export const createShopStore = (
-  initState: Partial<ShopState> = defaultInitState,
+  initState: Promise<ShopState>,
 ) => {
-  return createStore<ShopStore>()((set) => ({
+
+  const store = createStore<ShopStore>()((set) => ({
     ...defaultInitState,
     ...initState,
     setWishlist: (list) => set((state) => ({ wishlist: list })),
     setProductsCompare: (list) => set((state) => ({ productsCompare: list })),
+    setCart: (cart) => set((state) => ({ cart: cart })),
 
   }))
-
+  initState.then(store.setState);
+  return store;
 }
+

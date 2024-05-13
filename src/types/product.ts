@@ -78,7 +78,7 @@ interface ProductTags {
 }
 interface ProductSpecifications {
   id: number
-  type_id : number
+  type_id: number
   name: string
   value: string | number
   description?: string
@@ -90,19 +90,19 @@ interface ProductTypeSpecifications {
 }
 
 
-type ProductOrder = Pick<Product, "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode" | "description_html"> & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode" | "description_html"> & {
+  id: number,
   line_price: number
   price: number
   price_original: number
-  line_price_orginal: number
+  line_price_original: number
   variant_id: number
   product_id: ProductId
-  url: string
-  image: string
   product_title: string
   variant_title: string
   variant_options: string[]
   quantity: number
+  image: string
 }
 interface ProductRating {
   id: number,
@@ -110,4 +110,4 @@ interface ProductRating {
   rate: number
 }
 export { ProductStatus }
-export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating , ProductTypeSpecifications  , ProductSpecifications};
+export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };

@@ -12,7 +12,7 @@ interface ProductCarouselProps {
 
 export default  function ProductCarousel({ title, products }: ProductCarouselProps) {
   return (
-    <section className=' flex flex-col gap-4'>
+    <section className=' flex flex-col gap-4  mx-8 lg:mx-0'>
       {title ? <div className=' '>
         <TypographyH3 className=' text-center uppercase text-primary'>{title}</TypographyH3>
       </div> : null}

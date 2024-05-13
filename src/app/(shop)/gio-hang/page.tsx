@@ -1,15 +1,15 @@
 import React from 'react'
-import ArticeCategory from './ArticeCategory'
+import Cart from './Cart'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 
 export default function page() {
 
   return (
-    <>
+    <div className=' container my-8'>
       <div className=' mb-8'>
-        <Breadcrumbs breadcrumbsList={[{ label: "Danh mục bài viêt"}]} />
+        <Breadcrumbs breadcrumbsList={[{ label: "Giỏ hàng", isActive: true }]} />
       </div>
-      <ArticeCategory />
-    </>
+      <Cart />
+    </div>
   )
 }

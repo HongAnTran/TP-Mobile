@@ -1,13 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
 
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+const nextConfig = {
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "**",
+        port: "",
+        pathname: "/**",
       },
     ],
   },

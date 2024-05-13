@@ -28,11 +28,11 @@ export default async function HeaderMini() {
   ]
 
   return (
-    <header className='  bg-black   text-white   shadow-lg '>
+    <header className='  bg-white   text-black   shadow-2xl '>
       <div className=' container '>
         <div className=' flex gap-10 items-center  py-4'>
           <div className=' flex-shrink-0'>
-            <Logo />
+            <Logo className=' text-primary' />
           </div>
           <div className=' flex-1  '>
 

@@ -1,19 +1,22 @@
 "use client"
-import { Product } from "@/types/product";
+import useCart from "@/hooks/useCart";
+import useHandleVariant from "@/hooks/useHandleVariant";
+
+
 import ProductImageCarousel from "./ProductImageCarousel";
 import { TypographyH3, TypographyP } from "@/components/ui/typography";
 import { useState } from "react";
 import Rating from "../Rating";
 import ProductShowPrice from "./ProductShowPrice";
 import ProductOptions from "./ProductOptions";
-import useHandleVariant from "@/hooks/useHandleVariant";
 import ProductActionButton from "./ProductActionButton";
 import ProductQuantity, { ProductQuantityProps } from "./ProductQuantity";
 import SETTINGS from '@/consts/settings'
-
+import { Product } from "@/types/product";
 import ButtonCompareProduct from "@/components/feature/ButtonCompareProduct";
 
 export default function ProductQuickView({ product }: { product: Product }) {
+  const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
 
@@ -35,6 +38,9 @@ export default function ProductQuickView({ product }: { product: Product }) {
       setQuantity(quantityNew)
     }
   }
+
+
+
   return (
     <div className='grid grid-cols-12 gap-4'>
       <div className=' col-span-5 '>
@@ -58,7 +64,9 @@ export default function ProductQuickView({ product }: { product: Product }) {
           />
         </div>
         <div className=' mt-8  pr-8   '>
-          <ProductActionButton />
+          <ProductActionButton
+           onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} 
+          onBuyNow={() => handleBuyNow(product, variantActive, quantity)} />
         </div>
       </div>
     </div>

@@ -5,12 +5,19 @@ const routes = {
   articeCategory: "/danh-muc-tin-tuc",
   products: "/san-pham",
   category: "/danh-muc",
-  about : "/ve-chung-toi",
-  stores:"/cua-hang",
-  cart:"/gio-hang",
-  login :"/dang-nhap",
-  compareProduct :"/so-sanh-san-pham",
-  wishlist :"/yeu-thich"
+  about: "/ve-chung-toi",
+  stores: "/cua-hang",
+  cart: "/gio-hang",
+  login: "/dang-nhap",
+  compareProduct: "/so-sanh-san-pham",
+  wishlist: "/yeu-thich",
+  guaranteePolicy: "/chinh-sach-bao-hanh",
+  changePolicy: "/chinh-sach-doi-tra",
+  deliveryPolicy: "/chinh-sach-giao-hang",
 };
 
+const privateToutes = {
+  account: "tai-khoan"
+};
+export { privateToutes }
 export default routes;

@@ -2,6 +2,8 @@ import React from 'react'
 import ArticeDetail from './ArticeDetail'
 import ArticeServiceApi from '@/services/articeService'
 import { notFound } from 'next/navigation'
+import Breadcrumbs from '@/components/ui/Breadcrumbs'
+import routes from '@/routes'
 
 export default async function page({ params }: { params: { slug: string } }) {
 
@@ -17,8 +19,12 @@ export default async function page({ params }: { params: { slug: string } }) {
 
 
   return (
-    <div className=' my-8 container'>
+    <>
+      <div className=' mb-8'>
+      <Breadcrumbs breadcrumbsList={[{ label: "Tin tức" , slug: routes.artice }, { label: artice.title, isActive: true }]} />
+      </div>
+
       <ArticeDetail artice={artice} />
-    </div>
+    </>
   )
 }

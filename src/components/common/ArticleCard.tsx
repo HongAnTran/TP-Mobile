@@ -23,7 +23,7 @@ export default function ArticleCard({ article  ,classNameImage}: { article: Arti
         <Link href={`${routes.artice}/${article.slug}`}>
           <Card className=' border border-gray-300 group relative'>
             <CardContent className="flex flex-col gap-2  py-4">
-              <div >
+              <div>
                 <Image className={cn( "w-full h-auto",classNameImage)}   src={article.thumnal_url} alt={article.title} width={500} height={500} />
               </div>
               <CardTitle className='   group-hover:text-blue-500 transition-colors' >{article.title}</CardTitle>
