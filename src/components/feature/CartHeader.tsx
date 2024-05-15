@@ -8,7 +8,6 @@ import { TypographySpan } from '../ui/typography'
 
 export default function CartHeader() {
   const { cart, isLoadingCard } = useShopStore(state => state)
-  console.log(cart , isLoadingCard)
   return (
     <div className=' relative'>
       <CartIcon />

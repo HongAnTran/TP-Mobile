@@ -4,7 +4,7 @@ type AddressType = "home" | "office"
 
 interface AddressInffo {
   email: string | null; // Địa chỉ email của người nhận hàng (có thể là null)
-  address: string; // Địa chỉ giao hàng
+  street: string; // 
   phone: string; // Số điện thoại liên hệ
   province: {
     code: number; // Mã code của thành phố

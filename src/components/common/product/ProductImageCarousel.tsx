@@ -29,7 +29,6 @@ export default function ProductImageCarousel({ images, alt, imageActive, setImag
     <div>
       <Carousel
         setApi={setApi}
-        onSelect={(e) => console.log(e)}
         className="w-full"
       >
         <CarouselContent>

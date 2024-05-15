@@ -1,5 +1,7 @@
+import { KEYS } from "@/consts/localStorage";
 import { Cart } from "@/types/cart";
 import { Product, ProductOrder, ProductVariant } from "@/types/product";
+import LocalStorageService from "@/utils/localStorage";
 
 class CartServiceClient {
   cart: Cart
@@ -29,10 +31,10 @@ class CartServiceClient {
 
     this.calcTotalCart()
   }
-  update(product: ProductOrder) {
-    const itemIndex = this.cart.items.findIndex(item => item.id === product.id);
+  update(productorder: ProductOrder) {
+    const itemIndex = this.cart.items.findIndex(item => item.id === productorder.id);
     if (itemIndex >= 0) {
-      this.cart.items[itemIndex] = product;
+      this.cart.items[itemIndex] = productorder;
       this.calcTotalCart();
     }
   }
@@ -44,9 +46,15 @@ class CartServiceClient {
 
   private calcTotalCart() {
     this.cart.item_count = this.cart.items.length
-    this.cart.total_price = this.cart.items.reduce((pre, item) => {
+    this.cart.total_price = this.cart.items.filter(item=>item.selected).reduce((pre, item) => {
       return pre + item.line_price
     }, 0)
+
+    this.saveCartToLocalStorage()
+  }
+
+ private saveCartToLocalStorage() {
+    LocalStorageService.setItem(KEYS.CART, this.cart)
   }
 
   private convertToProductOrder(product: Product, variant: ProductVariant, quantity: number): ProductOrder {
@@ -59,7 +67,6 @@ class CartServiceClient {
       category_id: product.category_id,
       vendor: product.vendor,
       barcode: product.barcode, // null check for barcode
-      description_html: product.description_html,
       line_price: variant.price * quantity,
       price: variant.price,
       price_original: variant.price,
@@ -71,6 +78,7 @@ class CartServiceClient {
       variant_title: variant.title,
       variant_options: [variant.option1, variant.option2, variant.option3].filter(opt => opt), // Filter out empty options
       quantity: quantity,
+      selected : true
     };
   }
 

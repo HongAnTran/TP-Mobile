@@ -8,6 +8,7 @@ const routes = {
   about: "/ve-chung-toi",
   stores: "/cua-hang",
   cart: "/gio-hang",
+  checkout: "/thanh-toan",
   login: "/dang-nhap",
   compareProduct: "/so-sanh-san-pham",
   wishlist: "/yeu-thich",

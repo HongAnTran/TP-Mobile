@@ -68,7 +68,6 @@ export default function SearchInput() {
 
   async function searchProductByKeyword(keyword: string) {
     const datas = await ProductsServiceApi.getList({ keyword: keyword, limit: 5 })
-    console.log(datas)
     setProductsSearch(datas)
     setOpenSearch(true)
 
@@ -77,7 +76,6 @@ export default function SearchInput() {
 
   return (
     <HoverCard open={openSearch} onOpenChange={(open) => {
-      console.log(open)
       if (!open) {
         // setProductsSearch([]),
         //   setValue("keyword", "")

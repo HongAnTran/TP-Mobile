@@ -5,11 +5,14 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs'
 export default function page() {
 
   return (
-    <div className=' container my-8'>
-      <div className=' mb-8'>
-        <Breadcrumbs breadcrumbsList={[{ label: "Giỏ hàng", isActive: true }]} />
+    <div className=' bg-gray-100  py-8'>
+
+      <div className=' container '>
+        <div className=' mb-8'>
+          <Breadcrumbs breadcrumbsList={[{ label: "Giỏ hàng", isActive: true }]} />
+        </div>
+        <Cart />
       </div>
-      <Cart />
     </div>
   )
 }

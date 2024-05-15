@@ -2,10 +2,7 @@
 
 import { type ReactNode, createContext, useRef, useContext, useEffect } from 'react'
 import { type StoreApi, useStore } from 'zustand'
-
 import { type ShopStore, createShopStore , initShopStore } from '@/stores/shop-store'
-import LocalStorageService from '@/utils/localStorage'
-import { KEYS } from '@/consts/localStorage'
 export const ShopStoreContext = createContext<StoreApi<ShopStore> | null>(
   null,
 )

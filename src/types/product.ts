@@ -90,7 +90,7 @@ interface ProductTypeSpecifications {
 }
 
 
-type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode" | "description_html"> & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode" > & {
   id: number,
   line_price: number
   price: number
@@ -103,6 +103,7 @@ type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "categ
   variant_options: string[]
   quantity: number
   image: string
+  selected : boolean
 }
 interface ProductRating {
   id: number,

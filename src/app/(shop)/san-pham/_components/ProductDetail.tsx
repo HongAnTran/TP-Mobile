@@ -14,13 +14,15 @@ import SETTINGS from '@/consts/settings'
 import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
+import useCart from '@/hooks/useCart'
 
 export default function ProductDetail({ product }: { product: Product }) {
 
-  
+  const { handleAddtoCart } = useCart()
+
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
 
-  const { addProductToRecentView} = useProductRecentView()
+  const { addProductToRecentView } = useProductRecentView()
 
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
 
@@ -43,12 +45,12 @@ export default function ProductDetail({ product }: { product: Product }) {
     }
   }
 
-  useEffect(()=>{
-    if(product){
+  useEffect(() => {
+    if (product) {
       addProductToRecentView(product)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[ product])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product])
 
   return (
     <div >
@@ -83,7 +85,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             />
           </div>
           <div className=' mt-8 '>
-            <ProductActionButton />
+            <ProductActionButton onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} />
           </div>
         </div>
         <div className=' col-span-3'>

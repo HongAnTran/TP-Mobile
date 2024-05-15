@@ -88,4 +88,13 @@ function formatDate(date: string): string {
   // Trả về chuỗi định dạng DD/MM/YYYY
   return `${dayFormatted}/${monthFormatted}/${year}`;
 }
-export { convetNumberToPriceVND, findVariantMinPrice,   findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams  , formatDate}
+
+
+function checkIsClient(){
+  return typeof window !== "undefined"
+}
+
+function generateUniqueId() {
+  return 'id-' + crypto.randomUUID();
+}
+export { convetNumberToPriceVND, findVariantMinPrice,  generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams  , formatDate , checkIsClient}

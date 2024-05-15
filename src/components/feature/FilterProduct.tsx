@@ -42,9 +42,6 @@ export default function FilterProduct() {
   }
 
 
-  useEffect(() => {
-    console.log(valueFiter)
-  }, [valueFiter])
 
 
   useEffect(() => {
