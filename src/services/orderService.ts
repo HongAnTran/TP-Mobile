@@ -1,9 +1,6 @@
-import fetchApi from "@/api/instances/baseInstance";
-import { checkIsClient, generateUniqueId, sleep } from "@/utils";
+import { generateUniqueId } from "@/utils";
 import { Cart } from "@/types/cart";
 import { Order, OrderStatus } from "@/types/order";
-import LocalStorageService from "@/utils/localStorage";
-import { KEYS } from "@/consts/localStorage";
 
 
 class OrderService {
@@ -25,15 +22,15 @@ class OrderService {
       email: "", // Địa chỉ email của người nhận hàng (có thể là null)
       phone: "", // Số điện thoại liên hệ
       province: {
-        code: 0, // Mã code của thành phố
+        code: "", // Mã code của thành phố
         name: "", // Tên của thành phố
       },
       district: {
-        code: 0, // Mã code của thành phố
+        code: "", // Mã code của thành phố
         name: "", // Tên của thành phố
       },
       ward: {
-        code: 0, // Mã code của thành phố
+        code: "", // Mã code của thành phố
         name: "", // Tên của thành phố
       },
       full_name: "",
@@ -41,7 +38,7 @@ class OrderService {
       type: "home",
 
     },
-    status: OrderStatus.PROCESSING,
+    status: OrderStatus.PENDING,
     payment: {
       method: "",
       total: 0,

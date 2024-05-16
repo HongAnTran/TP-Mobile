@@ -1,3 +1,4 @@
+import { Location } from "./location";
 
 
 type AddressType = "home" | "office"
@@ -6,18 +7,9 @@ interface AddressInffo {
   email: string | null; // Địa chỉ email của người nhận hàng (có thể là null)
   street: string; // 
   phone: string; // Số điện thoại liên hệ
-  province: {
-    code: number; // Mã code của thành phố
-    name: string; // Tên của thành phố
-  };
-  district: {
-    code: number; // Mã code của thành phố
-    name: string; // Tên của thành phố
-  }
-  ward: {
-    code: number; // Mã code của thành phố
-    name: string; // Tên của thành phố
-  }
+  province: Pick<Location, "code" | "name">
+  district: Pick<Location, "code" | "name">
+  ward: Pick<Location, "code" | "name">
 }
 interface Address extends AddressInffo {
   full_name: string

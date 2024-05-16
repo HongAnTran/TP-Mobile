@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 const NewsIcon = ({ className }: { className?: string }) => {
 	return (
-		<span className={cn(" inline-block w-5 h-5 text-white ", className)}>
+		<span className={cn(" inline-block w-5 h-5 text-gray-500 ", className)}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width={"100%"}

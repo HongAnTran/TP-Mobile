@@ -20,7 +20,7 @@ export default async function HeaderMini() {
     },
     {
       icon: <StoreIcon />,
-      text: "Cửa hàng TPMobile",
+      text: "Cửa hàng",
       href: routes.stores
     },
 

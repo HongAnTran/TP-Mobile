@@ -20,19 +20,15 @@ export default function SectionArticles() {
   return (
     <section className=' flex flex-col gap-4'>
       <TypographyH3 className=' text-center uppercase text-primary'>Tin tức</TypographyH3>
-      <div className="grid   grid-cols-5 gap-4">
-        <div className=' col-span-3'>
+      <div className="grid   grid-cols-12 gap-4">
+        <div className=' col-span-6'>
           <ArticleCard article={articles[0]} />
-
         </div>
-        <div className=' col-span-2'>
-          {articles.slice(0,3).map((article) => (
-            
+        <div className=' col-span-6'>
+          {articles.slice(0, 2).map((article) => (
             <ArticleCard article={article} classNameImage=' h-[100px]' key={article.id} />
-
           ))}
         </div>
-
         {/* <div className="row-span-2 col-span-2 ...">03</div> */}
       </div>
 

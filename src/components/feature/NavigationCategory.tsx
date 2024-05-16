@@ -44,11 +44,11 @@ export default function NavigationCategory({ type, className }: { type: "artice"
   return (
     <div className={cn(' bg-black   text-white  py-3 transition-all ', isSticky ? ' fixed top-0 left-0 right-0 z-50 bg-white text-primary shadow-2xl' : '', className)}>
       <div className=' container'>
-        <ul className=' flex  gap-8 items-center justify-center'>
+        <ul className=' flex flex-nowrap   gap-4 lg:gap-8 items-center justify-center'>
           {data.map(category => {
             return (
-              <NavLink scroll href={`${route}/${category.slug}`} key={category.id} activeClassName='text-blue-500 font-bold'>
-                <li className='   text-current   hover:text-blue-500 transition-colors'>
+              <NavLink scroll href={`${route}/${category.slug}`} key={category.id} activeClassName='text-blue-500    font-bold'>
+                <li className='    whitespace-nowrap text-current   hover:text-blue-500 transition-colors'>
                   {category.title}
 
                 </li>
