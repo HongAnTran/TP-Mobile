@@ -40,7 +40,7 @@ const AddressInfoSchema = yup.object().shape({
   }).required(),
   type: AddressType,
   full_name: yup.string().required("Vui lòng nhập"), // Tên đầy đủ của người nhận
-  note: yup.string().required("Vui lòng nhập"), // Tên đầy đủ của người nhận
+  note: yup.string(), // Tên đầy đủ của người nhận
   isDefault: yup.boolean(), // Địa chỉ mặc định
 });
 
@@ -108,10 +108,10 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className=' form-list flex flex-col gap-4 mt-4'>
-        <InputController label='Họ và tên' name="full_name" control={control} />
+        <InputController label='Họ và tên' name="full_name" control={control}  isShowError/>
         <div className='  flex gap-2'>
           <InputController label='Email' name="email" control={control} />
-          <InputController label='Số điện thoại' name="phone" control={control} />
+          <InputController label='Số điện thoại' name="phone" control={control} isShowError/>
         </div>
         <div className='  flex gap-2'>
           <SelectController
@@ -138,7 +138,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             name="ward.code"
             control={control} />
         </div>
-        <InputController label='Tên đường' name="street" control={control} />
+        <InputController label='Tên đường' name="street" control={control}  isShowError/>
         <InputController label='Ghi chú' name="note" control={control} />
       </div>
 

@@ -1,7 +1,7 @@
 "use client"
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Table,
   TableBody,
@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/table"
 import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import Link from "@/components/common/Link";
-
 import routes from '@/routes'
 import { Product, ProductTypeSpecifications } from '@/types/product'
 import PriceText from '@/components/common/PriceText'
@@ -23,11 +22,54 @@ import typesJson from "@/data/tagType.json"
 import { TypographyH3, TypographySpan } from '@/components/ui/typography'
 import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
 import useCompareProduct from '@/hooks/useCompareProduct'
+import { cn } from '@/lib/utils'
+
+type ProductCompare = Pick<Product, "barcode" | "category_title" | "vendor">
+
+type Key = {
+  [K in keyof ProductCompare]?: string;
+};
 
 export default function CompareProductPage() {
-  const { productsCompare , removeProductToCompare} = useCompareProduct()
+  const { productsCompare, removeProductToCompare } = useCompareProduct()
 
   const types = JSON.parse(JSON.stringify(typesJson)) as ProductTypeSpecifications[]
+
+  const [isShowDifferent, setIsShowDifferent] = useState(false)
+
+  const keys: Key = {
+    vendor: "Thương hiệu",
+    category_title: "Loại sản phẩm",
+    barcode: "Barcode",
+  }
+
+  const datasCompare = Object.keys(keys).map((key, index) => {
+    // Chuyển key thành kiểu cụ thể
+    const typedKey = key as keyof ProductCompare;
+    const values = productsCompare.map(product => {
+      return product[typedKey]?.toString() || ""
+    });
+
+    return [keys[typedKey], ...values];
+  })
+
+  function checkIsDifferent(arr: (string | undefined)[]) {
+    if (!arr.length) return true
+
+    const arrCompare = arr.slice(1)
+
+    if (!arrCompare.length) return true
+
+
+    const firstElement = arrCompare[0];
+    for (let i = 1; i < arrCompare.length; i++) {
+      if (arrCompare[i] !== firstElement) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 
 
   return (
@@ -76,7 +118,6 @@ export default function CompareProductPage() {
                       </TableCell>
                     )
                   }
-
                   return <>
                     <TableCell key={index} className=' flex-1 '>
                       {/* <div className=' text-center'>
@@ -84,31 +125,51 @@ export default function CompareProductPage() {
                     </div> */}
                     </TableCell>
                   </>
-
-
                 })
               }
             </TableRow>
-            {productsCompare.length > 0 && types.map(type => {
-              return (<TableRow key={type.id}>
-                <TableCell>{type.name}</TableCell>
+            {productsCompare.length > 0 &&
+              <>
                 {
-                  productsCompare.map(product => {
+                  datasCompare.map((data , index) => {
                     return (
-                      <TableCell className=' text-center' key={product.id}>
-                        {product.specifications.filter((item) => item.type_id === type.id).map(item => {
-                          return <li className=' flex  items-center justify-between ' key={item.id}><TypographySpan className=' font-bold'>{item.name} </TypographySpan> <TypographySpan >{item.value} </TypographySpan></li>
-                        })}
-                      </TableCell>
+                      <TableRow key={index} className={cn({
+                        "bg-blue-200": checkIsDifferent(data)
+                      })}>
+                        {
+                          data.map((value, index) => {
+                            return (<TableCell key={index}>
+                              <li className={cn(' flex ', index !== 0 && " justify-center")}>
+                                {value?.toString()}
+                              </li>
+                            </TableCell>)
+                          })
+                        }
+                      </TableRow>
                     )
                   })
                 }
 
-              </TableRow>)
-            })}
+                {types.map(type => {
+                  return (<TableRow key={type.id}>
+                    <TableCell>{type.name}</TableCell>
+                    {
+                      productsCompare.map(product => {
+                        return (
+                          <TableCell className=' text-center' key={product.id}>
+                            {product.specifications.filter((item) => item.type_id === type.id).map(item => {
+                              return <li className=' flex   justify-center ' key={item.id}><TypographySpan >{item.value} </TypographySpan></li>
+                            })}
+                          </TableCell>
+                        )
+                      })
+                    }
+                  </TableRow>)
+                })}
+              </>
+            }
           </TableBody>
         </Table>
-
       </div>
     </div>
   )

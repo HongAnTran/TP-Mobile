@@ -54,7 +54,7 @@ export default function HeaderItems() {
 
     return <div className=' justify-end   h-full  flex'>
 
-      <Button variant="ghost" onClick={() => setOpen(true)} >
+      <Button variant="ghost" onClick={() => setOpen(true)} className=' p-0' >
         <HamburgerMenuIcon width={28} height={28} />
       </Button>
 
@@ -109,8 +109,8 @@ function HeaderItem({ icon, text, href }: HeaderItemProps) {
 function HeaderItemMobile({ icon, text, href, onClick }: HeaderItemProps) {
   return <Link href={href ? href : "#"} onClick={onClick}>
     <div className=' flex    items-center justify-between py-3 border-b border-gray-200'>
-      {icon}    <TypographyP >{text}</TypographyP>
-
+      {icon}   
+       <TypographyP >{text}</TypographyP>
     </div>
   </Link>
 }
