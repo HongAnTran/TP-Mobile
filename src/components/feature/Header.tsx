@@ -1,17 +1,12 @@
 
-import { ReactNode } from 'react'
 import Logo from '@/components/common/Logo'
 import SearchInput from './SearchInput'
-import { PersonIcon } from "@radix-ui/react-icons"
 import Link from "@/components/common/Link";
-
-import StoreIcon from '../icons/StoreIcon'
-import { HeartIcon, NewsIcon } from '../icons'
-import { TypographyH4, TypographyP } from '../ui/typography'
+import { HeartIcon,  } from '../icons'
+import { TypographyH4 } from '../ui/typography'
 import routes from '@/routes'
 import Notification from './Notification'
 import { cn } from '@/lib/utils'
-import CartHeader from './CartHeader';
 import HeaderItems from './HeaderItems';
 
 
@@ -26,7 +21,7 @@ export default function Header() {
           <div className=' flex-shrink-0'>
             <Logo />
           </div>
-          <div className=' flex-1 max-w-[400px] '>
+          <div className=' flex-1 max-w-[400px] hidden md:block '>
             <SearchInput />
           </div>
           <div className='  flex-1   flex-shrink-0   '>

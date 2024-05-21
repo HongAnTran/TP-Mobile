@@ -10,6 +10,7 @@ const routes = {
   cart: "/gio-hang",
   checkout: "/thanh-toan",
   login: "/dang-nhap",
+  register: "/dang-ky",
   compareProduct: "/so-sanh-san-pham",
   wishlist: "/yeu-thich",
   guaranteePolicy: "/chinh-sach-bao-hanh",

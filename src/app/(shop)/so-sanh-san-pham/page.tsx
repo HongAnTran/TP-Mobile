@@ -23,6 +23,7 @@ import { TypographyH3, TypographySpan } from '@/components/ui/typography'
 import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
 import useCompareProduct from '@/hooks/useCompareProduct'
 import { cn } from '@/lib/utils'
+import { Checkbox } from '@/components/ui/checkbox'
 
 type ProductCompare = Pick<Product, "barcode" | "category_title" | "vendor">
 
@@ -42,6 +43,14 @@ export default function CompareProductPage() {
     category_title: "Loại sản phẩm",
     barcode: "Barcode",
   }
+
+  const datasSpecifications = types.map((item) => {
+    const values = productsCompare.map(product => {
+      const i = product.specifications.find(pro => pro.type_id === item.id)
+      return i?.value.toString() || ""
+    });
+    return [item.name, ...values]
+  })
 
   const datasCompare = Object.keys(keys).map((key, index) => {
     // Chuyển key thành kiểu cụ thể
@@ -108,7 +117,21 @@ export default function CompareProductPage() {
           </TableHeader>
           <TableBody>
             <TableRow >
-              <TableCell className="w-[200px]"></TableCell>
+              <TableCell className="w-[200px]">
+                <div className="items-top flex space-x-2">
+
+                  <Checkbox id="terms1" onCheckedChange={(check) => { setIsShowDifferent(!!check.valueOf()) }} />
+                  <div className="grid gap-1.5 leading-none">
+                    <label
+                      htmlFor="terms1"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                        Chỉ xem điểm khác biệt
+                    </label>
+
+                  </div>
+                </div>
+              </TableCell>
               {
                 fillArrayToLength([...productsCompare], 2).map((product, index) => {
                   if (product) {
@@ -131,10 +154,11 @@ export default function CompareProductPage() {
             {productsCompare.length > 0 &&
               <>
                 {
-                  datasCompare.map((data , index) => {
+                  [...datasCompare, ...datasSpecifications].map((data, index) => {
                     return (
                       <TableRow key={index} className={cn({
-                        "bg-blue-200": checkIsDifferent(data)
+                        "bg-blue-200": checkIsDifferent(data),
+                        " hidden": checkIsDifferent(data) && isShowDifferent,
                       })}>
                         {
                           data.map((value, index) => {
@@ -149,23 +173,6 @@ export default function CompareProductPage() {
                     )
                   })
                 }
-
-                {types.map(type => {
-                  return (<TableRow key={type.id}>
-                    <TableCell>{type.name}</TableCell>
-                    {
-                      productsCompare.map(product => {
-                        return (
-                          <TableCell className=' text-center' key={product.id}>
-                            {product.specifications.filter((item) => item.type_id === type.id).map(item => {
-                              return <li className=' flex   justify-center ' key={item.id}><TypographySpan >{item.value} </TypographySpan></li>
-                            })}
-                          </TableCell>
-                        )
-                      })
-                    }
-                  </TableRow>)
-                })}
               </>
             }
           </TableBody>

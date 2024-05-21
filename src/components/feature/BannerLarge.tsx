@@ -13,7 +13,7 @@ export default function BannerLarge() {
       <div className=' container'>
         <div className=' grid grid-cols-12'>
           <div className=' col-span-4'>
-            <div className=' flex flex-col  justify-center items-center w-full h-full'>
+            <div className='  flex-col  justify-center items-center w-full h-full hidden lg:flex'>
               <motion.div
                 initial={{ y:10, opacity: 0 }}
                 whileInView={{ y:0, opacity: 1 }}

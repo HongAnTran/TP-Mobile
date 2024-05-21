@@ -13,13 +13,13 @@ interface Product {
   vendor: string
   available: boolean
   status: ProductStatus,
-  tagsSpecifications: ProductTags[]
   created_at: string
   updated_at: string
   published_at: string
   barcode: string | null
   options: ProductOption[]
   short_description: string
+  tags : ProductTags[]
   // metadata
   create_id: number
   store_id: number

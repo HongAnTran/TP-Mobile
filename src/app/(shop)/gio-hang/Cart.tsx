@@ -9,7 +9,7 @@ import BoxLayout from './_components/BoxLayout'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from '@/components/ui/use-toast'
 import routes from '@/routes'
 import OrderServiceApi from '@/services/orderService'
@@ -17,16 +17,8 @@ import OrderServiceApi from '@/services/orderService'
 export default function Cart() {
 
   const { cart, isLoadingCard, handleChangeQuantity, handleDeleteItem, handleChangeSelectItem, handleChangeSelectItems } = useCart()
+
   const router = useRouter()
-  if (isLoadingCard) {
-    return <p>Loading...</p>
-  }
-
-  if (cart.item_count === 0) {
-    return <div>Chưa có sản phẩm nào</div>
-  }
-
-  const isCheckAll = !cart.items.some(item => !item.selected)
 
 
   function handleCheckAllItems(value: boolean) {
@@ -37,6 +29,17 @@ export default function Cart() {
     const order = await OrderServiceApi.createOrder(cart)
     router.push(`${routes.checkout}/${order.token}`)
   }
+
+
+  if (isLoadingCard) {
+    return <p>Loading...</p>
+  }
+  const isCheckAll = !cart.items.some(item => !item.selected)
+
+  if (cart.item_count === 0) {
+    return <div>Chưa có sản phẩm nào</div>
+  }
+
   return (
     <div className='  grid grid-cols-12 gap-4 mt-4 '>
       <div className=' col-span-9  h-full'>

@@ -15,9 +15,10 @@ import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
+import useProduct from '@/hooks/useProduct'
 
 export default function ProductDetail({ product }: { product: Product }) {
-
+  const { data } = useProduct()
   const { handleAddtoCart } = useCart()
 
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
@@ -55,13 +56,13 @@ export default function ProductDetail({ product }: { product: Product }) {
   return (
     <div >
       <div className=' grid  gap-4 grid-cols-12'>
-        <div className=' col-span-4 product-images product-detail-left  relative'>
+        <div className=' md:col-span-6 col-span-12 lg:col-span-4 product-images product-detail-left  relative'>
           <ProductImageCarousel setImageActive={setIndexImageActive} images={product.images} alt={product.title} imageActive={indexImageActive} />
           <div className=' absolute top-1 right-1  w-8 h-8 flex justify-center items-center bg-white shadow-lg rounded-full'>
             <ButtonWishlist id={product.id} />
           </div>
         </div>
-        <div className=' col-span-5'>
+        <div className=' md:col-span-6 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">
             <TypographyH1 className=" line-clamp-2 lg:text-xl  text-xl">{product.title}</TypographyH1>
             {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />}
@@ -88,7 +89,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             <ProductActionButton onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} />
           </div>
         </div>
-        <div className=' col-span-3'>
+        <div className=' col-span-12 lg:col-span-3'>
           <ProductBenefits />
         </div>
 

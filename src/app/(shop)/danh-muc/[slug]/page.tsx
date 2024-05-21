@@ -37,10 +37,10 @@ export default async function page({ params, searchParams }: { params: { slug: s
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
-            <div className='  col-span-2'>
+            <div className=' lg:col-span-2 col-span-12'>
               <FilterProduct />
             </div>
-            <div className=' col-span-10'>
+            <div className=' lg:col-span-10 col-span-12'>
               <div className=' flex items-center mb-4'>
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
                 <SortProduct />

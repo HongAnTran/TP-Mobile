@@ -36,7 +36,6 @@ export default class FetchApi {
       const apiUrl = queryString
         ? `${URL}${path}?${queryString}`
         : `${URL}${path}`;
-
       // Fetch with timeout
       const controller = new AbortController();
 
@@ -109,6 +108,7 @@ export default class FetchApi {
   }
 
   async get<TResponse>(url: string, init: ConfigAPi = {}): Promise<TResponse> {
+
     return this.request(url, "GET", undefined, init);
   }
 

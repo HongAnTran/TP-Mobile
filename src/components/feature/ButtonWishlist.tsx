@@ -13,9 +13,12 @@ import { useShopStore } from '@/providers/shop-store-provider'
 import LocalStorageService from '@/utils/localStorage'
 import { KEYS } from '@/consts/localStorage'
 import useWishlist from '@/hooks/useWishlist'
+import useProduct from '@/hooks/useProduct'
 
 export default function ButtonWishlist({ id, type = WishlistType.PRODUCT }: { id: number, type?: WishlistType }) {
   const { toggleItemToWishlist, checkIsContainWishlist } = useWishlist()
+  const { data } = useProduct()
+
   return (
     <TooltipProvider>
       <Tooltip delayDuration={100} disableHoverableContent  >

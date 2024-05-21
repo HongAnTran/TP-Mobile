@@ -1,15 +1,18 @@
 
 import { signIn } from "@/auth"
- 
-export function ButtonSignIn() {
+import { LoginForm } from "@/types/auth"
+import { ReactNode } from "react"
+
+export function ButtonSignIn({ type, children, info }: { children: ReactNode, type: "google" | "credentials", info?: LoginForm }) {
   return (
     <form
       action={async () => {
         "use server"
-        await signIn("google")
+       const res =   await signIn(type)
+       console.log(res)
       }}
     >
-      <button type="submit">Signin with Google</button>
+      {children}
     </form>
   )
 } 

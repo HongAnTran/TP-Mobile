@@ -7,9 +7,8 @@ import Link from "@/components/common/Link";
 import StoreIcon from '../icons/StoreIcon'
 import { NewsIcon } from '../icons'
 import { TypographyP } from '../ui/typography'
-import routes from '@/routes'
+import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
-import { getDeviceType } from '@/utils/device';
 import { Button } from '../ui/button';
 import {
   Sheet,
@@ -18,54 +17,61 @@ import {
 } from "@/components/ui/sheet"
 import Logo from '../common/Logo';
 import useGetTypeDevice from '@/hooks/useGetTypeDevice';
+import { useSession } from 'next-auth/react';
 interface HeaderItemProps { icon: ReactNode, text: string, href?: string, onClick?: () => void }
 
-const items: HeaderItemProps[] = [
-  {
-    icon: <StoreIcon />,
-    text: "Cửa hàng",
-    href: routes.stores
-  },
-  {
-    icon: <NewsIcon />,
-    text: "Tin tức",
-    href: routes.artice
-  },
 
-  {
-    icon: <CartHeader />,
-    text: "Giỏ hàng",
-    href: routes.cart
-
-  },
-  {
-    icon: <PersonIcon width={20} height={20} />,
-    text: "Đăng nhập",
-    href: routes.login
-
-
-  },
-]
 export default function HeaderItems() {
+  const { data, status } = useSession()
+  const customer = data?.user
+
+  console.log(data)
   const [open, setOpen] = useState(false)
   const type = useGetTypeDevice()
 
+  const customerItem = customer ? {
+    icon: <PersonIcon width={20} height={20} />,
+    text: customer.name,
+    href: privateToutes.account,
+  } : {
+    icon: <PersonIcon width={20} height={20} />,
+    text: "Đăng nhập",
+    href: routes.login
+  }
+
+  const items: HeaderItemProps[] = [
+    {
+      icon: <StoreIcon />,
+      text: "Cửa hàng",
+      href: routes.stores
+    },
+    {
+      icon: <NewsIcon />,
+      text: "Tin tức",
+      href: routes.artice
+    },
+
+    {
+      icon: <CartHeader />,
+      text: "Giỏ hàng",
+      href: routes.cart
+
+    },
+    customerItem
+
+  ]
   if (type !== "desktop") {
 
     return <div className=' justify-end   h-full  flex'>
-
       <Button variant="ghost" onClick={() => setOpen(true)} className=' p-0' >
         <HamburgerMenuIcon width={28} height={28} />
       </Button>
-
       <Sheet open={open} onOpenChange={(open) => setOpen(open)}>
-
         <SheetContent>
           <SheetHeader>
             <Logo className=' text-primary' />
-
           </SheetHeader>
-          <hr/>
+          <hr />
           <ul className=' flex flex-col gap-2'>
             {
               items.map((item, index) => {
@@ -109,8 +115,8 @@ function HeaderItem({ icon, text, href }: HeaderItemProps) {
 function HeaderItemMobile({ icon, text, href, onClick }: HeaderItemProps) {
   return <Link href={href ? href : "#"} onClick={onClick}>
     <div className=' flex    items-center justify-between py-3 border-b border-gray-200'>
-      {icon}   
-       <TypographyP >{text}</TypographyP>
+      {icon}
+      <TypographyP >{text}</TypographyP>
     </div>
   </Link>
 }

@@ -7,7 +7,8 @@ interface Customer {
   phone: string; // Số điện thoại liên hệ
   gender : CustomerGender
   birtday : Date | null
-  avatar_url : string
+  image : string
+  name : string
 }
 
 export type { Customer , CustomerGender}

@@ -5,7 +5,7 @@ import { sleep } from "@/utils";
 
 
 class ProductsService {
-  private url: string = "/products";
+  private url: string = "/product";
   private products: Product[] = JSON.parse(JSON.stringify(productsJson)) as Product[]
 
   constructor() { }
@@ -54,10 +54,7 @@ class ProductsService {
   }
 
   async getDetail(slug: string) {
-    // await sleep(3000)
-
-    return this.products.find(item => item.slug === slug)
-    // return fetchApi.get<Product>(`${this.url}/${id}`, {});
+    return fetchApi.get<Product>(`${this.url}/${slug}`);
   }
 }
 

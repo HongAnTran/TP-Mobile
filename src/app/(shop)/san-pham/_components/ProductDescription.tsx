@@ -11,7 +11,7 @@ export default function ProductDescription({ product }: { product: Product }) {
     <div className=' grid grid-cols-12 gap-8'>
       <div className=' col-span-12'>
         <Tabs defaultValue="infoTech" className="w-full">
-          <TabsList>
+          <TabsList >
             <TabsTrigger value="infoTech">
               <TypographyH2 className='  text-xl'>Thông số sản phẩm</TypographyH2>
             </TabsTrigger>
