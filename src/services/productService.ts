@@ -54,7 +54,8 @@ class ProductsService {
   }
 
   async getDetail(slug: string) {
-    return fetchApi.get<Product>(`${this.url}/${slug}`);
+    return this.products.find(item=>item.slug === slug)
+    // return fetchApi.get<Product>(`${this.url}/${slug}`);
   }
 }
 
