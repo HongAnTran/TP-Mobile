@@ -2,6 +2,7 @@
 
 
 export function getDeviceType() {
+
   const userAgent = navigator.userAgent.toLowerCase();
 
   const isMobileUA = /mobile|android|kindle|silk|midp|phone|(opera m(ob|in)i)|windows (phone|ce)|blackberry|bb|playbook|meego/.test(userAgent);

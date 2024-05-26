@@ -16,10 +16,11 @@ import { useRouter } from 'next/navigation'
 import { Sheet, SheetContent, SheetHeader } from '../ui/sheet'
 import Logo from '../common/Logo'
 import { getDeviceType } from '@/utils/device'
+import useGetTypeDevice from '@/hooks/useGetTypeDevice'
 
 export default function CompareProduct() {
   const { productsCompare, open, setOpen, removeProductToCompare, removeAll } = useCompareProduct()
-  const type = getDeviceType()
+  const type = useGetTypeDevice()
   const router = useRouter()
   if (!productsCompare.length) {
     return null

@@ -1,6 +1,6 @@
 import { MapPinFilledIcon } from '@/components/icons'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import { TypographyH1, TypographyH2, TypographyP } from '@/components/ui/typography'
+import {  TypographyH2, TypographyP } from '@/components/ui/typography'
 import React from 'react'
 
 export default function page() {

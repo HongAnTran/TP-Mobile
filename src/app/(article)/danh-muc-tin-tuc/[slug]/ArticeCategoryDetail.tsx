@@ -6,6 +6,6 @@ import Artice from '../../_components/Artice'
 export default function ArticeCategoryDetail({articeCategory , list} :{ articeCategory: CategoryArtice  , list : Article[]}) {
 
   return (
-   <Artice  artices={list} title={articeCategory.title}/>
+   <Artice  artices={list} />
   )
 }
