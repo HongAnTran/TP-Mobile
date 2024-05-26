@@ -34,7 +34,7 @@ export default function ProductImageCarousel({ images, alt, imageActive, setImag
         <CarouselContent>
           {images.map((img, index) => (
             <CarouselItem key={index}>
-              <Image src={img.src} alt={alt} width={500} height={500} />
+              <Image src={img.src} alt={alt} className='  object-contain w-[500px] h-[500px]' width={500} height={500} />
             </CarouselItem>
           ))}
         </CarouselContent>

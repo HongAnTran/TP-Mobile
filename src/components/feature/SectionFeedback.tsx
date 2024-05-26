@@ -47,8 +47,8 @@ export default function SectionFeedback() {
   ];
   return (
     <section className=' flex flex-col gap-4'>
-      <TypographyH3 className=' text-center uppercase text-primary'>Feedback từ khách hàng của TP Mobile</TypographyH3>
-      <div className=' grid grid-cols-2  lg:grid-cols-4 gap-4'>
+      <TypographyH3 className=' text-center uppercase text-primary '>Feedback từ khách hàng của TP Mobile</TypographyH3>
+      <div className=' grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4'>
         {feedbacks.map((feedback) => (
           <FeedbackCard key={feedback.id} feedback={feedback} >
           </FeedbackCard>

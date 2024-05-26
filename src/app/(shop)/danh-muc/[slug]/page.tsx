@@ -41,13 +41,15 @@ export default async function page({ params, searchParams }: { params: { slug: s
               <FilterProduct />
             </div>
             <div className=' lg:col-span-10 col-span-12'>
-              <div className=' flex items-center mb-4'>
+              <div className='items-center mb-4 hidden md:flex'>
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
                 <SortProduct />
               </div>
               <Suspense key={key} fallback={<p>Loading...</p>}>
-
-                <ProductCollectionList searchParams={searchParams} />
+                <ProductCollectionList searchParams={{
+                  category_id: caregory.id,
+                  ...searchParams
+                }} />
               </Suspense>
             </div>
           </div>

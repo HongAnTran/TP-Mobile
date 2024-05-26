@@ -47,12 +47,15 @@ export default function CartItem({ product, onDelete, onChangeQuantity, onChange
     }
   }
   return (
-    <li className=' py-4 border-y border-gray-200  items-center flex justify-between relative'>
-      <div className=' flex-shrink-0 flex gap-2 items-center min-w-[400px] max-w-[400px]'>
+    <li className=' py-4 border-y border-gray-200  md:items-center flex flex-col md:flex-row gap-4  justify-between relative'>
+      <div className=' flex-shrink-0 flex gap-2 items-center  min-w-[260px]  lg:min-w-[400px] max-w-[400px]'>
         <Checkbox checked={product.selected} onCheckedChange={(check) => {
           onChangeSelect?.(product, !!check.valueOf())
         }} />
+        <div className=' lg:w-[120px] lg:h-[120px] w-[80px] h-[80px] '>
+
         <Image alt={product.title + product.variant_title} src={product.image} width={120} height={120} />
+        </div>
         <div>
           <Link className=' font-semibold' href={`${routes.products}/${product.slug}`}>{product.title}</Link>
           <div className=' mt-2 flex gap-1'>
@@ -66,7 +69,7 @@ export default function CartItem({ product, onDelete, onChangeQuantity, onChange
         </div>
       </div>
       <ProductQuantity quantity={quantity} handleQuantity={handleQuantity} label={null} disableInput />
-      <PriceText price={product.price} />
+      <PriceText price={product.price} className=' hidden  lg:inline-block' />
       <PriceText className=' text-red-500' price={product.line_price} />
       <Button onClick={() => onDelete?.(product.id)} size="icon" variant="link" className=' absolute bottom-2 right-2' ><CloseCircleIcon /></Button>
     </li>

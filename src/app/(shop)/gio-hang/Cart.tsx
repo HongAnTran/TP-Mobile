@@ -42,21 +42,21 @@ export default function Cart() {
 
   return (
     <div className='  grid grid-cols-12 gap-4 mt-4 '>
-      <div className=' col-span-9  h-full'>
+      <div className=' lg:col-span-9  col-span-12 h-full'>
         <BoxLayout className=' h-full flex flex-col'>
           <div className=' mb-4 flex items-center gap-2 '>
             <Checkbox checked={isCheckAll} onCheckedChange={(value) => {
               handleCheckAllItems(!!value.valueOf())
             }} /> <TypographyH3>Chọn Tất Cả</TypographyH3>     <TypographySpan >({cart.item_count} Sản phẩm)</TypographySpan>
           </div>
-          <div className=' mb-4 flex items-center  gap-2 '>
-            <div className='  min-w-[400px] max-w-[400px] flex-shrink-0  pl-4'>
+          <div className=' hidden mb-4 md:flex items-center  gap-2 '>
+            <div className=' min-w-[260px]  lg:min-w-[400px] max-w-[400px] flex-shrink-0  pl-4'>
               <TypographySpan className='' >Chi Tiết</TypographySpan>
             </div>
             <div className=' flex  flex-1 justify-around'>
               <TypographySpan >Số Lượng</TypographySpan>
-              <TypographySpan >Giá</TypographySpan>
-              <TypographySpan >Tổng</TypographySpan>
+              <TypographySpan  className='  hidden lg:inline-block'>Giá</TypographySpan>
+              <TypographySpan  >Tổng</TypographySpan>
             </div>
           </div>
           <ul className=' max-h-[340px] flex-1 overflow-auto px-2'>
@@ -76,7 +76,7 @@ export default function Cart() {
         </BoxLayout>
 
       </div>
-      <div className=' col-span-3 flex flex-col gap-4'>
+      <div className=' lg:col-span-3 col-span-12 flex flex-col gap-4'>
         <CartCoupon />
         <CartTotal cart={cart} />
         <BoxLayout >

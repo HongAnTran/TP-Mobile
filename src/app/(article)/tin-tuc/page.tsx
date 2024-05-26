@@ -11,7 +11,7 @@ export default async function page() {
       <div className=' mb-8'>
         <Breadcrumbs breadcrumbsList={[{ label: "Tin tức", isActive: true }]} />
       </div>
-      <Artice artices={artices} title="Tin tức" />
+      <Artice artices={artices}  />
     </>
 
   );

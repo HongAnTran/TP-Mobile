@@ -1,15 +1,15 @@
 import Link from "@/components/common/Link";
 import { Article } from "@/types/article";
 import ArticleCardList from "@/components/common/ArticleCardList";
-import { TypographyH1, TypographyH4 } from "@/components/ui/typography";
+import {  TypographyH4 } from "@/components/ui/typography";
 
-export default function Artice({ title, artices }: { title: string, artices: Article[] }) {
+export default function Artice({ artices }: {  artices: Article[] }) {
   return (
     <>
       {artices && (
         <div >
           <div className="grid gap-10 md:grid-cols-3 lg:gap-10 ">
-            <div className=" col-span-2">
+            <div className=" lg:col-span-2 col-span-3">
               {artices.slice(0, 1).map(article => (
                 <ArticleCardList
                   key={article.id}
@@ -19,7 +19,7 @@ export default function Artice({ title, artices }: { title: string, artices: Art
                 />
               ))}
             </div>
-            <div className=" col-span-1 flex flex-col justify-between">
+            <div className=" hidden lg:col-span-1 col-span-3 lg:flex lg:flex-col flex-warp justify-between">
               {artices.slice(1, 3).map(article => (
                 <ArticleCardList
                   key={article.id}

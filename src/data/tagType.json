@@ -1,12 +1,42 @@
 [
   {
     "id": 1,
-    "name": "Hệ điều hành",
-    "description": "Hệ điều hành của sản phẩm"
+    "name": "Hệ điều hành & CPU",
+    "description": ""
   },
   {
     "id": 2,
-    "name": "CPU & RAM",
-    "description": "Hệ điều hành của sản phẩm"
+    "name": "RAM",
+    "description": ""
+  },
+  {
+    "id": 3,
+    "name": "Màn hình",
+    "description": ""
+  },
+  {
+    "id": 4,
+    "name": "Camera",
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "Pin, Sạc",
+    "description": ""
+  },
+  {
+    "id": 7,
+    "name": "Kết nối",
+    "description": ""
+  },
+  {
+    "id": 8,
+    "name": "Tiện ích",
+    "description": ""
+  },
+  {
+    "id": 9,
+    "name": "Thông tin chung",
+    "description": ""
   }
 ]

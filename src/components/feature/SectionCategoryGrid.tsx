@@ -23,7 +23,7 @@ export default async  function SectionCategoryGrid({ title, productIds }: Sectio
   return (
     <section className=' flex flex-col gap-4'>
       <TypographyH3 className=' text-center uppercase text-primary'>{title}</TypographyH3>
-      <div className=' grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+      <div className=' grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4'>
         {products.map((product, index) => (
             <ProductCard product={product} key={index}/>
         ))}

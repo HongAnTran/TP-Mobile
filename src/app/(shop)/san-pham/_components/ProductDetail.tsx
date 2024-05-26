@@ -15,10 +15,8 @@ import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
-import useProduct from '@/hooks/useProduct'
 
 export default function ProductDetail({ product }: { product: Product }) {
-  const { data } = useProduct()
   const { handleAddtoCart } = useCart()
 
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
@@ -70,7 +68,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             <TypographyP >Mã sản phẩm: <b className=' text-blue-500'>{variantActive.sku}</b></TypographyP>
             <ButtonCompareProduct product={product} />
 
-            <TypographyP >{product.short_description}</TypographyP>
+            <TypographyP className=' line-clamp-2'>{product.short_description}</TypographyP>
 
 
             <ProductShowPrice variant={variantActive} />

@@ -106,7 +106,7 @@ export default function CompareProductPage() {
                   </TableHead>
 
                 }
-                return <TableHead className=' flex-1 items-center text-center' key={index}>
+                return <TableHead className=' hidden md:block flex-1 items-center text-center' key={index}>
                   <div className=' flex justify-center items-center'>
                     <TypographyH3> Thêm sản phẩm</TypographyH3>
                     {/* <PlusCircledIcon /> */}
@@ -188,8 +188,9 @@ function ProductCardCompare({ product }: { product: Product }) {
 
   return <Card className=''>
     <CardContent className="flex flex-col gap-2 justify-center items-center   py-4">
-
+  <div className=' md:w-[200px] md:h-[200px]  w-[80px] h-[80px]'>
       <Image src={product.image.src} alt={product.title} width={200} height={200} />
+  </div>
 
       <Link href={`${routes.products}/${product.slug}`} >
 

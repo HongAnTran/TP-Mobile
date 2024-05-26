@@ -1,14 +1,12 @@
 
-
 import React from 'react'
 import { TypographyH3 } from '../ui/typography'
 import Link from "@/components/common/Link";
-
 import { Button } from '../ui/button'
 import { Article } from '@/types/article'
-import ArticleCard from '../common/ArticleCard'
 import routes from '@/routes'
 import json from "@/data/article.json"
+import ArticleCardList from '../common/ArticleCardList';
 
 export default function SectionArticles() {
   const articles: Article[] = JSON.parse(JSON.stringify(json))
@@ -20,16 +18,10 @@ export default function SectionArticles() {
   return (
     <section className=' flex flex-col gap-4'>
       <TypographyH3 className=' text-center uppercase text-primary'>Tin tức</TypographyH3>
-      <div className="grid   grid-cols-12 gap-4">
-        <div className=' col-span-6'>
-          <ArticleCard article={articles[0]} />
-        </div>
-        <div className=' col-span-6'>
-          {articles.slice(0, 2).map((article) => (
-            <ArticleCard article={article} classNameImage=' h-[100px]' key={article.id} />
-          ))}
-        </div>
-        {/* <div className="row-span-2 col-span-2 ...">03</div> */}
+      <div className="grid  grid-cols-1 md:grid-cols-2 gap-6">
+        {articles.slice(0,4).map((article) => (
+          <ArticleCardList  article={article}  key={article.id}  aspect="landscape" />
+        ))}
       </div>
 
       <div className=' flex gap-4 justify-center mt-2'>

@@ -34,7 +34,7 @@ export default function ProductCard({ product }: { product: Product }) {
       >
 
 
-        <Card className=' border border-gray-300 group relative'>
+        <Card className=' border border-gray-300 group relative h-full'>
           <CardContent className="flex flex-col gap-2 aspect-square py-4">
             <div className=' relative w-full aspect-square overflow-hidden' >
               <Link href={`${routes.products}/${product.slug}`} prefetch={false} >
@@ -44,16 +44,16 @@ export default function ProductCard({ product }: { product: Product }) {
                 e.preventDefault();
                 e.stopPropagation()
                 setOpen(true)
-              }} className='   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
+              }} className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
             </div>
             <Link href={`${routes.products}/${product.slug}`} >
 
               <CardTitle className='   hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
             </Link>
 
-            <div className=' flex  items-center gap-2'>
+            <div className=' flex  flex-col md:flex-row  md:items-center gap-2'>
               <PriceText className='text-red-500 font-bold' price={variantMinPrice.price} />
-              {variantMinPrice.compare_at_price > 0 ? <PriceText className='  text-sm line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
+              {variantMinPrice.compare_at_price > 0 ? <PriceText className=' text-xs   line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
             </div>
             <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
               {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />}

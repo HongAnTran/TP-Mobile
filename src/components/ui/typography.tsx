@@ -23,7 +23,7 @@ export function TypographyH2({ className, children }: Props) {
 
 export function TypographyH3({ className, children }: Props) {
   return (
-    <h3 className={cn("  text-lg font-semibold ", className)}>
+    <h3 className={cn("  text-base md:text-lg font-semibold ", className)}>
       {children}
     </h3>
   )

@@ -1,9 +1,5 @@
-
 "use client"
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
@@ -14,7 +10,7 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       retry: 0,
-      staleTime : 2000
+      staleTime : 200
     }
   }
 })

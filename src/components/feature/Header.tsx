@@ -40,7 +40,7 @@ export default function Header() {
 function HeaderTop() {
   return (
     <div className=' flex   justify-between  items-center  py-2    bg-secondary '>
-      <TypographyH4 className=' text-xs  font-semibold' >TP Mobile Store - Bán Ipad có tâm nhứt Sài Gòn</TypographyH4>
+      <TypographyH4 className=' md:text-xs text-[10px]  font-semibold' >TP Mobile Store - Bán Ipad có tâm nhứt Sài Gòn</TypographyH4>
       <div className=' flex gap-4'>
         <Link href={routes.wishlist} title='Yêu thích của bạn'>
           <HeartIcon className=' text-white' />

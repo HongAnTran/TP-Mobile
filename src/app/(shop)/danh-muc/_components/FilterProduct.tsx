@@ -94,7 +94,7 @@ export default function FilterProduct() {
   return (
     <div>
       <TypographyP className=' font-bold  text-xl'>Bộ lọc</TypographyP>
-      <Accordion type="multiple" defaultValue={["fil-0", "fil-1", "fil-2", "fil-3"]}  >
+      <Accordion type="multiple"  >
         {filters.map((item, index) => {
           return (
             <AccordionItem value={`fil-${index}`} key={index} >

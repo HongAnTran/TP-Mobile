@@ -17,7 +17,7 @@ import useProduct from '@/hooks/useProduct'
 
 export default function ButtonWishlist({ id, type = WishlistType.PRODUCT }: { id: number, type?: WishlistType }) {
   const { toggleItemToWishlist, checkIsContainWishlist } = useWishlist()
-  const { data } = useProduct()
+  // const { data } = useProduct()
 
   return (
     <TooltipProvider>

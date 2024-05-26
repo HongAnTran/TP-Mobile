@@ -1,77 +1,52 @@
 [
   {
-    "id": 3,
-    "title": "iPad Air",
-    "description": "Thin, light, and powerful",
+    "id": 1,
+    "title": "Máy tính bảng",
+    "description": "",
     "image": "ipad-air.jpg",
-    "slug": "ipad-air",
+    "slug": "may-tinh-bang",
     "status": 1,
-    "type": 1
+    "type": 1,
+    "parent_id": null
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "iPad Pro",
-    "description": "The ultimate iPad experience",
+    "description": "",
     "image": "ipad-pro.jpg",
     "slug": "ipad-pro",
     "status": 1,
-    "type": 1
-  },
-  {
-    "id": 7,
-    "title": "iPad Mini",
-    "description": "A great iPhone for everyday use",
-    "image": "iphone-11.jpg",
-    "slug": "iphone-11",
-    "status": 1,
-    "type": 1
-  },
-  {
-    "id": 1,
-    "title": "iPhone X",
-    "description": "The latest iPhone model",
-    "image": "iphone-x.jpg",
-    "slug": "iphone-x",
-    "status": 1,
-    "type": 1
+    "type": 1,
+    "parent_id": 1
   },
   {
     "id": 2,
-    "title": "iPhone 12 Pro",
-    "description": "Powerful iPhone with advanced features",
-    "image": "iphone-12-pro.jpg",
-    "slug": "iphone-12-pro",
+    "title": "iPad Air",
+    "description": "",
+    "image": "ipad-air.jpg",
+    "slug": "ipad-air",
     "status": 1,
-    "type": 1
-  },
-
-
-  {
-    "id": 5,
-    "title": "Apple Pencils",
-    "description": "Learn how to get the most out of your iPhone and iPad",
-    "image": "ios-tips-tricks.jpg",
-    "slug": "apple-pencil",
-    "status": 1,
-    "type": 1
+    "type": 1,
+    "parent_id": 1
   },
   {
     "id": 6,
-    "title": "Macbook Pro",
-    "description": "Stay up-to-date with the latest iOS features and improvements",
-    "image": "ios-updates.jpg",
-    "slug": "macbook-pro",
+    "title": "iPad",
+    "description": "",
+    "image": "iphone-11.jpg",
+    "slug": "ipad",
     "status": 1,
-    "type": 1
+    "type": 1,
+    "parent_id": 1
   },
-
   {
-    "id": 9,
-    "title": "Macbook air",
-    "description": "Protect your iPhone and iPad with these security tips",
-    "image": "ios-security.jpg",
-    "slug": "macbook-air",
+    "id": 3,
+    "title": "iPad Mini",
+    "description": "",
+    "image": "iphone-11.jpg",
+    "slug": "ipad-mini",
     "status": 1,
-    "type": 1
+    "type": 1,
+    "parent_id": 1
   }
 ]

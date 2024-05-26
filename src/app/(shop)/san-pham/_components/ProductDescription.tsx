@@ -1,7 +1,6 @@
 import React from 'react'
 import { Product, ProductTypeSpecifications } from '@/types/product'
-import { TypographyH2, TypographyH4, TypographySpan } from '@/components/ui/typography'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import typesJson from "@/data/tagType.json"
 export default function ProductDescription({ product }: { product: Product }) {
   const types = JSON.parse(JSON.stringify(typesJson)) as ProductTypeSpecifications[]
@@ -9,34 +8,42 @@ export default function ProductDescription({ product }: { product: Product }) {
 
   return (
     <div className=' grid grid-cols-12 gap-8'>
-      <div className=' col-span-12'>
-        <Tabs defaultValue="infoTech" className="w-full">
-          <TabsList >
-            <TabsTrigger value="infoTech">
-              <TypographyH2 className='  text-xl'>Thông số sản phẩm</TypographyH2>
-            </TabsTrigger>
-            <TabsTrigger value="des">
-              <TypographyH2 className='  text-xl'>Mô tả sản phẩm</TypographyH2>
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="infoTech">
-            {product.specifications.length ? <div className=' flex flex-col gap-4'>
-              {types.map(type => {  
-                return <div className=" flex flex-col gap-2" key={type.id}><TypographyH4 >{type.name}</TypographyH4>
-                  <ul className='  list-none mt-2 max-w-[300px]'>
-                    {product.specifications.filter((item)=>item.type_id === type.id).map(item=>{
-                      return <li className=' flex  items-center justify-between ' key={item.id}><TypographySpan  className=' font-bold'>{item.name} </TypographySpan> <TypographySpan >{item.value} </TypographySpan></li>
-                    })}
-                  </ul>
-                </div>
-              })}
-            </div> : <div>
-              Sản phẩm chưa có thông số
-            </div>}
+      <div className=' col-span-8'>
+        <TypographyH2 className='  text-xl pb-2 border-b border-gray-300 mb-2'>Mô tả sản phẩm</TypographyH2>
+        <div className=' max-h-[600px] overflow-y-auto  mx-1 p-2  bg-white ' dangerouslySetInnerHTML={{ __html: product.description_html || "Hiện chưa có mô tả" }}></div>
+      </div>
+      <div className=' col-span-4'>
+        <TypographyH2 className='  text-xl  pb-2 border-b border-gray-300 mb-2'>Cấu hình {product.title}</TypographyH2>
+        {product.specifications.length ? <div className=' w-full rounded-md border border-gray-200 p-4'>
+          {types.map((type) => {
+            const speList = product.specifications.filter(item => item.type_id === type.id)
+            return (
+              <div key={type.id}>
+                {speList.length ? <>
+                  <TypographyP className=' rounded text-red-500  bg-[#f1f1f1] p-[10px] font-bold'>
+                    {type.name}
+                  </TypographyP>
+                  <div className=' p-2'>
+                    {speList.map(spes => {
+                      return (<li key={spes.id} className='  flex items-center border-b py-1 '>
+                        <TypographyP className=' font-semibold w-1/2'>{spes.name}:</TypographyP>
+                        <div className=' text-right  w-1/2'>
+                          {spes.value.map(item => {
+                            return (<TypographyP className=' font-semibold' key={item}>{item}</TypographyP>)
+                          })}
 
-          </TabsContent>
-          <TabsContent value="des">  <div dangerouslySetInnerHTML={{ __html: product.description_html || "Hiện chưa có mô tả" }}></div></TabsContent>
-        </Tabs>
+                        </div>
+                      </li>)
+                    })}
+                  </div>
+                </> : null}
+              </div>
+            )
+          })}
+        </div>
+          : <div>
+            Sản phẩm chưa có thông số
+          </div>}
       </div>
 
     </div>

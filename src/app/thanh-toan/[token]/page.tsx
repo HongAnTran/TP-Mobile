@@ -1,6 +1,5 @@
 import React from 'react'
 import Checkout from './Checkout'
-import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import OrderServiceApi from '@/services/orderService'
 
 export default async function page({ params }: { params: { token: string } }) {

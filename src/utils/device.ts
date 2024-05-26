@@ -1,3 +1,6 @@
+"use client"
+
+
 export function getDeviceType() {
   const userAgent = navigator.userAgent.toLowerCase();
 

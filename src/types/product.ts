@@ -19,7 +19,7 @@ interface Product {
   barcode: string | null
   options: ProductOption[]
   short_description: string
-  tags : ProductTags[]
+  tags: ProductTags[]
   // metadata
   create_id: number
   store_id: number
@@ -36,6 +36,8 @@ interface Product {
   meta_keywords: string
 }
 
+// type ProductList = Pick<Product, "id"|"title" | "slug" |"">
+
 interface ProductVariant {
   barcode: null | string,
   compare_at_price: number,
@@ -48,9 +50,7 @@ interface ProductVariant {
   sku: string,
   title: string,
   updated_at: null | string,
-  inventory_management: null,
   inventory_quantity: number,
-  old_inventory_quantity: number,
   image_id: number,
   available: boolean,
 }
@@ -80,7 +80,7 @@ interface ProductSpecifications {
   id: number
   type_id: number
   name: string
-  value: string | number
+  value: string[]
   description?: string
 }
 interface ProductTypeSpecifications {
@@ -90,7 +90,7 @@ interface ProductTypeSpecifications {
 }
 
 
-type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode" > & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode"> & {
   id: number,
   line_price: number
   price: number
@@ -103,7 +103,7 @@ type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "categ
   variant_options: string[]
   quantity: number
   image: string
-  selected : boolean
+  selected: boolean
 }
 interface ProductRating {
   id: number,
