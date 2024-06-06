@@ -35,7 +35,7 @@ export default function SocialList({ itemClass = "w-4 h-4" }: { itemClass?: stri
       {
         items.map((item, index) => {
           return <Link title={item.title} target="_blank" href={item.href} key={index} className=' 
-          flex items-center justify-center duration-200  rounded-full w-8 h-8  border border-black
+          flex items-center justify-center duration-200  rounded-full w-8 h-8  border border-white
              hover:scale-110
              transition-transform
           '>

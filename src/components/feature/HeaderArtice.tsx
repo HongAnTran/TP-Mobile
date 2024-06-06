@@ -32,7 +32,7 @@ export default async function HeaderArtice() {
       <div className=' container '>
         <div className=' flex gap-10 items-center flex-col  md:flex-row  py-4'>
           <div className=' flex-shrink-0'>
-            <Logo className=' text-primary' />
+            <Logo  />
           </div>
           <div className=' flex-1  '>
 

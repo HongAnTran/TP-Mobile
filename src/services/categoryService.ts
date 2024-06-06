@@ -1,26 +1,21 @@
 
+import fetchApi from "@/api/instances/baseInstance";
 import categorysJson from "@/data/categoryProduct.json";
 import {  CategoryProduct} from "@/types/categoryProduct";
 
 
 class CategoryService {
-  private url: string = "/categorys";
-  private categorys = JSON.parse(JSON.stringify(categorysJson)) as CategoryProduct[]
-
+  private url: string = "/category-product";
   constructor() { }
 
   async getList(params?: { limit: number }) {
-
-    return this.categorys
-    // return fetchApi.get<Product[]>(this.url, {
-    //   params: params,
-
-    // });
+    return fetchApi.get<CategoryProduct[]>(this.url, {
+      params: params,
+    });
   }
 
   async getDetail(slug: string) {
-    return this.categorys.find(item => item.slug === slug)
-    // return fetchApi.get<Product>(`${this.url}/${id}`, {});
+    return fetchApi.get<CategoryProduct>(`${this.url}/${slug}`, {});
   }
 }
 

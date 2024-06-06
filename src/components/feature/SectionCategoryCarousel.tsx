@@ -9,16 +9,16 @@ import ProductCarousel from '../common/ProductCarousel'
 
 interface SectionCategoryCarouselProps {
   title: string
-  productIds?: Product["id"][]
+  productIds: Product["id"][]
 }
 
 export default async function SectionCategoryCarousel({ title, productIds }: SectionCategoryCarouselProps) {
-  const products = await ProductsServiceApi.getList()
+  const products = await ProductsServiceApi.getList({ ids: productIds.toString() })
 
-  if (!products.length) {
+  if (!products.total) {
     return null
   }
   return (
-    <ProductCarousel title={title} products={products} />
+    <ProductCarousel title={title} products={products.products} />
   )
 }

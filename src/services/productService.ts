@@ -1,61 +1,32 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { Product } from "@/types/product";
-import productsJson from "@/data/product.json"
-import { sleep } from "@/utils";
-
-
+import { ConfigAPi } from "@/types/api";
+import { Product, Products, ProductsParams, ProductStatus } from "@/types/product";
 class ProductsService {
-  private url: string = "/product";
-  private products: Product[] = JSON.parse(JSON.stringify(productsJson)) as Product[]
+  private url: string = "/products";
 
   constructor() { }
 
-  async getList(params?: { limit?: number, category_id?: number, keyword?: string, ids?: Product["id"][] }) {
-
-    let resuilt = [...this.products]
-    if (params) {
-
-      if (params.category_id) {
-        resuilt = resuilt.filter(item => item.category_id === params.category_id)
-      }
-
-      if (typeof params.keyword === "string") {
-        if (!params.keyword) {
-          resuilt = []
-        } else {
-          resuilt = resuilt.filter(item => item.title.toLocaleLowerCase().includes(params.keyword?.toLocaleLowerCase() || ""))
-        }
-      }
-      if (params.ids) {
-        const data: Product[] = []
-        params.ids.forEach(id => {
-          const find = resuilt.find(item => id === item.id)
-          if (find) {
-            data.push(find)
-          }
-        })
-        resuilt = data
-      }
-
-      if (params.limit) {
-        resuilt = resuilt.slice(0, params.limit)
-      }
-
-
+  async getList(params?: ProductsParams, init?: ConfigAPi) {
+    const paramsDefault: ProductsParams = {
+      ...params,
+      status: ProductStatus.SHOW
     }
-
-
-    // await sleep(3000)
-    return resuilt
-    // return fetchApi.get<Product[]>(this.url, {
-    //   params: params,
-
-    // });
+    return fetchApi.get<Products>(this.url, {
+      params: paramsDefault,
+      cache: "no-cache",
+      ...init
+    });
   }
 
   async getDetail(slug: string) {
-    return this.products.find(item=>item.slug === slug)
-    // return fetchApi.get<Product>(`${this.url}/${slug}`);
+    const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
+      cache: "no-cache"
+    });
+    return {
+      ...product,
+      image: product.images[0]
+    }
+
   }
 }
 

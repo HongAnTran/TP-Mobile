@@ -29,7 +29,7 @@ export default function ProductDescription({ product }: { product: Product }) {
                         <TypographyP className=' font-semibold w-1/2'>{spes.name}:</TypographyP>
                         <div className=' text-right  w-1/2'>
                           {spes.value.map(item => {
-                            return (<TypographyP className=' font-semibold' key={item}>{item}</TypographyP>)
+                            return (<TypographyP key={item}>{item}</TypographyP>)
                           })}
 
                         </div>

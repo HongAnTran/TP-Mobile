@@ -1,6 +1,6 @@
 enum CategoryProductStatus {
   DRAFT,
-  SHOW,
+  SHOW
 }
 
 

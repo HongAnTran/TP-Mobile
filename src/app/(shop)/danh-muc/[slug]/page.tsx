@@ -7,18 +7,27 @@ import routes from '@/routes'
 import FilterProduct from "../_components/FilterProduct"
 import { SortProduct } from '@/components/feature/SortProduct'
 import ProductCollectionList from '../_components/ProductCollectionList'
+import ErrorRespone from '@/api/error'
 
+
+async function getCategoryDetail(slug: string) {
+  try {
+    const caregory = await CategoryServiceApi.getDetail(slug)
+    return caregory
+  } catch (error) {
+    if (error instanceof ErrorRespone) {
+      if (error.statusCode === 404) {
+        notFound()
+      }
+    }
+    throw error
+  }
+}
 
 export default async function page({ params, searchParams }: { params: { slug: string }, searchParams: { [x: string]: string } }) {
   const slug = params.slug
-  const caregory = await CategoryServiceApi.getDetail(slug)
-
-  if (!caregory) {
-    notFound()
-  }
-
+  const caregory = await getCategoryDetail(slug)
   const key = JSON.stringify(searchParams)
-
   return (
     <div className=' my-8'>
       <div className=' container'>

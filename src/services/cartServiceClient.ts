@@ -73,7 +73,7 @@ class CartServiceClient {
       line_price_original: variant.price * quantity,
       variant_id: variant.id,
       product_id: product.id,
-      image: imgSrc ? imgSrc.src : product.image.src, // You need to provide the image URL here
+      image: imgSrc ? imgSrc.src : product.images?.[0].src, // You need to provide the image URL here
       product_title: product.title,
       variant_title: variant.title,
       variant_options: [variant.option1, variant.option2, variant.option3].filter(opt => opt), // Filter out empty options

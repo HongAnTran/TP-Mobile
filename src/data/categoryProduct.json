@@ -6,7 +6,6 @@
     "image": "ipad-air.jpg",
     "slug": "may-tinh-bang",
     "status": 1,
-    "type": 1,
     "parent_id": null
   },
   {
@@ -16,7 +15,6 @@
     "image": "ipad-pro.jpg",
     "slug": "ipad-pro",
     "status": 1,
-    "type": 1,
     "parent_id": 1
   },
   {
@@ -26,17 +24,15 @@
     "image": "ipad-air.jpg",
     "slug": "ipad-air",
     "status": 1,
-    "type": 1,
     "parent_id": 1
   },
   {
     "id": 6,
-    "title": "iPad",
+    "title": "iPad Gen",
     "description": "",
     "image": "iphone-11.jpg",
-    "slug": "ipad",
+    "slug": "ipad-gen",
     "status": 1,
-    "type": 1,
     "parent_id": 1
   },
   {
@@ -46,7 +42,6 @@
     "image": "iphone-11.jpg",
     "slug": "ipad-mini",
     "status": 1,
-    "type": 1,
     "parent_id": 1
   }
 ]

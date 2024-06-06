@@ -1,39 +1,38 @@
+import { FilterBase } from "./common";
+
 type ProductId = number
 enum ProductStatus {
-  HIDDEN,
-  SHOW,
   DRAFT,
+  SHOW,
 }
 
 interface Product {
   id: ProductId;
   title: string;
   slug: string
-  description_html: string
-  vendor: string
+  description_html: string | null
+  vendor: string | null
   available: boolean
   status: ProductStatus,
   created_at: string
-  updated_at: string
-  published_at: string
+  updated_at: string | null
+  published_at: string | null
   barcode: string | null
-  options: ProductOption[]
-  short_description: string
-  tags: ProductTags[]
+  options: ProductOption[] | null
+  short_description: string | null
+  tags: ProductTags[] | null
   // metadata
-  create_id: number
-  store_id: number
   category_id: number
   images: ProductImage[]
-  image: ProductImage,
-  variants: ProductVariant[]
+  image: ProductImage | null
+  variants: ProductVariant[] | null
   category_title: string
   rating: ProductRating | null
-  specifications: ProductSpecifications[]
+  specifications: ProductSpecifications[] | null
   // meta
-  meta_title: string
-  meta_description: string
-  meta_keywords: string
+  meta_title: string | null
+  meta_description: string | null
+  meta_keywords: string | null
 }
 
 // type ProductList = Pick<Product, "id"|"title" | "slug" |"">
@@ -110,5 +109,18 @@ interface ProductRating {
   count: number
   rate: number
 }
+
+
+
+interface ProductsParams extends FilterBase {
+  include?: string[],
+  status?: ProductStatus
+  category_id?: Product["category_id"]
+  ids?: string
+}
+interface Products {
+  products: Product[]
+  total: number
+}
 export { ProductStatus }
-export type { Product, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };
+export type { Product, Products, ProductsParams, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };

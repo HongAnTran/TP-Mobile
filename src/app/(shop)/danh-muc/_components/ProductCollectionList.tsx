@@ -4,11 +4,19 @@ import ProductsServiceApi from '@/services/productService'
 import { Product } from '@/types/product'
 
 interface ProductCollectionListProps {
-  searchParams: { limit?: number, category_id?: number, keyword?: string, ids?: Product["id"][] }
+  searchParams: { skip?: number, category_id?: number, keyword?: string, ids?: Product["id"][] }
 }
 
 export default async function ProductCollectionList({ searchParams }: ProductCollectionListProps) {
-  const products = await ProductsServiceApi.getList(searchParams)
+  const { products } = await ProductsServiceApi.getList({
+    category_id: searchParams.category_id,
+    take: 20
+  })
+  if (!products.length) {
+    return (
+      <div>Chưa có sản phẩm</div>
+    )
+  }
   return (
     <div className=' grid lg:grid-cols-4 gap-4 grid-cols-2'>
       {products.map((pro) => {

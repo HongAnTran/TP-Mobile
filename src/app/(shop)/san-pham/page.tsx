@@ -35,7 +35,7 @@ export default async function page() {
 
               </div>
               <div className=' grid grid-cols-4 gap-4'>
-                {products.map((pro) => {
+                {products.products.map((pro) => {
                   return <ProductCard key={pro.id} product={pro} />
                 })}
               </div>

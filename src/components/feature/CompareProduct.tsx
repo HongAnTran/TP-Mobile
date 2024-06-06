@@ -15,7 +15,6 @@ import SETTINGS from '@/consts/settings'
 import { useRouter } from 'next/navigation'
 import { Sheet, SheetContent, SheetHeader } from '../ui/sheet'
 import Logo from '../common/Logo'
-import { getDeviceType } from '@/utils/device'
 import useGetTypeDevice from '@/hooks/useGetTypeDevice'
 
 export default function CompareProduct() {
@@ -85,7 +84,7 @@ export default function CompareProduct() {
       <Sheet open={open && type === "mobile"} onOpenChange={(open) => setOpen(open)} >
         <SheetContent className=' block md:hidden'>
           <SheetHeader>
-            <Logo className=' text-primary' />
+            <Logo />
           </SheetHeader>
           <hr />
           <ul className=' flex flex-col gap-2'>

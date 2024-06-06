@@ -21,9 +21,8 @@ import Rating from '../Rating'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 
 export default function ProductCard({ product }: { product: Product }) {
-  const variantMinPrice = findVariantMinPrice(product.variants)
+  const variantMinPrice = findVariantMinPrice(product.variants || [])
   const [open, setOpen] = useState(false)
-
   return (
     <>
 

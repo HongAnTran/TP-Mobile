@@ -5,6 +5,7 @@ export default class FetchApi {
   init: ConfigAPi = {
     baseURL: "",
     method: "GET",
+    
   };
 
   interceptors: Interceptor[] = [];
@@ -33,9 +34,11 @@ export default class FetchApi {
       const path = url ? url : urlReq;
       // Convert params to query string
       const queryString = new URLSearchParams(params).toString();
+
       const apiUrl = queryString
         ? `${URL}${path}?${queryString}`
         : `${URL}${path}`;
+        
       // Fetch with timeout
       const controller = new AbortController();
 
@@ -47,6 +50,8 @@ export default class FetchApi {
         url: path,
         method: method,
         body: data ? JSON.stringify(data) : undefined,
+        params : params
+        
       };
 
       for (const interceptor of this.interceptors) {
