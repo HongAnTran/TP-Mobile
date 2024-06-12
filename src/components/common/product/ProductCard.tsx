@@ -37,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <CardContent className="flex flex-col gap-2 aspect-square py-4">
             <div className=' relative w-full aspect-square overflow-hidden' >
               <Link href={`${routes.products}/${product.slug}`} prefetch={false} >
-                <ProductCardImage images={product.images} title={product.title} />
+                <ProductCardImage featured_image={product.featured_image} images={product.images} title={product.title} />
               </Link>
               <Button onClick={(e) => {
                 e.preventDefault();
@@ -79,9 +79,9 @@ export default function ProductCard({ product }: { product: Product }) {
   )
 }
 
-function ProductCardImage({ images, title }: Pick<Product, "images" | "title">) {
-  const firstImage = images?.[0]?.src
-  const secondImage = images?.[1]?.src
+function ProductCardImage({ images, title , featured_image}: Pick<Product, "images" | "title" | "featured_image">) {
+  const firstImage = images?.[0] || featured_image
+  const secondImage = images?.[1]
   return (
     <>
       <Image src={firstImage} alt={title} width={600} height={600} className={cn(

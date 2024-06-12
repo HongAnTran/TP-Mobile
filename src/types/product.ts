@@ -18,17 +18,19 @@ interface Product {
   updated_at: string | null
   published_at: string | null
   barcode: string | null
-  options: ProductOption[] | null
+  options: ProductOption[]
   short_description: string | null
   tags: ProductTags[] | null
   // metadata
   category_id: number
-  images: ProductImage[]
-  image: ProductImage | null
-  variants: ProductVariant[] | null
+  images: string[]
+  featured_image: string
+
+  // image: ProductImage | null
+  variants: ProductVariant[]
   category_title: string
   rating: ProductRating | null
-  specifications: ProductSpecifications[] | null
+  specifications: ProductSpecifications[]
   // meta
   meta_title: string | null
   meta_description: string | null
@@ -50,18 +52,18 @@ interface ProductVariant {
   title: string,
   updated_at: null | string,
   inventory_quantity: number,
-  image_id: number,
+  // image_id: number,
   available: boolean,
 }
-interface ProductImage {
-  created_at: null | string,
-  id: number,
-  position: number,
-  product_id: ProductId,
-  updated_at: null | string,
-  src: string,
-  variant_ids: number[]
-}
+// interface ProductImage {
+//   created_at: null | string,
+//   id: number,
+//   position: number,
+//   product_id: ProductId,
+//   updated_at: null | string,
+//   src: string,
+//   variant_ids: number[]
+// }
 
 interface ProductOption {
   name: string,
@@ -79,7 +81,7 @@ interface ProductSpecifications {
   id: number
   type_id: number
   name: string
-  value: string[]
+  value: string
   description?: string
 }
 interface ProductTypeSpecifications {
@@ -123,4 +125,4 @@ interface Products {
   total: number
 }
 export { ProductStatus }
-export type { Product, Products, ProductsParams, ProductImage, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };
+export type { Product, Products, ProductsParams, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };

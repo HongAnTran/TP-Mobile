@@ -14,7 +14,7 @@ export default function page() {
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
           <BannerMedium />
-          <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[1]}  />
+          <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[8]}  />
           <SectionCategoryCarousel title='Sản phẩm mới' productIds={[1]}  />
           <SectionCategoryGrid title='Ipad' productIds={[1]} />
           {/* <SectionCategoryGrid title='Iphone' productIds={[]} />

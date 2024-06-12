@@ -67,8 +67,8 @@ export default function SearchInput() {
 
 
   async function searchProductByKeyword(keyword: string) {
-    const datas = await ProductsServiceApi.getList({ keyword: keyword, limit: 5 })
-    setProductsSearch(datas)
+    const { products } = await ProductsServiceApi.getList({ take: 5 })
+    setProductsSearch(products)
     setOpenSearch(true)
 
   }
@@ -121,7 +121,7 @@ function ProductItemSearch({ product }: { product: Product }) {
   return <li className=' flex gap-2'>
 
     <div>
-      <Image className='  rounded' src={product.image.src} alt='product' width={50} height={50} />
+      <Image className='  rounded' src={product.featured_image} alt='product' width={50} height={50} />
     </div>
     <Link href={`${routes.products}/${product.slug}`}>
       <TypographySpan className=' text-white  hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>

@@ -189,7 +189,7 @@ function ProductCardCompare({ product }: { product: Product }) {
   return <Card className=''>
     <CardContent className="flex flex-col gap-2 justify-center items-center   py-4">
   <div className=' md:w-[200px] md:h-[200px]  w-[80px] h-[80px]'>
-      <Image src={product.image.src} alt={product.title} width={200} height={200} />
+      <Image src={product.featured_image} alt={product.title} width={200} height={200} />
   </div>
 
       <Link href={`${routes.products}/${product.slug}`} >

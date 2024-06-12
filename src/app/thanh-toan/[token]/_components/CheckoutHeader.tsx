@@ -28,7 +28,7 @@ export default function CheckoutHeader() {
   ];
   return (
     <div className="flex flex-col justify-between items-center border-b bg-white py-4 lg:flex-row sm:px-10">
-      <Logo className=' text-primary' />
+      <Logo  />
       <Steps steps={steps} />
     </div>
   )

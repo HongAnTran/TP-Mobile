@@ -13,14 +13,14 @@ class ProductsService {
     }
     return fetchApi.get<Products>(this.url, {
       params: paramsDefault,
-      cache: "no-cache",
+      cache: "no-store",
       ...init
     });
   }
 
   async getDetail(slug: string) {
     const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-      cache: "no-cache"
+      cache: "no-store"
     });
     return {
       ...product,

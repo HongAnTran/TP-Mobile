@@ -8,31 +8,32 @@ import { Button } from '../ui/button'
 import { StarFilledIcon } from '@radix-ui/react-icons'
 import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'
 import Image from 'next/image'
-import f1 from "../../../public/f1.jpg"
-import f2 from "../../../public/f2.jpg"
-import f3 from "../../../public/f3.jpg"
-import f4 from "../../../public/f4.jpg"
+import f1 from "../../../public/feedback/z5516755077447_17097fc14f25d338adcbc03007b1f623.jpg"
+import f2 from "../../../public/feedback/z5516760524100_bffe10e81604861211bc0f2e5c9b1c7a.jpg"
+import f3 from "../../../public/feedback/z5516755844007_beaf7ff8afd4197797a79c1c28146467.jpg"
+import f4 from "../../../public/feedback/z5516756870577_57a9c448a8a8bf090ebc46085d978c3a.jpg"
 import { Feedback } from '@/types/feedback'
+import routes from '@/routes';
 
 
 export default function SectionFeedback() {
   const feedbacks: Feedback[] = [
     {
       id: 1,
-      customerName: "Anh Long bê đe",
+      customerName: "Anh Long",
       image: f3,
       content: "Tôi rất hài lòng với dịch vụ của cửa hàng. Sản phẩm chất lượng và giá cả hợp lý.",
       rate: 5
     },
     {
       id: 2,
-      customerName: "Anh Toại ngu",
+      customerName: "Anh Toại",
       image: f1,
       content: "Tôi rất hài lòng với dịch vụ của cửa hàng. Sản phẩm chất lượng và giá cả hợp lý.",
       rate: 5
-    },    {
+    }, {
       id: 4,
-      customerName: "Anh Sơn ngu",
+      customerName: "Anh Sơn",
       image: f4,
       content: "Tôi rất hài lòng với dịch vụ của cửa hàng. Sản phẩm chất lượng và giá cả hợp lý.",
       rate: 5
@@ -55,6 +56,9 @@ export default function SectionFeedback() {
         ))}
       </div>
       <div className=' flex gap-4 justify-center mt-2'>
+        <Link href={routes.feedback}>
+          <Button className=' bg-primary text-white hover:scale-110 transition-all'>Xem thêm</Button>
+        </Link>
         <Link target="_blank" href={"https://www.google.com/maps/place/TP+MOBILE+STORE/@10.7827711,106.618124,17z/data=!4m18!1m9!3m8!1s0x31752d5f330ea7c7:0x1e87e39b41c64ce2!2sTP+MOBILE+STORE!8m2!3d10.7827711!4d106.6206989!9m1!1b1!16s%2Fg%2F11t59jrvk9!3m7!1s0x31752d5f330ea7c7:0x1e87e39b41c64ce2!8m2!3d10.7827711!4d106.6206989!9m1!1b1!16s%2Fg%2F11t59jrvk9?authuser=1&entry=ttu"}>
           <Button className=' bg-primary text-white hover:scale-110 transition-all'>Viết đánh giá</Button>
         </Link>

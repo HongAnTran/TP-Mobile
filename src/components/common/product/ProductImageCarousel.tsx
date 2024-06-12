@@ -1,13 +1,13 @@
 'use client'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import { ProductImage } from '@/types/product'
+// import { ProductImage } from '@/types/product'
 import Image from 'next/image'
 import React from 'react'
 import { type CarouselApi } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils'
 
 export default function ProductImageCarousel({ images, alt, imageActive, setImageActive }:
-  { images: ProductImage[], alt: string, imageActive: number, setImageActive: (index: number) => void }) {
+  { images: string[], alt: string, imageActive: number, setImageActive: (index: number) => void }) {
   const [api, setApi] = React.useState<CarouselApi>()
 
   React.useEffect(() => {
@@ -34,7 +34,7 @@ export default function ProductImageCarousel({ images, alt, imageActive, setImag
         <CarouselContent>
           {images.map((img, index) => (
             <CarouselItem key={index}>
-              <Image src={img.src} alt={alt} className='  object-contain  aspect-square' width={500} height={500} />
+              <Image src={img} alt={alt} className='  object-contain  aspect-square' width={500} height={500} />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -52,7 +52,7 @@ export default function ProductImageCarousel({ images, alt, imageActive, setImag
               setImageActive(index)
             }}
           >
-            <Image className='  w-full h-full' src={img.src} alt={alt} width={500} height={500} />
+            <Image className='  w-full h-full' src={img} alt={alt} width={500} height={500} />
           </div>
 
         ))}

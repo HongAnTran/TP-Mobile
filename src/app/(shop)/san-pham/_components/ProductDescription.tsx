@@ -28,9 +28,10 @@ export default function ProductDescription({ product }: { product: Product }) {
                       return (<li key={spes.id} className='  flex items-center border-b py-1 '>
                         <TypographyP className=' font-semibold w-1/2'>{spes.name}:</TypographyP>
                         <div className=' text-right  w-1/2'>
-                          {spes.value.map(item => {
+                        <TypographyP >{spes.value}</TypographyP>
+                          {/* {spes.value.map(item => {
                             return (<TypographyP key={item}>{item}</TypographyP>)
-                          })}
+                          })} */}
 
                         </div>
                       </li>)

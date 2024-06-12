@@ -11,9 +11,11 @@ const routes = {
   checkout: "/thanh-toan",
   login: "/dang-nhap",
   register: "/dang-ky",
+  feedback: "/feedback",
   compareProduct: "/so-sanh-san-pham",
   wishlist: "/yeu-thich",
   guaranteePolicy: "/chinh-sach-bao-hanh",
+  endow: "/uu-dai-tai-tpmobile",
   changePolicy: "/chinh-sach-doi-tra",
   deliveryPolicy: "/chinh-sach-giao-hang",
 };

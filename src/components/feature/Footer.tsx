@@ -46,7 +46,7 @@ export default function Footer() {
 
             <ul className="mt-6 space-y-4">
               <li>
-                <Link href="#" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Liên hệ hỗ trợ </Link>
+                <Link href={routes.endow} className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Ưu đãi tại TP Mobile </Link>
               </li>
 
               <li>

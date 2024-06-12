@@ -9,7 +9,7 @@ interface SectionCategoryGridProps {
 }
 
 export default async function SectionCategoryGrid2({ title, productIds }: SectionCategoryGridProps) {
-  const products = await ProductsServiceApi.getList()
+  const {products} = await ProductsServiceApi.getList()
 
   if (!products.length) {
     return null
@@ -21,7 +21,7 @@ export default async function SectionCategoryGrid2({ title, productIds }: Sectio
         {products.slice(2).map((product, index) => (
      
             <div key={index} className=' bg-primary p-4 rounded-md  hover:scale-110  transition-transform'>
-              <Image src={product.image.src} alt={product.title} width={200} height={200} />
+              <Image src={product.featured_image} alt={product.title} width={200} height={200} />
               <TypographyP className=' line-clamp-1 text-center text-white mt-2'>{product.title}</TypographyP>
             </div>
         

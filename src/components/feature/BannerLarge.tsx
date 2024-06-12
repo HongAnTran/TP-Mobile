@@ -1,13 +1,9 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-import banner from "../../../public/ipad_pro_hero__bh3eq6sqfjw2_large.jpg"
 import Link from 'next/link'
 
 import { motion } from "framer-motion"
-import { TypographyH2, TypographyH3, TypographyP } from '../ui/typography'
-import { Button } from '../ui/button'
-import routes from '@/routes'
 import AutoSlider from '@/components/common/AutoSlide'
 
 interface BannerHeroItem {

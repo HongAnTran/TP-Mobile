@@ -13,7 +13,7 @@ import FilterProduct from '@/components/feature/FilterProduct'
 
 export default async function page() {
 
-  const products = await ProductsServiceApi.getList()
+  const {products} = await ProductsServiceApi.getList()
 
   return (
     <div className=' my-8'>

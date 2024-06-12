@@ -1,11 +1,11 @@
-import  { ConfigAPi, Interceptor } from "@/types/api";
+import { ConfigAPi, Interceptor } from "@/types/api";
 import ErrorRespone from "../error";
 
 export default class FetchApi {
   init: ConfigAPi = {
     baseURL: "",
     method: "GET",
-    
+
   };
 
   interceptors: Interceptor[] = [];
@@ -38,7 +38,6 @@ export default class FetchApi {
       const apiUrl = queryString
         ? `${URL}${path}?${queryString}`
         : `${URL}${path}`;
-        
       // Fetch with timeout
       const controller = new AbortController();
 
@@ -50,8 +49,8 @@ export default class FetchApi {
         url: path,
         method: method,
         body: data ? JSON.stringify(data) : undefined,
-        params : params
-        
+        params: params,
+        cache: restInit.cache ? restInit.cache : restInit.next?.revalidate ? undefined : "no-store"
       };
 
       for (const interceptor of this.interceptors) {
