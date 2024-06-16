@@ -158,7 +158,7 @@ export default function CompareProductPage() {
                     return (
                       <TableRow key={index} className={cn({
                         "bg-blue-200": checkIsDifferent(data),
-                        " hidden": checkIsDifferent(data) && isShowDifferent,
+                        " hidden": !checkIsDifferent(data) && isShowDifferent,
                       })}>
                         {
                           data.map((value, index) => {

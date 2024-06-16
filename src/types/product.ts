@@ -21,6 +21,10 @@ interface Product {
   options: ProductOption[]
   short_description: string | null
   tags: ProductTags[] | null
+  price: number
+  price_min: number
+  price_max: number
+
   // metadata
   category_id: number
   images: string[]

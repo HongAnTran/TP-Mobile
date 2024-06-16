@@ -49,7 +49,7 @@ export default function CompareProduct() {
             }
 
             return <div key={product.id} className=' relative col-span-1 border border-gray-300 shadow-sm p-2 flex flex-col justify-center items-center'>
-              <Image src={product.image.src} alt={product.title} width={100} height={100} />
+              <Image src={product.featured_image} alt={product.title} width={100} height={100} />
               <TypographyP >{product.title}</TypographyP>
 
               <Button variant="link" onClick={() => removeProductToCompare(product.id)} className='  p-0 w-fit absolute top-2 right-2 cursor-pointer'>
@@ -98,7 +98,7 @@ export default function CompareProduct() {
               }
 
               return <div key={product.id} className=' relative col-span-1 border border-gray-300 shadow-sm p-2 flex flex-col justify-center items-center'>
-                <Image src={product.image.src} alt={product.title} width={100} height={100} />
+                <Image src={product.featured_image} alt={product.title} width={100} height={100} />
                 <TypographyP >{product.title}</TypographyP>
 
                 <Button variant="link" onClick={() => removeProductToCompare(product.id)} className='  p-0 w-fit absolute top-2 right-2 cursor-pointer'>
