@@ -17,7 +17,6 @@ export default function HeaderItems() {
   const { data } = useSession()
   const customer = data?.user
 
-  const [open, setOpen] = useState(false)
 
 
   const customerItem = customer ? {
@@ -49,7 +48,32 @@ export default function HeaderItems() {
 
     },
     customerItem
+  ]
 
+  const itemsMobile: HeaderItemProps[] = [
+    {
+      icon: <StoreIcon />,
+      text: "Danh mục",
+      href: routes.category
+    },
+    {
+      icon: <StoreIcon />,
+      text: "Cửa hàng",
+      href: routes.stores
+    },
+    {
+      icon: <NewsIcon />,
+      text: "Tin tức",
+      href: routes.artice
+    },
+
+    {
+      icon: <CartHeader />,
+      text: "Giỏ hàng",
+      href: routes.cart
+
+    },
+    customerItem
   ]
   // if (type !== "desktop") {
 
@@ -63,7 +87,7 @@ export default function HeaderItems() {
     <>
       <div className=' flex justify-between fixed bottom-0 left-0 right-0  z-50 bg-primary p-4 md:hidden'>
         {
-          items.map((item, index) => {
+          itemsMobile.map((item, index) => {
             return <HeaderItem {...item} key={index} />
           })
         }

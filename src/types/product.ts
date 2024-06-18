@@ -1,3 +1,4 @@
+import { CategoryProduct } from "./categoryProduct";
 import { FilterBase } from "./common";
 
 type ProductId = number
@@ -11,6 +12,7 @@ interface Product {
   title: string;
   slug: string
   description_html: string | null
+  short_description: string | null
   vendor: string | null
   available: boolean
   status: ProductStatus,
@@ -19,21 +21,19 @@ interface Product {
   published_at: string | null
   barcode: string | null
   options: ProductOption[]
-  short_description: string | null
-  tags: ProductTags[] | null
+  // tags: ProductTags[] | null
+  compare_at_price: number
   price: number
   price_min: number
   price_max: number
-
   // metadata
   category_id: number
   images: string[]
   featured_image: string
-
   // image: ProductImage | null
   variants: ProductVariant[]
-  category_title: string
-  rating: ProductRating | null
+  category: CategoryProduct
+  // rating: ProductRating | null
   specifications: ProductSpecifications[]
   // meta
   meta_title: string | null
@@ -95,7 +95,7 @@ interface ProductTypeSpecifications {
 }
 
 
-type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "category_id" | "vendor" | "barcode"> & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "vendor" | "barcode"> & {
   id: number,
   line_price: number
   price: number
@@ -109,6 +109,7 @@ type ProductOrder = Pick<Product, | "title" | "slug" | "category_title" | "categ
   quantity: number
   image: string
   selected: boolean
+
 }
 interface ProductRating {
   id: number,
@@ -124,9 +125,12 @@ interface ProductsParams extends FilterBase {
   category_id?: Product["category_id"]
   ids?: string
 }
+
+type ProductInList = Pick<Product, "id" | "available" | "barcode" | "category" | "category_id" | "compare_at_price" | "created_at" | "featured_image" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "vendor" | "updated_at">
 interface Products {
-  products: Product[]
+  products: ProductInList[]
   total: number
 }
+
 export { ProductStatus }
-export type { Product, Products, ProductsParams, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };
+export type { Product, ProductInList, Products, ProductsParams, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };

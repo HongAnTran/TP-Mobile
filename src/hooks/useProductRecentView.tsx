@@ -3,12 +3,12 @@
 import { KEYS } from '@/consts/localStorage'
 import SETTINGS from '@/consts/settings'
 import ProductsServiceApi from '@/services/productService'
-import { Product } from '@/types/product'
+import { Product, ProductInList } from '@/types/product'
 import LocalStorageService from '@/utils/localStorage'
 import { useCallback, useEffect, useState } from 'react'
 
 export default function useProductRecentView() {
-  const [productsRecentView, setProductsRecentView] = useState<Product[]>([])
+  const [productsRecentView, setProductsRecentView] = useState<ProductInList[]>([])
   const [idsProductsRecentView, setIdsProductsRecentView] = useState<Product["id"][]>(LocalStorageService.getItem<Product["id"][]>(KEYS.RECENT_VIEW, []))
 
   const addProductToRecentView = useCallback((product: Product) => {
@@ -30,7 +30,7 @@ export default function useProductRecentView() {
   useEffect(() => {
     if (idsProductsRecentView.length) {
       (async () => {
-        const {products} = await ProductsServiceApi.getList({ ids: idsProductsRecentView.join(",") })
+        const {products} = await ProductsServiceApi.getListClient({ ids: idsProductsRecentView.join(",") })
         setProductsRecentView(products)
       })()
     }

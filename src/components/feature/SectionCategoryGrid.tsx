@@ -11,11 +11,12 @@ import ProductsServiceApi from '@/services/productService'
 interface SectionCategoryGridProps {
   title: string
   productIds: number[]
+  categoryId?: number
 }
 
-export default async  function SectionCategoryGrid({ title, productIds }: SectionCategoryGridProps) {
+export default async  function SectionCategoryGrid({ title, productIds , categoryId }: SectionCategoryGridProps) {
 
-  const {products} = await ProductsServiceApi.getList()
+  const {products} = await ProductsServiceApi.getList({category_id : categoryId})
 
   if (!products.length) {
     return null

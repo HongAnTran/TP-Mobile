@@ -8,11 +8,11 @@ export default function ProductDescription({ product }: { product: Product }) {
 
   return (
     <div className=' grid grid-cols-12 gap-8'>
-      <div className=' col-span-8'>
+      <div className='col-span-12 md:col-span-8'>
         <TypographyH2 className='  text-xl pb-2 border-b border-gray-300 mb-2'>Mô tả sản phẩm</TypographyH2>
         <div className=' max-h-[600px] overflow-y-auto  mx-1 p-2  bg-white ' dangerouslySetInnerHTML={{ __html: product.description_html || "Hiện chưa có mô tả" }}></div>
       </div>
-      <div className=' col-span-4'>
+      <div className=' col-span-12 md:col-span-4'>
         <TypographyH2 className='  text-xl  pb-2 border-b border-gray-300 mb-2'>Cấu hình {product.title}</TypographyH2>
         {product.specifications.length ? <div className=' w-full rounded-md border border-gray-200 p-4'>
           {types.map((type) => {

@@ -39,7 +39,7 @@ export default function BannerLarge() {
 
 function BannerItem({ item }: { item: BannerHeroItem }) {
 
-  return (<div className="container mx-auto px-6 flex relative pt-10">
+  return (<div className="container mx-auto px-6 flex relative pt-10 pb-2">
     <motion.div
       initial={{ y: 10, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
@@ -50,17 +50,17 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
 
     >
       <span className="w-20 h-2  bg-white mb-12"></span>
-      <h2 className="font-bebas-neue uppercase text-6xl sm:text-8xl font-black flex flex-col leading-none bg-gradient-to-r from-indigo-400 to-pink-600 bg-clip-text text-transparent">
+      <h2 className="font-bebas-neue uppercase text-2xl sm:text-8xl font-black flex flex-col leading-none bg-gradient-to-r from-indigo-400 to-pink-600 bg-clip-text text-transparent">
 
         {item.title}
       </h2>
-      <p className="text-sm sm:text-base  text-gray-200">
+      <p className=" text-xs   md:text-base  text-gray-200">
         {item.description}
       </p>
       <div className="flex mt-8">
         <Link
           href={item.link || "#"}
-          className="uppercase py-2 px-4 rounded-lg bg-primary border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400"
+          className="uppercase py-2 px-1 md:px-4 rounded-lg bg-primary border-2 border-transparent text-white  mr-4 hover:bg-pink-400"
         >
           Tìm hiểu ngay
         </Link>

@@ -31,7 +31,6 @@ export default function FilterProduct() {
     disk: [],
     ram: [],
     categories: [],
-
   })
 
   function onChageValueFilter(key: keyof ValueFiter, data: any) {
@@ -62,8 +61,6 @@ export default function FilterProduct() {
       title: "Loại sản phẩm",
       content:
         <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.map((item)=>({value : item.slug , label : item.title}))} defaultValue={valueFiter.categories} />
-
-
     },
     {
       title: "Màu sắc",
@@ -107,7 +104,7 @@ export default function FilterProduct() {
   return (
     <div>
       <TypographyP className=' font-bold  text-xl'>Bộ lọc</TypographyP>
-      <Accordion type="multiple" defaultValue={["fil-0", "fil-1", "fil-2", "fil-3"]}  >
+      <Accordion type="multiple" defaultValue={[]}  >
         {filters.map((item, index) => {
           return (
             <AccordionItem value={`fil-${index}`} key={index} >

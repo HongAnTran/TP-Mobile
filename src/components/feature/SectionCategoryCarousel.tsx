@@ -13,7 +13,7 @@ interface SectionCategoryCarouselProps {
 }
 
 export default async function SectionCategoryCarousel({ title, productIds }: SectionCategoryCarouselProps) {
-  const products = await ProductsServiceApi.getList({ ids: productIds.toString() })
+  const products = await ProductsServiceApi.getList()
 
   if (!products.total) {
     return null

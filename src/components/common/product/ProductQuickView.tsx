@@ -12,10 +12,37 @@ import ProductOptions from "./ProductOptions";
 import ProductActionButton from "./ProductActionButton";
 import ProductQuantity, { ProductQuantityProps } from "./ProductQuantity";
 import SETTINGS from '@/consts/settings'
-import { Product } from "@/types/product";
+import { Product, ProductInList } from "@/types/product";
 import ButtonCompareProduct from "@/components/feature/ButtonCompareProduct";
+import useProduct from "@/hooks/useProduct";
+import { LoadingIcon } from "@/components/icons";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default function ProductQuickView({ product }: { product: Product }) {
+interface Props { product: ProductInList }
+
+export default function ProductQuickView({ product }: Props) {
+  const { data, isLoading, isSuccess } = useProduct(product.slug)
+
+
+
+  if (isLoading) {
+    return <div className=" min-h-80 flex items-center justify-center">
+      <LoadingIcon />
+    </div>
+  }
+
+  if (!isSuccess) {
+    return <p>Có lỗi xảy ra vui lòng thử lại!</p>
+  }
+
+  return (
+    <ProductQuickViewContent product={data} />
+  )
+}
+
+function ProductQuickViewContent({ product }: { product: Product }) {
+
+
   const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
@@ -39,8 +66,6 @@ export default function ProductQuickView({ product }: { product: Product }) {
     }
   }
 
-
-
   return (
     <div className='grid grid-cols-12 gap-4'>
       <div className=' col-span-5 '>
@@ -52,7 +77,7 @@ export default function ProductQuickView({ product }: { product: Product }) {
           <TypographyP >Thương hiệu: <b>{product.vendor}</b></TypographyP>
           <TypographyP >Mã sản phẩm: <b>{variantActive.sku}</b></TypographyP>
 
-          {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />}
+          {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
           <ButtonCompareProduct product={product} />
           <ProductShowPrice variant={variantActive} />
           <ProductOptions product={product} optionsActive={optionActive} onSelectOption={handleSelectOption} />
@@ -65,8 +90,8 @@ export default function ProductQuickView({ product }: { product: Product }) {
         </div>
         <div className=' mt-8  pr-8   '>
           <ProductActionButton
-           onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} 
-          onBuyNow={() => handleBuyNow(product, variantActive, quantity)} />
+            onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)}
+            onBuyNow={() => handleBuyNow(product, variantActive, quantity)} />
         </div>
       </div>
     </div>

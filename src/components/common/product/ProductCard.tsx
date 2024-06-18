@@ -1,6 +1,6 @@
 "use client"
 
-import { Product } from '@/types/product'
+import { Product, ProductInList } from '@/types/product'
 import React, { useState } from 'react'
 import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
@@ -11,7 +11,6 @@ import { TypographySpan } from '../../ui/typography'
 import badgeBG from "../../../../public/productTagBg.png"
 import { motion } from "framer-motion";
 import { Button } from '../../ui/button'
-import { findVariantMinPrice } from '@/utils'
 import Modal from '@/components/ui/Modal'
 import Link from "@/components/common/Link";
 
@@ -20,8 +19,7 @@ import ProductQuickView from './ProductQuickView'
 import Rating from '../Rating'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 
-export default function ProductCard({ product }: { product: Product }) {
-  const variantMinPrice = findVariantMinPrice(product.variants || [])
+export default function ProductCard({ product }: { product: ProductInList }) {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -31,10 +29,8 @@ export default function ProductCard({ product }: { product: Product }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-
-
         <Card className=' border border-gray-300 group relative h-full'>
-          <CardContent className="flex flex-col gap-2 aspect-square py-4">
+          <CardContent className="flex flex-col   gap-2 aspect-square py-4">
             <div className=' relative w-full aspect-square overflow-hidden' >
               <Link href={`${routes.products}/${product.slug}`} prefetch={false} >
                 <ProductCardImage featured_image={product.featured_image} images={product.images} title={product.title} />
@@ -49,25 +45,15 @@ export default function ProductCard({ product }: { product: Product }) {
 
               <CardTitle className='   hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
             </Link>
+            <ProductCardPrice product={product} />
 
-            <div className=' flex  flex-col md:flex-row  md:items-center gap-2'>
-              <PriceText className='text-red-500 font-bold' price={variantMinPrice.price} />
-              {variantMinPrice.compare_at_price > 0 ? <PriceText className=' text-xs   line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
-            </div>
             <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
-              {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />}
+              {/* {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />} */}
 
               <ButtonWishlist id={product.id} />
             </div>
           </CardContent>
-          <CardBadge className=' top-2 -left-[3px] z-20 '>
-            <div className=' h-8 w-20 relative'>
-              <Image src={badgeBG} alt='badge' className=' w-full h-full' />
-              <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
-                <TypographySpan className=' text-xs text-white  font-semibold ' >Giảm 10%</TypographySpan>
-              </div>
-            </div>
-          </CardBadge>
+          <ProductCardDiscount product={product} />
         </Card>
       </motion.div>
 
@@ -79,7 +65,7 @@ export default function ProductCard({ product }: { product: Product }) {
   )
 }
 
-function ProductCardImage({ images, title , featured_image}: Pick<Product, "images" | "title" | "featured_image">) {
+function ProductCardImage({ images, title, featured_image }: Pick<Product, "images" | "title" | "featured_image">) {
   const firstImage = images?.[0] || featured_image
   const secondImage = images?.[1]
   return (
@@ -104,3 +90,40 @@ function ProductCardImage({ images, title , featured_image}: Pick<Product, "imag
   )
 }
 
+
+function ProductCardPrice({ product }: { product: ProductInList }) {
+  if (product.price_min && product.price_max) {
+    return <div className=' flex  flex-col md:flex-row  md:items-center gap-1'>
+      <PriceText className='text-red-500 ' price={product.price_min} />
+      <span className=' hidden  md:inline'>-</span>
+      <PriceText className='text-red-500 ' price={product.price_max} />
+    </div>
+  }
+
+  return (
+    <div className=' flex  flex-row  md:items-center gap-1'>
+      <PriceText className='text-red-500 font-bold' price={product.price} />
+      {product.compare_at_price ? <PriceText className=' line-through' price={product.compare_at_price} /> : null}
+    </div>
+  )
+
+
+}
+
+
+function ProductCardDiscount({ product }: { product: ProductInList }) {
+
+
+  if (!product.compare_at_price) return null
+
+  const discountPercent = ((product.compare_at_price - product.price) / product.compare_at_price) * 100
+
+  return (<CardBadge className=' top-2 -left-[3px] z-20 '>
+    <div className=' h-8 w-20 relative'>
+      <Image src={badgeBG} alt='badge' className=' w-full h-full' />
+      <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
+        <TypographySpan className=' text-xs text-white  font-semibold ' >Giảm {discountPercent}%</TypographySpan>
+      </div>
+    </div>
+  </CardBadge>)
+}

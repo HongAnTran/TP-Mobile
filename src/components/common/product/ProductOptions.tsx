@@ -1,7 +1,7 @@
 "use client"
 import { TypographyP, TypographySpan } from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import { Product, ProductOption, ProductVariant } from '@/types/product'
+import { Product, ProductOption } from '@/types/product'
 import React from 'react'
 
 export default function ProductOptions({ product, optionsActive, onSelectOption }:
@@ -16,7 +16,7 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
             <TypographyP className=' font-bold min-w-[115px]'>
               {option.name}:
             </TypographyP>
-            <div className=' flex gap-2 items-center'>
+            <div className=' flex gap-2 items-center  flex-wrap'>
               {option.values.map(data => {
                 return (
                   <div key={data} className={cn(' transition-all border border-gray-700 rounded w-fit px-[6px] cursor-pointer', {

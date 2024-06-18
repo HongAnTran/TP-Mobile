@@ -18,7 +18,7 @@ export default function Header() {
       <div className=' container'>
         <HeaderTop />
         <div className=' flex gap-10 items-center  pt-0 py-3 '>
-          <div className=' flex-shrink-0'>
+          <div className=' flex-shrink-0  md:w-fit w-full md:block  flex justify-center'>
             <Logo />
           </div>
           <div className=' flex-1 max-w-[360px] hidden md:block '>

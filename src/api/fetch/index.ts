@@ -33,7 +33,10 @@ export default class FetchApi {
       const URL = baseURL ? baseURL : this.init.baseURL;
       const path = url ? url : urlReq;
       // Convert params to query string
-      const queryString = new URLSearchParams(params).toString();
+      const filteredParams = Object.fromEntries(
+        Object.entries(params || {}).filter(([key, value]) => value !== undefined)
+      );
+      const queryString = new URLSearchParams(filteredParams).toString();
 
       const apiUrl = queryString
         ? `${URL}${path}?${queryString}`

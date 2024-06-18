@@ -3,12 +3,13 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import routes from '@/routes'
 import SectionCategoryGrid from '@/components/feature/SectionCategoryGrid'
-import SectionCategoryGrid2 from '@/components/feature/SectionCategoryGrid2'
+import CategoryServiceApi from '@/services/categoryService'
 
 
 export default async function page() {
 
-  
+  const cates = await CategoryServiceApi.getList()
+
   return (
     <div className=' my-8'>
       <div className=' container'>
@@ -24,9 +25,11 @@ export default async function page() {
           <TypographyH2 className=' text-center'>Danh mục sản phẩm</TypographyH2>
         </div>
         <div className=' flex flex-col   gap-16'>
-          <SectionCategoryGrid title='Ipad' productIds={[]} />
-          <SectionCategoryGrid title='Iphone' productIds={[]} />
-          <SectionCategoryGrid2 title='Phụ kiện' productIds={[]} />
+          {cates.map((cate) => {
+            return <SectionCategoryGrid key={cate.id} title={cate.title} productIds={[]} categoryId={cate.id} />
+          })}
+
+
         </div>
 
 
