@@ -63,7 +63,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         <div className=' md:col-span-6 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">
             <TypographyH1 className=" line-clamp-2 lg:text-xl  text-xl">{product.title}</TypographyH1>
-            {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />}
+            {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
             <TypographyP >Thương hiệu: <b className=' text-blue-500'>{product.vendor}</b></TypographyP>
             <TypographyP >Mã sản phẩm: <b className=' text-blue-500'>{variantActive.sku}</b></TypographyP>
             <ButtonCompareProduct product={product} />
