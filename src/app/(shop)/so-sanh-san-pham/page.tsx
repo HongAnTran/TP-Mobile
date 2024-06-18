@@ -25,14 +25,16 @@ import useCompareProduct from '@/hooks/useCompareProduct'
 import { cn } from '@/lib/utils'
 import { Checkbox } from '@/components/ui/checkbox'
 
-type ProductCompare = Pick<Product, "barcode" | "category_title" | "vendor">
+type ProductCompare = Pick<Product, "barcode" | "vendor"> & { category_title: string }
 
 type Key = {
   [K in keyof ProductCompare]?: string;
 };
 
 export default function CompareProductPage() {
-  const { productsCompare, removeProductToCompare } = useCompareProduct()
+  const { productsCompare :products , removeProductToCompare } = useCompareProduct()
+
+  const productsCompare = products.map(product => ({ ...product, category_title: product.category.title }))
 
   const types = JSON.parse(JSON.stringify(typesJson)) as ProductTypeSpecifications[]
 
@@ -126,7 +128,7 @@ export default function CompareProductPage() {
                       htmlFor="terms1"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                        Chỉ xem điểm khác biệt
+                      Chỉ xem điểm khác biệt
                     </label>
 
                   </div>
@@ -188,9 +190,9 @@ function ProductCardCompare({ product }: { product: Product }) {
 
   return <Card className=''>
     <CardContent className="flex flex-col gap-2 justify-center items-center   py-4">
-  <div className=' md:w-[200px] md:h-[200px]  w-[80px] h-[80px]'>
-      <Image src={product.featured_image} alt={product.title} width={200} height={200} />
-  </div>
+      <div className=' md:w-[200px] md:h-[200px]  w-[80px] h-[80px]'>
+        <Image src={product.featured_image} alt={product.title} width={200} height={200} />
+      </div>
 
       <Link href={`${routes.products}/${product.slug}`} >
 
@@ -202,7 +204,7 @@ function ProductCardCompare({ product }: { product: Product }) {
         {variantMinPrice.compare_at_price > 0 ? <PriceText className='  text-sm line-through text-gray-600' price={variantMinPrice.compare_at_price} /> : null}
       </div>
       <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
-        {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />}
+        {/* {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />} */}
       </div>
     </CardContent>
   </Card>

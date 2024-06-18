@@ -109,7 +109,7 @@ type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "vendor" 
   quantity: number
   image: string
   selected: boolean
-
+  category_title : string
 }
 interface ProductRating {
   id: number,

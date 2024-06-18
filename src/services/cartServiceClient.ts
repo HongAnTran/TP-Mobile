@@ -63,7 +63,7 @@ class CartServiceClient {
       id: Math.floor(new Date().getTime() * Math.random()),
       title: product.title,
       slug: product.slug,
-      category_title: product.category_title,
+      category_title: product.category.title,
       category_id: product.category_id,
       vendor: product.vendor,
       barcode: product.barcode, // null check for barcode

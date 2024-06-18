@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
 import ProductsServiceApi from '@/services/productService';
-import { Product } from '@/types/product';
+import { Product, ProductInList } from '@/types/product';
 import {
   HoverCardTrigger,
   HoverCard,
@@ -20,7 +20,7 @@ const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản ph�
 
 export default function SearchInput() {
 
-  const [productsSearch, setProductsSearch] = useState<Product[]>([])
+  const [productsSearch, setProductsSearch] = useState<ProductInList[]>([])
   const [openSearch, setOpenSearch] = useState(false);
 
   const [placeholder, setPlaceholder] = useState('');
@@ -117,7 +117,7 @@ export default function SearchInput() {
 }
 
 
-function ProductItemSearch({ product }: { product: Product }) {
+function ProductItemSearch({ product }: { product: ProductInList }) {
   return <li className=' flex gap-2'>
 
     <div>
