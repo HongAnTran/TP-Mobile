@@ -43,7 +43,7 @@ export default function ProductCard({ product }: { product: ProductInList }) {
             </div>
             <Link href={`${routes.products}/${product.slug}`} >
 
-              <CardTitle className='   hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
+              <CardTitle className='   hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
             </Link>
             <ProductCardPrice product={product} />
 
@@ -71,7 +71,7 @@ function ProductCardImage({ images, title, featured_image }: Pick<Product, "imag
   return (
     <>
       <Image src={firstImage} alt={title} width={600} height={600} className={cn(
-        "  absolute  hover:-translate-y-2 transition-all duration-300",
+        "  absolute  hover:-translate-y-2 transition-all duration-300 h-full  object-contain",
         {
           " group-hover:-z-1  group-hover:opacity-0 ": !!secondImage
         },
@@ -80,7 +80,7 @@ function ProductCardImage({ images, title, featured_image }: Pick<Product, "imag
         }
       )} />
       {secondImage ? <Image src={secondImage}
-        className={cn("absolute transition-all duration-300 opacity-0",
+        className={cn("absolute transition-all duration-300 opacity-0 h-full object-contain",
           {
             " group-hover:z-10 group-hover:opacity-100 hover:-translate-y-2": !!secondImage
           })}

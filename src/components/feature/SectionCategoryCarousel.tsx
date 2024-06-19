@@ -10,10 +10,11 @@ import ProductCarousel from '../common/ProductCarousel'
 interface SectionCategoryCarouselProps {
   title: string
   productIds: Product["id"][]
+  skip?: number
 }
 
-export default async function SectionCategoryCarousel({ title, productIds }: SectionCategoryCarouselProps) {
-  const products = await ProductsServiceApi.getList()
+export default async function SectionCategoryCarousel({ title, productIds, skip = 0 }: SectionCategoryCarouselProps) {
+  const products = await ProductsServiceApi.getList({ take: 8, skip: skip })
 
   if (!products.total) {
     return null
