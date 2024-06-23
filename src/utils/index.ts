@@ -97,4 +97,21 @@ function checkIsClient(){
 function generateUniqueId() {
   return 'id-' + crypto.randomUUID();
 }
-export { convetNumberToPriceVND, findVariantMinPrice,  generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams  , formatDate , checkIsClient}
+
+function debounce<T extends (...args: any[]) => void>(func: T, wait: number): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | null;
+
+  return function(...args: Parameters<T>): void {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(() => {
+      timeout = null;
+      func(...args);
+    }, wait);
+  };
+}
+
+
+export { debounce,convetNumberToPriceVND, findVariantMinPrice,  generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams  , formatDate , checkIsClient}

@@ -4,20 +4,48 @@ type FilterColor = {
   label: string;
   value: string;
 };
-
 export const itemFilterColor: FilterColor[] = [
   {
-    label: 'Vàng',
-    value: 'yellow'
+    label: 'Đen',
+    value: 'Đen'
+  },
+  {
+    label: 'Trắng',
+    value: 'Trắng'
+  },
+  {
+    label: 'Xanh dương',
+    value: 'Xanh dương'
+  },
+  {
+    label: 'Xanh lá',
+    value: 'Xanh lá'
   },
   {
     label: 'Đỏ',
-    value: 'red'
+    value: 'Đỏ'
   },
   {
-    label: 'Xanh',
-    value: 'blue'
+    label: 'Xám',
+    value: 'Xám'
+  },
+  {
+    label: 'Bạc',
+    value: 'Bạc'
+  },
+  {
+    label: 'Hồng',
+    value: 'Hồng'
+  },
+  {
+    label: 'Trắng vàng',
+    value: 'Trắng vàng'
+  },
+  {
+    label: "Tím",
+    value: "Tím"
   }
+
 ];
 
 export const itemFilterDisk: CheckboxItem[] = [

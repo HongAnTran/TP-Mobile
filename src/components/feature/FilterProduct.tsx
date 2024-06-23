@@ -44,7 +44,6 @@ export default function FilterProduct() {
 
 
   useEffect(() => {
-
     (async () => {
       try {
         const categories = await CategoryServiceApi.getList()

@@ -7,9 +7,12 @@ import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 
 
-export default async function page() {
+export default async function page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
 
-  const products = await ProductsServiceApi.getList()
+  const LIMIT = 12
+  const page = searchParams.page?.toString() || 1
+
+  const products = await ProductsServiceApi.getList({ take: LIMIT, skip: +page - 1 * LIMIT })
 
   return (
     <div className=' my-8'>

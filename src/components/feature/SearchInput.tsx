@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
 import ProductsServiceApi from '@/services/productService';
@@ -14,7 +14,7 @@ import { TypographyP, TypographySpan } from '../ui/typography';
 import Link from "@/components/common/Link";
 
 import routes from '@/routes';
-
+import { debounce } from '@/utils';
 
 const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
 
@@ -28,13 +28,35 @@ export default function SearchInput() {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
 
-
-  const { control, handleSubmit, setValue } = useForm<{ keyword: string }>({
+  const { control, handleSubmit, setValue, watch } = useForm<{ keyword: string }>({
     defaultValues: {
       keyword: ""
     }
   })
 
+
+  // async function searchProductByKeyword(keyword: string) {
+  //   if (!keyword.trim()) {
+  //     setProductsSearch([])
+  //     return
+  //   }
+  //   const { products } = await ProductsServiceApi.getListClient({ take: 5, keyword: keyword })
+  //   setProductsSearch(products)
+  //   setOpenSearch(true)
+  // }
+
+
+
+
+  const searchProductByKeyword = useCallback(debounce(async (keyword: string) => {
+    if (!keyword.trim()) {
+      setProductsSearch([])
+      return
+    }
+    const { products } = await ProductsServiceApi.getListClient({ take: 5, keyword: keyword })
+    setProductsSearch(products)
+    setOpenSearch(true)
+  }, 500), [])
 
   useEffect(() => {
     const currentPlaceholder = placeholders[placeholderIndex];
@@ -66,13 +88,6 @@ export default function SearchInput() {
   }, [placeholder, typingForward, placeholderIndex]);
 
 
-  async function searchProductByKeyword(keyword: string) {
-    const { products } = await ProductsServiceApi.getList({ take: 5 })
-    setProductsSearch(products)
-    setOpenSearch(true)
-
-  }
-
 
   return (
     <HoverCard open={openSearch} onOpenChange={(open) => {
@@ -96,7 +111,6 @@ export default function SearchInput() {
               setOpenSearch(false)
             }
           }}
-
             name="keyword" control={control} />
         </form >
       </HoverCardTrigger>

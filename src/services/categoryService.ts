@@ -1,16 +1,21 @@
 
 import fetchApi from "@/api/instances/baseInstance";
 import categorysJson from "@/data/categoryProduct.json";
-import {  CategoryProduct} from "@/types/categoryProduct";
+import { ConfigAPi } from "@/types/api";
+import { CategoryProduct, CategoryProductFilter } from "@/types/categoryProduct";
 
 
 class CategoryService {
   private url: string = "/category-product";
   constructor() { }
 
-  async getList(params?: { limit: number }) {
+  async getList(params?: CategoryProductFilter, init?: ConfigAPi) {
     return fetchApi.get<CategoryProduct[]>(this.url, {
       params: params,
+      next: {
+        revalidate: 3600
+      },
+      ...init
     });
   }
 

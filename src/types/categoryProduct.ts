@@ -4,6 +4,13 @@ enum CategoryProductStatus {
 }
 
 
+
+interface CategoryProductFilter{
+  take ? :number
+  skip ? : number
+
+}
+
 interface CategoryProduct {
   id: number
   title: string
@@ -13,7 +20,7 @@ interface CategoryProduct {
   status: CategoryProductStatus
 }
 
-export type { CategoryProduct }
+export type { CategoryProduct , CategoryProductFilter }
 export {
   CategoryProductStatus
 }
