@@ -8,6 +8,7 @@ import FilterProduct from "../_components/FilterProduct"
 import { SortProduct } from '@/components/feature/SortProduct'
 import ProductCollectionList from '../_components/ProductCollectionList'
 import ErrorRespone from '@/api/error'
+import ProductsSkeleton from '@/components/common/ProductsSkeleton'
 
 
 async function getCategoryDetail(slug: string) {
@@ -54,7 +55,7 @@ export default async function page({ params, searchParams }: { params: { slug: s
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
                 <SortProduct />
               </div>
-              <Suspense key={key} fallback={<p>Loading...</p>}>
+              <Suspense key={key} fallback={<ProductsSkeleton/>}>
                 <ProductCollectionList searchParams={{
                   category_id: caregory.id,
                   ...searchParams

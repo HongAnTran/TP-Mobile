@@ -48,6 +48,10 @@ function fillArrayToLength(arr: any[], length: number, data: any = null) {
   return arr;
 }
 
+export function fillArray(length: number) {
+  return Array.from({ length }, () => "");
+}
+
 function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

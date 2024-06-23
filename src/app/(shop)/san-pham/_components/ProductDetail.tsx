@@ -15,6 +15,8 @@ import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
+import Link from '@/components/common/Link'
+import routes from '@/routes'
 
 export default function ProductDetail({ product }: { product: Product }) {
   const { handleAddtoCart } = useCart()
@@ -65,7 +67,9 @@ export default function ProductDetail({ product }: { product: Product }) {
             <TypographyH1 className=" line-clamp-2 lg:text-xl  text-xl">{product.title}</TypographyH1>
             {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
             <TypographyP >Thương hiệu: <b className=' text-blue-500'>{product.vendor}</b></TypographyP>
-            <TypographyP >Mã sản phẩm: <b className=' text-blue-500'>{variantActive.sku}</b></TypographyP>
+           
+            <TypographyP >Danh mục:  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
+           
             <ButtonCompareProduct product={product} />
 
             <TypographyP className=' line-clamp-2'>{product.short_description}</TypographyP>

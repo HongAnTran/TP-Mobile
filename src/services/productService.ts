@@ -16,7 +16,7 @@ class ProductsService {
       params: paramsDefault,
       next: { revalidate: 60 * 3 },
       ...init,
-      isLogger: true
+ 
     });
   }
   async getListClient(params?: ProductsParams, init?: ConfigAPi) {

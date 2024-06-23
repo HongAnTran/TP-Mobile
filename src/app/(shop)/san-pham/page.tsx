@@ -12,7 +12,7 @@ export default async function page({ searchParams }: { searchParams: { [key: str
   const LIMIT = 12
   const page = searchParams.page?.toString() || 1
 
-  const products = await ProductsServiceApi.getList({ take: LIMIT, skip: +page - 1 * LIMIT })
+  const products = await ProductsServiceApi.getList({ take: LIMIT, skip: (Number(page) - 1) * LIMIT })
 
   return (
     <div className=' my-8'>

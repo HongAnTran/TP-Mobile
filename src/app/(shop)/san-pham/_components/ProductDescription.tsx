@@ -1,9 +1,9 @@
 import React from 'react'
 import { Product, ProductTypeSpecifications } from '@/types/product'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
-import typesJson from "@/data/tagType.json"
-export default function ProductDescription({ product }: { product: Product }) {
-  const types = JSON.parse(JSON.stringify(typesJson)) as ProductTypeSpecifications[]
+import ProductSpecificationsServiceApi from '@/services/productSpecifications'
+export default async function ProductDescription({ product }: { product: Product }) {
+  const types = await ProductSpecificationsServiceApi.getListType()
 
 
   return (
@@ -28,11 +28,10 @@ export default function ProductDescription({ product }: { product: Product }) {
                       return (<li key={spes.id} className='  flex items-center border-b py-1 '>
                         <TypographyP className=' font-semibold w-1/2'>{spes.name}:</TypographyP>
                         <div className=' text-right  w-1/2'>
-                        <TypographyP >{spes.value}</TypographyP>
-                          {/* {spes.value.map(item => {
-                            return (<TypographyP key={item}>{item}</TypographyP>)
-                          })} */}
+                          {spes.value.map((value, index) => {
+                            return <TypographyP key={index}>{value}</TypographyP>
 
+                          })}
                         </div>
                       </li>)
                     })}
