@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react'
 import routes from '@/routes'
 import NavLink from '../common/NavLink'
 import { cn } from '@/lib/utils'
-export default function NavigationCategoryClient({ className, data }: { data: CategoryProduct[], className?: string }) {
+import { CategoryArtice } from '@/types/categoryArtice'
+export default function NavigationCategoryClient({ className, data }: { data: CategoryProduct[] | CategoryArtice [], className?: string }) {
   const [isSticky, setIsSticky] = useState(false)
   const handleScroll = () => {
     if (window.scrollY > 160) {

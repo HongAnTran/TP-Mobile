@@ -7,9 +7,11 @@ import { Article } from '@/types/article'
 import routes from '@/routes'
 import json from "@/data/article.json"
 import ArticleCardList from '../common/ArticleCardList';
+import ArticeServiceApi from '@/services/articeService';
 
-export default function SectionArticles() {
-  const articles: Article[] = JSON.parse(JSON.stringify(json))
+export default async function SectionArticles() {
+  const {articles} = await ArticeServiceApi.getList({take:4})
+
 
 
   if (!articles.length) {
@@ -19,7 +21,7 @@ export default function SectionArticles() {
     <section className=' flex flex-col gap-4'>
       <TypographyH3 className=' text-center uppercase text-primary'>Tin tức</TypographyH3>
       <div className="grid  grid-cols-1 md:grid-cols-2 gap-6">
-        {articles.slice(0,4).map((article) => (
+        {articles.map((article) => (
           <ArticleCardList  article={article}  key={article.id}  aspect="landscape" />
         ))}
       </div>

@@ -6,17 +6,13 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import routes from '@/routes'
 
 export default async function page({ params }: { params: { slug: string } }) {
-
   const slug = params.slug
-
   const artice = await ArticeServiceApi.getDetail(slug)
-
-
   if (!artice) {
     notFound()
   }
 
-
+  console.log(artice)
 
   return (
     <>

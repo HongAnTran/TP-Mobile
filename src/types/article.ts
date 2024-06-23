@@ -1,3 +1,4 @@
+import { CategoryArtice } from "./categoryArtice";
 
 enum ArticleStatus {
   DRAFT,
@@ -10,14 +11,20 @@ interface Article {
   content: string; // Nội dung của bài viết
   author_id: number; // ID của tác giả (khóa ngoại)
   category_id: number; // ID của danh mục bài viết (khóa ngoại)
+  category : CategoryArtice
   created_at: string; // Ngày và giờ tạo bài viết
   updated_at: string; // Ngày và giờ cập nhật gần đây nhất
   published_date: string;
   description: string;
   thumnal_url: string
   status: ArticleStatus
-  
+
 }
 
-export type { Article }
+interface Articles {
+  articles: Article[]
+  total: number
+}
+
+export type { Article , Articles }
 export { ArticleStatus }

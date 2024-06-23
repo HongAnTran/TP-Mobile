@@ -69,7 +69,7 @@ export default function ArticleCardList({
 
         <div className={cn(minimal && "flex items-center" , " absolute bottom-0 left-0  right-0 p-4")}>
           <div>
-            <Badge >{article.category_id}</Badge>
+            <Badge >{article?.category?.title}</Badge>
             <h2
               className={cn(
                 fontSize === "large"
@@ -101,14 +101,14 @@ export default function ArticleCardList({
 
 
 
-            <div className="mt-3 ">
+            {/* <div className="mt-3 ">
               <time
                 className="truncate text-sm text-white"
                 dateTime={formatDate(article.published_date || article.created_at)}>
 
                 {formatDate(article.published_date || article.created_at)}
               </time>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
