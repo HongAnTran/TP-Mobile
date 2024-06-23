@@ -35,17 +35,6 @@ export default function SearchInput() {
   })
 
 
-  // async function searchProductByKeyword(keyword: string) {
-  //   if (!keyword.trim()) {
-  //     setProductsSearch([])
-  //     return
-  //   }
-  //   const { products } = await ProductsServiceApi.getListClient({ take: 5, keyword: keyword })
-  //   setProductsSearch(products)
-  //   setOpenSearch(true)
-  // }
-
-
 
 
   const searchProductByKeyword = useCallback(debounce(async (keyword: string) => {
