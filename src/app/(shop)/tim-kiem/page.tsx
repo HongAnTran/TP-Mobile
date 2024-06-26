@@ -11,12 +11,12 @@ import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 
 
-export default async function page(searchParams: { [key: string]: string }) {
+export default async function page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
 
   const keyword = searchParams.keyword
 
   const { products } = await ProductsServiceApi.getList({
-    keyword: keyword,
+    keyword: keyword ? keyword.toString() : undefined,
     take: 20
   })
 
