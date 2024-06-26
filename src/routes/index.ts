@@ -2,6 +2,7 @@ const routes = {
   home: "/",
   api: "/api",
   artice: "/tin-tuc",
+  search: "/tim-kiem",
   articeCategory: "/danh-muc-tin-tuc",
   products: "/san-pham",
   category: "/danh-muc",

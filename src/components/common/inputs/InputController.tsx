@@ -35,6 +35,7 @@ export default function InputController<
         <div className={cn(' grid w-full  items-center gap-1.5 relative ', isShowError && "pb-5")}>
           <Label htmlFor={id}  >{label} {inputProps?.required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
           <Input
+          
             {...inputProps}
             id={id}
             name={name}

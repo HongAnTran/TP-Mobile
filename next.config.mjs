@@ -3,6 +3,9 @@
 
 const nextConfig = {
   reactStrictMode: false,
+  
+		// removeConsole: process.env.NODE_ENV === "production" ? true : false,
+	
   images: {
     remotePatterns: [
       {

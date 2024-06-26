@@ -54,6 +54,7 @@ export default function ProductCard({ product }: { product: ProductInList }) {
             </div>
           </CardContent>
           <ProductCardDiscount product={product} />
+
         </Card>
       </motion.div>
 
@@ -114,15 +115,33 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
 function ProductCardDiscount({ product }: { product: ProductInList }) {
 
 
-  if (!product.compare_at_price) return null
+  if (!product.compare_at_price) return (<CardBadge className=' top-2 -left-[3px] z-20 '>
+    <div className=' h-8 w-20 relative'>
+      <Image src={badgeBG} alt='badge' className=' w-full h-full' />
+      <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
+        <TypographySpan className=' text-xs text-white  font-semibold ' >Trả góp 0%</TypographySpan>
+      </div>
+    </div>
+
+  </CardBadge>)
 
   const discountPercent = ((product.compare_at_price - product.price) / product.compare_at_price) * 100
 
   return (<CardBadge className=' top-2 -left-[3px] z-20 '>
-    <div className=' h-8 w-20 relative'>
-      <Image src={badgeBG} alt='badge' className=' w-full h-full' />
-      <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
-        <TypographySpan className=' text-xs text-white  font-semibold ' >Giảm {discountPercent}%</TypographySpan>
+    <div className=' flex flex-col gap-1'>
+
+      <div className=' h-8 w-20 relative'>
+        <Image src={badgeBG} alt='badge' className=' w-full h-full' />
+        <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
+          <TypographySpan className=' text-xs text-white  font-semibold ' >Giảm {Math.round(discountPercent)}%</TypographySpan>
+        </div>
+      </div>
+
+      <div className=' h-8 w-20 relative'>
+        <Image src={badgeBG} alt='badge' className=' w-full h-full' />
+        <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
+          <TypographySpan className=' text-xs text-white  font-semibold ' >Trả góp 0%</TypographySpan>
+        </div>
       </div>
     </div>
   </CardBadge>)

@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
 import ProductsServiceApi from '@/services/productService';
-import { Product, ProductInList } from '@/types/product';
+import {  ProductInList } from '@/types/product';
 import {
   HoverCardTrigger,
   HoverCard,
@@ -89,17 +89,20 @@ export default function SearchInput() {
         <form onChange={handleSubmit((data) => {
           searchProductByKeyword(data.keyword)
         })
-        }>
+        }
+        >
+          <InputController
 
-          <InputController inputProps={{
-            placeholder: placeholder,
-            className: " text-white placeholder:text-white",
-            autoComplete: "off",
-            onBlur: () => {
-              setValue("keyword", "")
-              setOpenSearch(false)
-            }
-          }}
+            inputProps={{
+              placeholder: placeholder,
+              className: " text-white placeholder:text-white",
+              autoComplete: "off",
+              onBlur: () => {
+                setValue("keyword", "")
+                setOpenSearch(false)
+              }
+
+            }}
             name="keyword" control={control} />
         </form >
       </HoverCardTrigger>
@@ -110,6 +113,8 @@ export default function SearchInput() {
           {productsSearch.map(product => {
             return <ProductItemSearch key={product.id} product={product} />
           })}
+
+          <Link href={`${routes.search}?keyword=${watch("keyword")}`}>Xem tất cả</Link>
         </ul> : <TypographyP className='  text-white'>Không có kết quả</TypographyP>}
       </HoverCardContent>
     </HoverCard>

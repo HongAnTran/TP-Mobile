@@ -11,9 +11,14 @@ import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 
 
-export default async function page() {
+export default async function page(searchParams: { [key: string]: string }) {
 
-  const {products} = await ProductsServiceApi.getList()
+  const keyword = searchParams.keyword
+
+  const { products } = await ProductsServiceApi.getList({
+    keyword: keyword,
+    take: 20
+  })
 
   return (
     <div className=' my-8'>
@@ -25,7 +30,7 @@ export default async function page() {
           }]} />
 
         <div className=' mt-16'>
-          <TypographyH1 className=' text-center   lg:text-2xl'>Có 44 kết quả theo từ khóa a</TypographyH1>
+          <TypographyH1 className=' text-center   lg:text-2xl'>Có 44 kết quả theo từ khóa {keyword}</TypographyH1>
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
@@ -35,12 +40,12 @@ export default async function page() {
             <div className=' col-span-10'>
               <div className=' flex justify-between'>
 
-              <div className=' flex items-center mb-4'>
-                <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
-                <SortProduct />
+                <div className=' flex items-center mb-4'>
+                  <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
+                  <SortProduct />
 
-              </div>
-              <TypographyH3 className='  '>Bài viết liên quan</TypographyH3>
+                </div>
+                <TypographyH3 className='  '>Bài viết liên quan</TypographyH3>
 
               </div>
               <div className='  grid-cols-4  grid gap-4'>
