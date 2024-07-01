@@ -12,9 +12,6 @@ export async function generateMetadata(
   const slug = params.slug
 
   const product = await ProductsServiceApi.getDetail(slug)
-
-
- 
   return {
     title: product.title,
     description : product.short_description,

@@ -14,22 +14,25 @@ import { TypographyP } from '../ui/typography'
 import MutipleCheckbox from '../common/MutipleCheckbox'
 import { CategoryProduct } from '@/types/categoryProduct'
 import CategoryServiceApi from '@/services/categoryService'
+import { objectToSearchParams, objectToSearchParamsValue } from '@/utils'
+import { usePathname , useRouter } from 'next/navigation'
 interface ValueFiter {
-  color: string;
+  color?: string;
   price: number[];
-  disk: string[]
+  capacity: string[]
   ram: string[]
-  categories: CategoryProduct["slug"][]
+  categories?: CategoryProduct["slug"][]
 }
-export default function FilterProduct() {
-
+export default function FilterProduct({ defaultValue , searchParams }: { defaultValue?: ValueFiter , searchParams?: any  }) {
+  const router = useRouter()
+  const pathname = usePathname();
   const [categories , setCategories] = useState<CategoryProduct[]>([])
 
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
-    color: itemFilterColor[0].value,
-    price: [0, 100],
-    disk: [],
-    ram: [],
+    color: defaultValue?.color,
+    price: defaultValue?.price || [0, 100],
+    capacity: defaultValue?.capacity || [],
+    ram: defaultValue?.ram || [],
     categories: [],
   })
 
@@ -37,7 +40,10 @@ export default function FilterProduct() {
     const value = { ...valueFiter }
     value[key] = data
     setValueFilter(value)
-
+    const valueSearch = objectToSearchParams(objectToSearchParamsValue({ ...searchParams, ...value }))
+    const query = valueSearch ? `?${valueSearch}` : "";
+    window.history.pushState(null, '', query)
+    router.push(pathname + query)
   }
 
 
@@ -91,14 +97,14 @@ export default function FilterProduct() {
     {
       title: "Dung lượng",
       content: <>
-        <MutipleCheckbox onChange={(datas) => onChageValueFilter("disk", datas)} items={itemFilterDisk} defaultValue={valueFiter.disk} />
+        <MutipleCheckbox onChange={(datas) => onChageValueFilter("capacity", datas)} items={itemFilterDisk} defaultValue={valueFiter.capacity} />
       </>
     },
-    {
-      title: "Ram",
-      content: <MutipleCheckbox onChange={(datas) => onChageValueFilter("ram", datas)} items={itemFilterRam} defaultValue={valueFiter.ram} />
+    // {
+    //   title: "Ram",
+    //   content: <MutipleCheckbox onChange={(datas) => onChageValueFilter("ram", datas)} items={itemFilterRam} defaultValue={valueFiter.ram} />
 
-    }
+    // }
   ]
   return (
     <div>

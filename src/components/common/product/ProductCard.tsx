@@ -93,13 +93,13 @@ function ProductCardImage({ images, title, featured_image }: Pick<Product, "imag
 
 
 function ProductCardPrice({ product }: { product: ProductInList }) {
-  if (product.price_min && product.price_max) {
-    return <div className=' flex  flex-col md:flex-row  md:items-center gap-1'>
-      <PriceText className='text-red-500 ' price={product.price_min} />
-      <span className=' hidden  md:inline'>-</span>
-      <PriceText className='text-red-500 ' price={product.price_max} />
-    </div>
-  }
+  // if (product.price_min && product.price_max) {
+  //   return <div className=' flex  flex-col md:flex-row  md:items-center gap-1'>
+  //     <PriceText className='text-red-500 ' price={product.price_min} />
+  //     <span className=' hidden  md:inline'>-</span>
+  //     <PriceText className='text-red-500 ' price={product.price_max} />
+  //   </div>
+  // }
 
   return (
     <div className=' flex  flex-row  md:items-center gap-1'>

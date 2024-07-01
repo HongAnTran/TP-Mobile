@@ -11,7 +11,7 @@ import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 
 
-export default async function page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
 
   const keyword = searchParams.keyword
 
@@ -35,14 +35,14 @@ export default async function page({ searchParams }: { searchParams: { [key: str
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
             <div className='  col-span-2'>
-              <FilterProduct />
+              <FilterProduct searchParams={searchParams} />
             </div>
             <div className=' col-span-10'>
               <div className=' flex justify-between'>
 
                 <div className=' flex items-center mb-4'>
                   <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
-                  <SortProduct />
+                  <SortProduct searchParams={searchParams}/>
 
                 </div>
                 <TypographyH3 className='  '>Bài viết liên quan</TypographyH3>

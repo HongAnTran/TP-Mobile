@@ -9,6 +9,8 @@ import { SortProduct } from '@/components/feature/SortProduct'
 import ProductCollectionList from '../_components/ProductCollectionList'
 import ErrorRespone from '@/api/error'
 import ProductsSkeleton from '@/components/common/ProductsSkeleton'
+import { Pagination } from '@/components/ui/pagination'
+import PaginationServer from '@/components/common/Pagination'
 
 
 async function getCategoryDetail(slug: string) {
@@ -29,6 +31,16 @@ export default async function page({ params, searchParams }: { params: { slug: s
   const slug = params.slug
   const caregory = await getCategoryDetail(slug)
   const key = JSON.stringify(searchParams)
+  const LIMIT = 1
+
+
+  const defaultFilter = {
+    color: searchParams?.color,
+    price: searchParams?.price?.split(",").map(Number) || [0, 100],
+    capacity: searchParams?.capacity?.split(",") || [],
+    ram: searchParams?.ram?.split(",") || [],
+  }
+
   return (
     <div className=' my-8'>
       <div className=' container'>
@@ -48,19 +60,23 @@ export default async function page({ params, searchParams }: { params: { slug: s
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
             <div className=' lg:col-span-2 col-span-12'>
-              <FilterProduct />
+              <FilterProduct defaultValue={defaultFilter} searchParams={searchParams} />
             </div>
             <div className=' lg:col-span-10 col-span-12'>
               <div className='items-center mb-4 hidden md:flex'>
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
-                <SortProduct />
+                <SortProduct searchParams={searchParams} />
               </div>
-              <Suspense key={key} fallback={<ProductsSkeleton/>}>
+              <Suspense key={key} fallback={<ProductsSkeleton />}>
                 <ProductCollectionList searchParams={{
                   category_id: caregory.id,
-                  ...searchParams
+                  limit: LIMIT,
+
+                  ...searchParams,
+
                 }} />
               </Suspense>
+
             </div>
           </div>
 

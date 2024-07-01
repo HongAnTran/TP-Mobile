@@ -66,7 +66,7 @@ function objectToSearchParamsValue(obj: ObjectWithArrayValues): ObjectWithArrayV
     if (Array.isArray(obj[key])) {
       processedObj[key] = (obj[key] as (string | number)[]).join(',');
     } else {
-      processedObj[key] = obj[key].toString();
+      processedObj[key] = obj[key] ? obj[key].toString() : ""
     }
   }
   return processedObj
@@ -94,7 +94,7 @@ function formatDate(date: string): string {
 }
 
 
-function checkIsClient(){
+function checkIsClient() {
   return typeof window !== "undefined"
 }
 
@@ -105,7 +105,7 @@ function generateUniqueId() {
 function debounce<T extends (...args: any[]) => void>(func: T, wait: number): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null;
 
-  return function(...args: Parameters<T>): void {
+  return function (...args: Parameters<T>): void {
     if (timeout) {
       clearTimeout(timeout);
     }
@@ -118,4 +118,4 @@ function debounce<T extends (...args: any[]) => void>(func: T, wait: number): (.
 }
 
 
-export { debounce,convetNumberToPriceVND, findVariantMinPrice,  generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams  , formatDate , checkIsClient}
+export { debounce, convetNumberToPriceVND, findVariantMinPrice, generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams, formatDate, checkIsClient }

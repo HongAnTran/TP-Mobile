@@ -1,6 +1,5 @@
 
 import fetchApi from "@/api/instances/baseInstance";
-import categorysJson from "@/data/categoryProduct.json";
 import { ConfigAPi } from "@/types/api";
 import { CategoryProduct, CategoryProductFilter } from "@/types/categoryProduct";
 

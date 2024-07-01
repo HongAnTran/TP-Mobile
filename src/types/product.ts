@@ -109,7 +109,7 @@ type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "vendor" 
   quantity: number
   image: string
   selected: boolean
-  category_title : string
+  category_title: string
 }
 interface ProductRating {
   id: number,
@@ -124,7 +124,12 @@ interface ProductsParams extends FilterBase {
   status?: ProductStatus
   category_id?: Product["category_id"]
   ids?: string
-  keyword? : string
+  keyword?: string
+  color?: string
+  capacity?: string
+  page?:number,
+  limit?: number 
+
 }
 
 type ProductInList = Pick<Product, "id" | "available" | "barcode" | "category" | "category_id" | "compare_at_price" | "created_at" | "featured_image" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "vendor" | "updated_at">

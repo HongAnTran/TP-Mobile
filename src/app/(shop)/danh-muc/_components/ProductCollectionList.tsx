@@ -1,16 +1,18 @@
 import React from 'react'
 import ProductCard from '@/components/common/product/ProductCard'
 import ProductsServiceApi from '@/services/productService'
-import { Product } from '@/types/product'
+import { Product, ProductsParams } from '@/types/product'
+import PaginationServer from '@/components/common/Pagination'
 
 interface ProductCollectionListProps {
-  searchParams: { skip?: number, category_id?: number, keyword?: string, ids?: Product["id"][] }
+  searchParams: ProductsParams
 }
 
 export default async function ProductCollectionList({ searchParams }: ProductCollectionListProps) {
   const { products } = await ProductsServiceApi.getList({
     category_id: searchParams.category_id,
-    take: 20
+    take: 20,
+    ...searchParams
   })
   if (!products.length) {
     return (
@@ -18,10 +20,13 @@ export default async function ProductCollectionList({ searchParams }: ProductCol
     )
   }
   return (
-    <div className=' grid lg:grid-cols-4 gap-2 grid-cols-2'>
-      {products.map((pro) => {
-        return <ProductCard key={pro.id} product={pro} />
-      })}
-    </div>
+    <>
+      <div className=' grid lg:grid-cols-4 gap-2 grid-cols-2'>
+        {products.map((pro) => {
+          return <ProductCard key={pro.id} product={pro} />
+        })}
+      </div>
+      <PaginationServer  />
+    </>
   )
 }

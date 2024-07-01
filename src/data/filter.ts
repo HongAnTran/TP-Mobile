@@ -51,30 +51,30 @@ export const itemFilterColor: FilterColor[] = [
 export const itemFilterDisk: CheckboxItem[] = [
   {
     label: '32 GB',
-    value: '32gb'
+    value: '32GB'
   },
   {
     label: '64 GB',
-    value: '64gb'
+    value: '64GB'
   }, {
     label: '128 GB',
-    value: '128gb'
+    value: '128GB'
   },
   {
     label: '256 GB',
-    value: '256gb'
+    value: '256GB'
   },
   {
     label: '512 GB',
-    value: '512gb'
+    value: '512GB'
   },
   {
     label: '1T',
-    value: '1t'
+    value: '1T'
   },
   {
     label: '2T',
-    value: '2t'
+    value: '2T'
   }
 
 ];
@@ -102,6 +102,9 @@ export const itemFilterRam: CheckboxItem[] = [
 
 ];
 
+
+
+
 export const itemSort: CheckboxItem[] = [
   {
     label: 'Giá tăng dần',
@@ -111,14 +114,12 @@ export const itemSort: CheckboxItem[] = [
     label: 'Giá giảm dần',
     value: 'price_desc'
   },
-  {
-    label: 'Hàng mới',
-    value: 'product_new'
-  },
-  {
-    label: 'Khuyến mãi',
-    value: 'product_sale'
-  },
-
-
+  // {
+  //   label: 'Hàng mới',
+  //   value: 'product_new'
+  // },
+  // {
+  //   label: 'Khuyến mãi',
+  //   value: 'product_sale'
+  // },
 ];
