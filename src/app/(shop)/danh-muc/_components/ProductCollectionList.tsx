@@ -2,7 +2,6 @@ import React from 'react'
 import ProductCard from '@/components/common/product/ProductCard'
 import ProductsServiceApi from '@/services/productService'
 import { Product, ProductsParams } from '@/types/product'
-import PaginationServer from '@/components/common/Pagination'
 
 interface ProductCollectionListProps {
   searchParams: ProductsParams
@@ -26,7 +25,7 @@ export default async function ProductCollectionList({ searchParams }: ProductCol
           return <ProductCard key={pro.id} product={pro} />
         })}
       </div>
-      <PaginationServer  />
+      {/* <PaginationServer  /> */}
     </>
   )
 }
