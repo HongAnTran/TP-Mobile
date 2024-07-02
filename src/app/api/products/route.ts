@@ -3,11 +3,11 @@ import { type NextRequest } from 'next/server'
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const keyword = searchParams.get('keyword')
-  const take = Number(searchParams.get('take'))
+  const limit = Number(searchParams.get('limit'))
   // const keyword = searchParams.get('keyword')
 
   const data = await ProductsServiceApi.getList({
-    take : take || undefined,
+    limit : limit || undefined,
     keyword : keyword || undefined
   })
   return Response.json(data)
