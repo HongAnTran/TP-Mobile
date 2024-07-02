@@ -4,13 +4,12 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import CategoryServiceApi from '@/services/categoryService'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import routes from '@/routes'
-import FilterProduct from "../_components/FilterProduct"
 import { SortProduct } from '@/components/feature/SortProduct'
 import ProductCollectionList from '../_components/ProductCollectionList'
 import ErrorRespone from '@/api/error'
 import ProductsSkeleton from '@/components/common/ProductsSkeleton'
-import { Pagination } from '@/components/ui/pagination'
-import PaginationServer from '@/components/common/Pagination'
+import FilterProduct from '@/components/feature/FilterProduct'
+import SETTINGS from '@/consts/settings'
 
 
 async function getCategoryDetail(slug: string) {
@@ -31,11 +30,9 @@ export default async function page({ params, searchParams }: { params: { slug: s
   const slug = params.slug
   const caregory = await getCategoryDetail(slug)
   const key = JSON.stringify(searchParams)
-  const LIMIT = 1
-
 
   const defaultFilter = {
-    color: searchParams?.color,
+    color: searchParams?.color?.split(",") || [],
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
     capacity: searchParams?.capacity?.split(",") || [],
     ram: searchParams?.ram?.split(",") || [],
@@ -70,11 +67,9 @@ export default async function page({ params, searchParams }: { params: { slug: s
               <Suspense key={key} fallback={<ProductsSkeleton />}>
                 <ProductCollectionList searchParams={{
                   category_id: caregory.id,
-                  limit: LIMIT,
-
                   ...searchParams,
-
-                }} />
+                }}
+                  slug={`${routes.category}/${slug}`} />
               </Suspense>
 
             </div>

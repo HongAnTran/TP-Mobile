@@ -1,5 +1,6 @@
 
 import fetchApi from "@/api/instances/baseInstance";
+import fetchApiPublic from "@/api/instances/routerhandlersInstance";
 import { ConfigAPi } from "@/types/api";
 import { CategoryProduct, CategoryProductFilter } from "@/types/categoryProduct";
 
@@ -15,6 +16,13 @@ class CategoryService {
         revalidate: 3600
       },
       ...init
+    });
+  }
+  async getListClient(params?: CategoryProductFilter, init?: ConfigAPi) {
+    return fetchApiPublic.get<CategoryProduct[]>(this.url, {
+      params: params,
+      next: { revalidate: 60 * 3 },
+      ...init,
     });
   }
 

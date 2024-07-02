@@ -11,11 +11,12 @@ function ItemPagination({
 	isActive?: boolean;
 	className?: string;
 }) {
+	console.log(isActive)
 	return (
 		<div
 			className={cn(
-				" px-1  w-7 h-7 text-base  font-bold  flex items-center justify-center cursor-pointer rounded  transition  hover:text-red-500 text-gray-500  ",
-				{ "text-red-500": isActive },
+				" px-1  border  rounded-full w-8 h-8 text-base  font-bold  flex items-center justify-center cursor-pointer   transition  hover:text-red-500 text-gray-500  ",
+				{ " text-white border-red-500 bg-red-500 hover:text-white": isActive },
 				className
 			)}>
 			<span className="text-inherit ">{item}</span>

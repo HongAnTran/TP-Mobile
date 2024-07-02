@@ -2,16 +2,24 @@ import React from 'react'
 import ProductCard from '@/components/common/product/ProductCard'
 import ProductsServiceApi from '@/services/productService'
 import { Product, ProductsParams } from '@/types/product'
+import PaginationServer from '@/components/common/paginations/PaginationServer'
+import SETTINGS from '@/consts/settings'
 
 interface ProductCollectionListProps {
   searchParams: ProductsParams
+  slug: string
 }
 
-export default async function ProductCollectionList({ searchParams }: ProductCollectionListProps) {
-  const { products } = await ProductsServiceApi.getList({
-    category_id: searchParams.category_id,
-    take: 20,
+export default async function ProductCollectionList({ searchParams, slug }: ProductCollectionListProps) {
+  const page = Number(searchParams.page) || 1
+  const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST
+
+  const {category_id , ...query} = searchParams
+  const { products, total } = await ProductsServiceApi.getList({
+    limit: LIMIT,
     ...searchParams
+  }, {
+    isLogger: true
   })
   if (!products.length) {
     return (
@@ -25,7 +33,9 @@ export default async function ProductCollectionList({ searchParams }: ProductCol
           return <ProductCard key={pro.id} product={pro} />
         })}
       </div>
-      {/* <PaginationServer  /> */}
+      <div className=' mt-8 flex  justify-center'>
+      <PaginationServer page={page} pageSize={LIMIT} query={{...query}} total={total} urlSrc={slug} />
+      </div>
     </>
   )
 }

@@ -15,29 +15,29 @@ import MutipleCheckbox from '../common/MutipleCheckbox'
 import { CategoryProduct } from '@/types/categoryProduct'
 import CategoryServiceApi from '@/services/categoryService'
 import { objectToSearchParams, objectToSearchParamsValue } from '@/utils'
-import { usePathname , useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 interface ValueFiter {
-  color?: string;
+  color?: string[];
   price: number[];
-  capacity: string[]
-  ram: string[]
+  capacity?: string[]
+  ram?: string[]
   categories?: CategoryProduct["slug"][]
 }
-export default function FilterProduct({ defaultValue , searchParams }: { defaultValue?: ValueFiter , searchParams?: any  }) {
+export default function FilterProduct({ defaultValue, searchParams, isUseCategory }: { defaultValue?: ValueFiter, searchParams?: any, isUseCategory?: boolean }) {
   const router = useRouter()
   const pathname = usePathname();
-  const [categories , setCategories] = useState<CategoryProduct[]>([])
+  const [categories, setCategories] = useState<CategoryProduct[]>([])
 
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
-    color: defaultValue?.color,
+    color: defaultValue?.color || [],
     price: defaultValue?.price || [0, 100],
     capacity: defaultValue?.capacity || [],
     ram: defaultValue?.ram || [],
-    categories: [],
+    categories: defaultValue?.categories || [],
   })
 
   function onChageValueFilter(key: keyof ValueFiter, data: any) {
-    const value = { ...valueFiter }
+    const value = { ...valueFiter, page: 1 }
     value[key] = data
     setValueFilter(value)
     const valueSearch = objectToSearchParams(objectToSearchParamsValue({ ...searchParams, ...value }))
@@ -45,43 +45,32 @@ export default function FilterProduct({ defaultValue , searchParams }: { default
     window.history.pushState(null, '', query)
     router.push(pathname + query)
   }
-
-
-
-
   useEffect(() => {
+    if (!isUseCategory) return
     (async () => {
       try {
-        const categories = await CategoryServiceApi.getList()
+        const categories = await CategoryServiceApi.getListClient()
         setCategories(categories)
       } catch (error) {
 
       }
     })()
 
-  }, [])
+  }, [isUseCategory])
+
+  const cateItem = isUseCategory ? [{
+    title: "Loại sản phẩm",
+    content:
+      <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.map((item) => ({ value: item.slug, label: item.title }))} defaultValue={valueFiter.categories} />
+  }] : []
 
   const filters = [
-    {
-      title: "Loại sản phẩm",
-      content:
-        <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.map((item)=>({value : item.slug , label : item.title}))} defaultValue={valueFiter.categories} />
-    },
+    ...cateItem,
     {
       title: "Màu sắc",
-      content: <RadioGroup value={valueFiter.color}
-        onValueChange={(data) => onChageValueFilter("color", data)}
-      >
-        {itemFilterColor.map(fil => {
-          return (<div className="flex items-center space-x-2" key={fil.value}>
-            <RadioGroupItem value={fil.value} id={fil.value}
-            />
-            <Label className=' cursor-pointer' htmlFor={fil.value}>{fil.label}</Label>
-          </div>)
+      content: <MutipleCheckbox onChange={(datas) => onChageValueFilter("color", datas)} items={itemFilterColor} defaultValue={valueFiter.color}
+      />
 
-        })
-        }
-      </RadioGroup>
 
     },
     {

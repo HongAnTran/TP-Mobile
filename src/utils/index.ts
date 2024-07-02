@@ -75,7 +75,7 @@ function objectToSearchParamsValue(obj: ObjectWithArrayValues): ObjectWithArrayV
 function objectToSearchParams(obj: any): string {
   return Object.keys(obj)
     .filter(key => obj[key] !== undefined && obj[key] !== null && obj[key] !== '')
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
+    .map(key => `${encodeURIComponent(key)}=${obj[key]}`)
     .join('&');
 }
 

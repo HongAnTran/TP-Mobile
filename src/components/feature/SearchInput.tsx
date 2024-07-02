@@ -98,7 +98,7 @@ export default function SearchInput() {
               className: " text-white placeholder:text-white",
               autoComplete: "off",
               onBlur: () => {
-                setValue("keyword", "")
+                // setValue("keyword", "")
                 setOpenSearch(false)
               }
 

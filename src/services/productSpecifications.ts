@@ -25,18 +25,6 @@ class productSpecificationsService {
       cache: "force-cache"
     });
   }
-  // async getDetail(slug: string) {
-  //   const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-  //     next: { revalidate: 30 },
-  //   });
-  //   return product
-  // }
-  // async getDetailClient(slug: string) {
-  //   const product = await fetchApiPublic.get<Product>(`${this.url}/${slug}`, {
-  //     next: { revalidate: 30 },
-  //   });
-  //   return product
-  // }
 }
 
 const ProductSpecificationsServiceApi = new productSpecificationsService();

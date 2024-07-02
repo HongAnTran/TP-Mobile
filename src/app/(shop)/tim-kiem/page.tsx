@@ -14,8 +14,15 @@ import FilterProduct from '@/components/feature/FilterProduct'
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
 
   const keyword = searchParams.keyword
-
-  const { products } = await ProductsServiceApi.getList({
+  const defaultFilter = {
+    color: searchParams?.color?.split(",") || [],
+    price: searchParams?.price?.split(",").map(Number) || [0, 100],
+    capacity: searchParams?.capacity?.split(",") || [],
+    ram: searchParams?.ram?.split(",") || [],
+    categories: searchParams?.categories?.split(",") || [],
+    keyword: keyword
+  }
+  const { products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,
     take: 20
   })
@@ -25,42 +32,37 @@ export default async function page({ searchParams }: { searchParams: { [key: str
       <div className=' container'>
         <Breadcrumbs breadcrumbsList={[
           {
-            label: "Sản phẩm",
+            label: "Tìm kiếm",
+            // isActive: true
+          },
+          {
+            label: keyword,
             isActive: true
-          }]} />
+          }
+          ]} />
 
         <div className=' mt-16'>
-          <TypographyH1 className=' text-center   lg:text-2xl'>Có 44 kết quả theo từ khóa {keyword}</TypographyH1>
+          <TypographyH1 className=' text-center   lg:text-2xl'>Có {total} kết quả theo từ khóa {keyword}</TypographyH1>
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
             <div className='  col-span-2'>
-              <FilterProduct searchParams={searchParams} />
+              <FilterProduct defaultValue={defaultFilter} isUseCategory searchParams={searchParams} />
             </div>
             <div className=' col-span-10'>
               <div className=' flex justify-between'>
 
                 <div className=' flex items-center mb-4'>
                   <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
-                  <SortProduct searchParams={searchParams}/>
+                  <SortProduct searchParams={searchParams} />
 
                 </div>
-                <TypographyH3 className='  '>Bài viết liên quan</TypographyH3>
 
               </div>
-              <div className='  grid-cols-4  grid gap-4'>
-                <div className='  col-span-3'>
-                  <div className=' grid grid-cols-3 gap-4'>
-                    {products.map((pro) => {
-                      return <ProductCard key={pro.id} product={pro} />
-                    })}
-                  </div>
-                </div>
-                <div className='  col-span-1'>
-                  {/* <ArticleCard article={{
-
-                  }} /> */}
-                </div>
+              <div className=' grid lg:grid-cols-4 grid-cols-2  gap-4'>
+                {products.map((pro) => {
+                  return <ProductCard key={pro.id} product={pro} />
+                })}
               </div>
             </div>
           </div>
