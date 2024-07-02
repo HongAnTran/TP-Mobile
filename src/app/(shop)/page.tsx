@@ -1,3 +1,4 @@
+import ProductsSkeleton from '@/components/common/ProductsSkeleton'
 import BannerLarge from '@/components/feature/BannerLarge'
 import BannerMedium from '@/components/feature/BannerMedium'
 import SectionArticles from '@/components/feature/SectionArticles'
@@ -6,7 +7,7 @@ import SectionCategoryGrid from '@/components/feature/SectionCategoryGrid'
 import SectionFeedback from '@/components/feature/SectionFeedback'
 import routes from '@/routes'
 import CategoryServiceApi from '@/services/categoryService'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 export default async function page() {
   const cates = await CategoryServiceApi.getList()
@@ -20,7 +21,9 @@ export default async function page() {
           <SectionCategoryCarousel title='Sản phẩm mới' productIds={[1, 2, 3, 4, 5, 6, 7, 8]} skip={8} />
           {
             cates.map(cate => {
-              return <SectionCategoryGrid key={cate.id} link={`${routes.category}/${cate.slug}`} title={cate.title} categoryId={cate.id} productIds={[]} />
+              return <Suspense key={cate.id} fallback={<ProductsSkeleton />}>
+                <SectionCategoryGrid link={`${routes.category}/${cate.slug}`} title={cate.title} categoryId={cate.id} productIds={[]} />
+              </Suspense>
             })
           }
           <SectionFeedback />

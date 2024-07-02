@@ -14,7 +14,7 @@ interface SectionCategoryCarouselProps {
 }
 
 export default async function SectionCategoryCarousel({ title, productIds, skip = 0 }: SectionCategoryCarouselProps) {
-  const products = await ProductsServiceApi.getList({ take: 8, skip: skip })
+  const products = await ProductsServiceApi.getList({ limit: 8, })
 
   if (!products.total) {
     return null

@@ -1,12 +1,13 @@
 import Footer from '@/components/feature/Footer'
 import ListStickyButton from '@/components/common/ListStickyButton'
-import HeaderArtice from '@/components/feature/HeaderArtice'
 import NavigationCategoryArticle from '@/components/feature/NavigationCategoryArticle'
+import Header from '@/components/feature/Header'
 
 export default function ArticleLayout({ children }: { children: React.ReactNode }) {
     return (
+
         <main className=' min-h-screen flex flex-col scroll-smooth bg-[#f7f7ff]' >
-            <HeaderArtice />
+            <Header />
             <NavigationCategoryArticle />
             <div className=' flex-1 container py-8 '>
                 {children}
@@ -14,5 +15,6 @@ export default function ArticleLayout({ children }: { children: React.ReactNode 
             <Footer />
             <ListStickyButton />
         </main>
+
     )
 }

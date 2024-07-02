@@ -24,7 +24,8 @@ export default async function page({ searchParams }: { searchParams: { [key: str
   }
   const { products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,
-    take: 20
+    limit: 20,
+    ...searchParams
   })
 
   return (

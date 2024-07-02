@@ -16,6 +16,7 @@ import { CategoryProduct } from '@/types/categoryProduct'
 import CategoryServiceApi from '@/services/categoryService'
 import { objectToSearchParams, objectToSearchParamsValue } from '@/utils'
 import { usePathname, useRouter } from 'next/navigation'
+import PriceText from '../common/PriceText'
 interface ValueFiter {
   color?: string[];
   price: number[];
@@ -27,7 +28,7 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   const router = useRouter()
   const pathname = usePathname();
   const [categories, setCategories] = useState<CategoryProduct[]>([])
-
+  const ONE_HUN = 1000000
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
     color: defaultValue?.color || [],
     price: defaultValue?.price || [0, 100],
@@ -80,7 +81,7 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
           onChageValueFilter("price", value)
         }}
         />
-        <p className=' text-center'>Từ {valueFiter.price[0]} đến {valueFiter.price[1]}</p>
+        <p className=' text-center'>Từ <PriceText price={valueFiter.price[0] * ONE_HUN} /> đến <PriceText  price={valueFiter.price[1] * ONE_HUN}/></p>
       </div>
     },
     {

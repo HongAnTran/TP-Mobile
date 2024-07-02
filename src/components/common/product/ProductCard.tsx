@@ -24,11 +24,11 @@ export default function ProductCard({ product }: { product: ProductInList }) {
   return (
     <>
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0.2 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-      >
+      > */}
         <Card className=' border border-gray-300 group relative h-full'>
           <CardContent className="flex flex-col   gap-2 aspect-square py-4">
             <div className=' relative w-full aspect-square overflow-hidden' >
@@ -56,7 +56,7 @@ export default function ProductCard({ product }: { product: ProductInList }) {
           <ProductCardDiscount product={product} />
 
         </Card>
-      </motion.div>
+      {/* </motion.div> */}
 
       <Modal closeButton={null} open={open} onOpenChange={() => setOpen(false)} >
         <ProductQuickView product={product} />
@@ -102,7 +102,7 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
   // }
 
   return (
-    <div className=' flex  flex-row  md:items-center gap-1'>
+    <div className=' flex  flex-row  md:items-center gap-2'>
       <PriceText className='text-red-500 font-bold' price={product.price} />
       {product.compare_at_price ? <PriceText className=' line-through' price={product.compare_at_price} /> : null}
     </div>

@@ -119,7 +119,7 @@ interface ProductRating {
 
 
 
-interface ProductsParams extends FilterBase {
+interface ProductsParams {
   include?: string[],
   status?: ProductStatus
   category_id?: Product["category_id"]

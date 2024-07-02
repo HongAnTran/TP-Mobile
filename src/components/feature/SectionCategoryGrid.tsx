@@ -18,7 +18,7 @@ interface SectionCategoryGridProps {
 
 export default async  function SectionCategoryGrid({ title, productIds , categoryId  , link , take = 8}: SectionCategoryGridProps) {
 
-  const {products} = await ProductsServiceApi.getList({category_id : categoryId ,take : take})
+  const {products} = await ProductsServiceApi.getList({category_id : categoryId ,limit : take})
 
   if (!products.length) {
     return null

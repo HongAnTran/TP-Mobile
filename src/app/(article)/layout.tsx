@@ -1,4 +1,5 @@
-import ArticleLayout from "@/layouts/ArticleLayout";
+// import ArticleLayout from "@/layouts/ArticleLayout";
+import MainLayout from "@/layouts/MainLayout";
 
 export default function Layout({
   children,
@@ -6,8 +7,10 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <ArticleLayout>
-      {children}
-    </ArticleLayout>
+    <MainLayout> 
+      <div className=" container  py-8 ">
+        {children}
+      </div>
+    </MainLayout>
   );
 }

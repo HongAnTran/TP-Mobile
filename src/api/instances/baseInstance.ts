@@ -17,7 +17,7 @@ fetchApi.use({
   },
   response: async (response, data, req) => {
     if (req.isLogger) {
-      console.log({ response, data });
+      console.log({ response, data : JSON.stringify(data) });
     }
     return response;
   },

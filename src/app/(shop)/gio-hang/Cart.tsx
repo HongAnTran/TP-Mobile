@@ -13,10 +13,14 @@ import { useEffect, useState } from 'react'
 import { toast } from '@/components/ui/use-toast'
 import routes from '@/routes'
 import OrderServiceApi from '@/services/orderService'
+import DialogUi from '@/components/common/Dialog'
+import { DialogContent } from '@/components/ui/dialog'
+
 
 export default function Cart() {
 
   const { cart, isLoadingCard, handleChangeQuantity, handleDeleteItem, handleChangeSelectItem, handleChangeSelectItems } = useCart()
+  const [open, setOpen] = useState(false)
 
   const router = useRouter()
 
@@ -26,6 +30,8 @@ export default function Cart() {
   }
 
   async function handelSubmit() {
+    setOpen(true)
+    return
     const order = await OrderServiceApi.createOrder(cart)
     router.push(`${routes.checkout}/${order.token}`)
   }
@@ -39,6 +45,7 @@ export default function Cart() {
   if (cart.item_count === 0) {
     return <div>Chưa có sản phẩm nào</div>
   }
+
 
   return (
     <div className='  grid grid-cols-12 gap-4 mt-4 '>
@@ -55,7 +62,7 @@ export default function Cart() {
             </div>
             <div className=' flex  flex-1 justify-around'>
               <TypographySpan >Số Lượng</TypographySpan>
-              <TypographySpan  className='  hidden lg:inline-block'>Giá</TypographySpan>
+              <TypographySpan className='  hidden lg:inline-block'>Giá</TypographySpan>
               <TypographySpan  >Tổng</TypographySpan>
             </div>
           </div>
@@ -83,6 +90,10 @@ export default function Cart() {
           <Button className=' w-full' onClick={handelSubmit}>Thanh Toán</Button>
         </BoxLayout>
       </div>
+
+      <DialogUi open={open} onClose={() => setOpen(false)} >
+        <p className=' text-center'>Tính năng đang phát triển<br/> vui lòng liên hệ <b>(0347.907.042)</b> để đặt mua</p>
+      </DialogUi>
     </div>
 
   )

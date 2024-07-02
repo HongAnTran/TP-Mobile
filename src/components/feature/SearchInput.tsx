@@ -42,7 +42,7 @@ export default function SearchInput() {
       setProductsSearch([])
       return
     }
-    const { products } = await ProductsServiceApi.getListClient({ take: 5, keyword: keyword })
+    const { products } = await ProductsServiceApi.getListClient({ limit: 5, keyword: keyword })
     setProductsSearch(products)
     setOpenSearch(true)
   }, 500), [])
@@ -88,7 +88,7 @@ export default function SearchInput() {
       <HoverCardTrigger>
         <form onChange={handleSubmit((data) => {
           searchProductByKeyword(data.keyword)
-        })
+      })
         }
         >
           <InputController
