@@ -9,10 +9,14 @@ import ProductCard from '@/components/common/product/ProductCard'
 
 import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
+import PaginationServer from '@/components/common/paginations/PaginationServer'
+import routes from '@/routes'
+import SETTINGS from '@/consts/settings'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
-
+  const page = Number(searchParams.page) ? Number(searchParams.page) : 1
+  const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST 
   const keyword = searchParams.keyword
   const defaultFilter = {
     color: searchParams?.color?.split(",") || [],
@@ -24,7 +28,7 @@ export default async function page({ searchParams }: { searchParams: { [key: str
   }
   const { products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,
-    limit: 20,
+    limit:LIMIT,
     ...searchParams
   })
 
@@ -65,6 +69,7 @@ export default async function page({ searchParams }: { searchParams: { [key: str
                   return <ProductCard key={pro.id} product={pro} />
                 })}
               </div>
+              <div className=' mt-10'> <PaginationServer page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} /></div>
             </div>
           </div>
 

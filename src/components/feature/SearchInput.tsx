@@ -37,6 +37,7 @@ export default function SearchInput() {
 
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const searchProductByKeyword = useCallback(debounce(async (keyword: string) => {
     if (!keyword.trim()) {
       setProductsSearch([])

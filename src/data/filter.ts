@@ -14,6 +14,10 @@ export const itemFilterColor: FilterColor[] = [
     value: 'Trắng'
   },
   {
+    label: 'Vàng',
+    value: 'Vàng'
+  },
+  {
     label: 'Xanh dương',
     value: 'Xanh dương'
   },
@@ -45,7 +49,6 @@ export const itemFilterColor: FilterColor[] = [
     label: "Tím",
     value: "Tím"
   }
-
 ];
 
 export const itemFilterDisk: CheckboxItem[] = [

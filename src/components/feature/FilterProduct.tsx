@@ -6,8 +6,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { itemFilterColor, itemFilterDisk, itemFilterRam } from '@/data/filter'
 import { Range } from '@/components/ui/slider'
 import { TypographyP } from '../ui/typography'
@@ -60,6 +58,8 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   }, [isUseCategory])
 
   const cateItem = isUseCategory ? [{
+    value : "Loại sản phẩm",
+
     title: "Loại sản phẩm",
     content:
       <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.map((item) => ({ value: item.slug, label: item.title }))} defaultValue={valueFiter.categories} />
@@ -68,28 +68,35 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   const filters = [
     ...cateItem,
     {
+      value : "Dung lượng",
+
+      title: "Dung lượng",
+      content: <>
+        <MutipleCheckbox onChange={(datas) => onChageValueFilter("capacity", datas)} items={itemFilterDisk} defaultValue={valueFiter.capacity} />
+      </>
+    },
+    {
+      value : "Mức giá",
+
+      title: "Mức giá",
+      content: <div className=' pt-2'>
+        <Range defaultValue={valueFiter.price} step={1} onValueCommit={(value) => {
+          onChageValueFilter("price", value)
+        }}
+        />
+        <p className='mt-2 text-center'><PriceText price={valueFiter.price[0] * ONE_HUN} />-<PriceText  price={valueFiter.price[1] * ONE_HUN}/></p>
+      </div>
+    },
+    {
+      value : "Màu sắc",
       title: "Màu sắc",
       content: <MutipleCheckbox onChange={(datas) => onChageValueFilter("color", datas)} items={itemFilterColor} defaultValue={valueFiter.color}
       />
 
 
     },
-    {
-      title: "Mức giá",
-      content: <div>
-        <Range defaultValue={valueFiter.price} step={1} onValueCommit={(value) => {
-          onChageValueFilter("price", value)
-        }}
-        />
-        <p className=' text-center'>Từ <PriceText price={valueFiter.price[0] * ONE_HUN} /> đến <PriceText  price={valueFiter.price[1] * ONE_HUN}/></p>
-      </div>
-    },
-    {
-      title: "Dung lượng",
-      content: <>
-        <MutipleCheckbox onChange={(datas) => onChageValueFilter("capacity", datas)} items={itemFilterDisk} defaultValue={valueFiter.capacity} />
-      </>
-    },
+ 
+
     // {
     //   title: "Ram",
     //   content: <MutipleCheckbox onChange={(datas) => onChageValueFilter("ram", datas)} items={itemFilterRam} defaultValue={valueFiter.ram} />
@@ -99,10 +106,10 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   return (
     <div>
       <TypographyP className=' font-bold  text-xl'>Bộ lọc</TypographyP>
-      <Accordion type="multiple" defaultValue={[]}  >
+      <Accordion type="multiple" defaultValue={filters.map(item=>item.value)}  >
         {filters.map((item, index) => {
           return (
-            <AccordionItem value={`fil-${index}`} key={index} >
+            <AccordionItem value={item.value} key={index} >
               <AccordionTrigger className=' transition-colors'>{item.title}</AccordionTrigger>
               <AccordionContent>
                 {item.content}
