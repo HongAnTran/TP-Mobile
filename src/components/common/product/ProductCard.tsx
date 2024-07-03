@@ -102,9 +102,9 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
   // }
 
   return (
-    <div className=' flex  flex-row  md:items-center gap-2'>
+    <div className=' flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
       <PriceText className='text-red-500 font-bold' price={product.price} />
-      {product.compare_at_price ? <PriceText className=' line-through' price={product.compare_at_price} /> : null}
+      {product.compare_at_price ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
     </div>
   )
 

@@ -20,29 +20,29 @@ export default function FormLogin() {
         />
       </div>
       <div className="md:w-1/3 max-w-sm">
-        <TypographyH2 className=" text-center mb-4 uppercase text-red-500">Đăng nhập</TypographyH2>
+        <TypographyH2 className=" text-center mb-4 uppercase text-primary">Đăng nhập</TypographyH2>
 
         <input
           className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
           type="text"
-          placeholder="Email Address"
+          placeholder="Địa chỉ email"
         />
         <input
           className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
           type="password"
-          placeholder="Password"
+          placeholder="Mật khẩu"
         />
         <div className="mt-4 flex justify-between font-semibold text-sm">
           {/* <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
             <input className="mr-1" type="checkbox" />
             <span>Remember Me</span>
           </label> */}
-          <a
+          {/* <a
             className="text-blue-600 hover:text-blue-700 hover:underline hover:underline-offset-4"
             href="#"
           >
             Quên mật khẩu?
-          </a>
+          </a> */}
         </div>
         <div className="text-center md:text-right lg:mt-2">
           <Button
@@ -52,38 +52,37 @@ export default function FormLogin() {
             Đăng nhập
           </Button>
         </div>
-        <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-         Bạn chưa có tài khoản?
+        {/* <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
+          Bạn chưa có tài khoản?
           <Link
             className="text-red-600 hover:underline hover:underline-offset-4 ml-2"
             href={routes.register}
           >
             Đăng ký
           </Link>
-        </div>
+        </div> */}
         <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
           <p className="mx-4 mb-0 text-center font-semibold text-slate-500">
             Hoặc
           </p>
         </div>
         <div className=" flex flex-col gap-3">
-          <Button
+          {/* <Button
             type="button"
             variant="ghost"
             className="mx-1 h-9 w-full  uppercase shadow-[0_4px_9px_-4px_#3b71ca]"
           >
             <FacebookIcon className=" w-5 h-5 mr-3" />
             <TypographySpan >Facebook</TypographySpan>
-          </Button>
+          </Button> */}
           <ButtonSignIn type="google">
-          <Button
-            type="submit"
-            className=" h-9 w-full  uppercase  shadow-[0_4px_9px_-4px_#3b71ca]">
-            <GoogleFilledIcon className=" w-5 h-5 mr-3"/>
-            <TypographySpan >Google</TypographySpan>
-
-          </Button>
-            </ButtonSignIn>
+            <Button
+              type="submit"
+              className=" h-9 w-full  uppercase  shadow-[0_4px_9px_-4px_#3b71ca]">
+              <GoogleFilledIcon className=" w-5 h-5 mr-3" />
+              <TypographySpan >Google</TypographySpan>
+            </Button>
+          </ButtonSignIn>
         </div>
       </div>
     </section>

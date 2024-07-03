@@ -9,7 +9,6 @@ export function ButtonSignIn({ type, children, info }: { children: ReactNode, ty
       action={async () => {
         "use server"
        const res =   await signIn(type)
-       console.log(res)
       }}
     >
       {children}

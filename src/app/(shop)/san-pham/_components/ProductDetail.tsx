@@ -19,8 +19,7 @@ import Link from '@/components/common/Link'
 import routes from '@/routes'
 
 export default function ProductDetail({ product }: { product: Product }) {
-  const { handleAddtoCart } = useCart()
-
+  const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
 
   const { addProductToRecentView } = useProductRecentView()
@@ -67,9 +66,9 @@ export default function ProductDetail({ product }: { product: Product }) {
             <TypographyH1 className=" line-clamp-2 lg:text-xl  text-xl">{product.title}</TypographyH1>
             {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
             <TypographyP >Thương hiệu: <b className=' text-blue-500'>{product.vendor}</b></TypographyP>
-           
+
             <TypographyP >Danh mục:  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
-           
+
             <ButtonCompareProduct product={product} />
 
             <TypographyP className=' line-clamp-2'>{product.short_description}</TypographyP>
@@ -88,7 +87,11 @@ export default function ProductDetail({ product }: { product: Product }) {
             />
           </div>
           <div className=' mt-8 '>
-            <ProductActionButton onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} />
+            <ProductActionButton onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} onBuyNow={
+              () => {
+                handleBuyNow(product, variantActive, quantity)
+              }
+            } />
           </div>
         </div>
         <div className=' col-span-12 lg:col-span-3'>

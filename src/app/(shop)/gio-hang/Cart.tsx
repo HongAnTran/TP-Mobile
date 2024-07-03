@@ -14,7 +14,7 @@ import { toast } from '@/components/ui/use-toast'
 import routes from '@/routes'
 import OrderServiceApi from '@/services/orderService'
 import DialogUi from '@/components/common/Dialog'
-import { DialogContent } from '@/components/ui/dialog'
+import { Skeleton } from '@/components/ui/skeleton'
 
 
 export default function Cart() {
@@ -38,7 +38,15 @@ export default function Cart() {
 
 
   if (isLoadingCard) {
-    return <p>Loading...</p>
+    return <div className='  grid grid-cols-12 gap-4 mt-4 '>
+      <div className=' lg:col-span-9  col-span-12 h-full'>
+        <Skeleton className=' h-[500px] w-full' />
+      </div>
+      <div className=' lg:col-span-3 col-span-12 flex flex-col gap-4'>
+        <Skeleton className=' h-[500px] w-full' />
+
+      </div>
+    </div>
   }
   const isCheckAll = !cart.items.some(item => !item.selected)
 
@@ -92,7 +100,7 @@ export default function Cart() {
       </div>
 
       <DialogUi open={open} onClose={() => setOpen(false)} >
-        <p className=' text-center'>Tính năng đang phát triển<br/> vui lòng liên hệ <b>(0347.907.042)</b> để đặt mua</p>
+        <p className=' text-center  text-lg'>Vui lòng liên hệ <b>(0347.907.042)</b> để đặt mua</p>
       </DialogUi>
     </div>
 

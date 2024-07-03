@@ -1,4 +1,4 @@
-import { MapPinFilledIcon } from '@/components/icons'
+import { MapPinFilledIcon, ZaloIcon } from '@/components/icons'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import {  TypographyH2, TypographyP } from '@/components/ui/typography'
 import React from 'react'
@@ -26,6 +26,14 @@ export default function page() {
                       <TypographyP>05 Đ. Văn Cao, Tân Hưng, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam</TypographyP>
                     </div>
                   </div>
+                  {/* <div className=' flex gap-2  mt-4'>
+                    <div className=' flex-shrink-0'>
+                    <ZaloIcon className=' w-8 h-8'/>
+                    </div>
+                    <div>
+                      <TypographyP>0347907042</TypographyP>
+                    </div>
+                  </div> */}
               </div>
             </div>
             <div className=' md:col-span-8 col-span-12'>

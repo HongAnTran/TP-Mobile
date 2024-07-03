@@ -19,7 +19,7 @@ export default function FeedbackList() {
   },[])
 
   return (
-    <div className='  grid grid-cols-3 gap-2'>
+    <div className='  grid grid-cols-2 md:grid-cols-3 gap-2'>
     {images.map((src, index) => (
       <Card key={index}>
         <CardContent className=' pt-4'>

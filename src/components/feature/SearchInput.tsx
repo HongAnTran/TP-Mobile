@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
 import ProductsServiceApi from '@/services/productService';
-import {  ProductInList } from '@/types/product';
+import { ProductInList } from '@/types/product';
 import {
   HoverCardTrigger,
   HoverCard,
@@ -80,42 +80,37 @@ export default function SearchInput() {
 
 
   return (
-    <HoverCard open={openSearch} onOpenChange={(open) => {
-      if (!open) {
-        // setProductsSearch([]),
-        //   setValue("keyword", "")
-      }
-    }}>
+    <HoverCard open={openSearch} onOpenChange={(open) => { }}>
       <HoverCardTrigger>
         <form onChange={handleSubmit((data) => {
           searchProductByKeyword(data.keyword)
-      })
+        })
         }
         >
           <InputController
-
             inputProps={{
               placeholder: placeholder,
               className: " text-white placeholder:text-white",
               autoComplete: "off",
+              onFocus: () => {
+                if (productsSearch.length) {
+                  setOpenSearch(true)
+                }
+              },
               onBlur: () => {
-                // setValue("keyword", "")
                 setOpenSearch(false)
               }
-
             }}
             name="keyword" control={control} />
         </form >
       </HoverCardTrigger>
 
       <HoverCardContent className=' w-[400px] bg-primary  '>
-        {productsSearch.length ? <ul className=' flex flex-col gap-2'>
-
+        {productsSearch.length ? <ul className=' flex flex-col gap-3'>
           {productsSearch.map(product => {
             return <ProductItemSearch key={product.id} product={product} />
           })}
-
-          <Link href={`${routes.search}?keyword=${watch("keyword")}`}>Xem tất cả</Link>
+          <Link className=' text-white  text-center' href={`${routes.search}?keyword=${watch("keyword")}`}>Xem tất cả</Link>
         </ul> : <TypographyP className='  text-white'>Không có kết quả</TypographyP>}
       </HoverCardContent>
     </HoverCard>
@@ -127,13 +122,16 @@ export default function SearchInput() {
 
 
 function ProductItemSearch({ product }: { product: ProductInList }) {
-  return <li className=' flex gap-2'>
+  return (
+    <Link href={`${routes.products}/${product.slug}`} className=' group'>
+      <li className=' flex gap-2 py-1 border-b'>
 
-    <div>
-      <Image className='  rounded' src={product.featured_image} alt='product' width={50} height={50} />
-    </div>
-    <Link href={`${routes.products}/${product.slug}`}>
-      <TypographySpan className=' text-white  hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
+        <div>
+          <Image className='  rounded' src={product.featured_image} alt='product' width={50} height={50} />
+        </div>
+        <TypographySpan className=' text-white  group-hover:text-blue-500 hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
+      </li>
     </Link>
-  </li>
+  )
+
 }

@@ -2,13 +2,16 @@
 
 import { useToast } from '@/components/ui/use-toast'
 import { useShopStore } from '@/providers/shop-store-provider'
+import routes from '@/routes'
 import CartServiceClient from '@/services/cartServiceClient'
 import { Product, ProductOrder, ProductVariant } from '@/types/product'
+import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 
 export default function useCart() {
   const { cart, setCart, isLoadingCard } = useShopStore(state => state)
   const { toast } = useToast()
+  const router = useRouter()
   const cartClient = useMemo(() => {
     return new CartServiceClient(cart)
   }, [cart])
@@ -39,7 +42,8 @@ export default function useCart() {
   const handleBuyNow = useCallback((product: Product, variant: ProductVariant, quantity: number) => {
     cartClient.add(product, variant, quantity)
     setCart(cartClient.cart)
-  }, [cartClient, setCart])
+    router.push(routes.cart)
+  }, [cartClient, router, setCart])
 
   const handleChangeQuantity = useCallback((product: ProductOrder, quantity: number) => {
     const productNew: ProductOrder = { ...product, quantity: quantity, line_price: product.price * quantity }

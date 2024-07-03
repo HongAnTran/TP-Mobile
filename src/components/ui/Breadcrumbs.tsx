@@ -22,8 +22,8 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
     label: "Trang chủ",
   };
   return (
-    <div className="">
-      <ul className=" flex gap-1">
+
+      <ul className=" flex gap-1 flex-wrap">
         {[defaultBreadcrumbs, ...breadcrumbsList].map((item, index, arr) => {
           if (!item.label) return null
           return (
@@ -47,7 +47,7 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
           );
         })}
       </ul>
-    </div>
+
   );
 }
 
@@ -55,7 +55,7 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
 function BreadcrumbsText({ label, isActive }: BreadcrumbsItemType) {
   return (
     <span
-      className={cn("text-sm text-gray-800 line-clamp-1", {
+      className={cn("text-sm text-gray-800 line-clamp-2", {
         " text-gray-800 font-bold": isActive,
       })}>
       {label}
