@@ -9,7 +9,7 @@ import ProductCollectionList from '../_components/ProductCollectionList'
 import ErrorRespone from '@/api/error'
 import ProductsSkeleton from '@/components/common/ProductsSkeleton'
 import FilterProduct from '@/components/feature/FilterProduct'
-import SETTINGS from '@/consts/settings'
+import { Metadata } from 'next'
 
 
 async function getCategoryDetail(slug: string) {
@@ -23,6 +23,32 @@ async function getCategoryDetail(slug: string) {
       }
     }
     throw error
+  }
+}
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+): Promise<Metadata> {
+  // read route params
+  const slug = params.slug
+
+  const category = await getCategoryDetail(slug)
+  const titleShow = category.title
+  const desShow = category.description || undefined
+  const DOMAIN = process.env.DOMAIN
+  return {
+    title: titleShow,
+    description: desShow,
+    openGraph: {
+      title: titleShow,
+      description: desShow,
+      images: { url: category.image, width: 800, height: 600 },
+      url: `${DOMAIN}/${routes.category}/${category.slug}`,
+      siteName: DOMAIN,
+    },
+    other: {
+      "og:type": "category",
+    },
   }
 }
 

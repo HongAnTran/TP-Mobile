@@ -6,39 +6,51 @@ import ProductDetail from '../_components/ProductDetail'
 import ProductDescription from '../_components/ProductDescription'
 import SectionCategoryCarousel from '@/components/feature/SectionCategoryCarousel'
 import ProductsRecentViewList from '@/components/feature/ProductsRecentViewList'
+import LayoutContainer from '@/layouts/LayoutContainer'
+import ProductCarousel from '@/components/common/ProductCarousel'
+import { CategoryProduct } from '@/types/categoryProduct'
+import ProductsServiceApi from '@/services/productService'
 
-export default function Product({product} :{product:ProductType}) {
+export default function Product({ product }: { product: ProductType }) {
   return (
-    <div className=' my-8'>
-      <div className=' container'>
+    <LayoutContainer>
+      <>
         <Breadcrumbs breadcrumbsList={[
-          
+
           {
             label: "Sản phẩm",
-            slug : routes.products
+            slug: routes.products
           },
 
           {
-          label: product.title,
-          isActive: true
-        }
-      ]
-        
+            label: product.title,
+            isActive: true
+          }
+        ]
+
         } />
 
         <div className=' mt-8'>
-        <ProductDetail product={product} />
+          <ProductDetail product={product} />
         </div>
         <div className=' mt-16'>
-        <ProductDescription product={product} />
+          <ProductDescription product={product} />
         </div>
         <div className=' mt-16'>
-          <SectionCategoryCarousel title="Sản phẩm tương tự" productIds={[]} />
+          <ProductRelated categoryId={product.category_id} productId={product.id} />
         </div>
         <div className=' mt-16'>
-         <ProductsRecentViewList />
+          <ProductsRecentViewList />
         </div>
-      </div>
-    </div>
+      </>
+    </LayoutContainer>
+  )
+}
+
+async function ProductRelated({ categoryId, productId }: { productId: ProductType["id"], categoryId: CategoryProduct['id'] }) {
+  const { products } = await ProductsServiceApi.getList({ limit: 12, category_id: categoryId })
+  const datas = products.filter(product => product.id !== productId)
+  return (
+    <ProductCarousel title="Sản phẩm tương tự" products={datas} />
   )
 }

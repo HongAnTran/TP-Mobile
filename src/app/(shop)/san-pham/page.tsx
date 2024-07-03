@@ -6,6 +6,7 @@ import FilterProduct from '@/components/feature/FilterProduct'
 import ProductsSkeleton from '@/components/common/ProductsSkeleton'
 import ProductCollectionList from '../danh-muc/_components/ProductCollectionList'
 import routes from '@/routes'
+import LayoutContainer from '@/layouts/LayoutContainer'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
@@ -18,11 +19,11 @@ export default async function page({ searchParams }: { searchParams: { [key: str
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
     capacity: searchParams?.capacity?.split(",") || [],
     ram: searchParams?.ram?.split(",") || [],
-    categories : searchParams?.categories?.split(",") || []
+    categories: searchParams?.categories?.split(",") || []
   }
   return (
-    <div className=' my-8'>
-      <div className=' container'>
+    <LayoutContainer>
+      <>
         <Breadcrumbs breadcrumbsList={[
           {
             label: "Sản phẩm",
@@ -55,9 +56,7 @@ export default async function page({ searchParams }: { searchParams: { [key: str
           </div>
 
         </div>
-
-
-      </div>
-    </div>
+      </>
+    </LayoutContainer>
   )
 }

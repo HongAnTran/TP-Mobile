@@ -7,8 +7,16 @@ import SectionCategoryGrid from '@/components/feature/SectionCategoryGrid'
 import SectionFeedback from '@/components/feature/SectionFeedback'
 import routes from '@/routes'
 import CategoryServiceApi from '@/services/categoryService'
+import { Metadata } from 'next'
 import React, { Suspense } from 'react'
+export const metadata: Metadata = {
+  title: "TP MOBILE STORE",
+  description: "TP Mobile store, bán ipad có tâm nhứt Sài Gòn chuyên các dòng ipad sỉ lẽ",
+  authors :[{name : "TP Mobile" , url : process.env.DOMAIN}],
+  keywords : ['ipad cũ' , "ipad" , "ipad like new"],
+  
 
+};
 export default async function page() {
   const cates = await CategoryServiceApi.getList()
   return (

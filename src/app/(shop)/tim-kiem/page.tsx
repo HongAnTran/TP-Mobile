@@ -69,7 +69,7 @@ export default async function page({ searchParams }: { searchParams: { [key: str
                   return <ProductCard key={pro.id} product={pro} />
                 })}
               </div>
-              <div className=' mt-10'> <PaginationServer page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} /></div>
+              <div className=' mt-10 flex justify-center'> <PaginationServer query={searchParams} page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} /></div>
             </div>
           </div>
 

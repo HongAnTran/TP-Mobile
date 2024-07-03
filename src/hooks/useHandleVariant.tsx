@@ -20,7 +20,6 @@ export default function useHandleVariant(product: Product) {
 
   useEffect(() => {
     const findVariantActive = findVariantActiveOption(product.variants, optionActive)
-    console.log(findVariantActive)
     if (!findVariantActive) return
 
     setVariantActive(findVariantActive)

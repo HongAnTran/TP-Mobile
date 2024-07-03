@@ -44,6 +44,7 @@ function HeaderTop() {
       <div className=' flex gap-4'>
         <Link href={routes.wishlist} title='Yêu thích của bạn'>
           <HeartIcon className=' text-white' />
+          
         </Link>
         <Notification />
       </div>

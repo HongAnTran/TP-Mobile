@@ -19,6 +19,11 @@ interface Article {
   thumnal_url: string
   status: ArticleStatus
 
+
+    // meta
+    meta_title: string | null
+    meta_description: string | null
+    meta_keywords: string | null
 }
 
 interface Articles {
