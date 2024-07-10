@@ -76,7 +76,7 @@ function FeedbackCard({ feedback }: { feedback: Feedback }) {
           <Image className=' w-full h-full aspect-square object-cover' src={feedback.image} alt={feedback.customerName} />
         </div>
 
-        <CardDescription className=' line-clamp-2'><b className='  text-primary'>{feedback.customerName}</b>: {feedback.content}</CardDescription>
+        {/* <CardDescription className=' line-clamp-2'><b className='  text-primary'>{feedback.customerName}</b>: {feedback.content}</CardDescription> */}
         <div className=' flex  gap-2 items-center pt-2 border-t border-gray-200'>
           <TypographyP className='text-muted-foreground font-semibold'>Đã đánh giá:</TypographyP>
           <div className=' flex gap-1 items-center '>

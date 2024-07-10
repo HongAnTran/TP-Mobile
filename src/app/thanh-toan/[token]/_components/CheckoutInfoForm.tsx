@@ -12,6 +12,9 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import OrderServiceApi from '@/services/orderService'
+import { useToast } from '@/components/ui/use-toast'
+import { useRouter } from 'next/navigation'
 
 interface LocationState {
   provices: Location[],
@@ -53,8 +56,8 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     wards: [],
   })
 
-
-
+  const { toast } = useToast()
+  const router = useRouter()
 
   const { control, handleSubmit, watch, setValue } = useForm<Address>({
     // defaultValues: order.shipping,
@@ -97,9 +100,16 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     })()
   }, [setValue, watchDistrict])
 
-  function onSubmit(data: Address) {
-    console.log(data)
+  async function onSubmit(data: Address) {
+    try {
+      const res = await OrderServiceApi.checkoutClient(order)
 
+      toast({ title: "Đặt hàng thành công" })
+      router.push("/")
+    } catch (error) {
+      toast({ title: "Đặt hàng thất bại" })
+
+    }
   }
 
 
@@ -108,10 +118,10 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className=' form-list flex flex-col gap-4 mt-4'>
-        <InputController label='Họ và tên' name="full_name" control={control}  isShowError/>
+        <InputController label='Họ và tên' name="full_name" control={control} isShowError />
         <div className='  flex gap-2'>
           <InputController label='Email' name="email" control={control} />
-          <InputController label='Số điện thoại' name="phone" control={control} isShowError/>
+          <InputController label='Số điện thoại' name="phone" control={control} isShowError />
         </div>
         <div className='  flex gap-2'>
           <SelectController
@@ -138,7 +148,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             name="ward.code"
             control={control} />
         </div>
-        <InputController label='Tên đường' name="street" control={control}  isShowError/>
+        <InputController label='Tên đường' name="street" control={control} isShowError />
         <InputController label='Ghi chú' name="note" control={control} />
       </div>
 

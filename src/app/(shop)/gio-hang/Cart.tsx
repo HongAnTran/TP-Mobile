@@ -30,10 +30,12 @@ export default function Cart() {
   }
 
   async function handelSubmit() {
-    setOpen(true)
-    return
-    const order = await OrderServiceApi.createOrder(cart)
-    router.push(`${routes.checkout}/${order.token}`)
+    try {
+      const order = await OrderServiceApi.createOrderClient(cart)
+      router.push(`${routes.checkout}/${order.token}`)
+    } catch (error) {
+      alert(JSON.stringify(error))
+    }
   }
 
 

@@ -22,7 +22,7 @@ export type InputPropsControl<
 export default function InputController<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
->({ control, name, inputProps, label, icon, isShowError }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
+>({ control, name, inputProps, label, icon, isShowError = true }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
   const id = useId()
 
 

@@ -47,7 +47,7 @@ export default function HeaderItems() {
       href: routes.cart
 
     },
-    customerItem
+    // customerItem
   ]
 
   const itemsMobile: HeaderItemProps[] = [

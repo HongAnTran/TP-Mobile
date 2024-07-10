@@ -1,7 +1,7 @@
 import FetchApi from "@/api/fetch";
 
 const fetchApi = new FetchApi({
-  baseURL: process.env.BASE_URL,
+  baseURL:   process.env.BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },

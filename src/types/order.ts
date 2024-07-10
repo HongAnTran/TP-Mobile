@@ -1,5 +1,6 @@
 import { Address } from "@/types/address"
 import { ProductOrder } from "./product"
+import { number } from "yup"
 
 
 
@@ -26,16 +27,41 @@ interface Order {
   }
 }
 
+interface Shipping {
+  id: number
+  order_id: number
+  address: string
+  city: string
+  state: string
+  postal_code: string
+  country: string
+  ship_date: Date
+  tracking_number?: string
+}
 
+interface Payment {
+  id: number
+  order_id: number
+  method: string
+  transaction_id: string
+  amount: number
+  status: PaymentStatus
+  payment_date: Date
+}
+enum PaymentStatus {
+  PENDING = "PENDING",
+  COMPLETED = "COMPLETED",
+  FAILED = "FAILED"
+}
 
 
 enum OrderStatus {
-  PENDING, // Đơn hàng đang chờ xử lý
-  PROCESSING, // Đơn hàng đang được xử lý
-  SHIPPED, // Đơn hàng đã được gửi đi
-  DELIVERED, // Đơn hàng đã được giao thành công
-  CANCELLED, // Đơn hàng đã bị hủy
-  FAILED, // Đơn hàng không thành công
+  PENDING = 3, // Đơn hàng đang chờ xử lý
+  PROCESSING = 5, // Đơn hàng đang được xử lý
+  SHIPPED = 7, // Đơn hàng đã được gửi đi
+  DELIVERED = 9, // Đơn hàng đã được giao thành công
+  CANCELLED = 10, // Đơn hàng đã bị hủy
+  FAILED = 12, // Đơn hàng không thành công
 }
-export { OrderStatus }
-export type { Order }
+export { OrderStatus, PaymentStatus }
+export type { Order, Payment, Shipping }

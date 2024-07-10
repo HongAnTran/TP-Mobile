@@ -24,7 +24,7 @@ export default async function page() {
       <BannerLarge />
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
-          <BannerMedium />
+          {/* <BannerMedium /> */}
           <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[9, 10, 11, 12, 13]} />
           <SectionCategoryCarousel title='Sản phẩm mới' productIds={[1, 2, 3, 4, 5, 6, 7, 8]} skip={8} />
           {

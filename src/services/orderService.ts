@@ -1,73 +1,52 @@
 import { generateUniqueId } from "@/utils";
 import { Cart } from "@/types/cart";
-import { Order, OrderStatus } from "@/types/order";
+import { Order } from "@/types/order";
+import fetchApi from "@/api/instances/baseInstance";
+import fetchApiPublic from "@/api/instances/routerhandlersInstance";
 
 
 class OrderService {
-  private url: string = "/order";
-  private order: Order = {
-    id: 1,
-    token: generateUniqueId(),
-    code: generateUniqueId(),
-    customer_id: 0,
-    items: [],
-    total_price: 0,
-    temp_price: 0,
-    ship_price: 0,
-    discount: 0,
-    note: "",
-    promotions: [],
-    shipping: {
-      street: "",
-      email: "", // Địa chỉ email của người nhận hàng (có thể là null)
-      phone: "", // Số điện thoại liên hệ
-      province: {
-        code: "", // Mã code của thành phố
-        name: "", // Tên của thành phố
-      },
-      district: {
-        code: "", // Mã code của thành phố
-        name: "", // Tên của thành phố
-      },
-      ward: {
-        code: "", // Mã code của thành phố
-        name: "", // Tên của thành phố
-      },
-      full_name: "",
-      isDefault: true,
-      type: "home",
+  private url: string = "/orders";
 
-    },
-    status: OrderStatus.PENDING,
-    payment: {
-      method: "",
-      total: 0,
-      debt: 0,
-      paid: 0
-    }
-  }
 
   constructor() { }
 
 
 
   async getDetail(token: Order["token"]) {
-    // await sleep(3000)
-
-    return this.order
-    // return fetchApi.get<Product>(`${this.url}/${id}`, {});
+    return fetchApi.get<Order>(`${this.url}/token/${token}`);
   }
 
 
-  async createOrder(cart: Cart): Promise<Order> {
+  async createOrder(body: any): Promise<Order> {
+    return fetchApi.post(this.url, body)
+  }
+
+  async createOrderClient(cart: Cart): Promise<Order> {
     const order = {
-      ...this.order,
-      items: cart.items.filter(item => item.selected),
+      items: {
+        create: cart.items.filter(item => item.selected).map((item) => {
+          const { id, ...rest } = item;
+
+          return rest
+        })
+      },
       total_price: cart.total_price,
       temp_price: cart.total_price,
+      note: cart.note,
+      ship_price: 0,
+      discount: 0
     }
-    // LocalStorageService.setItem(order.token, order)
-    return order
+
+    return fetchApiPublic.post(this.url, order)
+  }
+
+
+  async checkoutClient(order: Order): Promise<Order> {
+    return fetchApiPublic.post(`${this.url}/checkout`, order)
+  }
+  async checkout(order: Order): Promise<Order> {
+    return fetchApi.post(`${this.url}/checkout`, order)
   }
 }
 
