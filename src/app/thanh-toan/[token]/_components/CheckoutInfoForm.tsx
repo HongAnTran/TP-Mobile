@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { TypographySpan } from '@/components/ui/typography'
 import LocationServiceApi from '@/services/locationService'
 import { Location } from '@/types/location'
-import { Order } from '@/types/order'
+import { Order, OrderCheckoutInput, PaymentStatus } from '@/types/order'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
@@ -102,7 +102,34 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
   async function onSubmit(data: Address) {
     try {
-      const res = await OrderServiceApi.checkoutClient(order)
+      const body: OrderCheckoutInput = {
+
+        note: data.note,
+        payment: {
+          create: {
+            amount: order.total_price,
+            method: "cod",
+            status: PaymentStatus.PENDING,
+            payment_date: null
+          }
+        },
+        shipping: {
+          create: {
+            fullname: data.full_name,
+            address: data.street,
+            province: data.province.code,
+            country: "vi",
+            district: data.district.code,
+            ward: data.ward.code,
+            phone: data.phone,
+
+            address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name}, ${location.districts.find(ward => ward.code === data.district.code)?.name}, ${location.provices.find(ward => ward.code === data.province.code)?.name},`,
+          }
+        }
+
+      }
+
+      const res = await OrderServiceApi.checkoutClient(order.id, body)
 
       toast({ title: "Đặt hàng thành công" })
       router.push("/")

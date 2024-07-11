@@ -1,6 +1,6 @@
 import { Address } from "@/types/address"
 import { ProductOrder } from "./product"
-import { number } from "yup"
+import { Customer } from "./customer"
 
 
 
@@ -9,7 +9,7 @@ interface Order {
   id: number
   token: string
   code: string
-  customer_id: number
+  customer_id: number | null
   items: ProductOrder[]
   total_price: number
   temp_price: number
@@ -17,13 +17,24 @@ interface Order {
   discount: number
   note: string | null
   promotions: []
-  shipping: Address
+  shipping: Shipping | null
   status: OrderStatus; // Trạng thái của đơn hàng
+  payment: Payment | null,
+  customer: Customer | null
+
+}
+
+interface OrderCheckoutInput {
+  customer_id?: number
+  discount?: number
+  note?: string
+  promotions?: []
+  shipping: {
+    create: ShippingCreate
+
+  },
   payment: {
-    method: string,
-    total: number
-    debt: number
-    paid: number
+    create: PaymentCreate
   }
 }
 
@@ -31,23 +42,29 @@ interface Shipping {
   id: number
   order_id: number
   address: string
-  city: string
-  state: string
-  postal_code: string
+  province: string
+  district: string
+  ward: string
+  address_full: string
   country: string
-  ship_date: Date
-  tracking_number?: string
+  ship_date: Date | null
+  tracking_number: string | null
+  phone: string
+  fullname : string
 }
+type ShippingCreate = Pick<Shipping, "address" | "address_full" | "country" | "district" | "province" | "ward" | "phone" | "fullname">
 
 interface Payment {
   id: number
   order_id: number
   method: string
-  transaction_id: string
+  transaction_id: string | null
   amount: number
   status: PaymentStatus
-  payment_date: Date
+  payment_date: Date | null
 }
+
+type PaymentCreate = Pick<Payment, "amount" | "method" | "status" | "payment_date">
 enum PaymentStatus {
   PENDING = "PENDING",
   COMPLETED = "COMPLETED",
@@ -64,4 +81,4 @@ enum OrderStatus {
   FAILED = 12, // Đơn hàng không thành công
 }
 export { OrderStatus, PaymentStatus }
-export type { Order, Payment, Shipping }
+export type { Order, Payment, Shipping, OrderCheckoutInput }

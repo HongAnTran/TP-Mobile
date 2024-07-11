@@ -1,6 +1,6 @@
 import { generateUniqueId } from "@/utils";
 import { Cart } from "@/types/cart";
-import { Order } from "@/types/order";
+import { Order, OrderCheckoutInput } from "@/types/order";
 import fetchApi from "@/api/instances/baseInstance";
 import fetchApiPublic from "@/api/instances/routerhandlersInstance";
 
@@ -42,11 +42,11 @@ class OrderService {
   }
 
 
-  async checkoutClient(order: Order): Promise<Order> {
-    return fetchApiPublic.post(`${this.url}/checkout`, order)
+  async checkoutClient(id: Order["id"], order: OrderCheckoutInput): Promise<Order> {
+    return fetchApiPublic.post(`${this.url}/checkout/${id}`, order)
   }
-  async checkout(order: Order): Promise<Order> {
-    return fetchApi.post(`${this.url}/checkout`, order)
+  async checkout(id: Order["id"], order: OrderCheckoutInput): Promise<Order> {
+    return fetchApi.put(`${this.url}/checkout/${id}`, order)
   }
 }
 
