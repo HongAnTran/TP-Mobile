@@ -15,6 +15,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import OrderServiceApi from '@/services/orderService'
 import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
+import routes from '@/routes'
 
 interface LocationState {
   provices: Location[],
@@ -103,7 +104,6 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
   async function onSubmit(data: Address) {
     try {
       const body: OrderCheckoutInput = {
-
         note: data.note,
         payment: {
           create: {
@@ -122,7 +122,6 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             district: data.district.code,
             ward: data.ward.code,
             phone: data.phone,
-
             address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name}, ${location.districts.find(ward => ward.code === data.district.code)?.name}, ${location.provices.find(ward => ward.code === data.province.code)?.name},`,
           }
         }
@@ -131,10 +130,10 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
       const res = await OrderServiceApi.checkoutClient(order.id, body)
 
-      toast({ title: "Đặt hàng thành công" })
-      router.push("/")
+      router.replace(`${routes.checkoutSuccess}/${res.token}`)
     } catch (error) {
-      toast({ title: "Đặt hàng thất bại" })
+      // router.push(`${routes.checkoutFail}/${res.token}`)
+      toast({ title: "Đặt hàng thất bại vui lòng thử lại" })
 
     }
   }

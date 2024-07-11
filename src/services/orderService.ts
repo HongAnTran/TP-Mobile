@@ -7,17 +7,10 @@ import fetchApiPublic from "@/api/instances/routerhandlersInstance";
 
 class OrderService {
   private url: string = "/orders";
-
-
   constructor() { }
-
-
-
   async getDetail(token: Order["token"]) {
     return fetchApi.get<Order>(`${this.url}/token/${token}`);
   }
-
-
   async createOrder(body: any): Promise<Order> {
     return fetchApi.post(this.url, body)
   }

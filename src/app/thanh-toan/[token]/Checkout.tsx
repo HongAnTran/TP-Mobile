@@ -5,10 +5,34 @@ import CheckoutInfoForm from './_components/CheckoutInfoForm'
 import CheckoutHeader from './_components/CheckoutHeader'
 import { Order } from '@/types/order'
 import ProductOrderItem from '@/components/common/ProductOrderItem'
+import { StepProps } from '@/components/common/Steps';
+
+const steps: StepProps[] = [
+  {
+    label: 'Cửa hàng',
+    link: '/home',
+    status: 'completed',
+  },
+  {
+    label: 'Giỏ hàng',
+    link: '/cart',
+    status: 'completed',
+  },
+  {
+    label: 'Thanh toán',
+    link: '#',
+    status: "active",
+  },
+  {
+    label: 'Xác nhận',
+    link: '#',
+    status: "pending",
+  },
+];
 export default function Checkout({ order }: { order: Order }) {
   return (
     <>
-      <CheckoutHeader />
+      <CheckoutHeader steps={steps} />
       <div className="grid  lg:grid-cols-2 ">
         <div className="px-4 pt-8">
           <p className="text-xl font-medium capitalize">Tóm tắt đơn hàng</p>

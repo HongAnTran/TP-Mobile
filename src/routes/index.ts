@@ -10,6 +10,8 @@ const routes = {
   stores: "/cua-hang",
   cart: "/gio-hang",
   checkout: "/thanh-toan",
+  checkoutSuccess: "/thanh-toan/thanh-cong",
+  checkoutFail: "/thanh-toan/that-bai",
   login: "/dang-nhap",
   register: "/dang-ky",
   feedback: "/feedback",
