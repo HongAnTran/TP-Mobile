@@ -22,9 +22,9 @@ export default function NavigationCategoryClient({ className, data }: { data: Ca
     }
   }, [])
   return (
-    <div className={cn(' hidden md:block bg-primary    text-[#f8f8d9]   py-3 transition-all ', isSticky ? ' fixed top-0 left-0 right-0 z-50 bg-white text-primary shadow-2xl' : '', className)}>
-      <div className=' container'>
-        <ul className=' flex flex-nowrap   overflow-y-auto gap-4 lg:gap-8 items-center justify-center'>
+    <div className={cn(' hidden md:block bg-primary px-4   text-[#cac1b2]   py-3 transition-all ', isSticky ? ' fixed top-0 left-0 right-0 z-50 bg-white text-primary shadow-2xl' : '', className)}>
+      <div className=' container '>
+        <ul className=' flex flex-nowrap   overflow-y-auto gap-4 lg:gap-8 items-center justify-center border-b-[0.1px] border-[#f8f8d9] pb-2'>
           {data.map(category => {
             return (
               <NavLink scroll absolute href={`${routes.category}/${category.slug}`} key={category.id} activeClassName='text-blue-500    font-bold'>

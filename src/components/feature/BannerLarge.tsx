@@ -41,7 +41,7 @@ export default function BannerLarge() {
 
 function BannerItem({ item }: { item: BannerHeroItem }) {
 
-  return (<div className="container mx-auto px-6 flex relative py-10">
+  return (<div className="container mx-auto px-8 flex relative py-10">
     <motion.div
       initial={{ y: 10, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
