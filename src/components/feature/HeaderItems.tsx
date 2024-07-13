@@ -5,7 +5,7 @@ import { PersonIcon } from "@radix-ui/react-icons"
 import Link from "@/components/common/Link";
 
 import StoreIcon from '../icons/StoreIcon'
-import { NewsIcon } from '../icons'
+import { NewsIcon, PhoneFilledIcon } from '../icons'
 import { TypographyP } from '../ui/typography'
 import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
@@ -30,6 +30,11 @@ export default function HeaderItems() {
   }
 
   const items: HeaderItemProps[] = [
+    {
+      icon: <PhoneFilledIcon />,
+      text: "Gọi đặt mua",
+      href: "tel:0347907042"
+    },
     {
       icon: <StoreIcon />,
       text: "Cửa hàng",
@@ -73,7 +78,7 @@ export default function HeaderItems() {
       href: routes.cart
 
     },
-    customerItem
+    // customerItem
   ]
   // if (type !== "desktop") {
 

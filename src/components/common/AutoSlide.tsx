@@ -11,7 +11,7 @@ const AutoSlider = ({ items }: { items: ReactNode[] }) => {
         }
         return pre + 1
       });
-    }, 6000); // Slide chuyển sau mỗi 3 giây
+    }, 5000);
     return () => clearInterval(interval);
   }, [items.length, page]);
 

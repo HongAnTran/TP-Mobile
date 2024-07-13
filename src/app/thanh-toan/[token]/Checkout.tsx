@@ -24,7 +24,7 @@ const steps: StepProps[] = [
     status: "active",
   },
   {
-    label: 'Xác nhận',
+    label: 'Thành công',
     link: '#',
     status: "pending",
   },
@@ -33,11 +33,11 @@ export default function Checkout({ order }: { order: Order }) {
   return (
     <>
       <CheckoutHeader steps={steps} />
-      <div className="grid  lg:grid-cols-2 ">
+      <div className="grid  lg:grid-cols-2  relative">
         <div className="px-4 pt-8">
           <p className="text-xl font-medium capitalize">Tóm tắt đơn hàng</p>
           <p className="text-gray-400">Kiểm tra đơn hàng của bạn. và chọn phương thức vận chuyển.</p>
-          <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+          <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6   sticky top-10">
             {order.items.map(item => {
               return (
                 <ProductOrderItem key={item.id} productOrder={item} />

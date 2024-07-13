@@ -10,6 +10,7 @@ import LayoutContainer from '@/layouts/LayoutContainer'
 import ProductCarousel from '@/components/common/ProductCarousel'
 import { CategoryProduct } from '@/types/categoryProduct'
 import ProductsServiceApi from '@/services/productService'
+import SectionFeedback from '@/components/feature/SectionFeedback'
 
 export default function Product({ product }: { product: ProductType }) {
   return (
@@ -41,6 +42,9 @@ export default function Product({ product }: { product: ProductType }) {
         </div>
         <div className=' mt-16'>
           <ProductsRecentViewList />
+        </div>
+        <div className=' mt-16'>
+          <SectionFeedback/>
         </div>
       </>
     </LayoutContainer>

@@ -1,6 +1,6 @@
 "use client"
 import PriceText from '@/components/common/PriceText'
-import { TypographyH3, TypographyP, TypographySpan } from '@/components/ui/typography'
+import { TypographyH3, TypographySpan } from '@/components/ui/typography'
 import CartItem from './_components/CartItem'
 import useCart from '@/hooks/useCart'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -9,7 +9,7 @@ import BoxLayout from './_components/BoxLayout'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { toast } from '@/components/ui/use-toast'
 import routes from '@/routes'
 import OrderServiceApi from '@/services/orderService'
@@ -21,7 +21,6 @@ export default function Cart() {
 
   const { cart, isLoadingCard, handleChangeQuantity, handleDeleteItem, handleChangeSelectItem, handleChangeSelectItems } = useCart()
   const [open, setOpen] = useState(false)
-
   const router = useRouter()
 
 
@@ -31,6 +30,11 @@ export default function Cart() {
 
   async function handelSubmit() {
     try {
+      if(cart.items.filter(item=>item.selected).some(item=>item.line_price === 0)){
+        setOpen(true)
+
+        return
+      }
       const order = await OrderServiceApi.createOrderClient(cart)
       router.push(`${routes.checkout}/${order.token}`)
     } catch (error) {
@@ -102,7 +106,7 @@ export default function Cart() {
       </div>
 
       <DialogUi open={open} onClose={() => setOpen(false)} >
-        <p className=' text-center  text-lg'>Vui lòng liên hệ <b>(0347.907.042)</b> để đặt mua</p>
+        <p className=' text-center  text-lg'>Có sản phẩm có giá liên hệ Vui lòng liên hệ <b>(0347.907.042)</b> để đặt mua</p>
       </DialogUi>
     </div>
 
@@ -148,11 +152,11 @@ function CartTotal({ cart }: { cart: CartType }) {
         <ul className=' flex flex-col gap-4  '>
           <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Tạm tính</TypographySpan>
-            <PriceText className=' text-sm' price={cart.total_price} />
+            <PriceText className=' text-sm'  price={cart.total_price} />
           </li>
           <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Khuyến mãi</TypographySpan>
-            <PriceText className=' text-sm' price={0} />
+            <PriceText className=' text-sm' notAutoChange price={0} />
           </li>
           {/* <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Thuế</TypographySpan>
@@ -160,7 +164,7 @@ function CartTotal({ cart }: { cart: CartType }) {
           </li> */}
           <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Vận chuyển</TypographySpan>
-            <PriceText className=' text-sm' price={0} />
+            <PriceText className=' text-sm' price={0} notAutoChange />
           </li>
           <hr />
 

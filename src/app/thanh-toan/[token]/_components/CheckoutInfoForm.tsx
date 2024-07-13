@@ -122,7 +122,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             district: data.district.code,
             ward: data.ward.code,
             phone: data.phone,
-            address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name}, ${location.districts.find(ward => ward.code === data.district.code)?.name}, ${location.provices.find(ward => ward.code === data.province.code)?.name},`,
+            address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name}, ${location.districts.find(ward => ward.code === data.district.code)?.name}, ${location.provices.find(ward => ward.code === data.province.code)?.name}`,
           }
         }
 
@@ -202,18 +202,18 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         </li>
         <li className=' flex items-center justify-between'>
           <TypographySpan className=' text-gray-500'>Khuyến mãi</TypographySpan>
-          <PriceText className=' text-sm' price={0} />
+          <PriceText className=' text-sm' price={0} notAutoChange/>
         </li>
         <li className=' flex items-center justify-between'>
           <TypographySpan className=' text-gray-500'>Vận chuyển</TypographySpan>
-          <PriceText className=' text-sm' price={0} />
+          <PriceText className=' text-sm' price={0} notAutoChange />
         </li>
         <hr />
 
         <li className=' flex items-center justify-between'>
           <TypographySpan className=' font-bold'>Tổng tiền:</TypographySpan>
           <div className=' flex gap-1 items-center'>
-            <PriceText className=' text-sm text-red-500 font-bold' price={order.total_price} />
+            <PriceText className=' text-sm text-red-500 font-bold'  price={order.total_price} />
             <TypographySpan > ({order.items.length}) </TypographySpan>
           </div>
         </li>

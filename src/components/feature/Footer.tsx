@@ -8,7 +8,7 @@ import routes from '@/routes'
 
 export default function Footer() {
   return (
-    <footer className=' py-10 bg-primary sm:pt-16 lg:pt-24  '  >
+    <footer className=' py-10 bg-primary  sm:pt-16 lg:pt-24  '  >
 
       <div className="container">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-8 gap-y-16 gap-x-12">
@@ -32,7 +32,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link href="#" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Liên hệ </Link>
+                <Link href={routes.stores} className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Liên hệ </Link>
               </li>
 
               {/* <li>
@@ -55,9 +55,9 @@ export default function Footer() {
               <li>
                 <Link href={routes.changePolicy} className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Chính sách đổi trả </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href={routes.deliveryPolicy} className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> chính sách giao hàng </Link>
-              </li>
+              </li> */}
 
 
             </ul>
