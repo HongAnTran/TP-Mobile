@@ -90,7 +90,7 @@ export default function SearchInput() {
           <InputController
             inputProps={{
               placeholder: placeholder,
-              className: " text-white placeholder:text-white",
+              className: " text-[#f8f8d9]   placeholder:text-[#f8f8d9]  ",
               autoComplete: "off",
               onFocus: () => {
                 if (productsSearch.length) {
@@ -110,8 +110,8 @@ export default function SearchInput() {
           {productsSearch.map(product => {
             return <ProductItemSearch key={product.id} product={product} />
           })}
-          <Link className=' text-white  text-center' href={`${routes.search}?keyword=${watch("keyword")}`}>Xem tất cả</Link>
-        </ul> : <TypographyP className='  text-white'>Không có kết quả</TypographyP>}
+          <Link className=' text-[#f8f8d9]    text-center' href={`${routes.search}?keyword=${watch("keyword")}`}>Xem tất cả</Link>
+        </ul> : <TypographyP className='  text-[#f8f8d9]  '>Không có kết quả</TypographyP>}
       </HoverCardContent>
     </HoverCard>
 
@@ -129,7 +129,7 @@ function ProductItemSearch({ product }: { product: ProductInList }) {
         <div>
           <Image className='  rounded' src={product.featured_image} alt='product' width={50} height={50} />
         </div>
-        <TypographySpan className=' text-white  group-hover:text-blue-500 hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
+        <TypographySpan className=' text-[#f8f8d9]    group-hover:text-blue-500 hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
       </li>
     </Link>
   )

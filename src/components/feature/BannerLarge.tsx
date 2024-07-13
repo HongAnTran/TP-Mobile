@@ -29,7 +29,7 @@ const datas: BannerHeroItem[] = [
 ]
 export default function BannerLarge() {
   return (
-    <div className="  bg-black flex relative z-20 items-center overflow-hidden">
+    <div className="   bg-primary flex relative z-20 items-center overflow-hidden">
       <AutoSlider items={datas.map(item=>{
         return (
          <BannerItem item={item} key={item.title} />

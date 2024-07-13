@@ -28,9 +28,10 @@ const config = {
           DEFAULT: "var(--primary)",
           foreground: "hsl(var(--primary-foreground))",
         },
+        cream : "var(--cream)",
         secondary: {
           DEFAULT: "var(--secondary)",
-          foreground: "hsl(var(--secondary-foreground))",
+          foreground: "var(--secondary",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

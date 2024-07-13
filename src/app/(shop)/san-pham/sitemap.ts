@@ -4,6 +4,12 @@ import { MetadataRoute } from "next"
 
 const domain = process.env.DOMAIN || "https://tpmobile.com.vn"
 
+export async function generateSitemaps() {
+  const {products} = await ProductsServiceApi.getList()
+
+  return products.map(pro=>({slug : pro.slug}))
+}
+ 
 export default async function sitemap({
   slug,
 }: {

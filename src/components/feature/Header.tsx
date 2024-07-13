@@ -14,7 +14,7 @@ export default function Header() {
 
 
   return (
-    <header className={cn('  bg-black  text-white   shadow-lg  transition-transform duration-300')}>
+    <header className={cn('   bg-primary  text-[#f8f8d9]     shadow-lg  transition-transform duration-300')}>
       <div className=' container'>
         <HeaderTop />
         <div className=' flex gap-10 items-center  pt-0 py-3 '>
@@ -40,10 +40,10 @@ export default function Header() {
 function HeaderTop() {
   return (
     <div className=' flex   justify-between  items-center  py-2    bg-secondary '>
-      <TypographyH4 className=' md:text-xs text-[10px]  font-semibold' >TP Mobile - Bán iPad có tâm &quot;Nhứt&quot; Sài Gòn 😎</TypographyH4>
+      <TypographyH4 className=' md:text-xs text-[10px]  font-semibold text-[#f8f8d9]  ' >TP Mobile - Bán iPad có tâm &quot;Nhứt&quot; Sài Gòn 😎</TypographyH4>
       <div className=' flex gap-4'>
         <Link href={routes.wishlist} title='Yêu thích của bạn'>
-          <HeartIcon className=' text-white' />
+          <HeartIcon className=' text-[#f8f8d9]  ' />
           
         </Link>
         <Notification />
