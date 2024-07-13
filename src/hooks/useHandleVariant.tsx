@@ -8,13 +8,13 @@ export default function useHandleVariant(product: Product) {
   const [optionActive, setOptionActive] = useState([variantActive.option1, variantActive.option2, variantActive.option3])
   const [indexImageActive, setIndexImageActive] = useState<number>(0)
 
-  const handleSelectOption = useCallback((option: ProductOption, value: string)=>{
+  const handleSelectOption = useCallback((option: ProductOption, value: string) => {
     setOptionActive(pre => {
       const resuil = [...pre]
       resuil.splice(option.position - 1, 1, value)
       return resuil
     })
-  },[])
+  }, [])
 
 
 

@@ -75,7 +75,7 @@ function ProductQuickViewContent({ product }: { product: Product }) {
         <div className=" flex flex-col gap-2">
           <TypographyH3 className=" line-clamp-2">{product.title}</TypographyH3>
           <TypographyP >Thương hiệu: <b>{product.vendor}</b></TypographyP>
-          <TypographyP >Mã sản phẩm: <b>{variantActive.sku}</b></TypographyP>
+          {/* <TypographyP >Mã sản phẩm: <b>{variantActive.sku}</b></TypographyP> */}
 
           {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
           <ButtonCompareProduct product={product} />

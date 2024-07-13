@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "TP MOBILE STORE",
   description: "TP Mobile store, bán ipad có tâm nhứt Sài Gòn chuyên các dòng ipad sỉ lẽ",
   authors :[{name : "TP Mobile" , url : process.env.DOMAIN}],
-  keywords : ['ipad cũ' , "ipad" , "ipad like new"],
+  keywords : ['ipad cũ' , "ipad" , "ipad like new" , "ipad có tâm" , "ipad sỉ lẽ"],
   
 
 };
@@ -24,9 +24,8 @@ export default async function page() {
       <BannerLarge />
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
-          {/* <BannerMedium /> */}
-          <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[9, 10, 11, 12, 13]} />
-          <SectionCategoryCarousel title='Sản phẩm mới' productIds={[1, 2, 3, 4, 5, 6, 7, 8]} skip={8} />
+          <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[20, 10, 11, 12, 13]} />
+          <SectionCategoryCarousel title='Sản phẩm mới' productIds={[2, 9, 3, 4, 5, 6, 7, 8]} />
           {
             cates.map(cate => {
               return <Suspense key={cate.id} fallback={<ProductsSkeleton />}>

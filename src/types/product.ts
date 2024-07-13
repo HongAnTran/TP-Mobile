@@ -129,7 +129,8 @@ interface ProductsParams {
   capacity?: string
   page?:number,
   limit?: number 
-
+  sortBy?: keyof Product
+  sortType? : "desc" | "asc"
 }
 
 type ProductInList = Pick<Product, "id" | "available" | "barcode" | "category" | "category_id" | "compare_at_price" | "created_at" | "featured_image" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "vendor" | "updated_at">

@@ -104,7 +104,7 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
   return (
     <div className=' flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
       <PriceText className='text-red-500 font-bold' price={product.price} />
-      {product.compare_at_price ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
+      {product.compare_at_price && product.compare_at_price > product.price ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
     </div>
   )
 
@@ -115,7 +115,7 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
 function ProductCardDiscount({ product }: { product: ProductInList }) {
 
 
-  if (!product.compare_at_price) return (<CardBadge className=' top-2 -left-[3px] z-20 '>
+  if (!product.compare_at_price || product.compare_at_price <= product.price) return (<CardBadge className=' top-2 -left-[3px] z-20 '>
     <div className=' h-8 w-20 relative'>
       <Image src={badgeBG} alt='badge' className=' w-full h-full' />
       <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
