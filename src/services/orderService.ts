@@ -18,11 +18,13 @@ class OrderService {
   async createOrderClient(cart: Cart): Promise<Order> {
     const order = {
       items: {
-        create: cart.items.filter(item => item.selected).map((item) => {
-          const { id, ...rest } = item;
+        createMany: {
+          data: cart.items.filter(item => item.selected).map((item) => {
+            const { id, ...rest } = item;
 
-          return rest
-        })
+            return rest
+          })
+        }
       },
       total_price: cart.total_price,
       temp_price: cart.total_price,

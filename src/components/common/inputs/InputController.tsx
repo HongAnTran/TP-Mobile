@@ -26,7 +26,6 @@ export default function InputController<
   const id = useId()
 
 
-
   return (
     <Controller
       control={control}
@@ -35,7 +34,7 @@ export default function InputController<
         <div className={cn(' grid w-full  items-center gap-1.5 relative ')}>
           <Label htmlFor={id}  >{label} {inputProps?.required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
           <Input
-          
+
             {...inputProps}
             id={id}
             name={name}
@@ -47,11 +46,25 @@ export default function InputController<
 
               onBlur()
             }}
-            onChange={onChange}
+            onChange={(e) => {
+              console.log(inputProps?.type)
+              // Kiểm tra nếu inputProps có và type là "number"
+              if (inputProps?.type === "number") {
+                const value = e.target.value;
+                console.log(value)
+                // Nếu giá trị nhập vào không phải là số, không cập nhật state
+                if(!value) return
+                if (!(/^\d*$/.test(value[value.length - 1]))) {
+                  return;
+                }
+              }
+
+              onChange(e)
+            }}
             value={value}
             disabled={disabled}
           />
-          {isShowError && fieldState.error ? <TypographyP className='  font-medium absolute bottom-0 left-0 right-0 text-red-700'>{fieldState.error?.message}</TypographyP> : null}
+          {isShowError && fieldState.error ? <TypographyP className='  font-medium  text-red-700'>{fieldState.error?.message}</TypographyP> : null}
         </div>
       )}
     />

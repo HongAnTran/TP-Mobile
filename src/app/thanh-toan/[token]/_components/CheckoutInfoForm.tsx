@@ -24,12 +24,12 @@ interface LocationState {
 }
 
 const AddressType = yup.mixed<'home' | 'office'>().oneOf(['home', 'office']);
-
+const vietnamPhoneRegex = /^(0|\+84)[\s.-]?((3[2-9]|5[2689]|7[06-9]|8[1-689]|9[0-46-9])[\s.-]?\d{3}[\s.-]?\d{4}|\d{9})$/;
 // Định nghĩa AddressInffo schema
 const AddressInfoSchema = yup.object().shape({
   email: yup.string().nullable().email("Không đúng định dạng"), // Địa chỉ email của người nhận hàng (có thể là null)
   street: yup.string().required("Vui lòng nhập"), // Đường
-  phone: yup.string().required("Vui lòng nhập"), // Số điện thoại liên hệ
+  phone: yup.string().required("Vui lòng nhập").matches(vietnamPhoneRegex, "Số điện thoại không hợp lệ"), // Số điện thoại liên hệ
   province: yup.object().shape({
     code: yup.string().required("Vui lòng chọn"), // Mã code của thành phố
     name: yup.string(), // Tên của thành phố
@@ -147,7 +147,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         <InputController label='Họ và tên' name="full_name" control={control} isShowError />
         <div className='  flex gap-2'>
           <InputController label='Email' name="email" control={control} />
-          <InputController label='Số điện thoại' name="phone" control={control} isShowError />
+          <InputController  inputProps={{type : "number"}} label='Số điện thoại' name="phone" control={control} isShowError />
         </div>
         <div className='  flex gap-2'>
           <SelectController

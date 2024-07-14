@@ -35,7 +35,7 @@ export default function HeaderItems() {
   const items: HeaderItemProps[] = [
     {
       icon: <IconBorder>
-        <PhoneFilledIcon className=' w-7 h-7' />
+        <PhoneFilledIcon className=' w-6 h-6' />
       </IconBorder>
       ,
       text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>0347907042</b> </span>,
@@ -43,7 +43,7 @@ export default function HeaderItems() {
     },
     {
       icon: <IconBorder>
-        <StoreIcon className=' w-7 h-7'/>
+        <StoreIcon className=' w-6 h-6'/>
       </IconBorder>,
       text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,
       href: routes.stores
@@ -51,7 +51,7 @@ export default function HeaderItems() {
     {
       icon:
         <IconBorder>
-          <NewsIcon className=' w-7 h-7'/>
+          <NewsIcon className=' w-6 h-6'/>
         </IconBorder>
       ,
       text:<span className='  text-[11px]  font-medium uppercase'>Tin tức<br /> <b>Công nghệ</b> </span> ,
@@ -95,14 +95,6 @@ export default function HeaderItems() {
     },
     // customerItem
   ]
-  // if (type !== "desktop") {
-
-
-  // }
-
-
-
-
   return (
     <>
       <div className=' flex justify-between fixed bottom-0 left-0 right-0  z-50 bg-primary p-4 md:hidden'>
