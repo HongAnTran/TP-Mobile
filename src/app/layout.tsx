@@ -8,7 +8,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 const inter = Montserrat({ subsets: ["vietnamese"] });
 export const metadata: Metadata = {
   title: "TP MOBILE STORE",
-  description: "TP Mobile store, bán ipad có tâm nhứt Sài Gòn",
+  description: "TP Mobile store, bán ipad có tâm nhứt Sài Gòn, Bảo hành lâu nhất Hồ Chí Minh",
   authors :[{name : "TP Mobile" , url : process.env.DOMAIN}],
 
 };

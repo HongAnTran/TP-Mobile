@@ -21,7 +21,7 @@ export default function Header() {
           <div className=' flex-shrink-0  md:w-fit w-full md:block  flex justify-center'>
             <Logo width={180} height={60} />
           </div>
-          <div className='  w-full max-w-[320px] hidden md:block '>
+          <div className='  w-full lg:max-w-[400px]  xl:max-w-[320px] hidden md:block '>
             <SearchInput />
           </div>
           <div className='  flex-1   flex-shrink-0   '>

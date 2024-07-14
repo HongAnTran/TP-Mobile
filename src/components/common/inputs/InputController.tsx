@@ -13,6 +13,7 @@ interface InputControllerProps {
   label?: string
   icon?: React.ReactNode
   isShowError?: boolean
+  isNumber?: boolean
 }
 export type InputPropsControl<
   TFieldValues extends FieldValues,
@@ -22,7 +23,7 @@ export type InputPropsControl<
 export default function InputController<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
->({ control, name, inputProps, label, icon, isShowError = true }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
+>({ control, name, inputProps, label, isNumber, icon, isShowError = true }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
   const id = useId()
 
 
@@ -47,19 +48,9 @@ export default function InputController<
               onBlur()
             }}
             onChange={(e) => {
-              console.log(inputProps?.type)
-              // Kiểm tra nếu inputProps có và type là "number"
-              if (inputProps?.type === "number") {
-                const value = e.target.value;
-                console.log(value)
-                // Nếu giá trị nhập vào không phải là số, không cập nhật state
-                if(!value) return
-                if (!(/^\d*$/.test(value[value.length - 1]))) {
-                  return;
-                }
-              }
-
               onChange(e)
+
+
             }}
             value={value}
             disabled={disabled}

@@ -123,7 +123,7 @@ function HeaderItem({ icon, text, href }: HeaderItemProps) {
     {href ? <Link href={href} >
       <div className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
         {icon}
-        <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium  block  md:hidden lg:block' >{text}</TypographyP>
+        <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium   hidden xl:block' >{text}</TypographyP>
 
       </div>
     </Link> : <div className='  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>

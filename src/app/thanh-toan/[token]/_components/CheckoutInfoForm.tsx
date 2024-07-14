@@ -147,7 +147,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         <InputController label='Họ và tên' name="full_name" control={control} isShowError />
         <div className='  flex gap-2'>
           <InputController label='Email' name="email" control={control} />
-          <InputController  inputProps={{type : "number"}} label='Số điện thoại' name="phone" control={control} isShowError />
+          <InputController  isNumber label='Số điện thoại' name="phone" control={control} isShowError />
         </div>
         <div className='  flex gap-2'>
           <SelectController
