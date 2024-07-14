@@ -22,7 +22,7 @@ const datas: BannerHeroItem[] = [
   },
   {
     image: "/Apple-iPad-Air-2024-PNG.png",
-    title: "Ipad Air 5",
+    title: "Ipad Air 6",
     description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 12.990.000",
     link : "/san-pham/ipad-air-5-109-inch-2022-wifi"
   },
@@ -52,7 +52,7 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
 
     >
       <span className="w-20 h-2  bg-white mb-12"></span>
-      <h2 className="font-bebas-neue uppercase text-2xl sm:text-8xl font-black flex flex-col leading-none bg-gradient-to-r from-indigo-400 to-pink-600 bg-clip-text text-transparent">
+      <h2 className="font-bebas-neue uppercase text-6xl xl:text-8xl font-black flex flex-col leading-none bg-gradient-to-r from-indigo-400 to-pink-600 bg-clip-text text-transparent">
 
         {item.title}
       </h2>
@@ -62,7 +62,7 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
       <div className="flex mt-8">
         <Link
           href={item.link || "#"}
-          className="uppercase hidden md:block py-2 px-1 md:px-4 rounded-lg  bg-secondary border-2 border-transparent text-primary  mr-4  font-bold"
+          className="uppercase hidden md:block py-2 px-1 md:px-4 rounded-lg  bg-gradient-to-r from-indigo-400 to-pink-600 border-2 border-transparent text-white  mr-4  font-bold"
         >
           Tìm hiểu ngay
         </Link>

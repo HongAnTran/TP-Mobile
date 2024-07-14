@@ -38,7 +38,7 @@ export default function HeaderItems() {
         <PhoneFilledIcon className=' w-6 h-6' />
       </IconBorder>
       ,
-      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>0347907042</b> </span>,
+      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>0347.907.042</b> </span>,
       href: "tel:0347907042"
     },
     {
