@@ -73,7 +73,7 @@ function FeedbackCard({ feedback }: { feedback: Feedback }) {
     <Card className=' border border-gray-300 group relative'>
       <CardContent className="flex flex-col gap-2 aspect-square py-4">
         <div className=' relative w-full aspect-square'>
-          <Image className=' w-full h-full aspect-square object-cover' src={feedback.image} alt={feedback.customerName} />
+          <Image className=' aspect-square object-cover' src={feedback.image} alt={feedback.customerName} />
         </div>
 
         {/* <CardDescription className=' line-clamp-2'><b className='  text-primary'>{feedback.customerName}</b>: {feedback.content}</CardDescription> */}
