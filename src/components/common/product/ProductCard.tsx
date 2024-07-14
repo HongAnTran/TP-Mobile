@@ -16,7 +16,6 @@ import Link from "@/components/common/Link";
 
 import routes from '@/routes'
 import ProductQuickView from './ProductQuickView'
-import Rating from '../Rating'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 
 export default function ProductCard({ product }: { product: ProductInList }) {
@@ -29,33 +28,33 @@ export default function ProductCard({ product }: { product: ProductInList }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       > */}
-        <Card className=' border border-gray-300 group relative h-full'>
-          <CardContent className="flex flex-col   gap-2 aspect-square py-4">
-            <div className=' relative w-full aspect-square overflow-hidden' >
-              <Link href={`${routes.products}/${product.slug}`} prefetch={false} >
-                <ProductCardImage featured_image={product.featured_image} images={product.images} title={product.title} />
-              </Link>
-              <Button onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation()
-                setOpen(true)
-              }} className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
-            </div>
-            <Link href={`${routes.products}/${product.slug}`} >
-
-              <CardTitle className='   hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
+      <Card className=' border border-gray-300 group relative h-full'>
+        <CardContent className="flex flex-col   gap-2 aspect-square py-4">
+          <div className=' relative w-full aspect-square overflow-hidden ' >
+            <Link href={`${routes.products}/${product.slug}`}  >
+              <ProductCardImage featured_image={product.featured_image} images={product.images} title={product.title} />
             </Link>
-            <ProductCardPrice product={product} />
+            <Button onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation()
+              setOpen(true)
+            }} className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
+          </div>
+          <Link href={`${routes.products}/${product.slug}`} >
 
-            <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
-              {/* {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />} */}
+            <CardTitle className='   hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
+          </Link>
+          <ProductCardPrice product={product} />
 
-              <ButtonWishlist id={product.id} />
-            </div>
-          </CardContent>
-          <ProductCardDiscount product={product} />
+          <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
+            {/* {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />} */}
 
-        </Card>
+            <ButtonWishlist id={product.id} />
+          </div>
+        </CardContent>
+        <ProductCardDiscount product={product} />
+
+      </Card>
       {/* </motion.div> */}
 
       <Modal closeButton={null} open={open} onOpenChange={() => setOpen(false)} >
@@ -72,7 +71,7 @@ function ProductCardImage({ images, title, featured_image }: Pick<Product, "imag
   return (
     <>
       <Image src={firstImage} alt={title} width={600} height={600} className={cn(
-        "  absolute  hover:-translate-y-2 transition-all duration-300   aspect-square  object-contain",
+        "  absolute  hover:-translate-y-2 transition-all duration-300  w-full  aspect-square  object-contain",
         {
           " group-hover:-z-1  group-hover:opacity-0 ": !!secondImage
         },
@@ -81,7 +80,7 @@ function ProductCardImage({ images, title, featured_image }: Pick<Product, "imag
         }
       )} />
       {secondImage ? <Image src={secondImage}
-        className={cn("absolute transition-all duration-300 opacity-0   aspect-square object-contain",
+        className={cn("absolute transition-all duration-300 opacity-0 w-full   aspect-square object-contain",
           {
             " group-hover:z-10 group-hover:opacity-100 hover:-translate-y-2": !!secondImage
           })}
@@ -93,14 +92,6 @@ function ProductCardImage({ images, title, featured_image }: Pick<Product, "imag
 
 
 function ProductCardPrice({ product }: { product: ProductInList }) {
-  // if (product.price_min && product.price_max) {
-  //   return <div className=' flex  flex-col md:flex-row  md:items-center gap-1'>
-  //     <PriceText className='text-red-500 ' price={product.price_min} />
-  //     <span className=' hidden  md:inline'>-</span>
-  //     <PriceText className='text-red-500 ' price={product.price_max} />
-  //   </div>
-  // }
-
   return (
     <div className=' flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
       <PriceText className='text-red-500 font-bold' price={product.price} />

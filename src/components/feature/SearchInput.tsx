@@ -94,7 +94,7 @@ export default function SearchInput() {
           <InputController
             inputProps={{
               placeholder: placeholder,
-              className: " text-[#f8f8d9]   placeholder:text-[#f8f8d9] rounded-lg  border-2 ",
+              className: " text-[#f8f8d9]   placeholder:text-[#f8f8d9] rounded-lg  border-2  ",
               autoComplete: "off",
               onFocus: () => {
                 if (productsSearch.length) {
@@ -116,7 +116,7 @@ export default function SearchInput() {
         </form>
       </HoverCardTrigger>
 
-      <HoverCardContent className=' w-[400px] bg-primary  '>
+      <HoverCardContent className=' w-[400px] bg-primary    '>
         {productsSearch.length ? <ul className=' flex flex-col gap-3  '>
           {productsSearch.map(product => {
             return <ProductItemSearch key={product.id} product={product} />
