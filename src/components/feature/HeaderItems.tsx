@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { ReactNode } from 'react'
-import { PersonIcon } from "@radix-ui/react-icons"
+import { PersonIcon, ReaderIcon } from "@radix-ui/react-icons"
 import Link from "@/components/common/Link";
 
 import StoreIcon from '../icons/StoreIcon'
@@ -43,20 +43,28 @@ export default function HeaderItems() {
     },
     {
       icon: <IconBorder>
+        <ReaderIcon className=' w-6 h-6' />
+      </IconBorder>
+      ,
+      text: <span className='  text-[11px]  font-medium uppercase'>Giới thiệu <br /> <b>TP MOBILE</b> </span>,
+      href: "cua-hang"
+    },
+    {
+      icon: <IconBorder>
         <StoreIcon className=' w-6 h-6' />
       </IconBorder>,
       text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,
       href: routes.stores
     },
-    {
-      icon:
-        <IconBorder>
-          <NewsIcon className=' w-6 h-6' />
-        </IconBorder>
-      ,
-      text: <span className='  text-[11px]  font-medium uppercase'>Tin tức<br /> <b>Công nghệ</b> </span>,
-      href: routes.artice
-    },
+    // {
+    //   icon:
+    //     <IconBorder>
+    //       <NewsIcon className=' w-6 h-6' />
+    //     </IconBorder>
+    //   ,
+    //   text: <span className='  text-[11px]  font-medium uppercase'>Tin tức<br /> <b>Công nghệ</b> </span>,
+    //   href: routes.artice
+    // },
 
     {
 
