@@ -35,7 +35,7 @@ export default function ProductBenefits() {
             Đổi trả miễn phí trong 30 ngày
           </div>
         </li>
-        <div className=' border-b border-red-500 pb-2 mb-2'>
+        <div className=' border-b border-red-500 pb-2 mb-2 mt-6'>
         <TypographyH4 className=' font-semibold  text-sm text-center  text-red-500'>  📱🎁 Ưu Đãi iPad Độc Quyền! 🎉</TypographyH4>
       </div>
   
