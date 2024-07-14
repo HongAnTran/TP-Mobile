@@ -32,7 +32,7 @@ export default function ButtonUpToTop() {
   };
 
   return (
-    <div className={`transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`transition-opacity duration-300 hidden md:block ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <Button
         variant="outline"
         className=' rounded-full w-10 h-10 p-0 hover:-translate-y-1 transition-transform'

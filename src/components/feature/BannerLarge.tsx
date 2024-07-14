@@ -62,7 +62,7 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
       <div className="flex mt-8">
         <Link
           href={item.link || "#"}
-          className="uppercase md:block py-2 px-1 md:px-4 rounded-lg   bg-indigo-400 border-2 border-transparent text-white  mr-4  font-bold"
+          className=" text-sm lg:text-base uppercase md:block py-2 px-1 md:px-4 rounded-lg   bg-indigo-400 border-2 border-transparent text-white  mr-4  font-bold"
         >
           Tìm hiểu ngay
         </Link>

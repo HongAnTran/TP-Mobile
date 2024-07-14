@@ -43,7 +43,7 @@ export default function HeaderItems() {
     },
     {
       icon: <IconBorder>
-        <StoreIcon className=' w-6 h-6'/>
+        <StoreIcon className=' w-6 h-6' />
       </IconBorder>,
       text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,
       href: routes.stores
@@ -51,19 +51,19 @@ export default function HeaderItems() {
     {
       icon:
         <IconBorder>
-          <NewsIcon className=' w-6 h-6'/>
+          <NewsIcon className=' w-6 h-6' />
         </IconBorder>
       ,
-      text:<span className='  text-[11px]  font-medium uppercase'>Tin tức<br /> <b>Công nghệ</b> </span> ,
+      text: <span className='  text-[11px]  font-medium uppercase'>Tin tức<br /> <b>Công nghệ</b> </span>,
       href: routes.artice
     },
 
     {
 
-      icon: 
+      icon:
         <CartHeader />
-     ,
-      text:<span className='  text-[11px]  font-medium uppercase'>Giỏ hàng<br /> <b>của bạn</b> </span> ,
+      ,
+      text: <span className='  text-[11px]  font-medium uppercase'>Giỏ hàng<br /> <b>của bạn</b> </span>,
       href: routes.cart
 
     },
@@ -72,17 +72,22 @@ export default function HeaderItems() {
 
   const itemsMobile: HeaderItemProps[] = [
     {
-      icon: <StoreIcon />,
+
+      icon: <IconBorder>
+        <StoreIcon />
+      </IconBorder>,
       text: "Danh mục",
       href: routes.category
     },
     {
-      icon: <StoreIcon />,
+      icon: <IconBorder >
+        <StoreIcon />
+        </IconBorder>,
       text: "Cửa hàng",
       href: routes.stores
     },
     {
-      icon: <NewsIcon />,
+      icon: <IconBorder><NewsIcon /></IconBorder>,
       text: "Tin tức",
       href: routes.artice
     },
@@ -100,7 +105,7 @@ export default function HeaderItems() {
       <div className=' flex justify-between fixed bottom-0 left-0 right-0  z-50 bg-primary p-4 md:hidden'>
         {
           itemsMobile.map((item, index) => {
-            return <HeaderItem {...item} key={index} />
+            return <HeaderItemMobile {...item} key={index} />
           })
         }
       </div>
@@ -138,10 +143,20 @@ function HeaderItem({ icon, text, href }: HeaderItemProps) {
 }
 
 function HeaderItemMobile({ icon, text, href, onClick }: HeaderItemProps) {
-  return <Link href={href ? href : "#"} onClick={onClick}>
-    <div className=' flex    items-center justify-between py-3 border-b border-gray-200'>
+  return <>
+    {href ? <Link href={href} >
+      <div className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
+        {icon}
+        <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium' >{text}</TypographyP>
+
+      </div>
+    </Link> : <div className='  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
       {icon}
-      <TypographyP className=' flex-shrink-0'>{text}</TypographyP>
-    </div>
-  </Link>
+      <div >
+        <TypographyP className='  block  md:hidden lg:block' >{text}</TypographyP>
+      </div>
+    </div>}
+
+
+  </>
 }
