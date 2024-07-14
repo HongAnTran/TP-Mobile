@@ -11,7 +11,11 @@ class CategoryService {
 
   async getList(params?: CategoryProductFilter, init?: ConfigAPi) {
     return fetchApi.get<CategoryProduct[]>(this.url, {
-      params: params,
+      params: {
+        orderBy: "id",
+        orderType: "asc",
+        ...params
+      },
       next: {
         revalidate: 3600
       },
@@ -21,11 +25,9 @@ class CategoryService {
   async getListClient(params?: CategoryProductFilter, init?: ConfigAPi) {
     return fetchApiPublic.get<CategoryProduct[]>(this.url, {
       params: params,
-      next: { revalidate: 60 * 3 },
       ...init,
     });
   }
-
   async getDetail(slug: string) {
     return fetchApi.get<CategoryProduct>(`${this.url}/${slug}`, {});
   }

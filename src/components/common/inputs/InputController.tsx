@@ -32,7 +32,7 @@ export default function InputController<
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value, ref, name, disabled }, fieldState }) => (
-        <div className={cn(' grid w-full  items-center gap-1.5 relative ', isShowError && "pb-5")}>
+        <div className={cn(' grid w-full  items-center gap-1.5 relative ')}>
           <Label htmlFor={id}  >{label} {inputProps?.required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
           <Input
           

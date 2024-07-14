@@ -14,14 +14,14 @@ export default function Header() {
 
 
   return (
-    <header className={cn('   bg-primary  text-[#cac1b2]     shadow-lg  transition-transform duration-300')}>
+    <header className={cn('   bg-primary  text-secondary    shadow-lg  transition-transform duration-300')}>
       <div className=' container'>
         <HeaderTop />
         <div className=' flex gap-10 items-center  pt-0 py-3 '>
           <div className=' flex-shrink-0  md:w-fit w-full md:block  flex justify-center'>
-            <Logo />
+            <Logo width={180} height={60} />
           </div>
-          <div className=' flex-1 max-w-[360px] hidden md:block '>
+          <div className='  w-full max-w-[320px] hidden md:block '>
             <SearchInput />
           </div>
           <div className='  flex-1   flex-shrink-0   '>
@@ -39,11 +39,11 @@ export default function Header() {
 
 function HeaderTop() {
   return (
-    <div className=' flex   justify-between  items-center  py-2    bg-secondary '>
-      <TypographyH4 className=' md:text-xs text-[10px]  font-semibold text-[#cac1b2]  ' >TP Mobile - Bán iPad có tâm &quot;Nhứt&quot; Sài Gòn 😎</TypographyH4>
+    <div className=' flex   justify-between  items-center  py-2    bg-primary '>
+      <TypographyH4 className=' md:text-xs text-[10px]  font-semibold  text-secondary ' >TP Mobile - Bán iPad có tâm &quot;Nhứt&quot; Sài Gòn 😎</TypographyH4>
       <div className=' flex gap-4'>
         <Link href={routes.wishlist} title='Yêu thích của bạn'>
-          <HeartIcon className=' text-[#cac1b2]  ' />
+          <HeartIcon className=' text-secondary  ' />
           
         </Link>
         <Notification />

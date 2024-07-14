@@ -10,7 +10,10 @@ import { TypographyP } from '../ui/typography'
 import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
 import { useSession } from 'next-auth/react';
-interface HeaderItemProps { icon: ReactNode, text: string, href?: string, onClick?: () => void }
+import IconBorder from '../common/IconBorder';
+interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
+
+
 
 
 export default function HeaderItems() {
@@ -31,24 +34,36 @@ export default function HeaderItems() {
 
   const items: HeaderItemProps[] = [
     {
-      icon: <PhoneFilledIcon />,
-      text: "Gọi đặt mua",
+      icon: <IconBorder>
+        <PhoneFilledIcon className=' w-7 h-7' />
+      </IconBorder>
+      ,
+      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>0347907042</b> </span>,
       href: "tel:0347907042"
     },
     {
-      icon: <StoreIcon />,
-      text: "Cửa hàng",
+      icon: <IconBorder>
+        <StoreIcon className=' w-7 h-7'/>
+      </IconBorder>,
+      text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,
       href: routes.stores
     },
     {
-      icon: <NewsIcon />,
-      text: "Tin tức",
+      icon:
+        <IconBorder>
+          <NewsIcon className=' w-7 h-7'/>
+        </IconBorder>
+      ,
+      text:<span className='  text-[11px]  font-medium uppercase'>Tin tức<br /> <b>Công nghệ</b> </span> ,
       href: routes.artice
     },
 
     {
-      icon: <CartHeader />,
-      text: "Giỏ hàng",
+
+      icon: 
+        <CartHeader />
+     ,
+      text:<span className='  text-[11px]  font-medium uppercase'>Giỏ hàng<br /> <b>của bạn</b> </span> ,
       href: routes.cart
 
     },
@@ -134,7 +149,7 @@ function HeaderItemMobile({ icon, text, href, onClick }: HeaderItemProps) {
   return <Link href={href ? href : "#"} onClick={onClick}>
     <div className=' flex    items-center justify-between py-3 border-b border-gray-200'>
       {icon}
-      <TypographyP >{text}</TypographyP>
+      <TypographyP className=' flex-shrink-0'>{text}</TypographyP>
     </div>
   </Link>
 }

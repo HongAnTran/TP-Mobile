@@ -5,10 +5,11 @@ enum CategoryProductStatus {
 
 
 
-interface CategoryProductFilter{
-  take ? :number
-  skip ? : number
-
+interface CategoryProductFilter {
+  take?: number
+  skip?: number
+  orderBy?: keyof CategoryProduct
+  orderType?: "desc" | "asc"
 }
 
 interface CategoryProduct {
@@ -20,7 +21,7 @@ interface CategoryProduct {
   status: CategoryProductStatus
 }
 
-export type { CategoryProduct , CategoryProductFilter }
+export type { CategoryProduct, CategoryProductFilter }
 export {
   CategoryProductStatus
 }

@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
 import ProductsServiceApi from '@/services/productService';
@@ -15,6 +15,7 @@ import Link from "@/components/common/Link";
 
 import routes from '@/routes';
 import { debounce } from '@/utils';
+import { useRouter } from 'next/navigation';
 
 const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
 
@@ -27,13 +28,14 @@ export default function SearchInput() {
   const [typingForward, setTypingForward] = useState(true);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
-
-  const { control, handleSubmit, setValue, watch } = useForm<{ keyword: string }>({
+  const router = useRouter()
+  const { control, handleSubmit,  watch } = useForm<{ keyword: string }>({
     defaultValues: {
       keyword: ""
     }
   })
 
+  const keyword = watch("keyword")
 
 
 
@@ -86,11 +88,13 @@ export default function SearchInput() {
           searchProductByKeyword(data.keyword)
         })
         }
+
+          onSubmit={e => e.preventDefault()}
         >
           <InputController
             inputProps={{
               placeholder: placeholder,
-              className: " text-[#f8f8d9]   placeholder:text-[#f8f8d9]  ",
+              className: " text-[#f8f8d9]   placeholder:text-[#f8f8d9] rounded-lg  border-2 ",
               autoComplete: "off",
               onFocus: () => {
                 if (productsSearch.length) {
@@ -99,18 +103,25 @@ export default function SearchInput() {
               },
               onBlur: () => {
                 setOpenSearch(false)
-              }
+              },
+
+              onKeyUp: (key) => {
+                if (key.key === "Enter") {
+                  router.push(`${routes.search}?keyword=${keyword}`)
+                }
+              },
             }}
+            isShowError={false}
             name="keyword" control={control} />
-        </form >
+        </form>
       </HoverCardTrigger>
 
       <HoverCardContent className=' w-[400px] bg-primary  '>
-        {productsSearch.length ? <ul className=' flex flex-col gap-3'>
+        {productsSearch.length ? <ul className=' flex flex-col gap-3  '>
           {productsSearch.map(product => {
             return <ProductItemSearch key={product.id} product={product} />
           })}
-          <Link className=' text-[#f8f8d9]    text-center' href={`${routes.search}?keyword=${watch("keyword")}`}>Xem tất cả</Link>
+          <Link className=' text-[#f8f8d9]    text-center' href={`${routes.search}?keyword=${keyword}`}>Xem tất cả</Link>
         </ul> : <TypographyP className='  text-[#f8f8d9]  '>Không có kết quả</TypographyP>}
       </HoverCardContent>
     </HoverCard>

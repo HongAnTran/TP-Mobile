@@ -1,6 +1,6 @@
 "use client"
 import PriceText from '@/components/common/PriceText'
-import { TypographyH3, TypographySpan } from '@/components/ui/typography'
+import { TypographyH3, TypographyH4, TypographySpan } from '@/components/ui/typography'
 import CartItem from './_components/CartItem'
 import useCart from '@/hooks/useCart'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -9,12 +9,14 @@ import BoxLayout from './_components/BoxLayout'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
-import {  useState } from 'react'
+import { useState } from 'react'
 import { toast } from '@/components/ui/use-toast'
 import routes from '@/routes'
 import OrderServiceApi from '@/services/orderService'
 import DialogUi from '@/components/common/Dialog'
 import { Skeleton } from '@/components/ui/skeleton'
+import Image from 'next/image'
+import Link from '@/components/common/Link'
 
 
 export default function Cart() {
@@ -30,7 +32,7 @@ export default function Cart() {
 
   async function handelSubmit() {
     try {
-      if(cart.items.filter(item=>item.selected).some(item=>item.line_price === 0)){
+      if (cart.items.filter(item => item.selected).some(item => item.line_price === 0)) {
         setOpen(true)
 
         return
@@ -57,7 +59,17 @@ export default function Cart() {
   const isCheckAll = !cart.items.some(item => !item.selected)
 
   if (cart.item_count === 0) {
-    return <div>Chưa có sản phẩm nào</div>
+    return <div className=' flex justify-center'>
+      <div>
+        <TypographyH4 className=' text-center font-bold  mb-4'>Bạn chưa có sản phẩm nào trong giỏ hàng</TypographyH4>
+        <Image width={400} height={400} alt='Giỏ hàng trống' src="/cartemty.jpg" />
+        <div className=' flex justify-center mt-4'>
+          <Link href={`${routes.category}`} >
+            <Button >Mua sắm ngay</Button>
+          </Link>
+        </div>
+      </div>
+    </div>
   }
 
 
@@ -152,16 +164,12 @@ function CartTotal({ cart }: { cart: CartType }) {
         <ul className=' flex flex-col gap-4  '>
           <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Tạm tính</TypographySpan>
-            <PriceText className=' text-sm'  price={cart.total_price} />
+            <PriceText className=' text-sm' price={cart.total_price} />
           </li>
           <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Khuyến mãi</TypographySpan>
             <PriceText className=' text-sm' notAutoChange price={0} />
           </li>
-          {/* <li className=' flex items-center justify-between'>
-            <TypographySpan className=' text-gray-500'>Thuế</TypographySpan>
-            <PriceText className=' text-sm' price={0} />
-          </li> */}
           <li className=' flex items-center justify-between'>
             <TypographySpan className=' text-gray-500'>Vận chuyển</TypographySpan>
             <PriceText className=' text-sm' price={0} notAutoChange />

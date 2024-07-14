@@ -13,6 +13,7 @@ import PriceText from '../common/PriceText'
 import { Button } from '../ui/button'
 import Link from '../common/Link'
 import routes from '@/routes'
+import IconBorder from '../common/IconBorder'
 
 
 
@@ -24,7 +25,10 @@ export default function CartHeader() {
       <HoverCard>
         <HoverCardTrigger asChild className=' hover:cursor-pointer'>
           <div className=' relative'>
-            <CartIcon />
+            <IconBorder >
+
+              <CartIcon className=' w-7 h-7' />
+            </IconBorder>
             {isLoadingCard ? null : <div className=' absolute -right-1 -top-1  w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-md '>
               <TypographySpan className=' text-gray-800 font-bold text-xs'>{cart.item_count}</TypographySpan>
             </div>}

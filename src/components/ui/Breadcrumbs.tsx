@@ -23,7 +23,7 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
   };
   return (
 
-      <ul className=" flex gap-1 flex-wrap">
+      <ul className=" flex gap-1 flex-wrap ">
         {[defaultBreadcrumbs, ...breadcrumbsList].map((item, index, arr) => {
           if (!item.label) return null
           return (

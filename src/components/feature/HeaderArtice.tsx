@@ -30,10 +30,10 @@ export default async function HeaderArtice() {
   return (
     <header className='  bg-white   text-black   shadow-2xl '>
       <div className=' container '>
-        <div className=' flex gap-10 items-center flex-col  md:flex-row  py-4'>
+        <div className=' flex gap-8 items-center flex-col  md:flex-row  py-4'>
           <div className=' flex-shrink-0'>
            <div className=' bg-black rounded-md p-1'>
-           <Logo  />
+           <Logo   width={180} height={60} />
            </div>
           </div>
           <div className=' flex-1  '>

@@ -15,13 +15,13 @@ interface BannerHeroItem {
 
 const datas: BannerHeroItem[] = [
   {
-    image: "/ipad_pro_hero__bh3eq6sqfjw2_large.jpg",
-    title: "Ipad Gen 10",
-    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 9.390.000",
+    image: "/ipad_pro_hero__bh3eq6sqfjw2_large.png",
+    title: "Ipad Pro M2",
+    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 11.490.000",
     link : "/san-pham/ipad-gen-10-109-inch-2022-wifi"
   },
   {
-    image: "https://i.pinimg.com/564x/34/a5/06/34a5069cd0ecc84848a4d73db910aab8.jpg",
+    image: "/Apple-iPad-Air-2024-PNG.png",
     title: "Ipad Air 5",
     description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 12.990.000",
     link : "/san-pham/ipad-air-5-109-inch-2022-wifi"
@@ -29,7 +29,7 @@ const datas: BannerHeroItem[] = [
 ]
 export default function BannerLarge() {
   return (
-    <div className="   bg-primary flex relative z-20 items-center overflow-hidden">
+    <div className="    bg-primary flex relative z-20 items-center overflow-hidden">
       <AutoSlider items={datas.map(item=>{
         return (
          <BannerItem item={item} key={item.title} />
@@ -41,7 +41,7 @@ export default function BannerLarge() {
 
 function BannerItem({ item }: { item: BannerHeroItem }) {
 
-  return (<div className="container mx-auto px-8 flex relative py-10">
+  return (<div className="container mx-auto px-8 flex relative py-10  justify-center">
     <motion.div
       initial={{ y: 10, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
@@ -56,13 +56,13 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
 
         {item.title}
       </h2>
-      <p className=" text-xs   md:text-base  text-gray-200">
+      <p className=" text-xs   md:text-base   text-secondary">
         {item.description}
       </p>
       <div className="flex mt-8">
         <Link
           href={item.link || "#"}
-          className="uppercase hidden md:block py-2 px-1 md:px-4 rounded-lg bg-primary border-2 border-transparent text-white  mr-4 hover:bg-pink-400"
+          className="uppercase hidden md:block py-2 px-1 md:px-4 rounded-lg  bg-secondary border-2 border-transparent text-primary  mr-4  font-bold"
         >
           Tìm hiểu ngay
         </Link>

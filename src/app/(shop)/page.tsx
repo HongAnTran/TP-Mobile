@@ -8,6 +8,7 @@ import SectionFeedback from '@/components/feature/SectionFeedback'
 import routes from '@/routes'
 import CategoryServiceApi from '@/services/categoryService'
 import { Metadata } from 'next'
+import Image from 'next/image'
 import React, { Suspense } from 'react'
 export const metadata: Metadata = {
   title: "TP MOBILE STORE",
@@ -20,8 +21,9 @@ export const metadata: Metadata = {
 export default async function page() {
   const cates = await CategoryServiceApi.getList()
   return (
-    <div>
+    <div className='  '>
       <BannerLarge />
+
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
           <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[20, 10, 11, 12, 13]} />
