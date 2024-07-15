@@ -2,7 +2,6 @@
 import ProductImageCarousel from '@/components/common/product/ProductImageCarousel'
 import ProductOptions from '@/components/common/product/ProductOptions'
 import ProductShowPrice from '@/components/common/product/ProductShowPrice'
-import Rating from '@/components/common/Rating'
 import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import useHandleVariant from '@/hooks/useHandleVariant'
 import { Product } from '@/types/product'
@@ -17,6 +16,7 @@ import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
 import Link from '@/components/common/Link'
 import routes from '@/routes'
+import ProductBenefitsIpad from '@/components/common/product/ProductBenefitsIpad'
 
 export default function ProductDetail({ product }: { product: Product }) {
   const { handleAddtoCart, handleBuyNow } = useCart()
@@ -66,26 +66,25 @@ export default function ProductDetail({ product }: { product: Product }) {
             <TypographyH1 className=" line-clamp-2 lg:text-xl  text-xl">{product.title}</TypographyH1>
             {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
             <TypographyP >Thương hiệu: <b className=' text-blue-500'>{product.vendor}</b></TypographyP>
-
-            <TypographyP >Danh mục:  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
-
+            {/* <TypographyP >Danh mục:  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP> */}
             <ButtonCompareProduct product={product} />
-
             <TypographyP className=' line-clamp-2'>{product.short_description}</TypographyP>
-
-
             <ProductShowPrice variant={variantActive} />
           </div>
-          <div className=' mt-8'>
+          <div className=' mt-4'>
             <ProductOptions product={product} optionsActive={optionActive} onSelectOption={handleSelectOption} />
 
           </div>
-          <div className=' mt-8'>
+          <div className=' mt-1'>
+            <ProductBenefitsIpad />
+          </div>
+          <div className=' mt-4'>
             <ProductQuantity
               quantity={quantity}
               handleQuantity={handleQuantity}
             />
           </div>
+
           <div className=' mt-8 '>
             <ProductActionButton onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} onBuyNow={
               () => {

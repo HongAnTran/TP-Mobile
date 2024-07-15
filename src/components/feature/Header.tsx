@@ -17,7 +17,7 @@ export default function Header() {
     <header className={cn('   bg-primary  text-secondary    shadow-lg  transition-transform duration-300')}>
       <div className=' container'>
         <HeaderTop />
-        <div className=' flex gap-10 items-center  pt-0 py-3 '>
+        <div className=' flex gap-10 items-center '>
           <div className=' flex-shrink-0  md:w-fit w-full md:block  flex justify-center'>
             <Logo  />
           </div>
