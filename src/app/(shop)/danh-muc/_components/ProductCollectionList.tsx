@@ -15,13 +15,13 @@ export default async function ProductCollectionList({ searchParams, slug }: Prod
   const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST
 
   const {category_id , ...query} = searchParams
-  const { products, total } = await ProductsServiceApi.getList({
+  const { datas, total } = await ProductsServiceApi.getList({
     limit: LIMIT,
     ...searchParams
   }, {
     isLogger: true
   })
-  if (!products.length) {
+  if (!datas.length) {
     return (
       <div>Chưa có sản phẩm</div>
     )
@@ -29,7 +29,7 @@ export default async function ProductCollectionList({ searchParams, slug }: Prod
   return (
     <>
       <div className=' grid lg:grid-cols-4 gap-2 grid-cols-2'>
-        {products.map((pro) => {
+        {datas.map((pro) => {
           return <ProductCard key={pro.id} product={pro} />
         })}
       </div>

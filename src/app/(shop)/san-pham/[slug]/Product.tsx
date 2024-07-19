@@ -38,7 +38,7 @@ export default function Product({ product }: { product: ProductType }) {
           <ProductDescription product={product} />
         </div>
         <div className=' mt-16'>
-          <ProductRelated categoryId={product.category_id} productId={product.id} />
+          {/* <ProductRelated categoryId={product.category_id} productId={product.id} /> */}
         </div>
         <div className=' mt-16'>
           <ProductsRecentViewList />
@@ -52,9 +52,8 @@ export default function Product({ product }: { product: ProductType }) {
 }
 
 async function ProductRelated({ categoryId, productId }: { productId: ProductType["id"], categoryId: CategoryProduct['id'] }) {
-  const { products } = await ProductsServiceApi.getList({ limit: 12, category_id: categoryId })
-  const datas = products.filter(product => product.id !== productId)
+  const { datas } = await ProductsServiceApi.getList({ limit: 12, category_id: categoryId })
   return (
-    <ProductCarousel title="Sản phẩm tương tự" products={datas} />
+    <ProductCarousel title="Sản phẩm tương tự" products={datas.filter(product => product.id !== productId)} />
   )
 }

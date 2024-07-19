@@ -1,5 +1,7 @@
+import { number } from "yup";
+import { Brand } from "./brand";
 import { CategoryProduct } from "./categoryProduct";
-import { FilterBase } from "./common";
+import { ResList } from "./common";
 
 type ProductId = number
 enum ProductStatus {
@@ -12,8 +14,9 @@ interface Product {
   title: string;
   slug: string
   description_html: string | null
+  brand: Brand | null
+  brand_id: number | null
   short_description: string | null
-  vendor: string | null
   available: boolean
   status: ProductStatus,
   created_at: string
@@ -27,20 +30,25 @@ interface Product {
   price_min: number
   price_max: number
   // metadata
-  category_id: number
-  images: string[]
-  featured_image: string
-  // image: ProductImage | null
+  images: ProductImage[]
+  categories: ProductCategories[]
   variants: ProductVariant[]
-  category: CategoryProduct
-  // rating: ProductRating | null
   specifications: ProductSpecifications[]
+  ratings: any
   // meta
-  meta_title: string | null
-  meta_description: string | null
-  meta_keywords: string | null
+  meta_data: {
+    meta_title?: string
+    meta_description?: string
+    meta_keywords?: string
+  }
 }
+interface ProductCategories {
+  id: number
+  category: CategoryProduct
+  categoryId: number
+  priority: number
 
+}
 // type ProductList = Pick<Product, "id"|"title" | "slug" |"">
 
 interface ProductVariant {
@@ -56,18 +64,20 @@ interface ProductVariant {
   title: string,
   updated_at: null | string,
   inventory_quantity: number,
-  // image_id: number,
+  image_id: number | null,
   available: boolean,
 }
-// interface ProductImage {
-//   created_at: null | string,
-//   id: number,
-//   position: number,
-//   product_id: ProductId,
-//   updated_at: null | string,
-//   src: string,
-//   variant_ids: number[]
-// }
+interface ProductImage {
+  created_at: null | string,
+  id: number,
+  alt_text: string | null
+  position: number,
+  product_id: ProductId,
+  updated_at: null | string,
+  url: string,
+  is_featured: boolean
+  productVariant: number[]
+}
 
 interface ProductOption {
   name: string,
@@ -76,26 +86,24 @@ interface ProductOption {
   values: string[]
 }
 
-interface ProductTags {
-  id: number
-  value: string | number
-  type_id: number
-}
 interface ProductSpecifications {
   id: number
-  type_id: number
+  group_id: number
   name: string
   value: string[]
-  description?: string
 }
 interface ProductTypeSpecifications {
   id: number
   name: string
-  description?: string
+}
+interface ProductGroupSpecifications {
+  id: number
+  name: string
+  type_id: number
 }
 
 
-type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "vendor" | "barcode"> & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "categories" | "brand" | "barcode"> & {
   id: number,
   line_price: number
   price: number
@@ -115,6 +123,10 @@ interface ProductRating {
   id: number,
   count: number
   rate: number
+  content: string
+  images: string[]
+  customer_id: number
+  like_count: number
 }
 
 
@@ -122,22 +134,34 @@ interface ProductRating {
 interface ProductsParams {
   include?: string[],
   status?: ProductStatus
-  category_id?: Product["category_id"]
+  category_id?: number
+  categories?: string
   ids?: string
   keyword?: string
   color?: string
   capacity?: string
-  page?:number,
-  limit?: number 
+  price?: string
+  ram?: string
+  page?: number,
+  limit?: number
   sortBy?: keyof Product
-  sortType? : "desc" | "asc"
+  sortType?: "desc" | "asc"
 }
 
-type ProductInList = Pick<Product, "id" | "available" | "barcode" | "category" | "category_id" | "compare_at_price" | "created_at" | "featured_image" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "vendor" | "updated_at">
-interface Products {
-  products: ProductInList[]
-  total: number
-}
+type ProductInList = Pick<Product, "id" | "available" | "barcode" | "categories" | "compare_at_price" | "created_at"  | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "brand" | "updated_at">
+type Products = ResList<ProductInList>
 
 export { ProductStatus }
-export type { Product, ProductInList, Products, ProductsParams, ProductOption, ProductOrder, ProductVariant, ProductRating, ProductTypeSpecifications, ProductSpecifications };
+export type {
+  Product,
+  ProductCategories,
+  ProductInList,
+  Products,
+  ProductsParams,
+  ProductOption,
+  ProductOrder,
+  ProductVariant,
+  ProductRating,
+  ProductTypeSpecifications,
+  ProductSpecifications
+};

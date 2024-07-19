@@ -3,4 +3,9 @@ interface FilterBase {
   skip?: number
 }
 
-export type { FilterBase}
+interface ResList<T>{
+  datas : T[]
+  total : number
+}
+
+export type { FilterBase,ResList}

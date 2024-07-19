@@ -16,8 +16,6 @@ import { Product, ProductInList } from "@/types/product";
 import ButtonCompareProduct from "@/components/feature/ButtonCompareProduct";
 import useProduct from "@/hooks/useProduct";
 import { LoadingIcon } from "@/components/icons";
-import { Skeleton } from "@/components/ui/skeleton";
-import ProductBenefits from "@/app/(shop)/san-pham/_components/ProductBenefits";
 import ProductBenefitsIpad from "./ProductBenefitsIpad";
 
 interface Props { product: ProductInList }

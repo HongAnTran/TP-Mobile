@@ -1,14 +1,14 @@
 interface Location {
-  _id: string,
+  id: string,
   name: string,
-  slug: string,
-  type: string,
-  name_with_type: string,
+  type: LocationTypeCode,
   code: string,
-  isDeleted: boolean
   parent_code?: string
-  path?: string,
-  path_with_type?: string
+}
+enum LocationTypeCode {
+  PROVINCE  = "PROVINCE",
+  DISTRICT= "DISTRICT",
+  WARD= "WARD",
 }
 
-export type { Location }
+export type { Location , LocationTypeCode }
