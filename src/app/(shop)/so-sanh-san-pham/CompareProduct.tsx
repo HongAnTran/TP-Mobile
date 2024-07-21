@@ -18,13 +18,13 @@ import PriceText from '@/components/common/PriceText'
 import Rating from '@/components/common/Rating'
 import Image from 'next/image'
 import { fillArrayToLength, findVariantMinPrice } from '@/utils'
-import { TypographyH3, TypographySpan } from '@/components/ui/typography'
+import { TypographyH3 } from '@/components/ui/typography'
 import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
 import useCompareProduct from '@/hooks/useCompareProduct'
 import { cn } from '@/lib/utils'
 import { Checkbox } from '@/components/ui/checkbox'
 
-type ProductCompare = Pick<Product, "barcode" | "vendor"> & { category_title: string }
+type ProductCompare = Pick<Product, "barcode" | "brand" | "ratings" > & { category_title: string }
 
 type Key = {
   [K in keyof ProductCompare]?: string;
@@ -37,7 +37,7 @@ export default function CompareProduct({ types }: { types: ProductTypeSpecificat
   const [isShowDifferent, setIsShowDifferent] = useState(false)
 
   const keys: Key = {
-    vendor: "Thương hiệu",
+    brand: "Thương hiệu",
     category_title: "Loại sản phẩm",
     barcode: "Barcode",
   
@@ -45,7 +45,7 @@ export default function CompareProduct({ types }: { types: ProductTypeSpecificat
 
   const datasSpecifications = types.map((item) => {
     const values = productsCompare.map(product => {
-      const i = product.specifications.find(pro => pro.type_id === item.id)
+      const i = product.specifications.find(pro => pro.group_id === item.id)
       return i?.value.toString() || ""
     });
     return [item.name, ...values]
@@ -177,7 +177,7 @@ function ProductCardCompare({ product }: { product: Product }) {
   return <Card className=''>
     <CardContent className="flex flex-col gap-2 justify-center items-center   py-4">
       <div className=' md:w-[200px] md:h-[200px]  w-[80px] h-[80px]'>
-        <Image src={product.featured_image} alt={product.title} width={200} height={200} className=' h-full' />
+        <Image src={product.images[0].url} alt={product.title} width={200} height={200} className=' h-full' />
       </div>
 
       <Link href={`${routes.products}/${product.slug}`} >

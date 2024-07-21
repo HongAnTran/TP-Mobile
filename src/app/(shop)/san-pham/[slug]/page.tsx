@@ -14,7 +14,9 @@ function generateStrucDataProduct(
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.title,
-    image: product.featured_image,
+    image: product.images[0].url,
+    category: product.category.title,
+
     description: product.short_description || undefined,
     offers: {
       "@type": "Offer",
@@ -31,8 +33,9 @@ export async function generateMetadata(
   const slug = params.slug
 
   const product = await ProductsServiceApi.getDetail(slug)
-  const titleShow = product.meta_title || product.title
-  const desShow = product.meta_description || product.short_description || undefined
+  const { meta_data } = product
+  const titleShow = meta_data.meta_title || product.title
+  const desShow = meta_data.meta_description || product.short_description || undefined
   const DOMAIN = process.env.DOMAIN
   return {
     title: titleShow,
@@ -40,11 +43,12 @@ export async function generateMetadata(
     openGraph: {
       title: titleShow,
       description: desShow,
-      images: product.images.map(img => ({ url: img, width: 800, height: 600 })),
+      images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })),
       url: `${DOMAIN}/${routes.products}/${product.slug}`,
       siteName: DOMAIN,
     },
     category: product.category.title,
+    // category: product.,
     other: {
       "og:type": "product",
       "og:price:amount": product.price,

@@ -4,14 +4,14 @@ import Artice from "../_components/Artice";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export default async function page() {
-  const {articles} = await ArticeServiceApi.getList()
+  const {datas} = await ArticeServiceApi.getList()
 
   return (
     <>
       <div className=' mb-8'>
         <Breadcrumbs breadcrumbsList={[{ label: "Tin tức", isActive: true }]} />
       </div>
-      <Artice artices={articles}  />
+      <Artice artices={datas}  />
     </>
 
   );

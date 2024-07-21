@@ -7,7 +7,7 @@ interface Cart {
   items:ProductOrder[]
   total_price: number
   note: string | null
-  customer_id: number
+  customer_id: number | null
 }
 
 

@@ -1,6 +1,6 @@
 interface FilterBase {
-  take?: number
-  skip?: number
+  page?: number
+  limit?: number
 }
 
 interface ResList<T>{

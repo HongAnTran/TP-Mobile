@@ -1,7 +1,4 @@
 import React from 'react'
-import { TypographyH3 } from '../ui/typography'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
-import ProductCard from '@/components/common/product/ProductCard'
 import ProductsServiceApi from '@/services/productService'
 import { Product } from '@/types/product'
 import ProductCarousel from '../common/ProductCarousel'
@@ -13,12 +10,12 @@ interface SectionCategoryCarouselProps {
 }
 
 export default async function SectionCategoryCarousel({ title, productIds }: SectionCategoryCarouselProps) {
-  const products = await ProductsServiceApi.getList({ limit: 8, ids : productIds.join(",")})
+  const {datas : products , total} = await ProductsServiceApi.getList({ limit: 8, ids : productIds.join(",")})
 
-  if (!products.total) {
+  if (!products) {
     return null
   }
   return (
-    <ProductCarousel title={title} products={products.products} />
+    <ProductCarousel title={title} products={products} />
   )
 }

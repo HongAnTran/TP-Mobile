@@ -1,7 +1,3 @@
-enum CategoryArticeStatus {
-  DRAFT,
-  SHOW,
-}
 
 
 interface CategoryArtice {
@@ -10,10 +6,8 @@ interface CategoryArtice {
   description: string | null
   image: string
   slug: string
-  status: CategoryArticeStatus
+  published: boolean
+  meta_data : object
 }
 
 export type { CategoryArtice }
-export {
-  CategoryArticeStatus
-}

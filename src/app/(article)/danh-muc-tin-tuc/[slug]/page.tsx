@@ -8,7 +8,7 @@ import routes from '@/routes'
 
 export default async function page({ params }: { params: { slug: string } }) {
   const slug = params.slug
-  const {articles} = await ArticeServiceApi.getList()
+  const {datas} = await ArticeServiceApi.getList()
 
   const articeCategory = await ArticeCategoryServiceApi.getDetail(slug)
 
@@ -21,7 +21,7 @@ export default async function page({ params }: { params: { slug: string } }) {
       <div className=' mb-8'>
         <Breadcrumbs breadcrumbsList={[{ label: "Danh mục bài viêt", slug: routes.articeCategory }, { label: articeCategory.title, isActive: true }]} />
       </div>
-      <ArticeCategoryDetail list={articles} articeCategory={articeCategory} />
+      <ArticeCategoryDetail list={datas} articeCategory={articeCategory} />
     </>
   )
 }

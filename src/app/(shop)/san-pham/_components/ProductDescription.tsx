@@ -16,7 +16,7 @@ export default async function ProductDescription({ product }: { product: Product
         <TypographyH2 className='  text-xl  pb-2 border-b border-gray-300 mb-2'>Thông số kỷ thuật</TypographyH2>
         {product.specifications.length ? <div className=' w-full rounded-md border border-gray-200 p-4'>
           {types.map((type) => {
-            const speList = product.specifications.filter(item => item.type_id === type.id)
+            const speList = product.specifications.filter(item => item.group_id === type.id)
             return (
               <div key={type.id}>
                 {speList.length ? <>

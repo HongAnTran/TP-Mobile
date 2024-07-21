@@ -30,8 +30,8 @@ export default function useProductRecentView() {
   useEffect(() => {
     if (idsProductsRecentView.length) {
       (async () => {
-        const {products} = await ProductsServiceApi.getListClient({ ids: idsProductsRecentView.join(",") })
-        setProductsRecentView(products)
+        const {datas} = await ProductsServiceApi.getListClient({ ids: idsProductsRecentView.join(",") })
+        setProductsRecentView(datas)
       })()
     }
   }, [idsProductsRecentView])

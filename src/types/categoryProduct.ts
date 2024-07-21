@@ -1,7 +1,3 @@
-enum CategoryProductStatus {
-  DRAFT,
-  SHOW
-}
 
 
 
@@ -18,10 +14,8 @@ interface CategoryProduct {
   description: string | null
   image: string
   slug: string
-  status: CategoryProductStatus
+  published: boolean
+  meta_data : object
 }
 
 export type { CategoryProduct, CategoryProductFilter }
-export {
-  CategoryProductStatus
-}

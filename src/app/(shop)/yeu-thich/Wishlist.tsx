@@ -33,7 +33,7 @@ export default function Wishlist() {
     <div className=' mt-10'>
       <TypographyH2 className=' text-center mb-5'>Đã yêu thích {data?.total} sản phẩm</TypographyH2>
       <div className=' grid grid-cols-2 gap-4 mg:grid-cols-4 lg:grid-cols-5'>
-        {data?.products.map(product => {
+        {data?.datas.map(product => {
           return <ProductCard key={product.id} product={product} />
         })}
       </div>

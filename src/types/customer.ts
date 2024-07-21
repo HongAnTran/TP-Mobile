@@ -5,10 +5,13 @@ interface Customer {
   email: string | null; // Địa chỉ email của người nhận hàng (có thể là null)
   address: Address[]; // Địa chỉ giao hàng
   phone: string; // Số điện thoại liên hệ
-  gender : CustomerGender
-  birtday : Date | null
-  image : string
-  name : string
+  gender: CustomerGender
+  birthday: Date | null
+  image: string
+  name: string
+  provider: string
+  created_at: Date
+  updated_at: Date | null
 }
 
-export type { Customer , CustomerGender}
+export type { Customer, CustomerGender }

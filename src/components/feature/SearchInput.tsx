@@ -45,7 +45,7 @@ export default function SearchInput() {
       setProductsSearch([])
       return
     }
-    const { products } = await ProductsServiceApi.getListClient({ limit: 5, keyword: keyword })
+    const { datas :products } = await ProductsServiceApi.getListClient({ limit: 5, keyword: keyword })
     setProductsSearch(products)
     setOpenSearch(true)
   }, 500), [])
@@ -138,7 +138,7 @@ function ProductItemSearch({ product }: { product: ProductInList }) {
       <li className=' flex gap-2 py-1 border-b'>
 
         <div>
-          <Image className='  rounded' src={product.featured_image} alt='product' width={50} height={50} />
+          <Image className='  rounded' src={product.images[0].url} alt='product' width={50} height={50} />
         </div>
         <TypographySpan className=' text-[#f8f8d9]    group-hover:text-blue-500 hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
       </li>

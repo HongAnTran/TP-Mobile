@@ -1,27 +1,25 @@
 enum PageStatus {
-  DRAFT ,
+  DRAFT,
   PUBLISHED,
 }
 
-enum PageLayoutType {
-  FULL ,
-  CONTAINER,
-}
 
-interface Page{
+
+interface Page {
   id: number
   title: string
   slug: string
-  content: string
+  content_html: string
   created_at: Date
-  updated_at: Date
+  updated_at: Date | null
   status: PageStatus
-  layout_type: PageLayoutType,
-  meta_title?: string
-  meta_description?: string
-  meta_keywords?: string
+  meta_data: {
+    meta_title?: string
+    meta_description?: string
+    meta_keywords?: string
+  } | null
 
 }
 
-export {  PageStatus, PageLayoutType }
+export { PageStatus }
 export type { Page }

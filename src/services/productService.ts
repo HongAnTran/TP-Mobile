@@ -31,7 +31,7 @@ class ProductsService {
 
   async getDetail(slug: string) {
     const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-      next: { revalidate: 60 * 1 },
+      next: { revalidate: 60 * 5 },
     });
     return product
   }

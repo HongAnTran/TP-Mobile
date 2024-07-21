@@ -10,11 +10,11 @@ import ArticleCardList from '../common/ArticleCardList';
 import ArticeServiceApi from '@/services/articeService';
 
 export default async function SectionArticles() {
-  const {articles} = await ArticeServiceApi.getList({take:4})
+  const {datas : articles} = await ArticeServiceApi.getList({take:4})
 
 
 
-  if (!articles.length) {
+  if (!articles) {
     return null
   }
   return (

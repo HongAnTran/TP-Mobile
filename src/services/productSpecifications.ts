@@ -25,6 +25,12 @@ class productSpecificationsService {
       cache: "force-cache"
     });
   }
+  async getListGroup(init?: ConfigAPi) {
+    return fetchApi.get<ProductTypeSpecifications[]>(this.url + "/groups", {
+      ...init,
+      cache: "force-cache"
+    });
+  }
 }
 
 const ProductSpecificationsServiceApi = new productSpecificationsService();

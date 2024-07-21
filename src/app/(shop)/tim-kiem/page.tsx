@@ -26,7 +26,7 @@ export default async function page({ searchParams }: { searchParams: { [key: str
     categories: searchParams?.categories?.split(",") || [],
     keyword: keyword
   }
-  const { products, total } = await ProductsServiceApi.getList({
+  const { datas : products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,
     limit:LIMIT,
     ...searchParams

@@ -11,9 +11,8 @@ export default function useWishlistData() {
   const [data, setData] = useState<Products>()
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
-    console.log(wishlist)
     if (!wishlist.length) {
-      setData({ products: [], total: 0 })
+      setData({ datas: [], total: 0 })
       return
     }
     setIsLoading(true);

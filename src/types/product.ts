@@ -13,6 +13,8 @@ interface Product {
   id: ProductId;
   title: string;
   slug: string
+  category_id: number
+  category: CategoryProduct
   description_html: string | null
   brand: Brand | null
   brand_id: number | null
@@ -47,7 +49,6 @@ interface ProductCategories {
   category: CategoryProduct
   categoryId: number
   priority: number
-
 }
 // type ProductList = Pick<Product, "id"|"title" | "slug" |"">
 
@@ -103,7 +104,7 @@ interface ProductGroupSpecifications {
 }
 
 
-type ProductOrder = Pick<Product, | "title" | "slug" | "categories" | "brand" | "barcode"> & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "brand" | "barcode"> & {
   id: number,
   line_price: number
   price: number
@@ -148,7 +149,7 @@ interface ProductsParams {
   sortType?: "desc" | "asc"
 }
 
-type ProductInList = Pick<Product, "id" | "available" | "barcode" | "categories" | "compare_at_price" | "created_at"  | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "brand" | "updated_at">
+type ProductInList = Pick<Product, "id" | "available" | "barcode" | "categories" | "compare_at_price" | "created_at" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "brand" | "updated_at">
 type Products = ResList<ProductInList>
 
 export { ProductStatus }
@@ -163,5 +164,7 @@ export type {
   ProductVariant,
   ProductRating,
   ProductTypeSpecifications,
-  ProductSpecifications
+  ProductSpecifications,
+  ProductImage,
+  ProductGroupSpecifications
 };
