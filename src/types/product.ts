@@ -90,8 +90,8 @@ interface ProductOption {
 interface ProductSpecifications {
   id: number
   group_id: number
-  name: string
-  value: string[]
+  link: string | null
+  value: string
 }
 interface ProductTypeSpecifications {
   id: number

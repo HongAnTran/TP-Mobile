@@ -45,7 +45,7 @@ export default function SearchInput() {
       setProductsSearch([])
       return
     }
-    const { datas :products } = await ProductsServiceApi.getListClient({ limit: 5, keyword: keyword })
+    const { datas :products } = await ProductsServiceApi.getList({ limit: 5, keyword: keyword })
     setProductsSearch(products)
     setOpenSearch(true)
   }, 500), [])

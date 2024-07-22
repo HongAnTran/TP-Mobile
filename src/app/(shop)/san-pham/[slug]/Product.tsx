@@ -38,7 +38,7 @@ export default function Product({ product }: { product: ProductType }) {
           <ProductDescription product={product} />
         </div>
         <div className=' mt-16'>
-          {/* <ProductRelated categoryId={product.category_id} productId={product.id} /> */}
+          <ProductRelated categoryId={product.category_id} productId={product.id} />
         </div>
         <div className=' mt-16'>
           <ProductsRecentViewList />

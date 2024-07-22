@@ -4,6 +4,7 @@ import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import ProductSpecificationsServiceApi from '@/services/productSpecifications'
 export default async function ProductDescription({ product }: { product: Product }) {
   const types = await ProductSpecificationsServiceApi.getListType()
+  const groups = await ProductSpecificationsServiceApi.getListGroup()
 
 
   return (
@@ -16,24 +17,27 @@ export default async function ProductDescription({ product }: { product: Product
         <TypographyH2 className='  text-xl  pb-2 border-b border-gray-300 mb-2'>Thông số kỷ thuật</TypographyH2>
         {product.specifications.length ? <div className=' w-full rounded-md border border-gray-200 p-4'>
           {types.map((type) => {
-            const speList = product.specifications.filter(item => item.group_id === type.id)
+            const groupList = groups.filter(item => item.type_id === type.id)
+            if (!groupList.length) {
+              return
+            }
             return (
               <div key={type.id}>
-                {speList.length ? <>
+                {groupList.length ? <>
                   <TypographyP className=' rounded text-red-500  bg-[#f1f1f1] p-[10px] font-bold'>
                     {type.name}
                   </TypographyP>
                   <div className=' p-2'>
-                    {speList.map(spes => {
-                      return (<li key={spes.id} className='  flex items-center border-b py-1 '>
-                        <TypographyP className=' font-semibold w-1/2'>{spes.name}:</TypographyP>
-                        <div className=' text-right  w-1/2'>
-                          {spes.value.map((value, index) => {
-                            return <TypographyP key={index}>{value}</TypographyP>
-
-                          })}
-                        </div>
-                      </li>)
+                    {groupList.map(group => {
+                      const spe = product.specifications.find(item => item.group_id === group.id)
+                      if (spe) {
+                        return (<li key={group.id} className='  flex items-center border-b py-1 '>
+                          <TypographyP className=' font-semibold w-1/2'>{group.name}:</TypographyP>
+                          <div className=' text-right  w-1/2'>
+                            <TypographyP >{spe.value}</TypographyP>
+                          </div>
+                        </li>)
+                      }
                     })}
                   </div>
                 </> : null}

@@ -1,7 +1,7 @@
 import fetchApi from "@/api/instances/baseInstance";
 import fetchApiPublic from "@/api/instances/routerhandlersInstance"
 import { ConfigAPi } from "@/types/api";
-import { ProductSpecifications, ProductTypeSpecifications } from "@/types/product";
+import { ProductGroupSpecifications, ProductSpecifications, ProductTypeSpecifications } from "@/types/product";
 class productSpecificationsService {
   private url: string = "/specifications";
 
@@ -26,7 +26,7 @@ class productSpecificationsService {
     });
   }
   async getListGroup(init?: ConfigAPi) {
-    return fetchApi.get<ProductTypeSpecifications[]>(this.url + "/groups", {
+    return fetchApi.get<ProductGroupSpecifications[]>(this.url + "/groups", {
       ...init,
       cache: "force-cache"
     });

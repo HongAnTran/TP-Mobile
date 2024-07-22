@@ -26,16 +26,16 @@ export default function useHandleVariant(product: Product) {
 
   }, [optionActive, product.variants])
 
-  // useEffect(() => {
-  //   const imageActive = product.images.find((img) => img === variantActive.image_id)
-  //   if (!imageActive) return
+  useEffect(() => {
+    const imageActive = product.images.find((img) => img.id === variantActive.image_id)
+    if (!imageActive) return
 
-  //   const index = product.images.findIndex(img => img === imageActive.id)
-  //   if (index >= 0) {
-  //     setIndexImageActive(index)
-  //   }
+    const index = product.images.findIndex(img => img.id === imageActive.id)
+    if (index >= 0) {
+      setIndexImageActive(index)
+    }
 
-  // }, [product.images, variantActive])
+  }, [product.images, variantActive])
 
   return {
     handleSelectOption,

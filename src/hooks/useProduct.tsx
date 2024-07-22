@@ -7,7 +7,7 @@ export default function useProduct(slug: Product["slug"]) {
   return useQuery({
     staleTime: 60 * 5,
     queryKey: ['product', slug],
-    queryFn: () => ProductsServiceApi.getDetailClient(slug)
+    queryFn: () => ProductsServiceApi.getDetail(slug)
   },
   )
 }

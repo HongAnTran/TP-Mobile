@@ -42,7 +42,6 @@ export default function ProductQuickView({ product }: Props) {
 
 function ProductQuickViewContent({ product }: { product: Product }) {
 
-
   const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)

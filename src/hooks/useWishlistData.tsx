@@ -29,7 +29,7 @@ export default function useWishlistData() {
             idsArticle.push(item.item_id)
           }
         })
-        const data = await ProductsServiceApi.getListClient({ ids: idsProduct.join(",") })
+        const data = await ProductsServiceApi.getList({ ids: idsProduct.join(",") })
         setData(data)
 
       } catch (error) {

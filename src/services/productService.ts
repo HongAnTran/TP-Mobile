@@ -14,31 +14,32 @@ class ProductsService {
     }
     return fetchApi.get<Products>(this.url, {
       params: paramsDefault,
-      next: { revalidate: 60 * 5 },
+      next: { revalidate: 60 },
       ...init,
     });
   }
-  async getListClient(params?: ProductsParams, init?: ConfigAPi) {
-    const paramsDefault: ProductsParams = {
-      ...params,
-      status: ProductStatus.SHOW
-    }
-    return fetchApiPublic.get<Products>(this.url, {
-      params: paramsDefault,
-      ...init,
-    });
-  }
-
   async getDetail(slug: string) {
     const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-      next: { revalidate: 60 * 5 },
+      next: { revalidate: 60 },
     });
     return product
   }
-  async getDetailClient(slug: string) {
-    const product = await fetchApiPublic.get<Product>(`${this.url}/${slug}`);
-    return product
-  }
+  // async getListClient(params?: ProductsParams, init?: ConfigAPi) {
+  //   const paramsDefault: ProductsParams = {
+  //     ...params,
+  //     status: ProductStatus.SHOW
+  //   }
+  //   return fetchApiPublic.get<Products>(this.url, {
+  //     params: paramsDefault,
+  //     ...init,
+  //   });
+  // }
+
+
+  // async getDetailClient(slug: string) {
+  //   const product = await fetchApiPublic.get<Product>(`${this.url}/${slug}`);
+  //   return product
+  // }
 
 
 }
