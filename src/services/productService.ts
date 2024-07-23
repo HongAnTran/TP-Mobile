@@ -1,5 +1,4 @@
 import fetchApi from "@/api/instances/baseInstance";
-import fetchApiPublic from "@/api/instances/routerhandlersInstance"
 import { ConfigAPi } from "@/types/api";
 import { Product, Products, ProductsParams, ProductStatus } from "@/types/product";
 class ProductsService {
@@ -14,13 +13,13 @@ class ProductsService {
     }
     return fetchApi.get<Products>(this.url, {
       params: paramsDefault,
-      next: { revalidate: 60 },
+      next: { revalidate: 60 * 3 },
       ...init,
     });
   }
   async getDetail(slug: string) {
     const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 60 * 3 },
     });
     return product
   }

@@ -60,7 +60,7 @@ function sleep(ms: number): Promise<void> {
 interface ObjectWithArrayValues {
   [key: string]: string | string[] | number[];
 }
-function objectToSearchParamsValue(obj: ObjectWithArrayValues): ObjectWithArrayValues {
+function objectToSearchParamsValue(obj: ObjectWithArrayValues): { [key: string]: string;} {
   const processedObj: { [key: string]: string } = {};
   for (const key in obj) {
     if (Array.isArray(obj[key])) {

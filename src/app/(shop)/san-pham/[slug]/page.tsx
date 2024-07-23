@@ -14,7 +14,7 @@ function generateStrucDataProduct(
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.title,
-    image: product.images[0].url,
+    image: product.images?.[0]?.url,
     category: product.category.title,
 
     description: product.short_description || undefined,
@@ -34,8 +34,8 @@ export async function generateMetadata(
 
   const product = await ProductsServiceApi.getDetail(slug)
   const { meta_data } = product
-  const titleShow = meta_data.meta_title || product.title
-  const desShow = meta_data.meta_description || product.short_description || undefined
+  const titleShow = meta_data?.meta_title || product.title
+  const desShow = meta_data?.meta_description || product.short_description || undefined
   const DOMAIN = process.env.DOMAIN
   return {
     title: titleShow,

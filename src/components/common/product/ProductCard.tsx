@@ -66,6 +66,11 @@ export default function ProductCard({ product }: { product: ProductInList }) {
 }
 
 function ProductCardImage({ images, title }: Pick<Product, "images" | "title" >) {
+
+  if(!images.length){
+
+    return <div className=' w-full h-full bg-gray-400'></div>
+  }
   const firstImage = images?.[0] 
   const secondImage = images?.[1]
   return (
