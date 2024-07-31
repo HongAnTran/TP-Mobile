@@ -1,6 +1,6 @@
 "use client"
 
-import { Product, ProductInList } from '@/types/product'
+import { Product, ProductInList } from '@/types/Product.types'
 import React, { useState } from 'react'
 import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'

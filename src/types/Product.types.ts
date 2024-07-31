@@ -1,4 +1,3 @@
-import { number } from "yup";
 import { Brand } from "./brand";
 import { CategoryProduct } from "./categoryProduct";
 import { ResList } from "./common";
@@ -26,23 +25,29 @@ interface Product {
   published_at: string | null
   barcode: string | null
   options: ProductOption[]
-  // tags: ProductTags[] | null
+  tags: Tags[]
   compare_at_price: number
   price: number
   price_min: number
   price_max: number
   // metadata
   images: ProductImage[]
-  categories: ProductCategories[]
+  sub_categories: ProductCategories[]
   variants: ProductVariant[]
-  specifications: ProductSpecifications[]
-  ratings: any
-  // meta
+  related: number[],
   meta_data: {
     meta_title?: string
     meta_description?: string
     meta_keywords?: string
-  }
+  } | null,
+  meta_tags: object | null
+}
+interface Tags {
+  id: number,
+  name: string
+  slug: string
+  description: string | null
+  published: boolean
 }
 interface ProductCategories {
   id: number
@@ -66,25 +71,45 @@ interface ProductVariant {
   updated_at: null | string,
   inventory_quantity: number,
   image_id: number | null,
+  image:ProductImage |  null,
   available: boolean,
+  optionValues : ProductOptionValue[]
 }
 interface ProductImage {
-  created_at: null | string,
   id: number,
+  created_at: null | string,
   alt_text: string | null
   position: number,
   product_id: ProductId,
   updated_at: null | string,
   url: string,
   is_featured: boolean
-  productVariant: number[]
+  productVariant: { id: number }[]
 }
 
 interface ProductOption {
+  id: number,
   name: string,
   position: number,
   product_id: ProductId,
   values: string[]
+  style: OptionStyle
+  attributes: ProductOptionValue[]
+}
+interface ProductOptionValue {
+  id: number
+  value: string
+  slug: string
+  hex_color: string | null
+  option_id: number
+}
+
+enum OptionStyle {
+  IMAGE = "IMAGE",
+  COLOR = "COLOR",
+  CIRCLE = "CIRCLE",
+  RECTANGLE = "RECTANGLE",
+  RADIO = "RADIO"
 }
 
 interface ProductSpecifications {
@@ -149,7 +174,7 @@ interface ProductsParams {
   sortType?: "desc" | "asc"
 }
 
-type ProductInList = Pick<Product, "id" | "available" | "barcode" | "categories" | "compare_at_price" | "created_at" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "brand" | "updated_at">
+type ProductInList = Pick<Product, "id" | "available" | "compare_at_price" | "created_at" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "brand" | "updated_at">
 type Products = ResList<ProductInList>
 
 export { ProductStatus }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { TypographySpan } from '../ui/typography'
-import { ProductVariant } from '@/types/product'
+import { ProductVariant } from '@/types/Product.types'
 import { convetNumberToPriceVND } from '@/utils'
 import { cn } from '@/lib/utils'
 

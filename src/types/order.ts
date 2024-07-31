@@ -1,5 +1,5 @@
 import { Address } from "@/types/address"
-import { ProductOrder } from "./product"
+import { ProductOrder } from "./Product.types"
 import { Customer } from "./customer"
 
 

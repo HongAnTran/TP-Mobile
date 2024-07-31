@@ -1,6 +1,6 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/api";
-import { Product, Products, ProductsParams, ProductStatus } from "@/types/product";
+import { Product, Products, ProductsParams, ProductStatus } from "@/types/Product.types";
 class ProductsService {
   private url: string = "/products";
 

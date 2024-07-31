@@ -1,7 +1,7 @@
 import fetchApi from "@/api/instances/baseInstance";
 import fetchApiPublic from "@/api/instances/routerhandlersInstance"
 import { ConfigAPi } from "@/types/api";
-import { ProductGroupSpecifications, ProductSpecifications, ProductTypeSpecifications } from "@/types/product";
+import { ProductGroupSpecifications, ProductSpecifications, ProductTypeSpecifications } from "@/types/Product.types";
 class productSpecificationsService {
   private url: string = "/specifications";
 
@@ -9,13 +9,13 @@ class productSpecificationsService {
 
   async getList(init?: ConfigAPi) {
     return fetchApi.get<ProductSpecifications[]>(this.url, {
-      next: { revalidate: 60 * 3 },
+      next: { revalidate: 60 * 60 * 12 },
       ...init,
     });
   }
   async getListClient(init?: ConfigAPi) {
     return fetchApiPublic.get<ProductSpecifications[]>(this.url, {
-      next: { revalidate: 60 * 3 },
+      next: { revalidate: 60 * 60 * 12 },
       ...init,
     });
   }

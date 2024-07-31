@@ -1,7 +1,7 @@
 "use client"
 import { TypographyP, TypographySpan } from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import { Product, ProductOption } from '@/types/product'
+import { Product, ProductOption } from '@/types/Product.types'
 import React from 'react'
 
 export default function ProductOptions({ product, optionsActive, onSelectOption }:

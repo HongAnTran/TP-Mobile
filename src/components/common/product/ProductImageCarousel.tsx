@@ -5,7 +5,7 @@ import Image from 'next/image'
 import React from 'react'
 import { type CarouselApi } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils'
-import { ProductImage } from '@/types/product'
+import { ProductImage } from '@/types/Product.types'
 
 export default function ProductImageCarousel({ images, alt, imageActive, setImageActive }:
   { images: ProductImage[], alt: string, imageActive: number, setImageActive: (index: number) => void }) {

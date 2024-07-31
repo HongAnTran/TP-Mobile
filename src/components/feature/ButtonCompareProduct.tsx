@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { Button } from '../ui/button'
-import { Product } from '@/types/product'
+import { Product } from '@/types/Product.types'
 import useCompareProduct from '@/hooks/useCompareProduct'
 
 export default function ButtonCompareProduct({ product }: { product: Product }) {

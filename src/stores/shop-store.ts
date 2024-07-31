@@ -1,7 +1,7 @@
 import { KEYS } from '@/consts/localStorage'
 import CartServiceApi from '@/services/cartService'
 import { Cart } from '@/types/cart'
-import { Product } from '@/types/product'
+import { Product } from '@/types/Product.types'
 import { Wishlist } from '@/types/wishlist'
 import LocalStorageService from '@/utils/localStorage'
 import { createStore } from 'zustand/vanilla'

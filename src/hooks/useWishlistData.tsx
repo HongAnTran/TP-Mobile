@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import useWishlist from './useWishlist'
 import { WishlistType } from '@/types/wishlist'
 import ProductsServiceApi from '@/services/productService'
-import { Products } from '@/types/product'
+import { Products } from '@/types/Product.types'
 
 export default function useWishlistData() {
   const { wishlist } = useWishlist()

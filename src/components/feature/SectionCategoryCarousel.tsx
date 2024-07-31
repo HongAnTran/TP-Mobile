@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductsServiceApi from '@/services/productService'
-import { Product } from '@/types/product'
+import { Product } from '@/types/Product.types'
 import ProductCarousel from '../common/ProductCarousel'
 
 

@@ -4,7 +4,7 @@ import ProductsServiceApi from '@/services/productService'
 import Product from './Product'
 import { Metadata } from 'next'
 import routes from '@/routes'
-import { Product as ProducType } from '@/types/product'
+import { Product as ProducType } from '@/types/Product.types'
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
 function generateStrucDataProduct(

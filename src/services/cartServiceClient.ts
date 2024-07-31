@@ -1,6 +1,6 @@
 import { KEYS } from "@/consts/localStorage";
 import { Cart } from "@/types/cart";
-import { Product, ProductOrder, ProductVariant } from "@/types/product";
+import { Product, ProductOrder, ProductVariant } from "@/types/Product.types";
 import LocalStorageService from "@/utils/localStorage";
 
 class CartServiceClient {

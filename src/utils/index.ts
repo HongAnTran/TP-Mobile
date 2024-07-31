@@ -1,4 +1,4 @@
-import { ProductVariant } from "@/types/product";
+import { ProductVariant } from "@/types/Product.types";
 
 function convetNumberToPriceVND(priceNumber: ProductVariant["price"]) {
   let output = "";

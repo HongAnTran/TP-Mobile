@@ -2,7 +2,7 @@ import React from 'react'
 import { TypographyH3, TypographyP } from '../ui/typography'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
 import ProductCard from '@/components/common/product/ProductCard'
-import { Product, ProductInList } from '@/types/product'
+import { Product, ProductInList } from '@/types/Product.types'
 
 
 interface ProductCarouselProps {

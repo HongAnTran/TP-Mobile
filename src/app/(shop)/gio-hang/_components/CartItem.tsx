@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import SETTINGS from '@/consts/settings'
 import routes from '@/routes'
-import { ProductOrder } from '@/types/product'
+import { ProductOrder } from '@/types/Product.types'
 import Image from 'next/image'
 import React from 'react'
 

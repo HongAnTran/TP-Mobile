@@ -1,5 +1,5 @@
 "use client"
-import { Product, ProductOption, ProductVariant } from '@/types/product'
+import { Product, ProductOption, ProductVariant } from '@/types/Product.types'
 import { findVariantActiveOption } from '@/utils'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -27,7 +27,9 @@ export default function useHandleVariant(product: Product) {
   }, [optionActive, product.variants])
 
   useEffect(() => {
+    console.log(variantActive,product.images)
     const imageActive = product.images.find((img) => img.id === variantActive.image_id)
+    console.log(imageActive)
     if (!imageActive) return
 
     const index = product.images.findIndex(img => img.id === imageActive.id)

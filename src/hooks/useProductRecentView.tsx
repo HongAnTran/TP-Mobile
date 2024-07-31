@@ -3,7 +3,7 @@
 import { KEYS } from '@/consts/localStorage'
 import SETTINGS from '@/consts/settings'
 import ProductsServiceApi from '@/services/productService'
-import { Product, ProductInList } from '@/types/product'
+import { Product, ProductInList } from '@/types/Product.types'
 import LocalStorageService from '@/utils/localStorage'
 import { useCallback, useEffect, useState } from 'react'
 

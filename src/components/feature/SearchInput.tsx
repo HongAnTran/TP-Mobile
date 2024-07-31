@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
 import ProductsServiceApi from '@/services/productService';
-import { ProductInList } from '@/types/product';
+import { ProductInList } from '@/types/Product.types';
 import {
   HoverCardTrigger,
   HoverCard,

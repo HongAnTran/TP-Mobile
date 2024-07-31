@@ -4,7 +4,7 @@ import { useToast } from '@/components/ui/use-toast'
 import { useShopStore } from '@/providers/shop-store-provider'
 import routes from '@/routes'
 import CartServiceClient from '@/services/cartServiceClient'
-import { Product, ProductOrder, ProductVariant } from '@/types/product'
+import { Product, ProductOrder, ProductVariant } from '@/types/Product.types'
 import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 

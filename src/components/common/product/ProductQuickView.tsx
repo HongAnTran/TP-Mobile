@@ -12,7 +12,7 @@ import ProductOptions from "./ProductOptions";
 import ProductActionButton from "./ProductActionButton";
 import ProductQuantity, { ProductQuantityProps } from "./ProductQuantity";
 import SETTINGS from '@/consts/settings'
-import { Product, ProductInList } from "@/types/product";
+import { Product, ProductInList } from "@/types/Product.types";
 import ButtonCompareProduct from "@/components/feature/ButtonCompareProduct";
 import useProduct from "@/hooks/useProduct";
 import { LoadingIcon } from "@/components/icons";

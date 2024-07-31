@@ -1,6 +1,6 @@
 "use client"
 import ProductsServiceApi from '@/services/productService'
-import { Product } from '@/types/product'
+import { Product } from '@/types/Product.types'
 import { useQuery } from '@tanstack/react-query'
 
 export default function useProduct(slug: Product["slug"]) {

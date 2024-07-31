@@ -1,4 +1,4 @@
-import { ProductOrder } from "./product"
+import { ProductOrder } from "./Product.types"
 
 interface Cart {
   id: number

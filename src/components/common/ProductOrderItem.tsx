@@ -1,7 +1,7 @@
 import PriceText from '@/components/common/PriceText'
 import { TypographySpan } from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import { ProductOrder } from '@/types/product'
+import { ProductOrder } from '@/types/Product.types'
 import Image from 'next/image'
 import React from 'react'
 

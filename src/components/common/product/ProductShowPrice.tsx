@@ -1,4 +1,4 @@
-import { Product, ProductVariant } from '@/types/product'
+import { Product, ProductVariant } from '@/types/Product.types'
 import React from 'react'
 import PriceText from '../PriceText'
 import { TypographySpan } from '@/components/ui/typography'
