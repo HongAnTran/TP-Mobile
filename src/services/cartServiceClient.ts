@@ -76,7 +76,7 @@ class CartServiceClient {
       image: imgSrc ? imgSrc : product.images?.[0].url, // You need to provide the image URL here
       product_title: product.title,
       variant_title: variant.title,
-      variant_options: [variant.option1, variant.option2, variant.option3].filter(opt => opt), // Filter out empty options
+      variant_options: variant.attribute_values.map(item=>item.id.toString()).filter(opt => opt), // Filter out empty options
       quantity: quantity,
       selected : true
     };

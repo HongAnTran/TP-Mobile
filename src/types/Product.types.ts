@@ -1,9 +1,11 @@
+import { Attribute, AttributeValue } from "./Attributestypes";
 import { Brand } from "./brand";
 import { CategoryProduct } from "./categoryProduct";
 import { ResList } from "./common";
 
 type ProductId = number
-enum ProductStatus {
+
+export enum ProductStatus {
   DRAFT,
   SHOW,
 }
@@ -12,29 +14,29 @@ interface Product {
   id: ProductId;
   title: string;
   slug: string
-  category_id: number
-  category: CategoryProduct
   description_html: string | null
-  brand: Brand | null
   brand_id: number | null
-  short_description: string | null
   available: boolean
   status: ProductStatus,
   created_at: string
   updated_at: string | null
   published_at: string | null
   barcode: string | null
-  options: ProductOption[]
-  tags: Tags[]
-  compare_at_price: number
+  short_description: string | null
   price: number
+  compare_at_price: number
   price_min: number
   price_max: number
+  related: number[],
+  category_id: number
+  category: CategoryProduct
+  sub_categories: ProductCategories[]
+  brand: Brand | null
+  tags: Tags[]
+  attributes: ProductAttribute[]
   // metadata
   images: ProductImage[]
-  sub_categories: ProductCategories[]
   variants: ProductVariant[]
-  related: number[],
   meta_data: {
     meta_title?: string
     meta_description?: string
@@ -42,6 +44,15 @@ interface Product {
   } | null,
   meta_tags: object | null
 }
+
+
+interface ProductAttribute {
+  id: number
+  position: number,
+  attribute: Attribute
+  values: AttributeValue[]
+}
+
 interface Tags {
   id: number,
   name: string
@@ -55,25 +66,25 @@ interface ProductCategories {
   categoryId: number
   priority: number
 }
-// type ProductList = Pick<Product, "id"|"title" | "slug" |"">
 
 interface ProductVariant {
-  barcode: null | string,
-  compare_at_price: number,
   id: number,
-  option1: string,
-  option2: string,
-  option3: string,
+  barcode: null | string,
   position: number,
+  compare_at_price: number,
   price: number,
   sku: string,
   title: string,
+  created_at: string
   updated_at: null | string,
+
   inventory_quantity: number,
+  sold_quantity: number
   image_id: number | null,
-  image:ProductImage |  null,
+  product_id: number
+  image: ProductImage | null,
   available: boolean,
-  optionValues : ProductOptionValue[]
+  attribute_values: AttributeValue[]
 }
 interface ProductImage {
   id: number,
@@ -85,31 +96,6 @@ interface ProductImage {
   url: string,
   is_featured: boolean
   productVariant: { id: number }[]
-}
-
-interface ProductOption {
-  id: number,
-  name: string,
-  position: number,
-  product_id: ProductId,
-  values: string[]
-  style: OptionStyle
-  attributes: ProductOptionValue[]
-}
-interface ProductOptionValue {
-  id: number
-  value: string
-  slug: string
-  hex_color: string | null
-  option_id: number
-}
-
-enum OptionStyle {
-  IMAGE = "IMAGE",
-  COLOR = "COLOR",
-  CIRCLE = "CIRCLE",
-  RECTANGLE = "RECTANGLE",
-  RADIO = "RADIO"
 }
 
 interface ProductSpecifications {
@@ -155,8 +141,6 @@ interface ProductRating {
   like_count: number
 }
 
-
-
 interface ProductsParams {
   include?: string[],
   status?: ProductStatus
@@ -174,22 +158,24 @@ interface ProductsParams {
   sortType?: "desc" | "asc"
 }
 
-type ProductInList = Pick<Product, "id" | "available" | "compare_at_price" | "created_at" | "images" | "price" | "price_max" | "price_min" | "slug" | "title" | "status" | "brand" | "updated_at">
+type ProductInList = Pick<Product, "id" | "available" | "compare_at_price"  | "images" | "price" | "price_max" | "price_min" | 
+"slug" | "title" | "status" | "brand" | "updated_at" | "meta_tags" | "tags" |  "category" | "category_id">
 type Products = ResList<ProductInList>
 
-export { ProductStatus }
 export type {
   Product,
   ProductCategories,
   ProductInList,
   Products,
   ProductsParams,
-  ProductOption,
   ProductOrder,
   ProductVariant,
   ProductRating,
   ProductTypeSpecifications,
   ProductSpecifications,
   ProductImage,
-  ProductGroupSpecifications
+  ProductGroupSpecifications,
+  ProductAttribute,
+  ProductId,
+  Tags
 };

@@ -24,7 +24,7 @@ import useCompareProduct from '@/hooks/useCompareProduct'
 import { cn } from '@/lib/utils'
 import { Checkbox } from '@/components/ui/checkbox'
 
-type ProductCompare = Pick<Product, "barcode" | "brand" | "ratings" > & { category_title: string }
+type ProductCompare = Pick<Product, "barcode" | "brand"  > & { category_title: string }
 
 type Key = {
   [K in keyof ProductCompare]?: string;
@@ -43,14 +43,14 @@ export default function CompareProduct({ types }: { types: ProductTypeSpecificat
   
   }
 
-  const datasSpecifications = types.map((item) => {
-    const values = productsCompare.map(product => {
-      const i = product.specifications.find(pro => pro.group_id === item.id)
-      return i?.value.toString() || ""
-    });
-    return [item.name, ...values]
-  })
-
+  // const datasSpecifications = types.map((item) => {
+  //   const values = productsCompare.map(product => {
+  //     const i = product.specifications.find(pro => pro.group_id === item.id)
+  //     return i?.value.toString() || ""
+  //   });
+  //   return [item.name, ...values]
+  // })
+  const datasSpecifications  : any[]=  []
   const datasCompare = Object.keys(keys).map((key, index) => {
     // Chuyển key thành kiểu cụ thể
     const typedKey = key as keyof ProductCompare;
@@ -151,7 +151,7 @@ export default function CompareProduct({ types }: { types: ProductTypeSpecificat
                     " hidden": !checkIsDifferent(data) && isShowDifferent,
                   })}>
                     {
-                      data.map((value, index) => {
+                      data.map((value : string, index : number) => {
                         return (<TableCell key={index}>
                           <li className={cn(' flex ', index !== 0 && " justify-center")}>
                             {value?.toString()}

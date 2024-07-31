@@ -36,9 +36,8 @@ function findVariantMinPrice(variants: ProductVariant[]) {
   return minPriceVariant;
 }
 
-function findVariantActiveOption(variants: ProductVariant[], optionActive: string[]) {
-  return variants.find(pro => optionActive.includes(pro.option1) && optionActive.includes(pro.option2) && optionActive.includes(pro.option3))
-
+function findVariantActiveOption(variants: ProductVariant[], optionActive: number[]) {
+  return variants.find(variant => JSON.stringify(variant.attribute_values.map(item => item.id)) === JSON.stringify(optionActive))
 }
 
 function fillArrayToLength(arr: any[], length: number, data: any = null) {
@@ -60,7 +59,7 @@ function sleep(ms: number): Promise<void> {
 interface ObjectWithArrayValues {
   [key: string]: string | string[] | number[];
 }
-function objectToSearchParamsValue(obj: ObjectWithArrayValues): { [key: string]: string;} {
+function objectToSearchParamsValue(obj: ObjectWithArrayValues): { [key: string]: string; } {
   const processedObj: { [key: string]: string } = {};
   for (const key in obj) {
     if (Array.isArray(obj[key])) {
