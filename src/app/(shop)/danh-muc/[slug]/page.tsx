@@ -7,7 +7,7 @@ import routes from '@/routes'
 import { SortProduct } from '@/components/feature/SortProduct'
 import ProductCollectionList from '../_components/ProductCollectionList'
 import ErrorRespone from '@/api/error'
-import ProductsSkeleton from '@/components/common/ProductsSkeleton'
+import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import FilterProduct from '@/components/feature/FilterProduct'
 import { Metadata } from 'next'
 

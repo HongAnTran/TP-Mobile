@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import ProductCarousel from '../common/ProductCarousel'
+import ProductCarousel from '../common/product/ProductCarousel'
 import useProductRecentView from '@/hooks/useProductRecentView'
 
 export default function ProductsRecentViewList() {

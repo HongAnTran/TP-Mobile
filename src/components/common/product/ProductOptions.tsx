@@ -14,17 +14,14 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
   return (
     <div className=' flex flex-col gap-4'>
       {
-        product.attributes.map((option, index) => {
+        product.attributes.map((option , index) => {
           return <div key={option.id} className=' flex items-center gap-4'>
             <TypographyP className=' font-bold min-w-[115px]'>
               {option.attribute.name}:
             </TypographyP>
-            <div className=' flex gap-2 items-center  flex-wrap'>
-
+            <div className=' flex gap-2 md:gap-4 items-center  flex-wrap'>
               {option.attribute.style === AttributeStyle.RECTANGLE && <AttributeRectangle attributes={option.values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
               {option.attribute.style === AttributeStyle.COLOR && <AttributeColor attributes={option.values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
-
-
             </div>
           </div>
         })
@@ -34,13 +31,7 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
 
 }
 
-// export enum AttributeStyle {
-//   IMAGE = "IMAGE",
-//   COLOR = "COLOR",
-//   CIRCLE = "CIRCLE",
-//   RECTANGLE = "RECTANGLE",
-//   RADIO = "RADIO"
-// }
+
 interface PropsAttributes {
   attributes: AttributeValue[], optionsActive: number[],
   onSelectOption: (index: number, id: number) => void, indexGroup: number
@@ -74,20 +65,23 @@ function AttributeColor({ attributes, optionsActive, onSelectOption, indexGroup 
         return (
           <TooltipUi key={data.id} title={data.value}>
 
-            <div className={
-              cn('  border  flex items-center justify-center rounded-full overflow-hidden   p-[2px] w-6 h-6  opacity-80 border-[hsla(0,0%,60%,.4)]   cursor-pointer', {
-                "  border-red-500 border-2 opacity-100": optionsActive.includes(data.id)
-              })
-            }
-              onClick={() => onSelectOption(indexGroup, data.id)}
-            >
-              <p className={cn(' transition-all   w-4 h-4  rounded-full    ')
+            <div className=' flex items-center gap-1'>
+              <div className={
+                cn('  border  flex items-center justify-center rounded-full overflow-hidden   p-[2px] w-6 h-6  opacity-80 border-[hsla(0,0%,60%,.4)]   cursor-pointer', {
+                  "  border-red-500 border-2 opacity-100": optionsActive.includes(data.id)
+                })
               }
-                style={{
-                  backgroundColor: data.hex_color || "#ffffff"
-                }}
+                onClick={() => onSelectOption(indexGroup, data.id)}
               >
-              </p>
+                <p className={cn(' transition-all   w-4 h-4  rounded-full    ')
+                }
+                  style={{
+                    backgroundColor: data.hex_color || "#ffffff"
+                  }}
+                >
+                </p>
+              </div>
+              <span>{data.value}</span>
             </div>
           </TooltipUi>
         )

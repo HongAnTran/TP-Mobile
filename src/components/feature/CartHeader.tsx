@@ -8,7 +8,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
-import ProductOrderItem from '@/components/common/ProductOrderItem'
+import ProductOrderItem from '@/components/common/product/ProductOrderItem'
 import PriceText from '../common/PriceText'
 import { Button } from '../ui/button'
 import Link from '../common/Link'

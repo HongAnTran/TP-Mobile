@@ -5,18 +5,28 @@ import { useCallback, useEffect, useState } from 'react'
 
 export default function useHandleVariant(product: Product) {
   const [variantActive, setVariantActive] = useState<ProductVariant>(product.variants[0])
-  const [optionActive, setOptionActive] = useState(variantActive.attribute_values.map(data=>data.id))
+
+  const [optionActive, setOptionActive] = useState(()=>{
+    const atts = product.attributes.map(att=>att.attribute.id)
+    return atts.map(att=>variantActive.attribute_values.find(va=>va.attribute_id === att)?.id || 0)
+  })
+
+   console.log(product.attributes.map(att=>att.attribute.id) , variantActive.attribute_values)
   const [indexImageActive, setIndexImageActive] = useState<number>(0)
 
+
+  console.log(variantActive , optionActive)
+
   const handleSelectOption = useCallback((index: number, value: number) => {
+    console.log(index)
     setOptionActive(pre => {
       const resuil = [...pre]
-      resuil.splice(index-1, 1, value)
+      resuil.splice(index, 1, value)
+      console.log(resuil)
       return resuil
     })
   }, [])
 
-  console.log(variantActive)
 
   useEffect(() => {
     const findVariantActive = findVariantActiveOption(product.variants, optionActive)

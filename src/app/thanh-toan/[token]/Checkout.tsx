@@ -4,7 +4,7 @@ import CheckoutInfoForm from './_components/CheckoutInfoForm'
 
 import CheckoutHeader from './_components/CheckoutHeader'
 import { Order } from '@/types/order'
-import ProductOrderItem from '@/components/common/ProductOrderItem'
+import ProductOrderItem from '@/components/common/product/ProductOrderItem'
 import { StepProps } from '@/components/common/Steps';
 
 const steps: StepProps[] = [

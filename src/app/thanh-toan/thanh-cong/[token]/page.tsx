@@ -1,7 +1,7 @@
 import OrderServiceApi from '@/services/orderService'
 import React from 'react'
 import CheckoutHeader from '../../[token]/_components/CheckoutHeader'
-import ProductOrderItem from '@/components/common/ProductOrderItem'
+import ProductOrderItem from '@/components/common/product/ProductOrderItem'
 import { StepProps } from '@/components/common/Steps';
 import { TypographyH2, TypographyP, TypographySpan } from '@/components/ui/typography';
 import PriceText from '@/components/common/PriceText';

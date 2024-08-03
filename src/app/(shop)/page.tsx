@@ -1,4 +1,4 @@
-import ProductsSkeleton from '@/components/common/ProductsSkeleton'
+import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import BannerLarge from '@/components/feature/BannerLarge'
 import BannerMedium from '@/components/feature/BannerMedium'
 import SectionArticles from '@/components/feature/SectionArticles'

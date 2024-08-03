@@ -1,7 +1,7 @@
 "use client"
 
 import ProductCard from '@/components/common/product/ProductCard'
-import ProductsSkeleton from '@/components/common/ProductsSkeleton'
+import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import { TypographyH1, TypographyH2, TypographyH4 } from '@/components/ui/typography'
 import useWishlist from '@/hooks/useWishlist'
 import useWishlistData from '@/hooks/useWishlistData'
