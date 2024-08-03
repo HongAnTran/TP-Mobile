@@ -35,9 +35,18 @@ function findVariantMinPrice(variants: ProductVariant[]) {
 
   return minPriceVariant;
 }
+function arraysEqualIgnoringOrder(arr1: any[], arr2: any[]): boolean {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
 
+  const sortedArr1 = [...arr1].sort();
+  const sortedArr2 = [...arr2].sort();
+
+  return sortedArr1.every((value, index) => value === sortedArr2[index]);
+}
 function findVariantActiveOption(variants: ProductVariant[], optionActive: number[]) {
-  return variants.find(variant => JSON.stringify(variant.attribute_values.map(item => item.id)) === JSON.stringify(optionActive))
+  return variants.find(variant => arraysEqualIgnoringOrder(variant.attribute_values.map(value => value.id), optionActive))
 }
 
 function fillArrayToLength(arr: any[], length: number, data: any = null) {

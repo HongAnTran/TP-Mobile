@@ -1,5 +1,5 @@
 "use client"
-import { Product, ProductAttribute, ProductVariant } from '@/types/Product.types'
+import { Product,  ProductVariant } from '@/types/Product.types'
 import { findVariantActiveOption } from '@/utils'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -11,18 +11,14 @@ export default function useHandleVariant(product: Product) {
     return atts.map(att=>variantActive.attribute_values.find(va=>va.attribute_id === att)?.id || 0)
   })
 
-   console.log(product.attributes.map(att=>att.attribute.id) , variantActive.attribute_values)
   const [indexImageActive, setIndexImageActive] = useState<number>(0)
 
 
-  console.log(variantActive , optionActive)
 
   const handleSelectOption = useCallback((index: number, value: number) => {
-    console.log(index)
     setOptionActive(pre => {
       const resuil = [...pre]
       resuil.splice(index, 1, value)
-      console.log(resuil)
       return resuil
     })
   }, [])
