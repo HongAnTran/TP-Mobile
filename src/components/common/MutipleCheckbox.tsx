@@ -40,11 +40,13 @@ export default function MutipleCheckbox({ items, defaultValue = [], onChange, cl
             <Checkbox id={item.value} value={item.value} checked={values.includes(item.value)}
               onClick={() => onCheck(item.value)}
             />
+
             <Label
               htmlFor={item.value}
 
             >
               {item.label}
+
             </Label>
           </div>
 

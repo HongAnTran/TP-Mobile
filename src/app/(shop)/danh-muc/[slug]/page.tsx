@@ -62,6 +62,8 @@ export default async function page({ params, searchParams }: { params: { slug: s
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
     capacity: searchParams?.capacity?.split(",") || [],
     ram: searchParams?.ram?.split(",") || [],
+    chargerType: searchParams?.chargerType?.split(",") || [],
+
   }
 
   return (

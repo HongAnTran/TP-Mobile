@@ -58,14 +58,15 @@ class CartServiceClient {
   }
 
   private convertToProductOrder(product: Product, variant: ProductVariant, quantity: number): ProductOrder {
-    const imgSrc = product.images[0].url
+    const imageVariant = product.images.find(img=>img.id === variant.image_id)
+    const imgSrc = imageVariant ? imageVariant.url :  product.images[0].url
     return {
       id: Math.floor(new Date().getTime() * Math.random()),
       title: product.title,
       slug: product.slug,
       category_title: product.category.title,
       category_id: product.category_id,
-      brand: product.brand,
+      vendor: product.brand?.name,
       barcode: product.barcode, // null check for barcode
       line_price: variant.price * quantity,
       price: variant.price,
@@ -76,7 +77,7 @@ class CartServiceClient {
       image: imgSrc ? imgSrc : product.images?.[0].url, // You need to provide the image URL here
       product_title: product.title,
       variant_title: variant.title,
-      variant_options: variant.attribute_values.map(item=>item.id.toString()).filter(opt => opt), // Filter out empty options
+      variant_options: variant.attribute_values.map(item=>item.value).filter(opt => opt), // Filter out empty options
       quantity: quantity,
       selected : true
     };

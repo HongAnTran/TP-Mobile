@@ -115,7 +115,7 @@ interface ProductGroupSpecifications {
 }
 
 
-type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "brand" | "barcode"> & {
+type ProductOrder = Pick<Product, | "title" | "slug" | "category_id"  | "barcode"> & {
   id: number,
   line_price: number
   price: number
@@ -130,6 +130,7 @@ type ProductOrder = Pick<Product, | "title" | "slug" | "category_id" | "brand" |
   image: string
   selected: boolean
   category_title: string
+  vendor?: string
 }
 interface ProductRating {
   id: number,

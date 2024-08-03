@@ -12,19 +12,22 @@ import FilterProduct from '@/components/feature/FilterProduct'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
 import routes from '@/routes'
 import SETTINGS from '@/consts/settings'
+import { ValueFiter } from '@/types/common'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
   const page = Number(searchParams.page) ? Number(searchParams.page) : 1
   const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST 
   const keyword = searchParams.keyword
-  const defaultFilter = {
+  const defaultFilter : ValueFiter = {
     color: searchParams?.color?.split(",") || [],
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
     capacity: searchParams?.capacity?.split(",") || [],
     ram: searchParams?.ram?.split(",") || [],
     categories: searchParams?.categories?.split(",") || [],
-    keyword: keyword
+    chargerType : searchParams?.chargerType?.split(",") || [],
+    keyword: keyword,
+
   }
   const { datas : products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,

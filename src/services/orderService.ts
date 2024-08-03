@@ -20,7 +20,7 @@ class OrderService {
       items: {
         createMany: {
           data: cart.items.filter(item => item.selected).map((item) => {
-            const { id, ...rest } = item;
+            const { id,selected, ...rest } = item;
 
             return rest
           })

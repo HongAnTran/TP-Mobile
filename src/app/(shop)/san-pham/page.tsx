@@ -15,11 +15,12 @@ export default async function page({ searchParams }: { searchParams: { [key: str
   const key = JSON.stringify(searchParams)
   const defaultFilter = {
     color: searchParams?.color?.split(",") || [],
-
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
     capacity: searchParams?.capacity?.split(",") || [],
     ram: searchParams?.ram?.split(",") || [],
-    categories: searchParams?.categories?.split(",") || []
+    categories: searchParams?.categories?.split(",") || [],
+    chargerType : searchParams?.chargerType?.split(",") || [],
+
   }
   return (
     <LayoutContainer>

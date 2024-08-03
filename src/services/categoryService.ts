@@ -22,12 +22,6 @@ class CategoryService {
       ...init
     });
   }
-  async getListClient(params?: CategoryProductFilter, init?: ConfigAPi) {
-    return fetchApiPublic.get<CategoryProduct[]>(this.url, {
-      params: params,
-      ...init,
-    });
-  }
   async getDetail(slug: string) {
     return fetchApi.get<CategoryProduct>(`${this.url}/${slug}`, {});
   }
