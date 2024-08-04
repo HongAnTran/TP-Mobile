@@ -15,13 +15,11 @@ type OptionsUseQuery = Omit<
   UseQueryOptions<any, any, any, QueryKey>,
   "queryKey" | "queryFn"
 >
-interface ValueFiter {
-  color?: string[];
+type ValueFiter =  {
   price: number[];
-  capacity?: string[]
-  ram?: string[]
-  chargerType?: string[]
   categories?: CategoryProduct["slug"][]
-  keyword? : string
+  keyword? : string,
+  page : number
+  [x: string]: number[] | string[] | string | undefined | number;
 }
 export type { FilterBase,ResList , OptionsUseQuery , ValueFiter}

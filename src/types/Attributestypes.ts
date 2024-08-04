@@ -1,6 +1,7 @@
 interface Attribute {
   id: number
   name: string
+  key :string
   style: AttributeStyle
 }
 export enum AttributeStyle {

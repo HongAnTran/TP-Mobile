@@ -7,20 +7,24 @@ import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import ProductCollectionList from '../danh-muc/_components/ProductCollectionList'
 import routes from '@/routes'
 import LayoutContainer from '@/layouts/LayoutContainer'
+import SETTINGS from '@/consts/settings'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
 
-
+  const page = Number(searchParams?.page) ? Number(searchParams.page) : 1
   const key = JSON.stringify(searchParams)
-  const defaultFilter = {
-    color: searchParams?.color?.split(",") || [],
-    price: searchParams?.price?.split(",").map(Number) || [0, 100],
-    capacity: searchParams?.capacity?.split(",") || [],
-    ram: searchParams?.ram?.split(",") || [],
-    categories: searchParams?.categories?.split(",") || [],
-    chargerType : searchParams?.chargerType?.split(",") || [],
 
+  const keys = Object.keys(searchParams)
+  const values = keys.reduce((pre: any, key) => {
+    return pre[key] = searchParams[key] ? searchParams[key].split(",") : []
+  }, {})
+
+
+  const defaultFilter = {
+    ...values,
+    price: searchParams?.price?.split(",").map(Number) || [0, 100],
+    page,
   }
   return (
     <LayoutContainer>

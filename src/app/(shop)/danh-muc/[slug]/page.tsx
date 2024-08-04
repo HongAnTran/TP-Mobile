@@ -57,13 +57,14 @@ export default async function page({ params, searchParams }: { params: { slug: s
   const caregory = await getCategoryDetail(slug)
   const key = JSON.stringify(searchParams)
 
-  const defaultFilter = {
-    color: searchParams?.color?.split(",") || [],
-    price: searchParams?.price?.split(",").map(Number) || [0, 100],
-    capacity: searchParams?.capacity?.split(",") || [],
-    ram: searchParams?.ram?.split(",") || [],
-    chargerType: searchParams?.chargerType?.split(",") || [],
+  const keys = Object.keys(searchParams)
+  const values = keys.reduce((pre : any,key)=>{
+    return pre[key] = searchParams[key] ?  searchParams[key].split(",")  : []
+  },{})
 
+  const defaultFilter = {
+    ...values,
+    price: searchParams?.price?.split(",").map(Number) || [0, 100],
   }
 
   return (

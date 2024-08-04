@@ -28,16 +28,13 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
 
 
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
-    color: defaultValue?.color ? defaultValue.color : [],
     price: defaultValue?.price || [0, 100],
-    capacity: defaultValue?.capacity ? defaultValue.capacity : [],
-    ram: defaultValue?.ram || [],
     categories: defaultValue?.categories || [],
-    chargerType: defaultValue?.chargerType ? defaultValue.chargerType : []
+    page : searchParams?.page
   })
 
-  function onChageValueFilter(key: keyof ValueFiter, data: any) {
-    const value = { ...valueFiter, page: 1 }
+  function onChageValueFilter(key:any, data: any) {
+    const value : ValueFiter = { ...valueFiter, page: 1 }
     value[key] = data
     setValueFilter(value)
     const valueSearch = objectToSearchParams(objectToSearchParamsValue({ ...searchParams, ...value }))
@@ -63,33 +60,12 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   }] : []
 
   const filterDynamic = attributes.map(attribute => {
-
-    let com = <></>
-
-    switch (attribute.id) {
-      case 1:
-        com = <FilterItem attributeId={attribute.id} defaultValue={valueFiter.capacity} onChageValueFilter={(values) => {
-          onChageValueFilter("capacity", values)
-        }} />
-        break;
-      case 2:
-        com = <FilterItem attributeId={attribute.id} defaultValue={valueFiter.color} onChageValueFilter={(values) => {
-          onChageValueFilter("color", values)
-        }} />
-        break;
-      case 3:
-        com = <FilterItem attributeId={attribute.id} defaultValue={valueFiter.chargerType} onChageValueFilter={(values) => {
-          onChageValueFilter("chargerType", values)
-        }} />
-        break;
-      default:
-        break;
-    }
-
     return {
       value: attribute.name,
       title: attribute.name,
-      content: com
+      content: <FilterItem attributeId={attribute.id} defaultValue={valueFiter[attribute.key] as string[]} onChageValueFilter={(values) => {
+        onChageValueFilter(attribute.key, values)
+      }} />
 
     }
 

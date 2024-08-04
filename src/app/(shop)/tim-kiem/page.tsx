@@ -18,15 +18,18 @@ import { ValueFiter } from '@/types/common'
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
   const page = Number(searchParams.page) ? Number(searchParams.page) : 1
   const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST 
+  
   const keyword = searchParams.keyword
+  const keys = Object.keys(searchParams)
+  const values = keys.reduce((pre : any,key)=>{
+    return pre[key] = searchParams[key] ?  searchParams[key].split(",")  : []
+  },{})
   const defaultFilter : ValueFiter = {
-    color: searchParams?.color?.split(",") || [],
-    price: searchParams?.price?.split(",").map(Number) || [0, 100],
-    capacity: searchParams?.capacity?.split(",") || [],
-    ram: searchParams?.ram?.split(",") || [],
+    ...values,
     categories: searchParams?.categories?.split(",") || [],
-    chargerType : searchParams?.chargerType?.split(",") || [],
+    price: searchParams?.price?.split(",").map(Number) || [0, 100],
     keyword: keyword,
+    page,
 
   }
   const { datas : products, total } = await ProductsServiceApi.getList({
