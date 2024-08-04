@@ -18,13 +18,13 @@ const datas: BannerHeroItem[] = [
     image: "/Apple-iPad-Pro-2024-Black-PNG.png",
     title: "Ipad Pro M4",
     description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 11.490.000",
-    link: "/san-pham/ipad-pro-m4-11-inch-wifi"
+    link: "/san-pham/ipad-pro-m4-11-inch-lte-new-seal"
   },
   {
     image: "/Apple-iPad-Air-2024-PNG.png",
     title: "Ipad Air 6",
     description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 12.990.000",
-    link: "/san-pham/ipad-air-5-109-inch-2022-wifi"
+    link: "/san-pham/ipad-air-6-13-inch-lte-new-seal"
   },
 ]
 export default function BannerLarge() {

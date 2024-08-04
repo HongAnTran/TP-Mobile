@@ -6,7 +6,7 @@ import Link from "@/components/common/Link";
 
 import StoreIcon from '../icons/StoreIcon'
 import { NewsIcon, PhoneFilledIcon } from '../icons'
-import { TypographyP } from '../ui/typography'
+import { TypographyP, TypographySpan } from '../ui/typography'
 import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
 import { useSession } from 'next-auth/react';
@@ -50,9 +50,14 @@ export default function HeaderItems() {
       href: "cua-hang"
     },
     {
-      icon: <IconBorder>
-        <StoreIcon className=' w-6 h-6' />
-      </IconBorder>,
+      icon: <div className=' relative'>
+      <IconBorder >
+        <StoreIcon  className=' w-6 h-6'/>
+      </IconBorder>
+      <div className=' absolute -right-1 -top-1  w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-md '>
+        <TypographySpan className=' text-gray-800 font-bold text-xs'>{1}</TypographySpan>
+      </div>
+    </div>,
       text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,
       href: routes.stores
     },
@@ -88,9 +93,14 @@ export default function HeaderItems() {
       href: routes.category
     },
     {
-      icon: <IconBorder >
-        <StoreIcon />
-        </IconBorder>,
+      icon: <div className=' relative'>
+        <IconBorder >
+          <StoreIcon />
+        </IconBorder>
+        <div className=' absolute -right-1 -top-1  w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-md '>
+          <TypographySpan className=' text-gray-800 font-bold text-xs'>{1}</TypographySpan>
+        </div>
+      </div>,
       text: "Cửa hàng",
       href: routes.stores
     },

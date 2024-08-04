@@ -3,7 +3,7 @@ import React from 'react'
 import ProductsServiceApi from '@/services/productService'
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import { TypographyH1, TypographyH2, TypographyH3, TypographyP } from '@/components/ui/typography'
+import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
 
 
@@ -17,14 +17,14 @@ import { ValueFiter } from '@/types/common'
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
   const page = Number(searchParams.page) ? Number(searchParams.page) : 1
-  const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST 
-  
+  const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST
+
   const keyword = searchParams.keyword
   const keys = Object.keys(searchParams)
-  const values = keys.reduce((pre : any,key)=>{
-    return pre[key] = searchParams[key] ?  searchParams[key].split(",")  : []
-  },{})
-  const defaultFilter : ValueFiter = {
+  const values = keys.reduce((pre: any, key) => {
+    return pre[key] = searchParams[key] ? searchParams[key].split(",") : []
+  }, {})
+  const defaultFilter: ValueFiter = {
     ...values,
     categories: searchParams?.categories?.split(",") || [],
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
@@ -32,9 +32,9 @@ export default async function page({ searchParams }: { searchParams: { [key: str
     page,
 
   }
-  const { datas : products, total } = await ProductsServiceApi.getList({
+  const { datas: products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,
-    limit:LIMIT,
+    limit: LIMIT,
     ...searchParams
   })
 
@@ -44,13 +44,12 @@ export default async function page({ searchParams }: { searchParams: { [key: str
         <Breadcrumbs breadcrumbsList={[
           {
             label: "Tìm kiếm",
-            // isActive: true
           },
           {
             label: keyword,
             isActive: true
           }
-          ]} />
+        ]} />
 
         <div className=' mt-16'>
           <TypographyH1 className=' text-center   lg:text-2xl'>Có {total} kết quả theo từ khóa {keyword}</TypographyH1>
@@ -75,7 +74,9 @@ export default async function page({ searchParams }: { searchParams: { [key: str
                   return <ProductCard key={pro.id} product={pro} />
                 })}
               </div>
-              <div className=' mt-10 flex justify-center'> <PaginationServer query={searchParams} page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} /></div>
+              <div className=' mt-10 flex justify-center'>
+                 <PaginationServer query={searchParams} page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} />
+                 </div>
             </div>
           </div>
 

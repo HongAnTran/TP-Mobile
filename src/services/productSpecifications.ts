@@ -10,7 +10,9 @@ class productSpecificationsService {
   async getList(init?: ConfigAPi) {
     return fetchApi.get<ProductSpecifications[]>(this.url, {
       next: { revalidate: 60 * 60 * 12 },
+      
       ...init,
+      
     });
   }
   async getListClient(init?: ConfigAPi) {

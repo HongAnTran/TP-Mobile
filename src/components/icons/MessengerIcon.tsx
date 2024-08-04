@@ -1,9 +1,12 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-const MessengerIcon = ({ className }: { className?: string }) => {
+const MessengerIcon = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>) => {
   return (
-    <span className={cn("block w-12 h-12", className)}>
+    <span 
+    {...props}
+    className={cn(" inline-block w-12 h-12", props.className)}
+    >
       <svg
         width={"100%"}
         height={"100%"}
@@ -35,7 +38,7 @@ const MessengerIcon = ({ className }: { className?: string }) => {
           </radialGradient>
         </defs>
       </svg>
-      
+
     </span>
   );
 };
