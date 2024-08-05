@@ -14,17 +14,13 @@ import SearchHeaderMobile from './SearchHeaderMobile';
 
 
 export default function Header() {
-
-
   return (
     <header className={cn('   bg-primary  text-secondary    shadow-lg  transition-transform duration-300')}>
       <div className=' container'>
         <HeaderTop />
         <div className=' flex-col md:flex-row flex gap-1 lg:gap-10 items-center '>
-
           <div className=' flex-shrink-0  md:w-fit w-full md:block  flex justify-between items-center'>
-              <NavigationCategoryMobile />
-        
+            <NavigationCategoryMobile />
             <Logo />
             <div className=' md:hidden flex gap-3'>
               <SearchHeaderMobile />

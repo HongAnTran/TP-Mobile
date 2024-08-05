@@ -29,7 +29,7 @@ export default function NavigationCategoryMobile({ className }: { className?: st
 
 
   return (
-    <>
+    <div className=' lg:hidden'>
       <IconBorder onClick={() => setOpen(true)}>
 
         <UilBars />
@@ -57,6 +57,6 @@ export default function NavigationCategoryMobile({ className }: { className?: st
         </SheetContent>
       </Sheet>
 
-    </>
+    </div>
   )
 }
