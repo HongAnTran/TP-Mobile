@@ -34,7 +34,7 @@ export default function NavLink({ children, href, className, activeClassName, ab
   return (
     <Link
       {...props}
-      className={cn(className, isActive ? activeClassName ? activeClassName : "text-red-500 underline" : "")}
+      className={cn(className, isActive ? activeClassName ? activeClassName : "text-blue-500 " : "")}
       href={href}>
       {children}
     </Link>

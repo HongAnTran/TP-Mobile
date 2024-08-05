@@ -2,7 +2,7 @@
 import React from 'react'
 import ButtonUpToTop from '../feature/ButtonUpToTop'
 import { Button } from '../ui/button'
-import { MessengerIcon, PhoneIcon, ZaloIcon, InstagramIcon, InstagramLogoIcon, AddSquareIcon } from '../icons'
+import { MessengerIcon, PhoneIcon, ZaloIcon, InstagramIcon, InstagramLogoIcon } from '../icons'
 import Link from "@/components/common/Link";
 import { Popover, PopoverContent, PopoverTrigger } from '@radix-ui/react-popover'
 import { PlusCircledIcon } from '@radix-ui/react-icons'

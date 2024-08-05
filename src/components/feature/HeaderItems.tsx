@@ -11,6 +11,10 @@ import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
 import { useSession } from 'next-auth/react';
 import IconBorder from '../common/IconBorder';
+import { UilApps, UilEstate } from '@iconscout/react-unicons'
+import SearchHeaderMobile from './SearchHeaderMobile';
+import NavLink from '../common/NavLink';
+
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 
@@ -23,11 +27,11 @@ export default function HeaderItems() {
 
 
   const customerItem = customer ? {
-    icon: <PersonIcon width={20} height={20} />,
+    icon: <IconBorder> <PersonIcon width={20} height={20} /></IconBorder>,
     text: customer.name,
     href: privateToutes.account,
   } : {
-    icon: <PersonIcon width={20} height={20} />,
+    icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
     text: "Đăng nhập",
     href: routes.login
   }
@@ -51,13 +55,13 @@ export default function HeaderItems() {
     },
     {
       icon: <div className=' relative'>
-      <IconBorder >
-        <StoreIcon  className=' w-6 h-6'/>
-      </IconBorder>
-      <div className=' absolute -right-1 -top-1  w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-md '>
-        <TypographySpan className=' text-gray-800 font-bold text-xs'>{1}</TypographySpan>
-      </div>
-    </div>,
+        <IconBorder >
+          <StoreIcon className=' w-6 h-6' />
+        </IconBorder>
+        <div className=' absolute -right-1 -top-1  w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-md '>
+          <TypographySpan className=' text-gray-800 font-bold text-xs'>{1}</TypographySpan>
+        </div>
+      </div>,
       text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,
       href: routes.stores
     },
@@ -87,11 +91,20 @@ export default function HeaderItems() {
     {
 
       icon: <IconBorder>
-        <StoreIcon />
+        <UilEstate />
+      </IconBorder>,
+      text: "Trang chủ",
+      href: routes.home
+    },
+    {
+
+      icon: <IconBorder>
+        <UilApps />
       </IconBorder>,
       text: "Danh mục",
       href: routes.category
     },
+
     {
       icon: <div className=' relative'>
         <IconBorder >
@@ -104,18 +117,13 @@ export default function HeaderItems() {
       text: "Cửa hàng",
       href: routes.stores
     },
+
     {
       icon: <IconBorder><NewsIcon /></IconBorder>,
       text: "Tin tức",
       href: routes.artice
     },
 
-    {
-      icon: <CartHeader />,
-      text: "Giỏ hàng",
-      href: routes.cart
-
-    },
     // customerItem
   ]
   return (
@@ -162,13 +170,13 @@ function HeaderItem({ icon, text, href }: HeaderItemProps) {
 
 function HeaderItemMobile({ icon, text, href, onClick }: HeaderItemProps) {
   return <>
-    {href ? <Link href={href} >
+    {href ? <NavLink href={href} absolute >
       <div className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
         {icon}
         <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium' >{text}</TypographyP>
 
       </div>
-    </Link> : <div className='  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
+    </NavLink> : <div className='  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
       {icon}
       <div >
         <TypographyP className='  block  md:hidden lg:block' >{text}</TypographyP>

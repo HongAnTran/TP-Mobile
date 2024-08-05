@@ -16,10 +16,11 @@ import Link from "@/components/common/Link";
 import routes from '@/routes';
 import { debounce } from '@/utils';
 import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
 
-export default function SearchInput() {
+export default function SearchInput({ className }: { className?: string }) {
 
   const [productsSearch, setProductsSearch] = useState<ProductInList[]>([])
   const [openSearch, setOpenSearch] = useState(false);
@@ -29,7 +30,7 @@ export default function SearchInput() {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   const router = useRouter()
-  const { control, handleSubmit,  watch } = useForm<{ keyword: string }>({
+  const { control, handleSubmit, watch } = useForm<{ keyword: string }>({
     defaultValues: {
       keyword: ""
     }
@@ -45,7 +46,7 @@ export default function SearchInput() {
       setProductsSearch([])
       return
     }
-    const { datas :products } = await ProductsServiceApi.getList({ limit: 5, keyword: keyword })
+    const { datas: products } = await ProductsServiceApi.getList({ limit: 5, keyword: keyword })
     setProductsSearch(products)
     setOpenSearch(true)
   }, 500), [])
@@ -94,7 +95,7 @@ export default function SearchInput() {
           <InputController
             inputProps={{
               placeholder: placeholder,
-              className: " text-[#f8f8d9]   placeholder:text-[#f8f8d9] rounded-lg  border-2  ",
+              className: cn(" text-[#f8f8d9]   placeholder:text-[#f8f8d9] rounded-lg  border-2  ", className),
               autoComplete: "off",
               onFocus: () => {
                 if (productsSearch.length) {
