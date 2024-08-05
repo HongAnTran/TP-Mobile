@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const slug = params.slug
 
   const page = await PageServiceApi.getDetail(slug)
-
+  console.log("pâppa",page)
   if (!page) {
     notFound()
   }

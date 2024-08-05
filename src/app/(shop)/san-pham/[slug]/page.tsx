@@ -26,45 +26,50 @@ function generateStrucDataProduct(
   };
 }
 
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-  // read route params
-  const slug = params.slug
+// export async function generateMetadata(
+//   { params }: { params: { slug: string } }
+// ): Promise<Metadata> {
+//   // read route params
+//   const slug = params.slug
 
-  const product = await ProductsServiceApi.getDetail(slug)
-  const { meta_data } = product
-  const titleShow = meta_data?.meta_title || product.title
-  const desShow = meta_data?.meta_description || product.short_description || undefined
-  const DOMAIN = process.env.DOMAIN
-  return {
-    title: titleShow,
-    description: desShow,
-    openGraph: {
-      title: titleShow,
-      description: desShow,
-      images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })),
-      url: `${DOMAIN}/${routes.products}/${product.slug}`,
-      siteName: DOMAIN,
-    },
-    category: product.category.title,
-    // category: product.,
-    other: {
-      "og:type": "product",
-      "og:price:amount": product.price,
-      "og:price:currency": "VND",
-    },
+//   const product = await ProductsServiceApi.getDetail(slug)
+//   const { meta_data } = product
+//   const titleShow = meta_data?.meta_title || product.title
+//   const desShow = meta_data?.meta_description || product.short_description || undefined
+//   const DOMAIN = process.env.DOMAIN
+//   return {
+//     title: titleShow,
+//     description: desShow,
+//     openGraph: {
+//       title: titleShow,
+//       description: desShow,
+//       images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })),
+//       url: `${DOMAIN}/${routes.products}/${product.slug}`,
+//       siteName: DOMAIN,
+//     },
+//     category: product.category.title,
+//     // category: product.,
+//     other: {
+//       "og:type": "product",
+//       "og:price:amount": product.price,
+//       "og:price:currency": "VND",
+//     },
+//   }
+// }
+
+ async function getData(slug :string){
+  try {
+    const product = await ProductsServiceApi.getDetail(slug)
+    return product
+  } catch (error) {
+    notFound()
   }
 }
 
 export default async function page({ params }: { params: { slug: string } }) {
   const slug = params.slug
-  const product = await ProductsServiceApi.getDetail(slug)
+  const product = await getData(slug)
   const jsonLdProduct = generateStrucDataProduct(product);
-
-  if (!product) {
-    notFound()
-  }
 
   return (
     <>

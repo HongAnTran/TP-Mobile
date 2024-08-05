@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div className=' flex  flex-col justify-center items-center'>
-      <h2>Không tìm thấy trang</h2>
+    <div className=' flex  flex-col justify-center items-center  py-24'>
+      <h1>Không tìm thấy trang</h1>
       <Image src={"/404.png"} alt="404" width={500} height={500} />
       <div>
         <Link href="/">

@@ -5,7 +5,6 @@ import routes from '@/routes'
 import NavLink from '../common/NavLink'
 import { cn } from '@/lib/utils'
 import { CategoryArtice } from '@/types/categoryArtice'
-import IpadIcon from '../icons/IpadIcon'
 import Image from 'next/image'
 export default function NavigationCategoryClient({ className, data }: { data: CategoryProduct[] | CategoryArtice[], className?: string }) {
   const [isSticky, setIsSticky] = useState(false)

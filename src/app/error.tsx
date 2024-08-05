@@ -12,14 +12,12 @@ export default function GlobalError({
   reset: () => void
 }) {
   return (
-    <html>
-      <body>
-        <div className=' flex  flex-col justify-center items-center min-h-[400px]'>
+ 
+        <div className=' flex  flex-col justify-center items-center min-h-[400px] py-20'>
           <h2>Hê thống tạm thời gián đoạn<br /> vui lòng thử lại trong giây lát</h2>
-          <Image src={"/Error 500.gif"} alt="error" width={500} height={500} />
+          <Image src={"/Error 500.gif"} alt="error" width={500} height={500}/>
           <Button onClick={() => reset()}>Thử lại</Button>
         </div>
-      </body>
-    </html>
+   
   )
 }

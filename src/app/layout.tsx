@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter , Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react"
@@ -21,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/icon.ico" sizes="any" />
-      {/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
       <GoogleAnalytics />
       <body className={inter.className}>
         <SessionProvider>

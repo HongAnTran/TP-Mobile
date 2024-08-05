@@ -160,7 +160,7 @@ interface ProductsParams {
 }
 
 type ProductInList = Pick<Product, "id" | "available" | "compare_at_price"  | "images" | "price" | "price_max" | "price_min" | 
-"slug" | "title" | "status" | "brand" | "updated_at" | "meta_tags" | "tags" |  "category" | "category_id">
+"slug" | "title" | "status" | "brand" | "updated_at" | "meta_tags" | "tags" |  "category" | "category_id" | "created_at">
 type Products = ResList<ProductInList>
 
 export type {
