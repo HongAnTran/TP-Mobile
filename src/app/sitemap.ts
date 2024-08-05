@@ -10,19 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${domain}/san-pham'`,
+      url: `${domain}/san-pham`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${domain}/danh-muc'`,
+      url: `${domain}/danh-muc`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
-      url: `${domain}/bai-viet'`,
+      url: `${domain}/bai-viet`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.3,
