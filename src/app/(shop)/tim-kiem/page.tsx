@@ -51,15 +51,15 @@ export default async function page({ searchParams }: { searchParams: { [key: str
           }
         ]} />
 
-        <div className=' mt-16'>
-          <TypographyH1 className=' text-center   lg:text-2xl'>Có {total} kết quả theo từ khóa {keyword}</TypographyH1>
+        <div className=' mt-6 lg:mt-16'>
+          <TypographyH1 className=' text-center  text-base   lg:text-2xl'>Có {total} kết quả theo từ khóa {keyword}</TypographyH1>
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8'>
-            <div className='  col-span-2'>
+            <div className=' col-span-12 lg:col-span-2'>
               <FilterProduct defaultValue={defaultFilter} isUseCategory searchParams={searchParams} />
             </div>
-            <div className=' col-span-10'>
+            <div className=' col-span-12 lg:col-span-10'>
               <div className=' flex justify-between'>
 
                 <div className=' flex items-center mb-4'>

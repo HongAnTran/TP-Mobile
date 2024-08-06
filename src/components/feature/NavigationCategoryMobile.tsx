@@ -1,18 +1,13 @@
 
 "use client"
 import React, { useState } from 'react'
-import CategoryServiceApi from '@/services/categoryService'
-import NavigationCategoryClient from './NavigationCategoryClient'
-import { UilBars } from '@iconscout/react-unicons'
 import IconBorder from '../common/IconBorder'
-import { usePathname } from 'next/navigation'
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet"
 import CategoryServiceClient from '@/servicesClient/CategoryService'
 import Image from 'next/image'
@@ -23,36 +18,31 @@ export default function NavigationCategoryMobile({ className }: { className?: st
   const [open, setOpen] = useState(false)
   const { data, isSuccess, isLoading } = CategoryServiceClient.useList()
 
-  if (!isSuccess) {
-    return null
-  }
-
 
   return (
-    <div className=' lg:hidden'>
+    <div className=' block lg:hidden'>
       <IconBorder onClick={() => setOpen(true)}>
-
-        <UilBars />
+        <MenuIcon />
       </IconBorder>
+
       <Sheet open={open} onOpenChange={() => setOpen(false)} >
-        <SheetContent side="left">
+        <SheetContent side="left" >
           <SheetHeader>
             <SheetTitle>Danh mục</SheetTitle>
-            <ul>
+            {isSuccess ? <ul>
               {data.map(cate => {
-                return <Link key={cate.id} href={`${routes.category}/${cate.slug}`} onClick={()=>setOpen(false)}>
+                return <Link key={cate.id} href={`${routes.category}/${cate.slug}`} onClick={() => setOpen(false)}>
                   <li className=' border-b flex items-center justify-between p-2 gap-3' >
                     <div className=' w-10 h-10 flex-shrink-0'>
                       <Image className='  w-10 h-10 ' src={cate.image} alt={cate.title} width={100} height={100} />
                     </div>
-                    <p className='  flex-1'>
+                    <p className='  flex-1 font-semibold'>
                       {cate.title}
                     </p>
                   </li>
                 </Link>
-
               })}
-            </ul>
+            </ul> : "Chưa có danh mục nào"}
           </SheetHeader>
         </SheetContent>
       </Sheet>

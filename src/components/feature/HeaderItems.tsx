@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React from 'react'
 import { ReactNode } from 'react'
 import { PersonIcon, ReaderIcon } from "@radix-ui/react-icons"
 import Link from "@/components/common/Link";
@@ -11,8 +11,8 @@ import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
 import { useSession } from 'next-auth/react';
 import IconBorder from '../common/IconBorder';
-import { UilApps, UilEstate } from '@iconscout/react-unicons'
-import SearchHeaderMobile from './SearchHeaderMobile';
+import HomeIcon from '@mui/icons-material/Home';
+import GridViewIcon from '@mui/icons-material/GridView';
 import NavLink from '../common/NavLink';
 
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
@@ -91,7 +91,7 @@ export default function HeaderItems() {
     {
 
       icon: <IconBorder>
-        <UilEstate />
+        <HomeIcon />
       </IconBorder>,
       text: "Trang chủ",
       href: routes.home
@@ -99,7 +99,7 @@ export default function HeaderItems() {
     {
 
       icon: <IconBorder>
-        <UilApps />
+        <GridViewIcon />
       </IconBorder>,
       text: "Danh mục",
       href: routes.category

@@ -27,7 +27,7 @@ export default async function page() {
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
           <SectionCategoryCarousel title='Sản phẩm nổi bật' productIds={[20, 10, 11, 12, 13]} />
-          <SectionCategoryCarousel title='Sản phẩm mới' productIds={[2, 9, 3, 4, 5, 6, 7, 8]} />
+          <SectionCategoryCarousel title='Sản phẩm mới' productIds={[21, 15, 19, 22, 23]} />
           {
             cates.map(cate => {
               return <Suspense key={cate.id} fallback={<ProductsSkeleton />}>

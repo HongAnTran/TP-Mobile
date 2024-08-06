@@ -4,7 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
@@ -29,11 +28,6 @@
 </url>
 <url>
   <loc>https://tpmobile.com.vn/tin-tuc</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/gio-hang</loc>
   <lastmod>2024-08-05T06:58:10+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -458,30 +452,11 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-pro?page=3</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
   <loc>https://tpmobile.com.vn/san-pham/smart-keyboard-folio-ipad-air-109-inch-ipad-pro-11-chinh-hang</loc>
   <lastmod>2024-08-05T06:58:10+00:00</lastmod>
   <priority>0.51</priority>
 </url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-cu?page=3</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-new?page=3</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham?page=0</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
+
 <url>
   <loc>https://tpmobile.com.vn/san-pham?page=1</loc>
   <lastmod>2024-08-05T06:58:10+00:00</lastmod>
@@ -497,16 +472,4 @@
   <lastmod>2024-08-05T06:58:10+00:00</lastmod>
   <priority>0.51</priority>
 </url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham?page=4</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham?page=5</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-
-
 </urlset>

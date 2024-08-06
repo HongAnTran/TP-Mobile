@@ -89,7 +89,7 @@ export default async function page({ params, searchParams }: { params: { slug: s
               <FilterProduct defaultValue={defaultFilter} searchParams={searchParams} />
             </div>
             <div className=' lg:col-span-10 col-span-12'>
-              <div className='items-center mb-4 hidden md:flex'>
+              <div className='items-center mb-4 flex'>
                 <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
                 <SortProduct searchParams={searchParams} />
               </div>

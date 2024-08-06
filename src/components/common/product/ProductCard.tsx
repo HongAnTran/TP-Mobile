@@ -29,7 +29,7 @@ export default function ProductCard({ product }: { product: ProductInList }) {
         viewport={{ once: true }}
       > */}
       <Card className=' border border-gray-300 group relative'>
-        <CardContent className="flex flex-col   gap-2 aspect-square py-4">
+        <CardContent className="flex flex-col   gap-2 aspect-square py-4 p-2 lg:p-4">
           <div className=' relative w-full aspect-square overflow-hidden ' >
             <Link href={`${routes.products}/${product.slug}`}  >
               <ProductCardImage  images={product.images} title={product.title} />
@@ -72,25 +72,25 @@ function ProductCardImage({ images, title }: Pick<Product, "images" | "title" >)
     return <div className=' w-full h-full bg-gray-400'></div>
   }
   const firstImage = images?.[0] 
-  const secondImage = images?.[1]
+  // const secondImage = images?.[1]
   return (
     <>
       <Image src={firstImage.url} alt={title} width={600} height={600} className={cn(
-        "  absolute  hover:-translate-y-2 transition-all duration-300  w-full  aspect-square  object-contain",
-        {
-          " group-hover:-z-1  group-hover:opacity-0 ": !!secondImage
-        },
-        {
-          " group-hover:-z-1  group-hover:opacity-0 transition-all duration-300": !!secondImage
-        }
+        "  absolute  md:hover:-translate-y-2 transition-all duration-300  w-full  aspect-square  object-contain",
+        // {
+        //   " group-hover:-z-1  group-hover:opacity-0 ": !!secondImage
+        // },
+        // {
+        //   " group-hover:-z-1  group-hover:opacity-0 transition-all duration-300": !!secondImage
+        // }
       )} />
-      {secondImage ? <Image src={secondImage.url}
+      {/* {secondImage ? <Image src={secondImage.url}
         className={cn("absolute transition-all duration-300 opacity-0 w-full   aspect-square object-contain",
           {
             " group-hover:z-10 group-hover:opacity-100 hover:-translate-y-2": !!secondImage
           })}
         alt={title} width={600} height={600}
-      /> : null}
+      /> : null} */}
     </>
   )
 }

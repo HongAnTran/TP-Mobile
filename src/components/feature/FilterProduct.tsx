@@ -6,6 +6,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet"
 import { Range } from '@/components/ui/slider'
 import { TypographyP } from '../ui/typography'
 import MutipleCheckbox from '../common/MutipleCheckbox'
@@ -16,12 +22,15 @@ import AttributeServiceClient from '@/servicesClient/AttributeService'
 import { ValueFiter } from '@/types/common'
 import { Skeleton } from '../ui/skeleton'
 import CategoryServiceClient from '@/servicesClient/CategoryService'
+import { Button } from '../ui/button'
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SETTINGS from '@/consts/settings'
 
 export default function FilterProduct({ defaultValue, searchParams, isUseCategory }: { defaultValue?: ValueFiter, searchParams?: any, isUseCategory?: boolean }) {
   const router = useRouter()
   const pathname = usePathname();
 
-  const ONE_HUN = 1000000
+  const [open, setOpen] = useState(false)
 
   const { data: attributes, isLoading, isSuccess } = AttributeServiceClient.useList()
   const { data: categories } = CategoryServiceClient.useList()
@@ -30,11 +39,11 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   const [valueFiter, setValueFilter] = useState<ValueFiter>({
     price: defaultValue?.price || [0, 100],
     categories: defaultValue?.categories || [],
-    page : searchParams?.page
+    page: searchParams?.page
   })
 
-  function onChageValueFilter(key:any, data: any) {
-    const value : ValueFiter = { ...valueFiter, page: 1 }
+  function onChageValueFilter(key: any, data: any) {
+    const value: ValueFiter = { ...valueFiter, page: 1 }
     value[key] = data
     setValueFilter(value)
     const valueSearch = objectToSearchParams(objectToSearchParamsValue({ ...searchParams, ...value }))
@@ -45,8 +54,8 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
 
   if (isLoading) {
     return <div>
-      <TypographyP className=' font-bold  text-xl'>Bộ lọc</TypographyP>
-      <Skeleton className=' w-full h-[200px]' />
+      <TypographyP className=' font-bold lg:block hidden text-xl'>Bộ lọc</TypographyP>
+      <Skeleton className=' w-full h-10 md:h-[200px]' />
     </div>
   }
 
@@ -82,25 +91,52 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
           onChageValueFilter("price", value)
         }}
         />
-        <p className='mt-2 text-center'><PriceText price={valueFiter.price[0] * ONE_HUN} />-<PriceText price={valueFiter.price[1] * ONE_HUN} /></p>
+        <p className='mt-2 text-center'><PriceText price={valueFiter.price[0] * SETTINGS.ONE_HUN} />-<PriceText price={valueFiter.price[1] * SETTINGS.ONE_HUN} /></p>
       </div>
     }
   ]
   return (
     <div>
-      <TypographyP className=' font-bold  text-xl'>Bộ lọc</TypographyP>
-      <Accordion type="multiple" defaultValue={[]}  >
-        {filters.map((item, index) => {
-          return (
-            <AccordionItem value={item.value} key={index} >
-              <AccordionTrigger className=' transition-colors'>{item.title}</AccordionTrigger>
-              <AccordionContent>
-                {item.content}
-              </AccordionContent>
-            </AccordionItem>
-          )
-        })}
-      </Accordion>
+      <TypographyP className=' font-bold lg:block hidden text-xl'>Bộ lọc</TypographyP>
+      <div className=' flex justify-end gap-4'>
+        <Button onClick={() => setOpen(true)}><FilterListIcon className=' mr-2' />Lọc</Button>
+      </div>
+      <div className=' lg:block hidden'>
+        <Accordion type="multiple" defaultValue={[]}  >
+          {filters.map((item, index) => {
+            return (
+              <AccordionItem value={item.value} key={index} >
+                <AccordionTrigger className=' transition-colors'>{item.title}</AccordionTrigger>
+                <AccordionContent>
+                  {item.content}
+                </AccordionContent>
+              </AccordionItem>
+            )
+          })}
+        </Accordion>
+      </div>
+
+
+      <Sheet open={open} onOpenChange={() => setOpen(false)} >
+        <SheetContent side="right" className=' overflow-y-auto' >
+          <SheetHeader>
+            <SheetTitle>Lọc sản phẩm</SheetTitle>
+            <Accordion type="multiple" defaultValue={[filters[0].value]}  >
+              {filters.map((item, index) => {
+                return (
+                  <AccordionItem value={item.value} key={index} >
+                    <AccordionTrigger className=' transition-colors'>{item.title}</AccordionTrigger>
+                    <AccordionContent>
+                      {item.content}
+                    </AccordionContent>
+                  </AccordionItem>
+                )
+              })}
+            </Accordion>
+          </SheetHeader>
+        </SheetContent>
+      </Sheet>
+
     </div>
   )
 }
