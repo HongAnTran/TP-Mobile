@@ -98,7 +98,7 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   return (
     <div>
       <TypographyP className=' font-bold lg:block hidden text-xl'>Bộ lọc</TypographyP>
-      <div className=' flex justify-end gap-4'>
+      <div className=' flex justify-end gap-4 lg:hidden'>
         <Button onClick={() => setOpen(true)}><FilterListIcon className=' mr-2' />Lọc</Button>
       </div>
       <div className=' lg:block hidden'>
