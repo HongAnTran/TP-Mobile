@@ -21,6 +21,7 @@ const routes = {
   endow: "/uu-dai-tai-tpmobile",
   changePolicy: "/chinh-sach-doi-tra",
   deliveryPolicy: "/chinh-sach-giao-hang",
+  introduce: "/gioi-thieu-tpmobile",
 };
 
 const privateToutes = {

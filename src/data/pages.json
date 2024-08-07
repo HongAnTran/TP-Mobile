@@ -4,7 +4,7 @@
     "layout_type": 1,
     "slug": "chinh-sach-bao-hanh",
     "title": "Chính sách bảo hành",
-    "content": "<img  src='/policy/baohanh.jpg' />\n",
+    "content_html": "<img  src='/policy/baohanh.jpg' />",
     "status": 1,
     "created_at": "2023-03-05T14:15:00Z",
     "updated_at": "2023-03-30T10:35:00Z",
@@ -17,7 +17,7 @@
     "layout_type": 1,
     "slug": "chinh-sach-doi-tra",
     "title": "Chính sách đổi trả",
-    "content": "<img  src='/policy/doitra.jpg' />\n",
+    "content_html": "<img  src='/policy/doitra.jpg' />\n",
 
     "status": 1,
     "created_at": "2023-03-05T14:15:00Z",
@@ -31,7 +31,7 @@
     "layout_type": 1,
     "slug": "uu-dai-tai-tpmobile",
     "title": "Ưu đãi tại TP Mobile",
-    "content": "<img  src='/policy/uudai.jpg' />\n",
+    "content_html": "<img  src='/policy/uudai.jpg' />\n",
 
     "status": 1,
     "created_at": "2023-03-05T14:15:00Z",

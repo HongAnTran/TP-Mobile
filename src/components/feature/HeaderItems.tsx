@@ -51,7 +51,7 @@ export default function HeaderItems() {
       </IconBorder>
       ,
       text: <span className='  text-[11px]  font-medium uppercase'>Giới thiệu <br /> <b>TP MOBILE</b> </span>,
-      href: "cua-hang"
+      href: routes.introduce
     },
     {
       icon: <div className=' relative'>

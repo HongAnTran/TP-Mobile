@@ -2,6 +2,9 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import PageServiceApi from '@/services/pageService';
 import { notFound } from 'next/navigation';
 import React from 'react';
+import DOMPurify from 'dompurify'
+
+
 
 
 
@@ -10,7 +13,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const slug = params.slug
 
   const page = await PageServiceApi.getDetail(slug)
-  console.log("pâppa",page)
   if (!page) {
     notFound()
   }
@@ -33,14 +35,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound()
   }
 
- 
 
 
-
+  console.log(page)
   return (
     <div className=' container my-8'>
       <Breadcrumbs breadcrumbsList={[{ label: page.title, isActive: true }]} />
-      <section dangerouslySetInnerHTML={{ __html: page.content_html }} className=' mt-4'>
+      <section dangerouslySetInnerHTML={{__html : page.content_html}} className=' mt-4'>
       </section>
     </div>
   );
