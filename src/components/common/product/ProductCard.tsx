@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils'
 
 import { TypographySpan } from '../../ui/typography'
 import badgeBG from "../../../../public/productTagBg.png"
-import { motion } from "framer-motion";
 import { Button } from '../../ui/button'
 import Modal from '@/components/ui/Modal'
 import Link from "@/components/common/Link";

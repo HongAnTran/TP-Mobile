@@ -1,6 +1,4 @@
 "use client"
-
-import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import React, { useState } from 'react'
 import {
   Table,
@@ -13,52 +11,60 @@ import {
 import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import Link from "@/components/common/Link";
 import routes from '@/routes'
-import { Product, ProductTypeSpecifications } from '@/types/Product.types'
+import { Product, ProductGroupSpecifications, ProductTypeSpecifications } from '@/types/Product.types'
 import PriceText from '@/components/common/PriceText'
 import Rating from '@/components/common/Rating'
 import Image from 'next/image'
-import { fillArrayToLength, findVariantMinPrice } from '@/utils'
+import { convetNumberToPriceVND, fillArrayToLength, findVariantMinPrice } from '@/utils'
 import { TypographyH3 } from '@/components/ui/typography'
 import CloseCircleIcon from '@/components/icons/CloseCircleIcon'
 import useCompareProduct from '@/hooks/useCompareProduct'
 import { cn } from '@/lib/utils'
 import { Checkbox } from '@/components/ui/checkbox'
+import SpesServiceClient from '@/servicesClient/SpesService';
 
-type ProductCompare = Pick<Product, "barcode" | "brand"  > & { category_title: string }
+type ProductCompare = Pick<Product, "barcode" | "brand" | "price"> & { category_title: string }
 
 type Key = {
   [K in keyof ProductCompare]?: string;
 };
-export default function CompareProduct({ types }: { types: ProductTypeSpecifications[] }) {
+export default function CompareProduct({ types, groups }: { groups: ProductGroupSpecifications[], types: ProductTypeSpecifications[] }) {
 
   const { productsCompare: products, removeProductToCompare } = useCompareProduct()
 
-  const productsCompare = products.map(product => ({ ...product, category_title: product.category.title }))
+  const productsCompare = products.map(product => ({ ...product, category_title: product.category.title, brand: product.brand?.name, price: convetNumberToPriceVND(product.price) }))
   const [isShowDifferent, setIsShowDifferent] = useState(false)
 
+  const { data } = SpesServiceClient.useListMutiple(productsCompare.map(pro => pro.id))
+  console.log(data)
   const keys: Key = {
+    price: "Giá",
     brand: "Thương hiệu",
     category_title: "Loại sản phẩm",
     barcode: "Barcode",
-  
   }
 
-  // const datasSpecifications = types.map((item) => {
-  //   const values = productsCompare.map(product => {
-  //     const i = product.specifications.find(pro => pro.group_id === item.id)
-  //     return i?.value.toString() || ""
-  //   });
-  //   return [item.name, ...values]
-  // })
-  const datasSpecifications  : any[]=  []
+  const datasSpecifications = groups.map((item) => {
+    const values = productsCompare.map((product, index) => {
+      if (data) {
+        const i = data[index].find(pro => pro.group_id === item.id)
+        return i?.value.toString() || ""
+      } else {
+        return ""
+      }
+    });
+    return [item.name, ...values]
+  })
+  // const datasSpecifications  : any[]=  []
   const datasCompare = Object.keys(keys).map((key, index) => {
     // Chuyển key thành kiểu cụ thể
     const typedKey = key as keyof ProductCompare;
+    const keyName = keys[typedKey] as string
     const values = productsCompare.map(product => {
       return product[typedKey]?.toString() || ""
     });
 
-    return [keys[typedKey], ...values];
+    return [keyName, ...values];
   })
 
   function checkIsDifferent(arr: (string | undefined)[]) {
@@ -76,6 +82,16 @@ export default function CompareProduct({ types }: { types: ProductTypeSpecificat
       }
     }
     return false;
+  }
+
+  function checkIsValid(arr: (string | undefined)[]) {
+    if (!arr.length) return true
+
+    const arrCompare = arr.slice(1)
+
+    if (!arrCompare.length) return false
+
+    return arrCompare.filter(item => Boolean(item)).length !== 0
   }
 
 
@@ -148,10 +164,10 @@ export default function CompareProduct({ types }: { types: ProductTypeSpecificat
                 return (
                   <TableRow key={index} className={cn({
                     "bg-blue-200": checkIsDifferent(data),
-                    " hidden": !checkIsDifferent(data) && isShowDifferent,
+                    " hidden": (!checkIsDifferent(data) && isShowDifferent) || !checkIsValid(data),
                   })}>
                     {
-                      data.map((value : string, index : number) => {
+                      data.map((value: string, index: number) => {
                         return (<TableCell key={index}>
                           <li className={cn(' flex ', index !== 0 && " justify-center")}>
                             {value?.toString()}

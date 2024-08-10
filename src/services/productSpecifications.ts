@@ -7,12 +7,11 @@ class productSpecificationsService {
 
   constructor() { }
 
-  async getList(init?: ConfigAPi) {
+  async getList(params?: { product_id?: number , ids?: string }, init?: ConfigAPi) {
     return fetchApi.get<ProductSpecifications[]>(this.url, {
       next: { revalidate: 60 * 60 * 12 },
-      
+      params : params,
       ...init,
-      
     });
   }
   async getListClient(init?: ConfigAPi) {

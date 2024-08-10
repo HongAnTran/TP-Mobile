@@ -6,6 +6,7 @@ export default async function page() {
 
 
   const types = await ProductSpecificationsServiceApi.getListType()
+  const groups = await ProductSpecificationsServiceApi.getListGroup()
 
 
   return (
@@ -17,7 +18,7 @@ export default async function page() {
             label: "So sánh sản phẩm",
             isActive: true
           }]} />
-        <CompareProduct types={types} />
+        <CompareProduct types={types} groups={groups} />
       </div>
     </div>
   )

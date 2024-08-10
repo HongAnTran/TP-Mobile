@@ -32,7 +32,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link href={routes.stores} className="flex text-lg font-semibold  text-secondary transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Liên hệ </Link>
+                <Link href={routes.introduce} className="flex text-lg font-semibold  text-secondary transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Giới thiệu </Link>
               </li>
 
               {/* <li>

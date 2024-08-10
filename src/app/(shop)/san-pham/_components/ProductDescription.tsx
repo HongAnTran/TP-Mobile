@@ -6,22 +6,21 @@ import { cn } from '@/lib/utils'
 export default async function ProductDescription({ product }: { product: Product }) {
   const types = await ProductSpecificationsServiceApi.getListType()
   const groups = await ProductSpecificationsServiceApi.getListGroup()
-  const specifications = await ProductSpecificationsServiceApi.getList({
-    params: { product_id: product.id },
+  const specifications = await ProductSpecificationsServiceApi.getList({ product_id: product.id }, {
     isLogger: true
   })
 
   return (
     <div className=' grid grid-cols-12 lg:gap-8'>
       <div className='col-span-12 md:col-span-8 mb-5 lg:mb-0'>
-      <div className=' p-2 rounded-md shadow-md border'>
-        <TypographyH2 className='  text-center text-xl pb-2 border-b border-gray-300 mb-2'>Mô tả sản phẩm</TypographyH2>
-        <div className={cn(' max-h-[600px] overflow-y-auto overflow-x-hidden border  mx-1 p-2  bg-white ', {
-          "max-h-[200px]": !product.description_html
-        })}
-          dangerouslySetInnerHTML={{ __html: product.description_html || "Hiện chưa có mô tả" }}></div>
+        <div className=' p-2 rounded-md shadow-md border'>
+          <TypographyH2 className='  text-center text-xl pb-2 border-b border-gray-300 mb-2'>Mô tả sản phẩm</TypographyH2>
+          <div className={cn(' max-h-[600px] overflow-y-auto overflow-x-hidden border  mx-1 p-2  bg-white ', {
+            "max-h-[200px]": !product.description_html
+          })}
+            dangerouslySetInnerHTML={{ __html: product.description_html || "Hiện chưa có mô tả" }}></div>
+        </div>
       </div>
-</div>
 
       <div className=' col-span-12 md:col-span-4'>
         <div className=' p-2 rounded-md shadow-md border'>

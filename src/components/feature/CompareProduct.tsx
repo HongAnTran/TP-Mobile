@@ -49,7 +49,7 @@ export default function CompareProduct() {
             }
 
             return <div key={product.id} className=' relative col-span-1 border border-gray-300 shadow-sm p-2 flex flex-col justify-center items-center'>
-              <Image src={product.featured_image} alt={product.title} width={100} height={100} />
+              <Image src={product.images?.[0].url} alt={product.title} width={100} height={100} />
               <TypographyP >{product.title}</TypographyP>
 
               <Button variant="link" onClick={() => removeProductToCompare(product.id)} className='  p-0 w-fit absolute top-2 right-2 cursor-pointer'>
@@ -83,9 +83,7 @@ export default function CompareProduct() {
 
       <Sheet open={open && type === "mobile"} onOpenChange={(open) => setOpen(open)} >
         <SheetContent className=' block md:hidden'>
-          <SheetHeader>
-            <Logo />
-          </SheetHeader>
+ 
           <hr />
           <ul className=' flex flex-col gap-2'>
             {fillArrayToLength([...productsCompare], 2).map((product, index) => {
@@ -98,7 +96,7 @@ export default function CompareProduct() {
               }
 
               return <div key={product.id} className=' relative col-span-1 border border-gray-300 shadow-sm p-2 flex flex-col justify-center items-center'>
-                <Image src={product.featured_image} alt={product.title} width={100} height={100} />
+                <Image src={product.images?.[0].url}alt={product.title} width={100} height={100} />
                 <TypographyP >{product.title}</TypographyP>
 
                 <Button variant="link" onClick={() => removeProductToCompare(product.id)} className='  p-0 w-fit absolute top-2 right-2 cursor-pointer'>
