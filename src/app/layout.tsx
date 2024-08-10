@@ -16,22 +16,20 @@ export const metadata: Metadata = {
     url: process.env.DOMAIN,
     title: "TP MOBILE STORE",
     description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao, dịch vụ khách hàng chu đáo và chế độ bảo hành tốt nhất để đảm bảo sự hài lòng của quý khách.",
-    images: [
-      {
-        url: `${process.env.DOMAIN}/images/og-image.jpg`,
-        width: 800,
-        height: 600,
-        alt: 'TP Mobile Store',
-      }
-    ],
+    // images: [
+    //   {
+    //     url: `/og-image.jpg`,
+    //     width: 800,
+    //     height: 600,
+    //     alt: 'TP Mobile Store',
+    //   }
+    // ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@TPMobile',
-    title: "TP MOBILE STORE",
-    description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao, dịch vụ khách hàng chu đáo và chế độ bảo hành tốt nhất để đảm bảo sự hài lòng của quý khách.",
-    images: [`${process.env.DOMAIN}/images/twitter-image.jpg`],
-  },
+  // twitter: {
+  //   site: '@TPMobile',
+  //   title: "TP MOBILE STORE",
+  //   description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao, dịch vụ khách hàng chu đáo và chế độ bảo hành tốt nhất để đảm bảo sự hài lòng của quý khách.",
+  // },
   
   robots: "index, follow",
   

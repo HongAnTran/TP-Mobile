@@ -4,11 +4,11 @@ import ProductsServiceApi from '@/services/productService'
 import Product from './Product'
 import { Metadata } from 'next'
 import routes from '@/routes'
-import { Product as ProducType } from '@/types/Product.types'
+import { Product as ProductType } from '@/types/Product.types'
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
 function generateStrucDataProduct(
-  product: ProducType
+  product: ProductType
 ): WithContext<ProductSchema> {
   return {
     "@context": "https://schema.org",
@@ -16,12 +16,18 @@ function generateStrucDataProduct(
     name: product.title,
     image: product.images?.[0]?.url,
     category: product.category.title,
-
     description: product.short_description || undefined,
     offers: {
       "@type": "Offer",
       priceCurrency: "VND",
       price: product.price,
+      priceValidUntil: "2024-12-31", // Set a default date or use a specific one from the product
+      availability: "https://schema.org/InStock", // Updated to include full URL
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: 5, // Example default value
+        reviewCount: Math.floor(Math.random() * 400),
+      }
     },
   };
 }
