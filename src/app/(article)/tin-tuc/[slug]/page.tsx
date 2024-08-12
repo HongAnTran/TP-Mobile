@@ -15,8 +15,8 @@ export async function generateMetadata(
     notFound()
   }
   const {meta_data} = artice
-  const titleShow = meta_data.meta_title || artice.title
-  const desShow = meta_data.meta_description || artice.description || undefined
+  const titleShow = meta_data?.meta_title || artice.title
+  const desShow = meta_data?.meta_description || artice.description || undefined
   const DOMAIN = process.env.DOMAIN
   return {
     title: titleShow,
