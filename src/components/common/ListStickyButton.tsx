@@ -26,7 +26,7 @@ export default function ListStickyButton() {
 
           </Button>
         </Link>
-        <Link href={"https://www.facebook.com/messages/t/100369039524995"} target="_blank">
+        <Link href={"https://m.me/100369039524995"} target="_blank">
           <Button size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
             <MessengerIcon />

@@ -144,13 +144,14 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className=' form-list flex flex-col gap-4 mt-4'>
-        <InputController label='Họ và tên' name="full_name" control={control} isShowError />
-        <div className='  flex gap-2'>
+        <InputController inputProps={{ required: true }} label='Họ và tên' name="full_name" control={control} isShowError />
+        <div className='   grid grid-cols-1 lg:grid-cols-2  gap-2'>
+          <InputController inputProps={{ required: true }} isNumber label='Số điện thoại' name="phone" control={control} isShowError />
           <InputController label='Email' name="email" control={control} />
-          <InputController  isNumber label='Số điện thoại' name="phone" control={control} isShowError />
         </div>
-        <div className='  flex gap-2'>
+        <div className=' grid grid-cols-1 lg:grid-cols-3 gap-2'>
           <SelectController
+            required
             items={location.provices.map(item => {
               return { label: item.name, value: item.code.toString() }
             })}
@@ -159,6 +160,8 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             control={control} />
 
           <SelectController
+            required
+
             items={location.districts.map(item => {
               return { label: item.name, value: item.code.toString() }
             })}
@@ -167,6 +170,8 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             control={control} />
 
           <SelectController
+            required
+
             items={location.wards.map(item => {
               return { label: item.name, value: item.code.toString() }
             })}
@@ -174,7 +179,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             name="ward.code"
             control={control} />
         </div>
-        <InputController label='Tên đường' name="street" control={control} isShowError />
+        <InputController inputProps={{ required: true }} label='Tên đường' name="street" control={control} isShowError />
         <InputController label='Ghi chú' name="note" control={control} />
       </div>
 
@@ -202,7 +207,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         </li>
         <li className=' flex items-center justify-between'>
           <TypographySpan className=' text-gray-500'>Khuyến mãi</TypographySpan>
-          <PriceText className=' text-sm' price={0} notAutoChange/>
+          <PriceText className=' text-sm' price={0} notAutoChange />
         </li>
         <li className=' flex items-center justify-between'>
           <TypographySpan className=' text-gray-500'>Vận chuyển</TypographySpan>
@@ -213,7 +218,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         <li className=' flex items-center justify-between'>
           <TypographySpan className=' font-bold'>Tổng tiền:</TypographySpan>
           <div className=' flex gap-1 items-center'>
-            <PriceText className=' text-sm text-red-500 font-bold'  price={order.total_price} />
+            <PriceText className=' text-sm text-red-500 font-bold' price={order.total_price} />
             <TypographySpan > ({order.items.length}) </TypographySpan>
           </div>
         </li>

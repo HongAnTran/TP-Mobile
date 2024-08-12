@@ -7,7 +7,7 @@ import React from 'react'
 
 export default function ProductOrderItem({ productOrder, className }: { productOrder: ProductOrder, className?: string }) {
   return (
-    <div className={cn("flex flex-col rounded-lg bg-white sm:flex-row sm:items-center", className)}>
+    <div className={cn("flex items-center  rounded-lg bg-white ", className)}>
       <Image width={80} height={80} className="m-2 h-20  w-20 rounded-md border object-cover object-center"
         src={productOrder.image} alt="" />
       <div className="flex w-full flex-col px-4 py-4">

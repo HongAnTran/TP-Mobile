@@ -15,7 +15,7 @@ const Steps: React.FC<StepsProps> = ({ steps }) => {
   return (
 
     <div className="relative">
-      <ul className="relative flex-col md:flex-row md:flex-wrap flex w-full items-center justify-between space-x-2 sm:space-x-4">
+      <ul className="relative  px-2 lg:px-0 flex-row gap-4 flex-wrap flex w-full items-center justify-between space-x-2 sm:space-x-4">
         {steps.map((step, index) => (
           <React.Fragment key={index}>
             <li className="flex items-center space-x-3 text-left sm:space-x-4">

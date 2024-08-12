@@ -6,7 +6,7 @@ import React from 'react'
 export default function CheckoutHeader({steps} : { steps : StepProps[]}) {
 
   return (
-    <div className="flex   justify-center items-center border-b bg-white py-4 lg:flex-row sm:px-4">
+    <div className="lg:flex   lg:justify-center items-center border-b bg-white py-4 lg:flex-row sm:px-4">
       <Steps steps={steps} />
     </div>
   )
