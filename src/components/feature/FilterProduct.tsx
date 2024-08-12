@@ -65,7 +65,7 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   const cateItem = isUseCategory ? [{
     value: "Loại sản phẩm",
     title: "Loại sản phẩm",
-    content: categories && <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.map((item) => ({ value: item.slug, label: item.title }))} defaultValue={valueFiter.categories} />
+    content: categories?.datas && <MutipleCheckbox onChange={(datas) => onChageValueFilter("categories", datas)} items={categories.datas.map((item) => ({ value: item.slug, label: item.title }))} defaultValue={valueFiter.categories} />
   }] : []
 
   const filterDynamic = attributes.map(attribute => {

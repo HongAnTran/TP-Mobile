@@ -9,7 +9,9 @@ class ArticeService {
   async getList(params?: { take?: number, skip?: number, cateSlug?: string }) {
     return fetchApi.get<Articles>(this.url, {
       params: params,
-      cache: "force-cache"
+      next: {
+        revalidate: 3600 * 24
+      }
 
     });
   }

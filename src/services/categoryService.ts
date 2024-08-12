@@ -1,3 +1,4 @@
+import { ResList } from '@/types/common';
 
 import fetchApi from "@/api/instances/baseInstance";
 import fetchApiPublic from "@/api/instances/routerhandlersInstance";
@@ -10,7 +11,7 @@ class CategoryService {
   constructor() { }
 
   async getList(params?: CategoryProductFilter, init?: ConfigAPi) {
-    return fetchApi.get<CategoryProduct[]>(this.url, {
+    return fetchApi.get<ResList<CategoryProduct>>(this.url, {
       params: {
         orderBy: "id",
         orderType: "asc",

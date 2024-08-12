@@ -30,7 +30,7 @@ export default function NavigationCategoryMobile({ className }: { className?: st
           <SheetHeader>
             <SheetTitle>Danh mục</SheetTitle>
             {isSuccess ? <ul>
-              {data.map(cate => {
+              {data.datas.map(cate => {
                 return <Link key={cate.id} href={`${routes.category}/${cate.slug}`} onClick={() => setOpen(false)}>
                   <li className=' border-b flex items-center justify-between p-2 gap-3' >
                     <div className=' w-10 h-10 flex-shrink-0'>

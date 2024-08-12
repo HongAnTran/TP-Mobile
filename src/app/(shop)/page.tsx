@@ -8,7 +8,6 @@ import SectionFeedback from '@/components/feature/SectionFeedback'
 import routes from '@/routes'
 import CategoryServiceApi from '@/services/categoryService'
 import { Metadata } from 'next'
-import Image from 'next/image'
 import React, { Suspense } from 'react'
 export const metadata: Metadata = {
   title: "TP MOBILE STORE",
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
 
 };
 export default async function page() {
-  const cates = await CategoryServiceApi.getList()
+  const {datas : cates} = await CategoryServiceApi.getList()
   return (
     <div className='  '>
       <BannerLarge />

@@ -1,5 +1,6 @@
 import fetchApi from '@/api/instances/baseInstance';
 import { CategoryArtice } from '@/types/categoryArtice';
+import { ResList } from '@/types/common';
 
 
 
@@ -9,7 +10,7 @@ class ArticeCategoryService {
   constructor() { }
 
   async getList() {
-    return fetchApi.get<CategoryArtice[]>(this.url);
+    return fetchApi.get<ResList<CategoryArtice>>(this.url);
   }
 
   async getDetail(slug: string) {

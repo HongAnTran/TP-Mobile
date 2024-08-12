@@ -4,7 +4,7 @@ import { MetadataRoute } from "next"
 
 
 export async function generateSitemaps() {
-  const datas  = await CategoryServiceApi.getList()
+  const { datas } = await CategoryServiceApi.getList()
 
 
   return datas.map(data => ({ id: data.slug }))
@@ -16,7 +16,7 @@ export default async function sitemap({
 }: {
   id: number
 }): Promise<MetadataRoute.Sitemap> {
-  const datas  = await CategoryServiceApi.getList()
+  const { datas } = await CategoryServiceApi.getList()
   return datas.map((data) => ({
     url: `${domain}/danh-muc/${data.slug}`,
     lastModified: new Date(),

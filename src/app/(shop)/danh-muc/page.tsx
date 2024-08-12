@@ -8,7 +8,7 @@ import CategoryServiceApi from '@/services/categoryService'
 
 export default async function page() {
 
-  const cates = await CategoryServiceApi.getList()
+  const {datas : cates} = await CategoryServiceApi.getList()
 
   return (
     <div className=' my-8'>
