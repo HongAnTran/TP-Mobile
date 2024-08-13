@@ -1,7 +1,7 @@
 "use client"
 import { ArrowUpIcon } from '@radix-ui/react-icons';
 import React, { useState, useEffect } from 'react';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 
 export default function ButtonUpToTop() {
   const [isVisible, setIsVisible] = useState(false);

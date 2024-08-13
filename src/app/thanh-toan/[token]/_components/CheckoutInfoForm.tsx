@@ -60,7 +60,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
   const { toast } = useToast()
   const router = useRouter()
 
-  const { control, handleSubmit, watch, setValue } = useForm<Address>({
+  const { control, handleSubmit, watch, setValue, formState } = useForm<Address>({
     // defaultValues: order.shipping,
     resolver: yupResolver(AddressInfoSchema)
   })
@@ -224,7 +224,20 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         </li>
       </ul>
 
-      <Button type="submit" className=' w-full'>Thanh toán</Button>
+      <Button type="submit" disabled={!formState.isValid} className='text-white w-full bg-red-500 hidden md:block'>
+        Đặt hàng
+      </Button>
+
+
+      <div className='md:hidden fixed  shadow-xl bottom-0 left-0 right-0 w-ful p-2 bg-white  z-40'>
+        <Button type="submit" disabled={!formState.isValid} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
+          Đặt hàng{" "}
+          <span className=' md:hidden'>
+
+            ( <PriceText className=' text-sm text-white font-bold' price={order.total_price} />)
+          </span>
+        </Button>
+      </div>
     </form>
   )
 }

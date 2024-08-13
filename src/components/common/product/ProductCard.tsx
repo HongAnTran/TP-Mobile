@@ -15,7 +15,7 @@ import Link from "@/components/common/Link";
 
 import routes from '@/routes'
 import ProductQuickView from './ProductQuickView'
-import ButtonWishlist from '@/components/feature/ButtonWishlist'
+import ButtonWishlist from '@/components/feature/buttons/ButtonWishlist'
 
 export default function ProductCard({ product }: { product: ProductInList }) {
   const [open, setOpen] = useState(false)

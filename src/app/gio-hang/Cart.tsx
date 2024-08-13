@@ -56,7 +56,10 @@ export default function Cart() {
       </div>
     </div>
   }
+
+
   const isCheckAll = !cart.items.some(item => !item.selected)
+  const isValid = cart.items.filter(item=>item.selected).length > 0
 
   if (cart.item_count === 0) {
     return <div className=' flex justify-center'>
@@ -71,6 +74,8 @@ export default function Cart() {
       </div>
     </div>
   }
+
+
 
 
   return (
@@ -112,9 +117,23 @@ export default function Cart() {
       <div className=' lg:col-span-3 col-span-12 flex flex-col gap-4'>
         <CartCoupon />
         <CartTotal cart={cart} />
-        <BoxLayout >
-          <Button className=' w-full' onClick={handelSubmit}>Thanh Toán</Button>
+        <BoxLayout className='  hidden md:block '>
+          <Button disabled={!isValid} className=' w-full text-white  bg-red-500' onClick={handelSubmit}>Mua hàng</Button>
         </BoxLayout>
+
+        <div className='md:hidden fixed  shadow-xl bottom-0 left-0 right-0 w-ful p-2 bg-white  z-40'>
+          <Button disabled={!isValid} onClick={handelSubmit} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
+            Mua hàng{" "}
+         
+            <span className=' md:hidden'>
+
+              ( <PriceText notAutoChange className=' text-sm text-white font-bold' price={cart.total_price} />)
+            </span>
+            <span className=' md:hidden'>
+              ( {cart.item_count} )
+            </span>
+          </Button>
+        </div>
       </div>
 
       <DialogUi open={open} onClose={() => setOpen(false)} >

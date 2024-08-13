@@ -2,14 +2,14 @@
 import React from 'react'
 import { ReactNode } from 'react'
 import { PersonIcon, ReaderIcon } from "@radix-ui/react-icons"
-import StoreIcon from '../icons/StoreIcon'
-import { PhoneFilledIcon } from '../icons'
-import { TypographyP, TypographySpan } from '../ui/typography'
+import StoreIcon from '../../icons/StoreIcon'
+import { PhoneFilledIcon } from '../../icons'
+import { TypographyP, TypographySpan } from '../../ui/typography'
 import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
 import { useSession } from 'next-auth/react';
-import IconBorder from '../common/IconBorder';
-import NavLink from '../common/NavLink';
+import IconBorder from '../../common/IconBorder';
+import NavLink from '../../common/NavLink';
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 

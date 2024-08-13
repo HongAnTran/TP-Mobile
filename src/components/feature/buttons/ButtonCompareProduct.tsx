@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import { Product } from '@/types/Product.types'
 import useCompareProduct from '@/hooks/useCompareProduct'
 

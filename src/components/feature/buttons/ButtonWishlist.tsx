@@ -7,7 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { TypographyP } from '../ui/typography'
+import { TypographyP } from '../../ui/typography'
 import { WishlistType } from '@/types/wishlist'
 import { useShopStore } from '@/providers/shop-store-provider'
 import LocalStorageService from '@/utils/localStorage'

@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductsServiceApi from '@/services/productService'
 import { Product } from '@/types/Product.types'
-import ProductCarousel from '../common/product/ProductCarousel'
+import ProductCarousel from '../../common/product/ProductCarousel'
 
 
 interface SectionCategoryCarouselProps {

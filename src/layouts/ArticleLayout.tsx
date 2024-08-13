@@ -1,7 +1,7 @@
 import Footer from '@/components/feature/Footer'
 import ListStickyButton from '@/components/common/ListStickyButton'
 // import NavigationCategoryArticle from '@/components/feature/NavigationCategoryArticle'
-import Header from '@/components/feature/Header'
+import Header from '@/components/feature/headers/Header'
 import NavigationCategory from '@/components/feature/NavigationCategory'
 
 export default function ArticleLayout({ children }: { children: React.ReactNode }) {

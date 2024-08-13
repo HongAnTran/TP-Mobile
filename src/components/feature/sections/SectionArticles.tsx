@@ -1,11 +1,11 @@
 
 import React from 'react'
-import { TypographyH3 } from '../ui/typography'
+import { TypographyH3 } from '../../ui/typography'
 import Link from "@/components/common/Link";
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import { Article } from '@/types/article'
 import routes from '@/routes'
-import ArticleCardList from '../common/ArticleCardList';
+import ArticleCardList from '../../common/article/ArticleCardList';
 import ArticeServiceApi from '@/services/articeService';
 
 export default async function SectionArticles() {

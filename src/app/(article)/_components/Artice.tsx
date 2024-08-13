@@ -1,6 +1,6 @@
 import Link from "@/components/common/Link";
 import { Article } from "@/types/article";
-import ArticleCardList from "@/components/common/ArticleCardList";
+import ArticleCardList from "@/components/common/article/ArticleCardList";
 import {  TypographyH4 } from "@/components/ui/typography";
 
 export default function Artice({ artices }: {  artices: Article[] }) {

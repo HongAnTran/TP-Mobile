@@ -1,11 +1,11 @@
 
 import React from 'react'
-import { TypographyH3 } from '../ui/typography'
+import { TypographyH3 } from '../../ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
 
 import Link from "@/components/common/Link";
 
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import ProductsServiceApi from '@/services/productService'
 
 interface SectionCategoryGridProps {

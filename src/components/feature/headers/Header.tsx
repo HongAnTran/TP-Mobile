@@ -1,16 +1,14 @@
 
 import Logo from '@/components/common/Logo'
-import SearchInput from './SearchInput'
+import SearchInput from '../SearchInput'
 import Link from "@/components/common/Link";
-import { HeartIcon } from '../icons'
-import { TypographyH4 } from '../ui/typography'
 import routes from '@/routes'
-import Notification from './Notification'
 import { cn } from '@/lib/utils'
 import HeaderItems from './HeaderItems';
 import CartHeader from './CartHeader';
-import NavigationCategoryMobile from './NavigationCategoryMobile';
-import SearchHeaderMobile from './SearchHeaderMobile';
+import NavigationCategoryMobile from '../NavigationCategoryMobile';
+import SearchHeaderMobile from '../SearchHeaderMobile';
+import HeaderTop from './HeaderTop';
 
 
 export default function Header() {
@@ -44,17 +42,3 @@ export default function Header() {
 
 
 
-function HeaderTop() {
-  return (
-    <div className=' flex   justify-between  items-center  py-2    bg-primary '>
-      <TypographyH4 className=' md:text-xs text-[10px]  font-semibold  text-secondary ' >TP Mobile - Bán iPad có tâm &quot;Nhứt&quot; Sài Gòn 😎</TypographyH4>
-      <div className=' flex gap-4'>
-        <Link href={routes.wishlist} title='Yêu thích của bạn'>
-          <HeartIcon className=' text-secondary  ' />
-
-        </Link>
-        <Notification />
-      </div>
-    </div>
-  )
-}

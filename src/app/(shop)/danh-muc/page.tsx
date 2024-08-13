@@ -2,7 +2,7 @@ import React from 'react'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import routes from '@/routes'
-import SectionCategoryGrid from '@/components/feature/SectionCategoryGrid'
+import SectionCategoryGrid from '@/components/feature/sections/SectionCategoryGrid'
 import CategoryServiceApi from '@/services/categoryService'
 
 

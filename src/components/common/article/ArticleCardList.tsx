@@ -3,7 +3,7 @@ import routes from "@/routes";
 import { Article } from "@/types/article";
 import Image from "next/image";
 import Link from "@/components/common/Link";
-import { PhotoIcon } from "../icons";
+import { PhotoIcon } from "../../icons";
 import { formatDate } from "@/utils";
 // import { parseISO, format } from "date-fns";
 // import { PhotoIcon } from "@heroicons/react/24/outline";

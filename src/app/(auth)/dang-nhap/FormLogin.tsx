@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { TypographyH2, TypographySpan } from "@/components/ui/typography";
 import routes from "@/routes";
 import Image from "next/image";
-import { ButtonSignIn } from '@/components/feature/ButtonSignIn';
+import { ButtonSignIn } from '@/components/feature/buttons/ButtonSignIn';
 export default function FormLogin() {
   return (
     <section className=" py-10 flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">

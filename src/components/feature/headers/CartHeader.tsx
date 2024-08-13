@@ -1,19 +1,19 @@
 "use client"
 import { useShopStore } from '@/providers/shop-store-provider'
 import React from 'react'
-import { CartIcon } from '../icons'
-import { TypographySpan } from '../ui/typography'
+import { CartIcon } from '../../icons'
+import { TypographySpan } from '../../ui/typography'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
 import ProductOrderItem from '@/components/common/product/ProductOrderItem'
-import PriceText from '../common/PriceText'
-import { Button } from '../ui/button'
-import Link from '../common/Link'
+import PriceText from '../../common/PriceText'
+import { Button } from '../../ui/button'
+import Link from '../../common/Link'
 import routes from '@/routes'
-import IconBorder from '../common/IconBorder'
+import IconBorder from '../../common/IconBorder'
 
 
 

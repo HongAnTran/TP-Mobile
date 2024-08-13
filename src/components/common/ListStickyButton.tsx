@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import ButtonUpToTop from '../feature/ButtonUpToTop'
+import ButtonUpToTop from '../feature/buttons/ButtonUpToTop'
 import { Button } from '../ui/button'
 import { MessengerIcon, PhoneIcon, ZaloIcon, InstagramIcon, InstagramLogoIcon } from '../icons'
 import Link from "@/components/common/Link";

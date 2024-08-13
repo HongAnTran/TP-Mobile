@@ -1,17 +1,17 @@
 
 
 import React from 'react'
-import { TypographyH3, TypographyP } from '../ui/typography'
+import { TypographyH3, TypographyP } from '../../ui/typography'
 import Link from "@/components/common/Link";
 
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import { StarFilledIcon } from '@radix-ui/react-icons'
-import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'
+import { Card, CardContent, CardDescription, CardTitle } from '../../ui/card'
 import Image from 'next/image'
-import f1 from "../../../public/feedback/z5516755077447_17097fc14f25d338adcbc03007b1f623.jpg"
-import f2 from "../../../public/feedback/z5516760524100_bffe10e81604861211bc0f2e5c9b1c7a.jpg"
-import f3 from "../../../public/feedback/z5516755844007_beaf7ff8afd4197797a79c1c28146467.jpg"
-import f4 from "../../../public/feedback/z5516756870577_57a9c448a8a8bf090ebc46085d978c3a.jpg"
+import f1 from "../../../../public/feedback/z5516755077447_17097fc14f25d338adcbc03007b1f623.jpg"
+import f2 from "../../../../public/feedback/z5516760524100_bffe10e81604861211bc0f2e5c9b1c7a.jpg"
+import f3 from "../../../../public/feedback/z5516755844007_beaf7ff8afd4197797a79c1c28146467.jpg"
+import f4 from "../../../../public/feedback/z5516756870577_57a9c448a8a8bf090ebc46085d978c3a.jpg"
 import { Feedback } from '@/types/feedback'
 import routes from '@/routes';
 

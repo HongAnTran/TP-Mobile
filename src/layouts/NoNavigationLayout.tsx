@@ -1,4 +1,4 @@
-import Header from '@/components/feature/Header'
+import Header from '@/components/feature/headers/Header'
 import Footer from '@/components/feature/Footer'
 import ListStickyButton from '@/components/common/ListStickyButton'
 import { ShopStoreProvider } from '@/providers/shop-store-provider'
