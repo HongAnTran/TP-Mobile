@@ -19,7 +19,7 @@ export default function Header() {
       <div className=' container'>
         <HeaderTop />
         <div className=' flex-col md:flex-row flex gap-1 lg:gap-10 items-center '>
-          <div className=' flex-shrink-0  md:w-fit w-full md:block  flex justify-between items-center'>
+          <div className=' flex-shrink-0  md:mr-4 lg:mr-0 md:w-fit w-full md:block  flex justify-between items-center'>
             <NavigationCategoryMobile />
             <Logo />
             <div className=' md:hidden flex gap-3'>
@@ -30,7 +30,7 @@ export default function Header() {
 
             </div>
           </div>
-          <div className='  w-full lg:max-w-[400px]  xl:max-w-[360px]  hidden md:block'>
+          <div className='  w-full sm:max-w-[300px]    xl:max-w-[400px]  hidden md:block'>
             <SearchInput />
           </div>
           <div className='  flex-1   flex-shrink-0   '>

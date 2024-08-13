@@ -17,6 +17,10 @@ function generateStrucDataProduct(
     image: product.images?.[0]?.url,
     category: product.category.title,
     description: product.short_description || undefined,
+    brand: {
+      "@type": "Brand",
+      name: product.brand?.name || "Apple",
+    },
     offers: {
       "@type": "Offer",
       priceCurrency: "VND",
@@ -27,7 +31,12 @@ function generateStrucDataProduct(
         "@type": "AggregateRating",
         ratingValue: 5, // Example default value
         reviewCount: Math.floor(Math.random() * 400),
-      }
+
+      },
+      seller: {
+        "@type": "Organization",
+        name: "TP Mobile",
+      },
     },
   };
 }
@@ -39,7 +48,7 @@ export async function generateMetadata(
   const slug = params.slug
 
   const product = await ProductsServiceApi.getDetail(slug)
-  
+
   const { meta_data } = product
   const titleShow = meta_data?.meta_title || product.title
   const desShow = meta_data?.meta_description || product.short_description || undefined
@@ -47,24 +56,30 @@ export async function generateMetadata(
   return {
     title: titleShow,
     description: desShow,
+
+
     openGraph: {
       title: titleShow,
       description: desShow,
-      images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })),
+      images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
       url: `${DOMAIN}/${routes.products}/${product.slug}`,
       siteName: DOMAIN,
+      type: "website",
     },
+    keywords : titleShow,
     category: product.category.title,
-    // category: product.,
     other: {
       "og:type": "product",
       "og:price:amount": product.price,
       "og:price:currency": "VND",
+      "og:availability": "https://schema.org/InStock",
     },
+
+    
   }
 }
 
- async function getData(slug :string){
+async function getData(slug: string) {
   try {
     const product = await ProductsServiceApi.getDetail(slug)
     return product

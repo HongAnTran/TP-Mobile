@@ -20,7 +20,7 @@ export default function NavigationCategoryMobile({ className }: { className?: st
 
 
   return (
-    <div className=' block lg:hidden'>
+    <div className=' block md:hidden'>
       <IconBorder onClick={() => setOpen(true)}>
         <MenuIcon />
       </IconBorder>
