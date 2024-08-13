@@ -3,6 +3,7 @@ import { Product } from '@/types/Product.types'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import ProductSpecificationsServiceApi from '@/services/productSpecifications'
 import { cn } from '@/lib/utils'
+import BoxInnerHtml from '@/components/common/BoxInnerHtml'
 export default async function ProductDescription({ product }: { product: Product }) {
   const types = await ProductSpecificationsServiceApi.getListType()
   const groups = await ProductSpecificationsServiceApi.getListGroup()
@@ -15,10 +16,11 @@ export default async function ProductDescription({ product }: { product: Product
       <div className='col-span-12 md:col-span-8 mb-5 lg:mb-0'>
         <div className=' p-2 rounded-md shadow-md border'>
           <TypographyH2 className='  text-center text-xl pb-2 border-b border-gray-300 mb-2'>Mô tả sản phẩm</TypographyH2>
-          <div className={cn(' max-h-[600px] overflow-y-auto overflow-x-hidden border  mx-1 p-2  bg-white ', {
+          <BoxInnerHtml className={cn(' max-h-[600px] overflow-y-auto overflow-x-hidden border  mx-1 p-2  bg-white ', {
             "max-h-[200px]": !product.description_html
-          })}
-            dangerouslySetInnerHTML={{ __html: product.description_html || "Hiện chưa có mô tả" }}></div>
+          })} html={product.description_html || "Hiện chưa có mô tả"}>
+
+          </BoxInnerHtml>
         </div>
       </div>
 

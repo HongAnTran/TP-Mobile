@@ -90,7 +90,7 @@ export default async function page({ params, searchParams }: { params: { slug: s
             </div>
             <div className=' lg:col-span-10 col-span-12'>
               <div className='items-center mb-4 flex'>
-                <TypographyP className=' font-semibold  text-base' >Sắp xếp theo:</TypographyP>
+                <TypographyP className=' font-semibold  text-base' >Sắp xếp:</TypographyP>
                 <SortProduct searchParams={searchParams} />
               </div>
               <Suspense key={key} fallback={<ProductsSkeleton />}>

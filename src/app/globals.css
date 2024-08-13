@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  table {
+    @apply border border-gray-300;
+
+  }
+  td{
+    @apply border border-gray-300 p-1;
+
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
