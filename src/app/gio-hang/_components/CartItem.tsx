@@ -57,21 +57,20 @@ export default function CartItem({ product, onDelete, onChangeQuantity, onChange
         <Image alt={product.title + product.variant_title} src={product.image} width={120} height={120} />
         </div>
         <div>
-          <Link className=' font-semibold' href={`${routes.products}/${product.slug}`}>{product.title}</Link>
+          <Link className='  text-sm md:text-base line-clamp-2 font-semibold' href={`${routes.products}/${product.slug}`}>{product.title}</Link>
           <div className=' mt-2 flex gap-1'>
             {product.variant_options.map(option => {
               return <Badge key={option}>
                 {option}
               </Badge>
-
             })}
           </div>
         </div>
       </div>
-      <ProductQuantity quantity={quantity} handleQuantity={handleQuantity} label={null} disableInput />
+      <ProductQuantity className=' justify-end md:justify-start' quantity={quantity} handleQuantity={handleQuantity} label={null} disableInput />
       <PriceText price={product.price} className=' hidden  lg:inline-block' />
-      <PriceText className=' text-red-500' price={product.line_price} />
-      <Button onClick={() => onDelete?.(product.id)} size="icon" variant="link" className=' absolute bottom-2 right-2' ><CloseCircleIcon /></Button>
+      <PriceText className=' text-red-500 text-right' price={product.line_price} />
+      <Button onClick={() => onDelete?.(product.id)} size="icon" variant="link" className=' absolute bottom-2 md:right-2 md:left-auto left-2' ><CloseCircleIcon /></Button>
     </li>
   )
 }

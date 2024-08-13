@@ -4,7 +4,6 @@ import { TypographyH3, TypographyH4, TypographySpan } from '@/components/ui/typo
 import CartItem from './_components/CartItem'
 import useCart from '@/hooks/useCart'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Cart as CartType } from '@/types/cart'
 import BoxLayout from './_components/BoxLayout'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -17,6 +16,8 @@ import DialogUi from '@/components/common/Dialog'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
 import Link from '@/components/common/Link'
+import CartTotal from './_components/CartTotal'
+import BoxFixedBottom from '@/components/common/BoxFixedBottom'
 
 
 export default function Cart() {
@@ -59,7 +60,7 @@ export default function Cart() {
 
 
   const isCheckAll = !cart.items.some(item => !item.selected)
-  const isValid = cart.items.filter(item=>item.selected).length > 0
+  const isValid = cart.items.filter(item => item.selected).length > 0
 
   if (cart.item_count === 0) {
     return <div className=' flex justify-center'>
@@ -121,19 +122,17 @@ export default function Cart() {
           <Button disabled={!isValid} className=' w-full text-white  bg-red-500' onClick={handelSubmit}>Mua hàng</Button>
         </BoxLayout>
 
-        <div className='md:hidden fixed  shadow-xl bottom-0 left-0 right-0 w-ful p-2 bg-white  z-40'>
-          <Button disabled={!isValid} onClick={handelSubmit} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
-            Mua hàng{" "}
-         
-            <span className=' md:hidden'>
+        <BoxFixedBottom > <Button disabled={!isValid} onClick={handelSubmit} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
+          Mua hàng{" "}
 
-              ( <PriceText notAutoChange className=' text-sm text-white font-bold' price={cart.total_price} />)
-            </span>
-            <span className=' md:hidden'>
-              ( {cart.item_count} )
-            </span>
-          </Button>
-        </div>
+          <span className=' md:hidden'>
+
+            ( <PriceText notAutoChange className=' text-sm text-white font-bold' price={cart.total_price} />)
+          </span>
+          <span className=' md:hidden'>
+            ( {cart.item_count} )
+          </span>
+        </Button></BoxFixedBottom>
       </div>
 
       <DialogUi open={open} onClose={() => setOpen(false)} >
@@ -173,38 +172,4 @@ function CartCoupon() {
   )
 }
 
-
-function CartTotal({ cart }: { cart: CartType }) {
-  return (
-    <BoxLayout >
-      <TypographyH3 className=' text-center text-red-500 mb-4'>Tạm Tính</TypographyH3>
-      <hr />
-      <div className=' mt-4'>
-        <ul className=' flex flex-col gap-4  '>
-          <li className=' flex items-center justify-between'>
-            <TypographySpan className=' text-gray-500'>Tạm tính</TypographySpan>
-            <PriceText className=' text-sm' price={cart.total_price} />
-          </li>
-          <li className=' flex items-center justify-between'>
-            <TypographySpan className=' text-gray-500'>Khuyến mãi</TypographySpan>
-            <PriceText className=' text-sm' notAutoChange price={0} />
-          </li>
-          <li className=' flex items-center justify-between'>
-            <TypographySpan className=' text-gray-500'>Vận chuyển</TypographySpan>
-            <PriceText className=' text-sm' price={0} notAutoChange />
-          </li>
-          <hr />
-
-          <li className=' flex items-center justify-between'>
-            <TypographySpan className=' font-bold'>Tổng tiền:</TypographySpan>
-            <div className=' flex gap-1 items-center'>
-              <PriceText className=' text-sm text-red-500 font-bold' price={cart.total_price} />
-              <TypographySpan > ({cart.items.filter(item => item.selected).length}) </TypographySpan>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </BoxLayout>
-  )
-}
 
