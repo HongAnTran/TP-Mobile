@@ -75,7 +75,7 @@ export default function HeaderItems() {
  
   return (
     <>
-      <div className=' justify-end  gap-8 h-full    hidden md:flex '>
+      <div className=' justify-end  gap-8 h-full    flex  '>
         {
           items.map((item, index) => {
             return <HeaderItem {...item} key={index} />

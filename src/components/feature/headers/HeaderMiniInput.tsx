@@ -5,6 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/navigation';
 import SearchInput from '@/components/feature/SearchInput';
 import Link from '@/components/common/Link';
+import SearchHeaderMobile from '../SearchHeaderMobile';
 
 
 
@@ -12,8 +13,8 @@ export default function HeaderMiniInput({ title, href, onBackClick }: { title?: 
   const router = useRouter()
   return (
     <header className='  bg-primary   py-2 '>
-      <div className=' container flex items-center  justify-center md:justify-start gap-8 relative'>
-        <div className=' w-fit p-1 md:hidden absolute left-4 top-2' onClick={() => {
+      <div className=' container flex items-center  justify-between md:justify-start gap-8 relative'>
+        <div className=' w-fit p-1 md:hidden' onClick={() => {
           if (onBackClick) {
             onBackClick()
           } else {
@@ -27,6 +28,10 @@ export default function HeaderMiniInput({ title, href, onBackClick }: { title?: 
           {title ? <Link href={href ? href : "#"}><p className='  text-secondary uppercase font-semibold text-base'>{title}</p></Link> : null}
         </div>
         <div className=' hidden md:block md:min-w-[500px]'><SearchInput /></div>
+        <div className='md:hidden'>  <SearchHeaderMobile /> </div>
+
+
+
       </div>
     </header>
   )

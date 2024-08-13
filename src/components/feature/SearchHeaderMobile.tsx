@@ -22,7 +22,7 @@ export default function SearchHeaderMobile() {
     <>
       <IconBorder onClick={() => setOpen(true)}>
 
-        <SearchIcon className=' w-7 h-7' />
+        <SearchIcon className=' w-7 h-7 text-secondary' />
       </IconBorder>
       <Drawer open={open} onClose={() => setOpen(false)} modal>
         <DrawerContent>

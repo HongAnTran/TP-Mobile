@@ -13,6 +13,7 @@ import CategoryServiceClient from '@/servicesClient/CategoryService'
 import Image from 'next/image'
 import Link from '../common/Link'
 import routes from '@/routes'
+import { cn } from '@/lib/utils';
 
 export default function NavigationCategoryMobile({ className }: { className?: string }) {
   const [open, setOpen] = useState(false)
@@ -20,7 +21,7 @@ export default function NavigationCategoryMobile({ className }: { className?: st
 
 
   return (
-    <div className=' block md:hidden'>
+    <div className={cn(' block md:hidden' , className)}>
       <IconBorder onClick={() => setOpen(true)}>
         <MenuIcon />
       </IconBorder>

@@ -16,11 +16,14 @@ export default function Header() {
     <header className={cn(' sticky  top-0 md:static  z-header   bg-primary  text-secondary    shadow-lg  transition-transform duration-300')}>
       <div className=' container'>
         <HeaderTop />
-        <div className=' flex-col md:flex-row flex gap-1 lg:gap-10 items-center '>
-          <div className=' flex-shrink-0  md:mr-4 lg:mr-0 md:w-fit w-full md:block  flex justify-between items-center'>
-            <NavigationCategoryMobile />
-            <Logo />
-            <div className=' md:hidden flex gap-3'>
+        <div className=' flex-col md:flex-row flex gap-1 lg:gap-10 items-center pb-[2px] md:pb-0 '>
+          <div className=' flex-shrink-0  md:mr-4 lg:mr-0 md:w-fit w-full md:block  grid  grid-cols-12 items-center'>
+            <NavigationCategoryMobile className=' col-span-3' />
+            <div className='  col-span-6 flex justify-center'>
+              <Logo />
+
+            </div>
+            <div className='col-span-3 md:hidden flex gap-3'>
               <SearchHeaderMobile />
               <Link href={routes.cart}>
                 <CartHeader />
@@ -31,7 +34,7 @@ export default function Header() {
           <div className='  w-full sm:max-w-[300px]    xl:max-w-[400px]  hidden md:block'>
             <SearchInput />
           </div>
-          <div className='  flex-1   flex-shrink-0   '>
+          <div className='  flex-1   flex-shrink-0    hidden md:block '>
             <HeaderItems />
           </div>
         </div>
