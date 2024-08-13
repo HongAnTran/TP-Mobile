@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       zIndex: {
-        header: "999"
+        header: "49"
       },
       colors: {
         border: "hsl(var(--border))",
