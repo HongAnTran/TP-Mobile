@@ -5,7 +5,6 @@ import Link from "@/components/common/Link";
 import { Button } from '../ui/button'
 import { Article } from '@/types/article'
 import routes from '@/routes'
-import json from "@/data/article.json"
 import ArticleCardList from '../common/ArticleCardList';
 import ArticeServiceApi from '@/services/articeService';
 
