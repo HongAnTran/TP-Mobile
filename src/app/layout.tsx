@@ -78,14 +78,15 @@ export default function RootLayout({
 
   return (
     <html lang="vi">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+     
       <link rel="icon" href="/icon.ico" sizes="any" />
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <GoogleAnalytics />
       <body className={inter.className}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
         <SessionProvider>
           <ReactQueryProvider>
             {children}

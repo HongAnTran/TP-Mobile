@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      zIndex: {
+        header: "999"
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -28,8 +31,8 @@ const config = {
           DEFAULT: "var(--primary)",
           foreground: "hsl(var(--primary-foreground))",
         },
-        cream : "var(--cream)",
-        textcolor : "var(--text-color)",
+        cream: "var(--cream)",
+        textcolor: "var(--text-color)",
         secondary: {
           DEFAULT: "var(--secondary)",
           // foreground: "var(--secondary",

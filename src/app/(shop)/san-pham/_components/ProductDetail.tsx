@@ -14,8 +14,6 @@ import ButtonCompareProduct from '@/components/feature/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
-import Link from '@/components/common/Link'
-import routes from '@/routes'
 import ProductBenefitsIpad from '@/components/common/product/ProductBenefitsIpad'
 
 export default function ProductDetail({ product }: { product: Product }) {

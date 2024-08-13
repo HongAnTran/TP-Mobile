@@ -15,7 +15,7 @@ import SearchHeaderMobile from './SearchHeaderMobile';
 
 export default function Header() {
   return (
-    <header className={cn('   bg-primary  text-secondary    shadow-lg  transition-transform duration-300')}>
+    <header className={cn(' sticky  top-0 md:static  z-header   bg-primary  text-secondary    shadow-lg  transition-transform duration-300')}>
       <div className=' container'>
         <HeaderTop />
         <div className=' flex-col md:flex-row flex gap-1 lg:gap-10 items-center '>
@@ -36,9 +36,7 @@ export default function Header() {
           <div className='  flex-1   flex-shrink-0   '>
             <HeaderItems />
           </div>
-
         </div>
-
       </div>
     </header>
   )
