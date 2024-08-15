@@ -6,6 +6,7 @@ const PhoneIcon = ({ className }: { className?: string }) => {
   return (
     <span className={cn("block w-12 h-12 text-red-500", className)}>
       <svg
+      aria-hidden="true"
         width="100%"
         height="100%"
         viewBox="0 0 48 48"

@@ -8,6 +8,7 @@ const MessengerIcon = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLS
     className={cn(" inline-block w-12 h-12", props.className)}
     >
       <svg
+      aria-hidden="true"
         width={"100%"}
         height={"100%"}
         viewBox="0 0 48 48"

@@ -21,7 +21,8 @@ interface Order {
   status: OrderStatus; // Trạng thái của đơn hàng
   payment: Payment | null,
   customer: Customer | null
-
+  created_at: Date
+  updated_at: Date | null
 }
 
 interface OrderCheckoutInput {
@@ -50,14 +51,19 @@ interface Shipping {
   ship_date: Date | null
   tracking_number: string | null
   phone: string
-  fullname : string
+  fullname: string
+  shipping_method :string | null
 }
 type ShippingCreate = Pick<Shipping, "address" | "address_full" | "country" | "district" | "province" | "ward" | "phone" | "fullname">
+
+enum PaymentMethod{
+  COD = "cod"
+}
 
 interface Payment {
   id: number
   order_id: number
-  method: string
+  method: PaymentMethod
   transaction_id: string | null
   amount: number
   status: PaymentStatus
@@ -65,20 +71,20 @@ interface Payment {
 }
 
 type PaymentCreate = Pick<Payment, "amount" | "method" | "status" | "payment_date">
-enum PaymentStatus {
+export enum PaymentStatus {
   PENDING = "PENDING",
   COMPLETED = "COMPLETED",
   FAILED = "FAILED"
 }
 
 
-enum OrderStatus {
-  PENDING = 3, // Đơn hàng đang chờ xử lý
+export enum OrderStatus {
+  DRAFT = 15,       // Đơn hàng chưa được hoàn tất bởi khách hàng
+  PENDING = 3, // Chờ xử lí
   PROCESSING = 5, // Đơn hàng đang được xử lý
-  SHIPPED = 7, // Đơn hàng đã được gửi đi
-  DELIVERED = 9, // Đơn hàng đã được giao thành công
+  SHIPPED = 9, // Đơn hàng đã được gửi đi
+  SUCCESS = 1, // Đơn hàng đã được giao thành công
   CANCELLED = 10, // Đơn hàng đã bị hủy
-  FAILED = 12, // Đơn hàng không thành công
+  RETURNED = 12, // Đơn hàng bị trả
 }
-export { OrderStatus, PaymentStatus }
 export type { Order, Payment, Shipping, OrderCheckoutInput }

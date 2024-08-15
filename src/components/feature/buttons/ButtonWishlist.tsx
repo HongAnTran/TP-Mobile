@@ -22,10 +22,10 @@ export default function ButtonWishlist({ id, type = WishlistType.PRODUCT }: { id
   return (
     <TooltipProvider>
       <Tooltip delayDuration={100} disableHoverableContent  >
-        <TooltipTrigger >
+        <TooltipTrigger asChild>
           {checkIsContainWishlist(id, type) ?
-            <HeartFilledIcon className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} /> :
-            <HeartIcon className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} />}
+            <HeartFilledIcon aria-hidden="true" className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} /> :
+            <HeartIcon  aria-hidden="true" className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} />}
 
         </TooltipTrigger>
         <TooltipContent >

@@ -55,23 +55,23 @@ export default function ListStickyButton() {
           <PopoverContent className=" w-10">
             <div className=' flex-col gap-4 flex '>
               <Link href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
-                <Button size="icon" variant="link" className=' relative'>
+                <Button size="icon" variant="link" className=' relative '  aria-label="ig">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
                   <InstagramLogoIcon className=' w-16 h-16' />
 
                 </Button>
               </Link>
               <Link href={"tel:0347907042"} target="_blank">
-                <Button size="icon" variant="link" className=' relative'>
+                <Button size="icon" variant="link" className=' relative' aria-label="ig">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
                   <PhoneIcon />
 
                 </Button>
               </Link>
               <Link href={"https://www.facebook.com/messages/t/100369039524995"} target="_blank">
-                <Button size="icon" variant="link" className=' relative'>
+                <Button size="icon" variant="link" className=' relative' aria-label="ig">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
-                  <MessengerIcon />
+                  <MessengerIcon  />
 
                 </Button>
               </Link>
