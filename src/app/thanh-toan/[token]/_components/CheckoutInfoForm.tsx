@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { TypographySpan } from '@/components/ui/typography'
 import LocationServiceApi from '@/services/locationService'
 import { Location } from '@/types/location'
-import { Order, OrderCheckoutInput, PaymentStatus } from '@/types/order'
+import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/order'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
@@ -109,7 +109,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         payment: {
           create: {
             amount: order.total_price,
-            method: "cod",
+            method: PaymentMethod.COD,
             status: PaymentStatus.PENDING,
             payment_date: null
           }

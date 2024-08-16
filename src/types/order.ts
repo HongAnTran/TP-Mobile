@@ -56,7 +56,7 @@ interface Shipping {
 }
 type ShippingCreate = Pick<Shipping, "address" | "address_full" | "country" | "district" | "province" | "ward" | "phone" | "fullname">
 
-enum PaymentMethod{
+export enum PaymentMethod{
   COD = "cod"
 }
 
