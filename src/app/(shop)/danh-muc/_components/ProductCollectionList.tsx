@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from '@/components/common/product/ProductCard'
-import ProductsServiceApi from '@/services/productService'
+import ProductsServiceApi from '@/services/ProductService'
 import { Product, ProductsParams } from '@/types/Product.types'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
 import SETTINGS from '@/consts/settings'

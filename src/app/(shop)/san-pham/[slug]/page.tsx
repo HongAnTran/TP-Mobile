@@ -1,6 +1,6 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
-import ProductsServiceApi from '@/services/productService'
+import ProductsServiceApi from '@/services/ProductService'
 import Product from './Product'
 import { Metadata } from 'next'
 import routes from '@/routes'

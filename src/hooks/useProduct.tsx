@@ -1,5 +1,5 @@
 "use client"
-import ProductsServiceApi from '@/services/productService'
+import ProductsServiceApi from '@/services/ProductService'
 import { Product } from '@/types/Product.types'
 import { useQuery } from '@tanstack/react-query'
 

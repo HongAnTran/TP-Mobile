@@ -26,7 +26,7 @@ export default async function page() {
         </div>
         <div className=' flex flex-col   gap-16'>
           {cates.map((cate) => {
-            return <SectionCategoryGrid key={cate.id} take={4} link={`${routes.category}/${cate.slug}`}  title={cate.title} productIds={[]} categoryId={cate.id} />
+            return <SectionCategoryGrid key={cate.id} take={4} link={`${routes.category}/${cate.slug}`}  title={cate.title}  categoryId={cate.id} />
           })}
         </div>
 

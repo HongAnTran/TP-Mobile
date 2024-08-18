@@ -6,17 +6,16 @@ import ProductCard from '@/components/common/product/ProductCard'
 import Link from "@/components/common/Link";
 
 import { Button } from '../../ui/button'
-import ProductsServiceApi from '@/services/productService'
+import ProductsServiceApi from '@/services/ProductService'
 
 interface SectionCategoryGridProps {
   title: string
-  productIds: number[]
   categoryId?: number
   link? : string
   take? : number
 }
 
-export default async  function SectionCategoryGrid({ title, productIds , categoryId  , link , take = 8}: SectionCategoryGridProps) {
+export default async  function SectionCategoryGrid({ title, categoryId  , link , take = 8}: SectionCategoryGridProps) {
 
   const {datas : products} = await ProductsServiceApi.getList({category_id : categoryId ,limit : take})
 

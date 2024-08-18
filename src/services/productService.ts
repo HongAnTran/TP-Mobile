@@ -23,24 +23,6 @@ class ProductsService {
     });
     return product
   }
-  // async getListClient(params?: ProductsParams, init?: ConfigAPi) {
-  //   const paramsDefault: ProductsParams = {
-  //     ...params,
-  //     status: ProductStatus.SHOW
-  //   }
-  //   return fetchApiPublic.get<Products>(this.url, {
-  //     params: paramsDefault,
-  //     ...init,
-  //   });
-  // }
-
-
-  // async getDetailClient(slug: string) {
-  //   const product = await fetchApiPublic.get<Product>(`${this.url}/${slug}`);
-  //   return product
-  // }
-
-
 }
 
 const ProductsServiceApi = new ProductsService();

@@ -8,7 +8,7 @@ import ProductsRecentViewList from '@/components/feature/ProductsRecentViewList'
 import LayoutContainer from '@/layouts/LayoutContainer'
 import ProductCarousel from '@/components/common/product/ProductCarousel'
 import { CategoryProduct } from '@/types/categoryProduct'
-import ProductsServiceApi from '@/services/productService'
+import ProductsServiceApi from '@/services/ProductService'
 import SectionFeedback from '@/components/feature/zones/FeedbacksZone'
 
 export default function Product({ product }: { product: ProductType }) {
@@ -51,7 +51,7 @@ export default function Product({ product }: { product: ProductType }) {
 }
 
 async function ProductRelated({ categoryId, productId }: { productId: ProductType["id"], categoryId: CategoryProduct['id'] }) {
-  const { datas } = await ProductsServiceApi.getList({ limit: 12, category_id: categoryId })
+  const { datas } = await ProductsServiceApi.getList({ limit: 8, category_id: categoryId })
   return (
     <ProductCarousel title="Sản phẩm tương tự" products={datas.filter(product => product.id !== productId)} />
   )
