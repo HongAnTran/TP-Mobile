@@ -1,5 +1,5 @@
 import CategoryServiceApi from "@/services/categoryService"
-import ProductsServiceApi from "@/services/ProductService"
+import ProductsServiceApi from "@/services/ProductsService"
 import { MetadataRoute } from "next"
 
 

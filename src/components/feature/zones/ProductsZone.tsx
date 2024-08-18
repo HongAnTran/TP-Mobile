@@ -4,7 +4,7 @@ import { TypographyH3 } from '../../ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
 import Link from "@/components/common/Link";
 import { Button } from '../../ui/button'
-import ProductsServiceApi from '@/services/ProductService'
+import ProductsServiceApi from '@/services/ProductsService'
 import {  ProductZone } from '@/types/Structure.type';
 import { cn } from '@/lib/utils';
 import { generateGridClasses, sortByRows } from '@/utils/helper';

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ProductsServiceApi from '@/services/ProductService'
+import ProductsServiceApi from '@/services/ProductsService'
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import { TypographyH1, TypographyP } from '@/components/ui/typography'

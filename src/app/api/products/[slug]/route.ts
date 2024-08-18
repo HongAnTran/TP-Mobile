@@ -1,4 +1,4 @@
-import ProductsServiceApi from "@/services/ProductService"
+import ProductsServiceApi from "@/services/ProductsService"
 
 export async function GET(request: Request, { params }: { params: { slug: string } }) {
   const slug = params.slug

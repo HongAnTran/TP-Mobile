@@ -8,7 +8,7 @@ import ProductsRecentViewList from '@/components/feature/ProductsRecentViewList'
 import LayoutContainer from '@/layouts/LayoutContainer'
 import ProductCarousel from '@/components/common/product/ProductCarousel'
 import { CategoryProduct } from '@/types/categoryProduct'
-import ProductsServiceApi from '@/services/ProductService'
+import ProductsServiceApi from '@/services/ProductsService'
 import SectionFeedback from '@/components/feature/zones/FeedbacksZone'
 
 export default function Product({ product }: { product: ProductType }) {
