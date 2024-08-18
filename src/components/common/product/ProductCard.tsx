@@ -27,7 +27,7 @@ export default function ProductCard({ product }: { product: ProductInList }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       > */}
-      <Card className=' border border-gray-300 group relative'>
+      <Card className=' border border-gray-300 group relative   hover:shadow-2xl hover:border-gray-400'>
         <CardContent className="flex flex-col   gap-2 aspect-square py-4 p-2 lg:p-4">
           <div className=' relative w-full aspect-square overflow-hidden ' >
             <Link href={`${routes.products}/${product.slug}`}  >

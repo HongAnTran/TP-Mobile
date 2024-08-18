@@ -13,13 +13,13 @@ class ProductsService {
     }
     return fetchApi.get<Products>(this.url, {
       params: paramsDefault,
-      next: { revalidate: 60 * 3 },
+      next: { revalidate: 60 * 5 },
       ...init,
     });
   }
   async getDetail(slug: string) {
     const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-      next: { revalidate: 60 * 3 },
+      next: { revalidate: 60 * 5 },
     });
     return product
   }

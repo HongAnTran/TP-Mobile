@@ -29,5 +29,16 @@ interface Article {
 type Articles = ResList<Article>
 
 
-export type { Article, Articles }
+interface ArticlesParams {
+  status?: ArticleStatus
+  categoryId?: number
+  ids?: string
+  keyword?: string
+  page?: number,
+  limit?: number
+  sort_by?: keyof Article
+  sort_type?: "desc" | "asc"
+}
+
+export type { Article, Articles , ArticlesParams }
 export { ArticleStatus }
