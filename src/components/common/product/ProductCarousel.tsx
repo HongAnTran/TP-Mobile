@@ -29,8 +29,8 @@ export default  function ProductCarousel({ title, products , className }: Produc
         >
           <CarouselContent className={cn(className)}>
             {products.map((product, index) => (
-              //  className=" md:basis-1/3 lg:basis-1/5 "
-              <CarouselItem key={index}>
+             
+              <CarouselItem key={index}   className=" md:basis-1/3 lg:basis-1/5 ">
                 <ProductCard product={product} />
               </CarouselItem>
             ))}
