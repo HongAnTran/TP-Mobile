@@ -40,45 +40,6 @@ function generateStrucDataProduct(
     },
   };
 }
-
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-  // read route params
-  const slug = params.slug
-
-  const product = await ProductsServiceApi.getDetail(slug)
-
-  const { meta_data } = product
-  const titleShow = meta_data?.meta_title || product.title
-  const desShow = meta_data?.meta_description || product.short_description || undefined
-  const DOMAIN = process.env.DOMAIN
-  return {
-    title: titleShow,
-    description: desShow,
-
-
-    openGraph: {
-      title: titleShow,
-      description: desShow,
-      images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
-      url: `${DOMAIN}/${routes.products}/${product.slug}`,
-      siteName: DOMAIN,
-      type: "website",
-    },
-    keywords : titleShow,
-    category: product.category.title,
-    other: {
-      "og:type": "product",
-      "og:price:amount": product.price,
-      "og:price:currency": "VND",
-      "og:availability": "https://schema.org/InStock",
-    },
-
-    
-  }
-}
-
 async function getData(slug: string) {
   try {
     const product = await ProductsServiceApi.getDetail(slug)
@@ -87,6 +48,50 @@ async function getData(slug: string) {
     notFound()
   }
 }
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+): Promise<Metadata> {
+  // read route params
+  try {
+    const slug = params.slug
+
+    const product = await ProductsServiceApi.getDetail(slug)
+
+    const { meta_data } = product
+    const titleShow = meta_data?.meta_title || product.title
+    const desShow = meta_data?.meta_description || product.short_description || undefined
+    const DOMAIN = process.env.DOMAIN
+    return {
+      title: titleShow,
+      description: desShow,
+
+
+      openGraph: {
+        title: titleShow,
+        description: desShow,
+        images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
+        url: `${DOMAIN}/${routes.products}/${product.slug}`,
+        siteName: DOMAIN,
+        type: "website",
+      },
+      keywords: titleShow,
+      category: product.category.title,
+      other: {
+        "og:type": "product",
+        "og:price:amount": product.price,
+        "og:price:currency": "VND",
+        "og:availability": "https://schema.org/InStock",
+      },
+
+
+    }
+  } catch (error) {
+    notFound()
+
+  }
+}
+
 
 export default async function page({ params }: { params: { slug: string } }) {
   const slug = params.slug

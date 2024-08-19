@@ -8,7 +8,10 @@ class ProductsService {
 
   async getList(params?: ProductsParams, init?: ConfigAPi) {
     const paramsDefault: ProductsParams = {
+      sortBy: "created_at",
+      sortType: "desc",
       ...params,
+
       status: ProductStatus.SHOW
     }
     return fetchApi.get<Products>(this.url, {

@@ -1,0 +1,160 @@
+{
+  "zones": [
+    {
+      "data": {
+        "col": { "lg": 5, "md": 2, "xs": 2 },
+        "rows": [47, 55, 56, 58, 89, 21, 64, 26],
+        "tags": [],
+        "type": "grid",
+        "title": "Sản phẩm nổi bật",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 2, "xs": 2 },
+        "rows": [58, 90, 63, 42, 53, 31],
+        "tags": [],
+        "type": "grid",
+        "title": "Sản phẩm mới",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 3, "xs": 2 },
+        "rows": [52, 48, 42, 41, 29],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD PRO",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 3, "xs": 2 },
+        "rows": [63, 60, 22, 21, 61],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD AIR",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 3, "xs": 2 },
+        "rows": [14, 18, 10, 15, 11],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD GEN",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 3, "xs": 2 },
+        "rows": [26,27, 25,59, 65,23],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD nhỏ gọn",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 3, "xs": 2 },
+        "rows": [84, 85, 81, 80, 99],
+        "tags": [],
+        "type": "grid",
+        "title": "Phụ Kiện",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 5, "md": 3, "xs": 2 },
+        "rows": [79, 77, 73, 69, 78],
+        "tags": [],
+        "type": "grid",
+        "title": "IPHONE",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 4, "md": 2, "xs": 1 },
+        "rows": [
+          {
+            "rate": 5,
+            "image": {
+              "alt": "",
+              "src": "/feedback/z5516755077447_17097fc14f25d338adcbc03007b1f623.jpg",
+              "widht": 500,
+              "height": 500
+            }
+          },
+          {
+            "rate": 5,
+            "image": {
+              "alt": "",
+              "src": "/feedback/z5516760524100_bffe10e81604861211bc0f2e5c9b1c7a.jpg",
+              "widht": 500,
+              "height": 500
+            }
+          },
+          {
+            "rate": 5,
+            "image": {
+              "alt": "",
+              "src": "/feedback/z5516755844007_beaf7ff8afd4197797a79c1c28146467.jpg",
+              "widht": 500,
+              "height": 500
+            }
+          },
+          {
+            "rate": 5,
+            "image": {
+              "alt": "",
+              "src": "/feedback/z5516756870577_57a9c448a8a8bf090ebc46085d978c3a.jpg",
+              "widht": 500,
+              "height": 500
+            }
+          }
+        ],
+        "type": "grid",
+        "title": "feedback",
+        "typeCard": "default"
+      },
+      "zone": "FEEDBACKS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": { "lg": 2, "md": 2, "xs": 1 },
+        "rows": [1],
+        "type": "grid",
+        "title": "Tin tức mới",
+        "button": { "link": "#", "label": "Xem tất cả" },
+        "typeCard": "default"
+      },
+      "zone": "ARTICLES",
+      "active": true
+    }
+  ]
+}

@@ -36,7 +36,6 @@ export default function CompareProduct({ types, groups }: { groups: ProductGroup
   const [isShowDifferent, setIsShowDifferent] = useState(false)
 
   const { data } = SpesServiceClient.useListMutiple(productsCompare.map(pro => pro.id))
-  console.log(data)
   const keys: Key = {
     price: "Giá",
     brand: "Thương hiệu",
@@ -99,10 +98,10 @@ export default function CompareProduct({ types, groups }: { groups: ProductGroup
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[200px]">So sánh</TableHead>
+          <TableHead className="min-w-[170px]">So sánh</TableHead>
           {fillArrayToLength([...productsCompare], 2).map((pro, index) => {
             if (pro) {
-              return <TableHead className=' flex-1  text-center' key={index}>
+              return <TableHead className=' flex-1  text-center min-w-[200px]' key={index}>
                 <div className=' flex items-center justify-center gap-4'>
                   <TypographyH3 className=' text-center'> {pro.title}</TypographyH3>
                   <div onClick={() => { removeProductToCompare(pro.id) }}>
@@ -112,7 +111,7 @@ export default function CompareProduct({ types, groups }: { groups: ProductGroup
               </TableHead>
 
             }
-            return <TableHead className=' hidden md:block flex-1 items-center text-center' key={index}>
+            return <TableHead className=' hidden min-w-[200px] md:block flex-1 items-center text-center' key={index}>
               <div className=' flex justify-center items-center'>
                 <TypographyH3> Thêm sản phẩm</TypographyH3>
                 {/* <PlusCircledIcon /> */}
@@ -123,8 +122,8 @@ export default function CompareProduct({ types, groups }: { groups: ProductGroup
       </TableHeader>
       <TableBody>
         <TableRow >
-          <TableCell className="w-[200px]">
-            <div className="items-top flex space-x-2">
+          <TableCell className="min-w-[170px]">
+            <div className="items-top flex flex-wrap space-x-2">
 
               <Checkbox id="terms1" onCheckedChange={(check) => { setIsShowDifferent(!!check.valueOf()) }} />
               <div className="grid gap-1.5 leading-none">
@@ -198,7 +197,7 @@ function ProductCardCompare({ product }: { product: Product }) {
 
       <Link href={`${routes.products}/${product.slug}`} >
 
-        <CardTitle className='   hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
+        <CardTitle className='   lg:text-base  text-xs   hover:text-blue-500 transition-colors' >{product.title}</CardTitle>
       </Link>
 
       <div className=' flex  items-center gap-2'>

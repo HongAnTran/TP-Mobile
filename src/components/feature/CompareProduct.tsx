@@ -13,8 +13,7 @@ import { AddSquareIcon } from '../icons'
 import CloseCircleFilledIcon from '../icons/CloseCircleFilledIcon'
 import SETTINGS from '@/consts/settings'
 import { useRouter } from 'next/navigation'
-import { Sheet, SheetContent, SheetHeader } from '../ui/sheet'
-import Logo from '../common/Logo'
+import { Sheet, SheetContent } from '../ui/sheet'
 import useGetTypeDevice from '@/hooks/useGetTypeDevice'
 
 export default function CompareProduct() {

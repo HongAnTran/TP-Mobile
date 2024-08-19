@@ -27,6 +27,7 @@ export default async function page() {
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
           {zones.map((zone, index) => {
+            if(!zone.active) return null
             switch (zone.zone) {
               case "PRODUCTS":
                 return <ProductsZone key={index} data={zone.data} />

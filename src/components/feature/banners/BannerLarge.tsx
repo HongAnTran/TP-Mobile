@@ -17,13 +17,13 @@ const datas: BannerHeroItem[] = [
   {
     image: "/Apple-iPad-Pro-2024-Black-PNG.png",
     title: "Ipad Pro M4",
-    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 11.490.000",
-    link: "/san-pham/ipad-pro-m4-11-inch-lte-new-seal"
+    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 23,290,000₫",
+    link: "/san-pham/ipad-pro-m4-11-inch-wifi-openbox"
   },
   {
     image: "/Apple-iPad-Air-2024-PNG.png",
     title: "Ipad Air 6",
-    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 12.990.000",
+    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 15,790,000đ",
     link: "/san-pham/ipad-air-6-13-inch-lte-new-seal"
   },
 ]

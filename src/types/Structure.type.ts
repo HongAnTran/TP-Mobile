@@ -8,31 +8,35 @@ export type CardType = 'default' | 'mini'
 export interface BannerZone {
   zone: 'BANNERS';
   isLazy?: boolean
+  active:boolean
   data: ZoneData<BannerRow>;
 }
 
 export interface ProductZone {
   zone: 'PRODUCTS';
   isLazy?: boolean
-
+  active:boolean
   data: ZoneData<ProductRow>;
 }
 
 export interface CategoryZone {
   zone: 'CATEGORIES';
   isLazy?: boolean
+  active:boolean
   data: ZoneData<ProductRow>; // Bạn có thể sử dụng ProductRow hoặc tạo một interface riêng
 }
 
 export interface FeedbackZone {
   zone: 'FEEDBACKS';
   isLazy?: boolean
+  active:boolean
   data: ZoneData<Feedback>;
 }
 
 export interface ArticleZone {
   zone: 'ARTICLES';
   isLazy?: boolean
+  active:boolean
   data: ZoneData<ProductRow>; // Bạn có thể sử dụng ProductRow hoặc tạo một interface riêng
 }
 export interface ColSettings {
