@@ -74,7 +74,7 @@ function ProductCardImage({ images, title }: Pick<Product, "images" | "title" >)
   // const secondImage = images?.[1]
   return (
     <>
-      <Image src={firstImage.url} quality={100} alt={title} width={600} height={600} className={cn(
+      <Image src={firstImage.url} alt={title} width={400} height={400} className={cn(
         "  absolute  md:hover:-translate-y-2 transition-all duration-300  w-full  aspect-square  object-contain",
         // {
         //   " group-hover:-z-1  group-hover:opacity-0 ": !!secondImage
