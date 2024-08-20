@@ -1,0 +1,52 @@
+{
+  "config_website": {
+    "logo": {
+      "src": "",
+      "alt": "",
+      "width": 200,
+      "height": 200
+    },
+    "logo_mobile": {
+      "src": "",
+      "alt": "",
+      "width": 200,
+      "height": 200
+    },
+    "favicon": {
+      "src": "",
+      "alt": "",
+      "width": 200,
+      "height": 200
+    },
+    "hotline": {
+      "label": "",
+      "tel": ""
+    },
+    "slogan": "",
+    "socials": [
+      {
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 200,
+          "height": 200
+        },
+        "href": "",
+        "tagert": ""
+      }
+    ],
+    "contacts": [
+      {
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 200,
+          "height": 200
+        },
+        "background_blur":"",
+        "href": "https://www.instagram.com/tpmobile.store/",
+        "tagert": "_blank"
+      }
+    ]
+  }
+}
