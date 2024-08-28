@@ -22,14 +22,15 @@ function generateStrucDataWeb(): WithContext<WebSite> {
       "query": "required name=ipad",
 
     },
-    description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao,",
+    description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao, dịch vụ khách hàng chu đáo và chế độ bảo hành tốt nhất để đảm bảo sự hài lòng của quý khách.",
+
   };
 }
 export const metadata: Metadata = {
   title: "TP MOBILE STORE",
   description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao, dịch vụ khách hàng chu đáo và chế độ bảo hành tốt nhất để đảm bảo sự hài lòng của quý khách.",
   authors: [{ name: "TP Mobile", url: process.env.DOMAIN }],
-  keywords: "iPad, TP Mobile, mua iPad, bảo hành iPad, cửa hàng iPad , ipad like new , ipad cũ, ipad cu",
+  keywords: "iPad, TP Mobile, mua iPad, bảo hành iPad, cửa hàng iPad , ipad like new , ipad cũ, ipad cu ,ipad pro" ,
   openGraph: {
     type: 'website',
     url: process.env.DOMAIN,
@@ -57,9 +58,9 @@ export const metadata: Metadata = {
       }
     ],
   },
-
-
-  robots: "index, follow",
+  alternates:{
+    canonical :process.env.DOMAIN
+  }
 };
 
 

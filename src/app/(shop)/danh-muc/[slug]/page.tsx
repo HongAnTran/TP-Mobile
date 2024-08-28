@@ -39,11 +39,14 @@ export async function generateMetadata(
   return {
     title: titleShow,
     description: desShow,
+    alternates: {
+      canonical: `${DOMAIN}${routes.category}/${category.slug}`
+    },
     openGraph: {
       title: titleShow,
       description: desShow,
       images: { url: category.image, width: 800, height: 600 },
-      url: `${DOMAIN}/${routes.category}/${category.slug}`,
+      url: `${DOMAIN}${routes.category}/${category.slug}`,
       siteName: DOMAIN,
     },
     other: {
@@ -58,9 +61,9 @@ export default async function page({ params, searchParams }: { params: { slug: s
   const key = JSON.stringify(searchParams)
 
   const keys = Object.keys(searchParams)
-  const values = keys.reduce((pre : any,key)=>{
-    return pre[key] = searchParams[key] ?  searchParams[key].split(",")  : []
-  },{})
+  const values = keys.reduce((pre: any, key) => {
+    return pre[key] = searchParams[key] ? searchParams[key].split(",") : []
+  }, {})
 
   const defaultFilter = {
     ...values,

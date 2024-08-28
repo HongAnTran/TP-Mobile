@@ -14,13 +14,18 @@ export async function generateMetadata(
   if (!artice) {
     notFound()
   }
-  const {meta_data} = artice
+  const { meta_data } = artice
   const titleShow = meta_data?.meta_title || artice.title
   const desShow = meta_data?.meta_description || artice.description || undefined
+  const keywords = meta_data?.meta_keywords || titleShow || undefined
   const DOMAIN = process.env.DOMAIN
   return {
     title: titleShow,
     description: desShow,
+    keywords: keywords,
+    alternates: {
+      canonical: `${DOMAIN}${routes.artice}/${artice.slug}`
+    },
     openGraph: {
       title: titleShow,
       description: desShow,

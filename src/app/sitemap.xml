@@ -4,472 +4,485 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
   <loc>https://tpmobile.com.vn/</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/yeu-thich</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/danh-muc</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://tpmobile.com.vn/gio-hang</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/gioi-thieu-tpmobile</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/cua-hang</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/tin-tuc</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/ipad-pro</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/ipad-air</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/ipad-gen</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/ipad-mini</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/phu-kien</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/iphone</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/ipad-cu</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/danh-muc/ipad-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-11-inch-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-11-inch-wifi-openbox</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-wifi</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-129-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-11-inch-2018-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-11-inch-2018-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-129-inch-2018-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-129-inch-2018-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-11-inch-wifi-new-seal-cpo</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-11-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-11-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-129-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-11-inch-wifi-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-13-inch-wifi-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-4-109-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-4-109-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-13-inch-wifi-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-wifi-new-seal-cpo</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-wifi-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-13-inch-wifi-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-129-inch-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-129-inch-wifi-4g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-129-inch-2018-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-4-109-inch-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-11-inch-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-11-inch-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-9-102-inch-2021-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-wifi</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/ipad-gen-9-102-inch-2021-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-9-102-inch-2021-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-9-102-inch-2021-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-9-102-inch-2021-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-11-inch-2018-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-4-109-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-5-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/tai-nghe-bluetooth-airpods-2-co-day</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/smart-keyboard-folio-ipad-pro-20212022-129-chinh-hang</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ban-phim-apple-magic-keyboard-ipad-pro-13-m4-chinh-hang</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-wifi-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/tai-nghe-airpods-pro-2023-magsafe-chinh-hang-vna</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/but-apple-pencil-1-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-12-mini-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/smart-keyboard-folio-ipad-pro-20212022-129-chinh-hang</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-12-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/tai-nghe-bluetooth-airpods-2-co-day</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-12-pro-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ban-phim-ipad-pro-11-m4-apple-magic-keyboard</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-12-pro-max-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-15-pro-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-13-pro-max-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-14-pro-max-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/iphone-13-pro-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-14-pro-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-12-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-14-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-15-pro-max-512gb-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/feedback</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-129-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/tin-tuc/co-nen-mua-ipad-cu-kinh-nghiem-chon-mua-ipad-dung-chuan-nam-2024</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/tin-tuc/back-to-school-khoi-dau-cuc-cool-cung-tp-mobile</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/tin-tuc</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/danh-muc</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/uu-dai-tai-tpmobile</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/chinh-sach-bao-hanh</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/chinh-sach-doi-tra</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-11-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-wifi-new-seal-cpo</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-11-inch-wifi-new-seal-cpo</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-13-inch-wifi-openbox</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-13-inch-wifi-5g-openbox</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-lte-new-seal-cpo</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-129-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-129-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-pro?page=0</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-pro?page=1</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-pro?page=2</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-13-inch-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-13-inch-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-14-plus-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-14-pro-max-quoc-te-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-15-pro-max-512gb-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/iphone-15-pro-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-cu?page=0</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-cu?page=1</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-cu?page=2</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-lte-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-13-inch-wifi-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m4-11-inch-wifi-new-seal</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-new?page=0</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-new?page=1</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-11-inch-wifi-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/danh-muc/ipad-new?page=2</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-wifi-5g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m1-2021-11-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-4-109-inch-wifi-cpo</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-11-inch-wifi-openbox</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-6-11-inch-wifi-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-air-5-109-inch-2022-wifi-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-9-102-inch-2021-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-gen-10-109-inch-2022-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-mini-6-5g-new-seal</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ban-phim-apple-magic-keyboard-ipad-pro-13-m4-chinh-hang</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-14-plus-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-14-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-14-pro-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-13-pro-max-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-12-pro-max-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-12-pro-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/iphone-12-mini-quoc-te-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/smart-keyboard-folio-ipad-air-109-inch-ipad-pro-11-chinh-hang</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-129-inch-wifi-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-2020-11-inch-wifi-4g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-129-inch-2018-wifi-4g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-11-inch-2018-wifi-4g-like-new</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://tpmobile.com.vn/san-pham</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-wifi-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/ipad-pro-m2-2022-129-inch-lte-like-new</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://tpmobile.com.vn/san-pham/smart-keyboard-folio-ipad-air-109-inch-ipad-pro-11-chinh-hang</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
 </url>
 
 <url>
-  <loc>https://tpmobile.com.vn/san-pham?page=1</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tpmobile.com.vn/danh-muc-tin-tuc/cong-nghe</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham?page=2</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://tpmobile.com.vn/danh-muc-tin-tuc/su-kien</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://tpmobile.com.vn/san-pham?page=3</loc>
-  <lastmod>2024-08-05T06:58:10+00:00</lastmod>
+  <loc>https://tpmobile.com.vn/danh-muc-tin-tuc</loc>
+  <lastmod>2024-08-28T17:44:37+00:00</lastmod>
   <priority>0.51</priority>
 </url>
+
+
 </urlset>

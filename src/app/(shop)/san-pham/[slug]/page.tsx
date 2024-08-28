@@ -61,21 +61,25 @@ export async function generateMetadata(
     const { meta_data } = product
     const titleShow = meta_data?.meta_title || product.title
     const desShow = meta_data?.meta_description || product.short_description || undefined
+    const keywords = meta_data?.meta_keywords || titleShow
     const DOMAIN = process.env.DOMAIN
+    const URL =`${DOMAIN}${routes.products}/${product.slug}`
     return {
       title: titleShow,
       description: desShow,
-
-
+      alternates:{
+          canonical : URL
+      },
+      authors:{name:"TP Mobile Store" , url : DOMAIN},
       openGraph: {
         title: titleShow,
         description: desShow,
         images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
-        url: `${DOMAIN}/${routes.products}/${product.slug}`,
+        url: URL,
         siteName: DOMAIN,
         type: "website",
       },
-      keywords: titleShow,
+      keywords: keywords,
       category: product.category.title,
       other: {
         "og:type": "product",
@@ -83,8 +87,6 @@ export async function generateMetadata(
         "og:price:currency": "VND",
         "og:availability": "https://schema.org/InStock",
       },
-
-
     }
   } catch (error) {
     notFound()
