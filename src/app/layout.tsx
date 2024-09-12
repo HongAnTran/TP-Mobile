@@ -82,7 +82,6 @@ export default function RootLayout({
 
       <link rel="icon" href="/icon.ico" sizes="any" />
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <meta name="google-site-verification" content="ooNv-cj6ianI3N7tJxrulG6ihHMwq092YA0XfTxksuQ" />
       <GoogleAnalytics />
       <body className={inter.className}>
         <script
