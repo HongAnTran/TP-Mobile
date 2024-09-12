@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import {  Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react"
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: "TP MOBILE STORE",
   description: "TP Mobile store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chúng tôi cung cấp các sản phẩm iPad chất lượng cao, dịch vụ khách hàng chu đáo và chế độ bảo hành tốt nhất để đảm bảo sự hài lòng của quý khách.",
   authors: [{ name: "TP Mobile", url: process.env.DOMAIN }],
-  keywords: "iPad, TP Mobile, mua iPad, bảo hành iPad, cửa hàng iPad , ipad like new , ipad cũ, ipad cu ,ipad pro" ,
+  keywords: "iPad, TP Mobile, mua iPad, bảo hành iPad, cửa hàng iPad , ipad like new , ipad cũ, ipad cu ,ipad pro",
   openGraph: {
     type: 'website',
     url: process.env.DOMAIN,
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
       }
     ],
   },
-  alternates:{
-    canonical :process.env.DOMAIN
+  alternates: {
+    canonical: process.env.DOMAIN
   }
 };
 
@@ -79,15 +79,16 @@ export default function RootLayout({
 
   return (
     <html lang="vi">
-     
+
       <link rel="icon" href="/icon.ico" sizes="any" />
       <link rel="icon" href="/favicon.ico" sizes="any" />
+      <meta name="google-site-verification" content="ooNv-cj6ianI3N7tJxrulG6ihHMwq092YA0XfTxksuQ" />
       <GoogleAnalytics />
       <body className={inter.className}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <SessionProvider>
           <ReactQueryProvider>
             {children}
