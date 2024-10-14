@@ -54,7 +54,7 @@ export default function HeaderItems() {
           <StoreIcon className=' w-6 h-6' />
         </IconBorder>
         <div className=' absolute -right-1 -top-1  w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-md '>
-          <TypographySpan className=' text-gray-800 font-bold text-xs'>{1}</TypographySpan>
+          <TypographySpan className=' text-gray-800 font-bold text-xs'>{2}</TypographySpan>
         </div>
       </div>,
       text: <span className='  text-[11px]  font-medium uppercase'>Hệ thống<br /> <b>Cửa hàng</b> </span>,

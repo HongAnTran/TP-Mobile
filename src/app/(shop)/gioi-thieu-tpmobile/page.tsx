@@ -28,7 +28,7 @@ export default function page() {
               Một lần nữa, cảm ơn bạn đã lựa chọn TP Mobile !
             </p>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          {/* <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
 
             <Image
               className="object-cover object-center rounded"
@@ -37,7 +37,7 @@ export default function page() {
               width={500}
               height={500}
             />
-          </div>
+          </div> */}
         </div>
       </section>
       <section >

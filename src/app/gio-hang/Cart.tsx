@@ -136,7 +136,7 @@ export default function Cart() {
       </div>
 
       <DialogUi open={open} onClose={() => setOpen(false)} >
-        <p className=' text-center  text-lg'>Có sản phẩm có giá liên hệ Vui lòng liên hệ <b>(0347.907.042)</b> để đặt mua</p>
+        <p className=' text-center  text-lg'>Rất tiếc trong giỏ hàng của bạn có sản phẩm có giá liên hệ. Vui lòng gọi <b>(0347.907.042)</b> để đặt mua</p>
       </DialogUi>
     </div>
 

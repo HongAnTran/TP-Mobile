@@ -1,7 +1,7 @@
 import { AddressInffo } from "./address";
 
 interface Store extends AddressInffo {
-  map_url: string
+  url_map: string
 }
 
 export type { Store }

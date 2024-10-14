@@ -5,8 +5,7 @@ import SelectController from '@/components/common/inputs/SelectController'
 import PriceText from '@/components/common/PriceText'
 import { Button } from '@/components/ui/button'
 import { TypographySpan } from '@/components/ui/typography'
-import LocationServiceApi from '@/services/locationService'
-import { Location } from '@/types/location'
+import { Location, LocationTypeCode } from '@/types/location'
 import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/order'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -17,6 +16,8 @@ import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
 import routes from '@/routes'
 import BoxFixedBottom from '@/components/common/BoxFixedBottom'
+import LocationServiceClient from '@/servicesClient/LocationService'
+import { LoadingIcon } from '@/components/icons'
 
 interface LocationState {
   provices: Location[],
@@ -36,11 +37,11 @@ const AddressInfoSchema = yup.object().shape({
     name: yup.string(), // Tên của thành phố
   }).required(),
   district: yup.object().shape({
-    code: yup.string().required("Vui lòng chọn"), // Mã code của thành phố
+    code: yup.string().required("Vui lòng chọn").min(2), // Mã code của thành phố
     name: yup.string(), // Tên của thành phố
   }).required(),
   ward: yup.object().shape({
-    code: yup.string().required("Vui lòng chọn"), // Mã code của thành phố
+    code: yup.string().required("Vui lòng chọn").min(2), // Mã code của thành phố
     name: yup.string(), // Tên của thành phố
   }).required(),
   type: AddressType,
@@ -52,6 +53,8 @@ const AddressInfoSchema = yup.object().shape({
 export type Address = yup.InferType<typeof AddressInfoSchema>;
 
 export default function CheckoutInfoForm({ order }: { order: Order }) {
+
+  const [isSubmit , setIsSubmit] = useState(false)
   const [location, setLocation] = useState<LocationState>({
     provices: [],
     districts: [],
@@ -60,6 +63,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
   const { toast } = useToast()
   const router = useRouter()
+  
 
   const { control, handleSubmit, watch, setValue, formState } = useForm<Address>({
     // defaultValues: order.shipping,
@@ -68,42 +72,53 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
   const watchProvice = watch("province.code")
   const watchDistrict = watch("district.code")
 
+  const { data: provices } = LocationServiceClient.useList({ type: LocationTypeCode.PROVINCE })
+  const { data: districts } = LocationServiceClient.useList({ type: LocationTypeCode.DISTRICT, parent_code: watchProvice }, {
+    enabled: !!watchProvice
+  })
+  const { data: wards } = LocationServiceClient.useList({ type: LocationTypeCode.WARD, parent_code: watchDistrict }
+    , {
+      enabled: !!watchDistrict
+    }
+  )
+
+
 
   useEffect(() => {
-    (async () => {
-      const res = await LocationServiceApi.getListProvinces()
-      setLocation(pre => ({ ...pre, provices: res }))
-    })()
-  }, [])
+    if (provices) {
+      setLocation(pre => ({ ...pre, provices: provices }))
+    }
+  }, [provices])
 
 
   useEffect(() => {
-    if (!watchProvice) {
+    if (!districts) {
       return
     }
-    (async () => {
 
-      const res = await LocationServiceApi.getListDistrictsByProvice(watchProvice)
-      setLocation(pre => ({ ...pre, districts: res }))
-      setValue("district.code", res[0].code)
-    })()
-  }, [setValue, watchProvice])
+    setLocation(pre => ({ ...pre, districts: districts }))
+    setValue("district.code", districts[0].code)
+  }, [setValue, districts])
 
   useEffect(() => {
-    if (!watchDistrict) {
+    if (!wards) {
       return
     }
-    (async () => {
+    setLocation(pre => ({ ...pre, wards: wards }))
+    setValue("ward.code", wards[0].code)
+  }, [setValue, wards])
 
-      const res = await LocationServiceApi.getListWardsByDistricts(watchDistrict)
-      setLocation(pre => ({ ...pre, wards: res }))
-      setValue("ward.code", res[0].code)
 
-    })()
-  }, [setValue, watchDistrict])
+  useEffect(()=>{
+    setValue("district.code", "")
+    setValue("ward.code", "")
+
+
+  },[watchProvice])
 
   async function onSubmit(data: Address) {
     try {
+      setIsSubmit(true)
       const body: OrderCheckoutInput = {
         note: data.note,
         payment: {
@@ -123,7 +138,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             district: data.district.code,
             ward: data.ward.code,
             phone: data.phone,
-            address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name}, ${location.districts.find(ward => ward.code === data.district.code)?.name}, ${location.provices.find(ward => ward.code === data.province.code)?.name}`,
+            address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name_with_type}, ${location.districts.find(ward => ward.code === data.district.code)?.name_with_type}, ${location.provices.find(ward => ward.code === data.province.code)?.name_with_type}`,
           }
         }
 
@@ -133,8 +148,10 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
       router.replace(`${routes.checkoutSuccess}/${res.token}`)
     } catch (error) {
-      // router.push(`${routes.checkoutFail}/${res.token}`)
-      toast({ title: "Đặt hàng thất bại vui lòng thử lại" })
+      toast({ title: "Đặt hàng thất bại vui lòng thử lại hoặc liên hệ 0347.907.042" })
+
+    }finally{
+      setIsSubmit(false)
 
     }
   }
@@ -154,7 +171,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
           <SelectController
             required
             items={location.provices.map(item => {
-              return { label: item.name, value: item.code.toString() }
+              return { label: item.name_with_type, value: item.code.toString() }
             })}
             label='Tỉnh / thành'
             name="province.code"
@@ -164,7 +181,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             required
 
             items={location.districts.map(item => {
-              return { label: item.name, value: item.code.toString() }
+              return { label: item.name_with_type, value: item.code.toString() }
             })}
             label='Quận / huyện'
             name="district.code"
@@ -174,7 +191,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             required
 
             items={location.wards.map(item => {
-              return { label: item.name, value: item.code.toString() }
+              return { label: item.name_with_type, value: item.code.toString() }
             })}
             label='Phường / xã'
             name="ward.code"
@@ -225,12 +242,15 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         </li>
       </ul>
 
-      <Button type="submit" disabled={!formState.isValid} className='text-white w-full bg-red-500 hidden md:block'>
+      <Button type="submit" disabled={!formState.isValid || isSubmit} className='text-white w-full bg-red-500 hidden md:block'>
+       
+            {isSubmit && <LoadingIcon />}
         Đặt hàng
       </Button>
 
       <BoxFixedBottom >
-        <Button type="submit" disabled={!formState.isValid} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
+        <Button type="submit" disabled={!formState.isValid || isSubmit} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
+        {isSubmit && <LoadingIcon />}
           Đặt hàng{" "}
           <span className=' md:hidden'>
 

@@ -4,6 +4,7 @@ import { Location } from "./location";
 // type AddressType = "home" | "office"
 
 interface AddressInffo {
+  id : number
   name: string
   email: string | null; // Địa chỉ email của người nhận hàng (có thể là null)
   detail_address: string; // 
