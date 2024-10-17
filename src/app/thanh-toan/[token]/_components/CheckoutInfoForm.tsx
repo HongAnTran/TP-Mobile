@@ -54,7 +54,7 @@ export type Address = yup.InferType<typeof AddressInfoSchema>;
 
 export default function CheckoutInfoForm({ order }: { order: Order }) {
 
-  const [isSubmit , setIsSubmit] = useState(false)
+  const [isSubmit, setIsSubmit] = useState(false)
   const [location, setLocation] = useState<LocationState>({
     provices: [],
     districts: [],
@@ -63,7 +63,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
   const { toast } = useToast()
   const router = useRouter()
-  
+
 
   const { control, handleSubmit, watch, setValue, formState } = useForm<Address>({
     // defaultValues: order.shipping,
@@ -109,12 +109,10 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
   }, [setValue, wards])
 
 
-  useEffect(()=>{
+  useEffect(() => {
     setValue("district.code", "")
     setValue("ward.code", "")
-
-
-  },[watchProvice])
+  }, [watchProvice, setValue])
 
   async function onSubmit(data: Address) {
     try {
@@ -150,7 +148,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     } catch (error) {
       toast({ title: "Đặt hàng thất bại vui lòng thử lại hoặc liên hệ 0347.907.042" })
 
-    }finally{
+    } finally {
       setIsSubmit(false)
 
     }
@@ -243,14 +241,14 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       </ul>
 
       <Button type="submit" disabled={!formState.isValid || isSubmit} className='text-white w-full bg-red-500 hidden md:block'>
-       
-            {isSubmit && <LoadingIcon />}
+
+        {isSubmit && <LoadingIcon />}
         Đặt hàng
       </Button>
 
       <BoxFixedBottom >
         <Button type="submit" disabled={!formState.isValid || isSubmit} className='text-white font-bold uppercase flex gap-2  w-full bg-red-500'>
-        {isSubmit && <LoadingIcon />}
+          {isSubmit && <LoadingIcon />}
           Đặt hàng{" "}
           <span className=' md:hidden'>
 

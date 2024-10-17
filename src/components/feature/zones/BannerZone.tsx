@@ -23,8 +23,8 @@ export default function BannerZone({ data }: Pick<BannerZoneType, "data">) {
                 {rows.map((banner, index) => {
                     const image = banner.image
                     if (banner.link) {
-                        return <Link href={banner.link}>
-                            <Image quality={100} className='  rounded-md  h-auto' key={index} src={image.src} alt={image.alt || ""} width={image.width} height={image.height} />
+                        return <Link href={banner.link} key={index}>
+                            <Image quality={100} className='  rounded-md  h-auto'  src={image.src} alt={image.alt || ""} width={image.width} height={image.height} />
                         </Link>
                     }
                     return <Image quality={100} className=' rounded-lg  max-h-[340px]   h-full lg:h-auto' key={index} src={image.src} alt={image.alt || ""} width={image.width} height={image.height} />
