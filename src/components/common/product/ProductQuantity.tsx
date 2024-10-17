@@ -21,7 +21,7 @@ export default function ProductQuantity({ quantity, handleQuantity, label = "Sá»
 
   return (
     <div className={cn(' flex gap-4  items-center', className)} >
-      {label ? <label className=' text-gray-700 font-semibold min-w-[115px]'>{label}</label> : null}
+      {label ? <label className=' text-gray-700 font-semibold min-w-[100px]'>{label}</label> : null}
       <div className=' flex h-[30px] '>
         <Button onClick={handleQuantity?.minus} className=' w-[30px] h-full p-0 rounded-none  rounded-l  bg-white border border-gray-500' ><MinusIcon className=' text-gray-800' /></Button>
         <Input

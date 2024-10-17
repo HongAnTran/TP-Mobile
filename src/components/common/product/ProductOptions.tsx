@@ -15,8 +15,8 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
     <div className=' flex flex-col gap-4'>
       {
         product.attributes.map((option , index) => {
-          return <div key={option.id} className=' flex items-center gap-4'>
-            <TypographyP className=' font-bold min-w-[115px]'>
+          return <div key={option.id} className=' flex  gap-4'>
+            <TypographyP className=' font-bold min-w-[90px] lg:min-w-[100px]'>
               {option.attribute.name}:
             </TypographyP>
             <div className=' flex gap-2 md:gap-4 items-center  flex-wrap'>
@@ -43,13 +43,13 @@ function AttributeRectangle({ attributes, optionsActive, onSelectOption, indexGr
     <>
       {attributes.map(data => {
         return (
-          <div key={data.id} className={cn(' transition-all border border-gray-700 rounded w-fit px-[6px] cursor-pointer', {
-            " border-red-500 text-red-500": optionsActive.includes(data.id)
+          <div key={data.id} className={cn(' transition-all border border-gray-700   rounded-lg w-fit px-[6px] lg:px-[8px] py-1 cursor-pointer', {
+            "  bg-primary text-secondary border-secondary ": optionsActive.includes(data.id)
           })
           }
             onClick={() => onSelectOption(indexGroup, data.id)}
           >
-            <TypographySpan className=' text-sm'>{data.value}</TypographySpan>
+            <TypographySpan className=' text-inherit text-sm font-semibold'>{data.value}</TypographySpan>
           </div>
         )
       })}
@@ -65,13 +65,15 @@ function AttributeColor({ attributes, optionsActive, onSelectOption, indexGroup 
         return (
           <TooltipUi key={data.id} title={data.value}>
 
-            <div className=' flex items-center gap-1'>
+            <div 
+               onClick={() => onSelectOption(indexGroup, data.id)}
+            className={cn(' flex items-center gap-1 border   rounded-lg p-1 ' ,{
+              "  bg-primary text-secondary border-secondary ": optionsActive.includes(data.id)
+            })}>
               <div className={
-                cn('  border  flex items-center justify-center rounded-full overflow-hidden   p-[2px] w-6 h-6  opacity-80 border-[hsla(0,0%,60%,.4)]   cursor-pointer', {
-                  "  border-red-500 border-2 opacity-100": optionsActive.includes(data.id)
-                })
+                cn('  border bg-white flex items-center justify-center rounded-full overflow-hidden border-[hsla(0,0%,60%,.4)]   p-[2px] w-6 h-6' )
               }
-                onClick={() => onSelectOption(indexGroup, data.id)}
+               
               >
                 <p className={cn(' transition-all   w-4 h-4  rounded-full    ')
                 }
@@ -81,7 +83,7 @@ function AttributeColor({ attributes, optionsActive, onSelectOption, indexGroup 
                 >
                 </p>
               </div>
-              <span>{data.value}</span>
+              <span className=' text-inherit font-semibold'>{data.value}</span>
             </div>
           </TooltipUi>
         )

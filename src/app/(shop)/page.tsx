@@ -7,6 +7,7 @@ import FeedbacksZone from '@/components/feature/zones/FeedbacksZone'
 import ArticlesZone from '@/components/feature/zones/ArticlesZone'
 import SettingsServiceApi from '@/services/SettingsService'
 import { SETTINGKEYS } from '@/consts/settingsKey'
+import BannerZone from '@/components/feature/zones/BannerZone'
 
 
 
@@ -32,6 +33,8 @@ export default async function page() {
                 return <ProductsZone key={index} data={zone.data} />
               case "FEEDBACKS":
                 return <FeedbacksZone key={index} data={zone.data} />
+              case "BANNERS":
+                  return <BannerZone key={index} data={zone.data} />
               case "ARTICLES":
                 return (
                   <ArticlesZone

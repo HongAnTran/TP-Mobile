@@ -18,7 +18,7 @@ const datas: BannerHeroItem[] = [
     image: "/Apple-iPad-Pro-2024-Black-PNG.png",
     title: "Ipad Pro M4",
     description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 23,290,000₫",
-    link: "/san-pham/ipad-air-6-11-inch-wifi-openbox"
+    link: "/san-pham/ipad-pro-m4-11-inch-wifi-openbox"
   },
   {
     image: "/Apple-iPad-Air-2024-PNG.png",
@@ -52,7 +52,7 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
 
     >
       <span className="w-20 h-2  bg-white mb-12"></span>
-      <h2 className="font-bebas-neue uppercase   text-xl md:text-6xl xl:text-8xl font-black flex flex-col leading-none bg-gradient-to-r from-indigo-400  to-secondary  bg-clip-text text-transparent">
+      <h2 className="font-bebas-neue uppercase   text-xl md:text-5xl xl:text-7xl font-black flex flex-col leading-none bg-gradient-to-r from-indigo-400  to-secondary  bg-clip-text text-transparent">
 
         {item.title}
       </h2>
@@ -76,7 +76,7 @@ function BannerItem({ item }: { item: BannerHeroItem }) {
       className=" w-2/4 lg:w-3/6 relative flex  justify-center"
     >
 
-      <Image width={500} height={500} src={item.image} alt='banner' className=' w-[200px] h-[200px] md:w-[300px] md:h-[300px]  lg:w-[360px] lg:h-[360px] rounded-lg' priority={true} />
+      <Image width={400} height={400} src={item.image} alt='banner' className=' w-[200px] h-[200px] md:w-[240px] md:h-[240px]  lg:w-[300px] lg:h-[300px] rounded-lg' priority={true} />
 
     </motion.div>
   </div>)

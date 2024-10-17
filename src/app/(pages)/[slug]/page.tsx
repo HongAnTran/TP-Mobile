@@ -37,7 +37,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 
 
-  console.log(page)
   return (
     <div className=' container my-8'>
       <Breadcrumbs breadcrumbsList={[{ label: page.title, isActive: true }]} />

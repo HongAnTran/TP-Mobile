@@ -19,7 +19,7 @@ export default async function ProductCollectionList({ searchParams, slug }: Prod
     limit: LIMIT,
     ...searchParams
   }, {
-    isLogger: true
+    // isLogger: true
   })
   if (!datas.length) {
     return (

@@ -73,9 +73,7 @@ export default function ProductDetail({ product }: { product: Product }) {
             <ProductOptions product={product} optionsActive={optionActive} onSelectOption={handleSelectOption} />
 
           </div>
-          <div className=' mt-1'>
-            <ProductBenefitsIpad />
-          </div>
+
           <div className=' mt-4'>
             <ProductQuantity
               quantity={quantity}
@@ -93,6 +91,9 @@ export default function ProductDetail({ product }: { product: Product }) {
         </div>
         <div className=' col-span-12 lg:col-span-3'>
           <ProductBenefits />
+          <div className=' mt-1'>
+            <ProductBenefitsIpad />
+          </div>
         </div>
 
       </div>

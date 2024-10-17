@@ -9,6 +9,5 @@ export async function GET(request: NextRequest) {
    type,
    parent_code
   })
-  console.log(data)
   return Response.json(data)
 }

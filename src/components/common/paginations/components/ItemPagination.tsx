@@ -11,7 +11,6 @@ function ItemPagination({
 	isActive?: boolean;
 	className?: string;
 }) {
-	console.log(isActive)
 	return (
 		<div
 			className={cn(

@@ -2,8 +2,60 @@
   "zones": [
     {
       "data": {
+        "col": { "lg": 4, "md": 4, "xs": 2 },
+        "rows": [
+          {
+            "title": "",
+            "link": "",
+            "image": {
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1729184154/tpmobile-images-public/ylmf4yopkj2uadyi7xdp.jpg",
+              "alt": "banner",
+              "width": 440,
+              "height": 900
+            }
+          },
+          {
+            "title": "",
+            "link": "",
+            "image": {
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1729184154/tpmobile-images-public/ctah5xpszqwhdqwjnomc.jpg",
+              "alt": "banner",
+              "width": 440,
+              "height": 900
+            }
+          },
+          {
+            "title": "",
+            "link": "",
+            "image": {
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1729184154/tpmobile-images-public/ntzyassysw19xbsw80z6.jpg",
+              "alt": "banner",
+              "width": 440,
+              "height": 900
+            }
+          },
+          {
+            "title": "",
+            "link": "",
+            "image": {
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1729184971/tpmobile-images-public/qwjwtpe846irpgn2xfpt.jpg",
+              "alt": "banner",
+              "width": 440,
+              "height": 900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "grid",
+        "title": ""
+      },
+      "zone": "BANNERS",
+      "active": true
+    },
+    {
+      "data": {
         "col": { "lg": 5, "md": 2, "xs": 2 },
-        "rows": [47, 55, 56, 58, 89, 21, 64, 26],
+        "rows": [47, 55, 56, 58, 89],
         "tags": [],
         "type": "grid",
         "title": "Sản phẩm nổi bật",
@@ -22,7 +74,7 @@
         "typeCard": "default"
       },
       "zone": "PRODUCTS",
-      "active": true
+      "active": false
     },
     {
       "data": {
@@ -58,12 +110,12 @@
         "typeCard": "default"
       },
       "zone": "PRODUCTS",
-      "active": true
+      "active": false
     },
     {
       "data": {
         "col": { "lg": 5, "md": 3, "xs": 2 },
-        "rows": [26,27, 25,59, 65,23],
+        "rows": [26, 27, 25, 59, 65, 23],
         "tags": [],
         "type": "grid",
         "title": "IPAD nhỏ gọn",
@@ -94,7 +146,7 @@
         "typeCard": "default"
       },
       "zone": "PRODUCTS",
-      "active": true
+      "active": false
     },
     {
       "data": {
