@@ -202,7 +202,7 @@
         "rows": [1],
         "type": "grid",
         "title": "Tin tức mới",
-        "button": { "link": "#", "label": "Xem tất cả" },
+        "button": { "link": "tin-tuc", "label": "Xem tất cả" },
         "typeCard": "default"
       },
       "zone": "ARTICLES",
