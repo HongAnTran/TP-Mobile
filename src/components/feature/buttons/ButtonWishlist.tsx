@@ -19,12 +19,12 @@ export default function ButtonWishlist({ id, type = WishlistType.PRODUCT }: { id
       <Tooltip delayDuration={100} disableHoverableContent  >
         <TooltipTrigger asChild>
           {checkIsContainWishlist(id, type) ?
-            <HeartFilledIcon aria-hidden="true" className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} /> :
-            <HeartIcon  aria-hidden="true" className=' text-red-600 w-5 h-5' onClick={() => { toggleItemToWishlist(id, type) }} />}
+            <HeartFilledIcon aria-hidden="true" className=' text-red-600 w-5 h-5  cursor-pointer' onClick={() => { toggleItemToWishlist(id, type) }} /> :
+            <HeartIcon  aria-hidden="true" className=' text-red-600 w-5 h-5  cursor-pointer' onClick={() => { toggleItemToWishlist(id, type) }} />}
 
         </TooltipTrigger>
         <TooltipContent >
-          <TypographyP>Yêu thích sản phẩm</TypographyP>
+          <TypographyP className=' text-white'>Yêu thích sản phẩm</TypographyP>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

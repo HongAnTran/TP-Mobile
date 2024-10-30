@@ -29,15 +29,17 @@ export default function ProductCard({ product }: { product: ProductInList }) {
       > */}
       <Card className=' border border-gray-300 group relative   hover:shadow-2xl'>
         <CardContent className="flex flex-col   gap-2 aspect-square py-4 p-2 lg:p-4">
-          <div className=' relative w-full aspect-square overflow-hidden ' >
+          <div className=' relative w-full aspect-square overflow-hidden p-[2px]' >
             <Link href={`${routes.products}/${product.slug}`}  >
-              <ProductCardImage  images={product.images} title={product.title} />
+              <ProductCardImage images={product.images} title={product.title} />
             </Link>
-            <Button onClick={(e) => {
+            {/* <Button onClick={(e) => {
               e.preventDefault();
               e.stopPropagation()
               setOpen(true)
-            }} className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh</Button>
+            }}
+             className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh
+             </Button> */}
           </div>
           <Link href={`${routes.products}/${product.slug}`} >
 
@@ -52,25 +54,30 @@ export default function ProductCard({ product }: { product: ProductInList }) {
           </div>
         </CardContent>
         <ProductCardDiscount product={product} />
+        <CardBadge className='  right-2 top-2 z-20'>
+          <div className=' shadow-md  w-fit  px-1 py-[2px] rounded-lg  bg-primary'>
 
+              <TypographySpan className=' text-xs   text-secondary font-semibold ' >Trả góp 0%</TypographySpan>
+          </div>
+        </CardBadge>
       </Card>
       {/* </motion.div> */}
 
-      <Modal closeButton={null} open={open} onOpenChange={() => setOpen(false)} >
+      {/* <Modal closeButton={null} open={open} onOpenChange={() => setOpen(false)} >
         <ProductQuickView product={product} />
-      </Modal>
+      </Modal> */}
     </>
 
   )
 }
 
-function ProductCardImage({ images, title }: Pick<Product, "images" | "title" >) {
+function ProductCardImage({ images, title }: Pick<Product, "images" | "title">) {
 
-  if(!images.length){
+  if (!images.length) {
 
     return <div className=' w-full h-full bg-gray-400'></div>
   }
-  const firstImage = images?.[0] 
+  const firstImage = images?.[0]
   // const secondImage = images?.[1]
   return (
     <>
@@ -110,34 +117,35 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
 function ProductCardDiscount({ product }: { product: ProductInList }) {
 
 
-  if (!product.compare_at_price || product.compare_at_price <= product.price) return (<CardBadge className=' top-2 -left-[3px] z-20 '>
-    <div className=' h-8 w-20 relative'>
-      <Image src={badgeBG} alt='badge' className=' w-full h-full' />
-      <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
-        <TypographySpan className=' text-xs text-white  font-semibold ' >Trả góp 0%</TypographySpan>
-      </div>
-    </div>
+  // if (!product.compare_at_price || product.compare_at_price <= product.price) return (<CardBadge className=' top-2 -left-[3px] z-20 '>
+  //   <div className=' h-8 w-20 relative'>
+  //     <Image src={badgeBG} alt='badge' className=' w-full h-full' />
+  //     <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
+  //       <TypographySpan className=' text-xs text-white  font-semibold ' >Trả góp 0%</TypographySpan>
+  //     </div>
+  //   </div>
 
-  </CardBadge>)
+  // </CardBadge>)
 
   const discountPercent = ((product.compare_at_price - product.price) / product.compare_at_price) * 100
 
+  if (!product.compare_at_price || product.compare_at_price <= product.price) return  null
   return (<CardBadge className=' top-2 -left-[3px] z-20 '>
     <div className=' flex flex-col gap-1'>
 
       <div className=' h-8 w-20 relative'>
         <Image src={badgeBG} alt='badge' className=' w-full h-full' />
         <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
-          <TypographySpan className=' text-xs text-white  font-semibold ' >Giảm {Math.round(discountPercent)}%</TypographySpan>
+          <TypographySpan className=' relative -top-[2px] text-xs text-white  font-semibold ' >Giảm {Math.round(discountPercent)}%</TypographySpan>
         </div>
       </div>
 
-      <div className=' h-8 w-20 relative'>
+      {/* <div className=' h-8 w-20 relative'>
         <Image src={badgeBG} alt='badge' className=' w-full h-full' />
         <div className="  absolute inset-0 h-8 w-20 flex  justify-center items-center ">
           <TypographySpan className=' text-xs text-white  font-semibold ' >Trả góp 0%</TypographySpan>
         </div>
-      </div>
+      </div> */}
     </div>
   </CardBadge>)
 }

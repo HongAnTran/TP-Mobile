@@ -110,12 +110,18 @@ const config = {
           "0%": { transform: "translate(-50% , -100%)", opacity: "0" },
           "100%": { transform: "translate(-50% , -50%)", opacity: "1" },
         },
+        wiggle:{
+          "0%" : {transform : "rotate(-4deg)"},
+          "50%":{transform : "rotate(4deg)"},
+          "100%" : {transform : "rotate(-4deg)"}
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "modal-up": "modal-up 0.3s   ",
         "modal-down": "modal-down 0.3s ",
+        wiggle: 'wiggle 0.5s ease-in-out infinite',
       },
     },
   },

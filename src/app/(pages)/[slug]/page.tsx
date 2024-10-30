@@ -34,9 +34,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!page) {
     notFound()
   }
-
-
-
   return (
     <div className=' container my-8'>
       <Breadcrumbs breadcrumbsList={[{ label: page.title, isActive: true }]} />

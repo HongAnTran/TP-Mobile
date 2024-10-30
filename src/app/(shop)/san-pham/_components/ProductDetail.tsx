@@ -6,7 +6,6 @@ import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import useHandleVariant from '@/hooks/useHandleVariant'
 import { Product } from '@/types/Product.types'
 import React, { useEffect, useState } from 'react'
-import ProductBenefits from './ProductBenefits'
 import ProductQuantity, { ProductQuantityProps } from '@/components/common/product/ProductQuantity'
 import ProductActionButton from '@/components/common/product/ProductActionButton'
 import SETTINGS from '@/consts/settings'
@@ -14,7 +13,11 @@ import ButtonCompareProduct from '@/components/feature/buttons/ButtonCompareProd
 import ButtonWishlist from '@/components/feature/buttons/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
-import ProductBenefitsIpad from '@/components/common/product/ProductBenefitsIpad'
+import Link from '@/components/common/Link'
+import routes from '@/routes'
+import PromotionPolicy from '@/components/feature/policy/PromotionPolicy'
+import WarrantyPolicy from '@/components/feature/policy/WarrantyPolicy'
+import SpecialPromotionPolicy from '@/components/feature/policy/SpecialPromotionPolicy'
 
 export default function ProductDetail({ product }: { product: Product }) {
   const { handleAddtoCart, handleBuyNow } = useCart()
@@ -52,6 +55,13 @@ export default function ProductDetail({ product }: { product: Product }) {
 
   return (
     <div >
+      <div className=' flex   items-center gap-4'>
+
+        <TypographyH1 className=" line-clamp-2  font-medium  lg:text-2xl  text-xl">{product.title}</TypographyH1>
+        <ButtonCompareProduct product={product} />
+
+      </div>
+      <hr className='  border-b border-gray-200 my-4' />
       <div className=' grid  gap-4 grid-cols-12'>
         <div className=' md:col-span-6 col-span-12 lg:col-span-4 product-images product-detail-left  relative'>
           <ProductImageCarousel setImageActive={setIndexImageActive} images={product.images} alt={product.title} imageActive={indexImageActive} />
@@ -61,17 +71,19 @@ export default function ProductDetail({ product }: { product: Product }) {
         </div>
         <div className=' md:col-span-6 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">
-            <TypographyH1 className=" line-clamp-2 lg:text-xl  text-xl">{product.title}</TypographyH1>
+
             {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
-            <TypographyP >Thương hiệu: <b className=' text-blue-500'>{product.brand?.name}</b></TypographyP>
-            {/* <TypographyP >Danh mục:  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP> */}
-            <ButtonCompareProduct product={product} />
+            {/* <TypographyP ><b>Danh mục:</b>  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
+            <TypographyP ><b>Thương hiệu:</b> <b className=' text-blue-500'>{product.brand?.name}</b></TypographyP> */}
             <TypographyP className=' line-clamp-2'>{product.short_description}</TypographyP>
-            <ProductShowPrice variant={variantActive} />
+            <ProductShowPrice variant={variantActive} className=' lg:text-lg' />
           </div>
           <div className=' mt-4'>
             <ProductOptions product={product} optionsActive={optionActive} onSelectOption={handleSelectOption} />
 
+          </div>
+          <div className=' mt-4'>
+            <SpecialPromotionPolicy />
           </div>
 
           <div className=' mt-4'>
@@ -90,9 +102,9 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
         </div>
         <div className=' col-span-12 lg:col-span-3'>
-          <ProductBenefits />
-          <div className=' mt-1'>
-            <ProductBenefitsIpad />
+          <div className=' flex flex-col gap-2'>
+            <PromotionPolicy />
+            <WarrantyPolicy />
           </div>
         </div>
 
