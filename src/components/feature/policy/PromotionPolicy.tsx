@@ -17,7 +17,7 @@ export default function PromotionPolicy() {
       </div>
       <ul className="space-y-3 text-gray-700 p-4">
         {promotionPolicy.map((item, index) => {
-          return (<li key={index} className="flex items-start">
+          return (<li key={JSON.stringify(item)} className="flex items-start">
             <span className="bg-red-500 flex-shrink-0 text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-3">{index + 1}</span>
             <div>
               {item}

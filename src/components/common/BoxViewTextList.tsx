@@ -10,7 +10,7 @@ export default function BoxViewTextList({ list, icon, title, classNameIcon, clas
             </div>
             <ul className=" flex flex-col gap-2 text-gray-700 p-2">
                 {list.map((item, index) => {
-                    return (<li key={index} className="flex  items-start gap-2">
+                    return (<li key={JSON.stringify(item)} className="flex  items-start gap-2">
                         <div className='  h-full flex-shrink-0 flex items-center justify-center'><CheckFillIcon /></div>
                         <div className=' relative -top-1'>
                             {item}
