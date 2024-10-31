@@ -1,19 +1,23 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/api";
-import { Product, Products, ProductsParams, ProductStatus } from "@/types/Product.types";
+import {
+  Product,
+  Products,
+  ProductsParams,
+  ProductStatus,
+} from "@/types/Product.types";
 class ProductsService {
   private url: string = "/products";
 
-  constructor() { }
+  constructor() {}
 
   async getList(params?: ProductsParams, init?: ConfigAPi) {
     const paramsDefault: ProductsParams = {
       sortBy: "created_at",
       sortType: "desc",
       ...params,
-
-      status: ProductStatus.SHOW
-    }
+      status: ProductStatus.SHOW,
+    };
     return fetchApi.get<Products>(this.url, {
       params: paramsDefault,
       next: { revalidate: 60 * 5 },
@@ -22,9 +26,9 @@ class ProductsService {
   }
   async getDetail(slug: string) {
     const product = await fetchApi.get<Product>(`${this.url}/${slug}`, {
-      next: { revalidate: 60 * 5 },
+      next: { tags: [this.url, slug], revalidate: 60 * 60 * 24 * 3 },
     });
-    return product
+    return product;
   }
 }
 

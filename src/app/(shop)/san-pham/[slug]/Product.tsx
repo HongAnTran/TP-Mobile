@@ -39,17 +39,19 @@ export default async function Product({ product }: { product: ProductType }) {
           <ProductDescription product={product} />
         </div>
         <div className=' mt-16'>
-          <Tabs defaultValue="buy" className="w-full">
+          <Tabs defaultValue={product.related.length ? "buy" : "related"} className="w-full">
             <TabsList >
-              <TabsTrigger value="buy" >Phụ kiện mua kèm</TabsTrigger>
-              <TabsTrigger value="related">Sản phẩm tương tụ</TabsTrigger>
+            {product.related.length ?      <TabsTrigger value="buy" >Phụ kiện mua kèm</TabsTrigger>  : null}
+          
+              <TabsTrigger value="related">Sản phẩm tương tự</TabsTrigger>
             </TabsList>
-            <TabsContent value="buy" className=' w-full'>
+            {product.related.length ?   <TabsContent value="buy" className=' w-full'>
               <Suspense fallback={<ProductsSkeleton />}>
                 <ProductBuy ids={product.related} />
               </Suspense>
 
-            </TabsContent>
+            </TabsContent> : null}
+          
             <TabsContent value="related" className=' w-full'>
               <Suspense fallback={<ProductsSkeleton />}>
                 <ProductRelated categoryId={product.category_id} productId={product.id} />

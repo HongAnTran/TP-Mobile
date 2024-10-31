@@ -129,6 +129,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         },
         shipping: {
           create: {
+            email : data.email || null,
             fullname: data.full_name,
             address: data.street,
             province: data.province.code,
@@ -143,14 +144,11 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       }
 
       const res = await OrderServiceApi.checkoutClient(order.id, body)
-
       router.replace(`${routes.checkoutSuccess}/${res.token}`)
     } catch (error) {
       toast({ title: "Đặt hàng thất bại vui lòng thử lại hoặc liên hệ 0347.907.042" })
-
     } finally {
       setIsSubmit(false)
-
     }
   }
 

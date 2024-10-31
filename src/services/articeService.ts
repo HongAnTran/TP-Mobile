@@ -16,10 +16,9 @@ class ArticeService {
   }
   async getDetail(slug: string) {
     return fetchApi.get<Article>(`${this.url}/${slug}`, {
-      cache: "force-cache"
+      next: { tags: [this.url, slug], revalidate: 60 * 60 * 24 * 30 },
     });
   }
 }
-
 const ArticeServiceApi = new ArticeService();
 export default ArticeServiceApi;

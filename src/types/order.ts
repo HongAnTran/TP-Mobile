@@ -47,14 +47,15 @@ interface Shipping {
   district: string
   ward: string
   address_full: string
-  country: string
+  email : string| null
+  country: string 
   ship_date: Date | null
   tracking_number: string | null
   phone: string
   fullname: string
   shipping_method :string | null
 }
-type ShippingCreate = Pick<Shipping, "address" | "address_full" | "country" | "district" | "province" | "ward" | "phone" | "fullname">
+type ShippingCreate = Pick<Shipping,"email"| "address" | "address_full" | "country" | "district" | "province" | "ward" | "phone" | "fullname">
 
 export enum PaymentMethod{
   COD = "cod"

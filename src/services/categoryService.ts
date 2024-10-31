@@ -1,7 +1,6 @@
 import { ResList } from '@/types/common';
 
 import fetchApi from "@/api/instances/baseInstance";
-import fetchApiPublic from "@/api/instances/routerhandlersInstance";
 import { ConfigAPi } from "@/types/api";
 import { CategoryProduct, CategoryProductFilter } from "@/types/categoryProduct";
 
@@ -18,7 +17,7 @@ class CategoryService {
         ...params
       },
       next: {
-        revalidate: 3600
+        revalidate: 60 * 10
       },
       ...init
     });
