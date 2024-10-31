@@ -8,7 +8,7 @@ export interface BoxViewTextItem {
 export default function BoxViewTextList({ list, icon, title, classNameIcon, className }:
     { className?: string, list: BoxViewTextItem[], title?: string, icon?: ReactNode, classNameIcon?: string }) {
     return (
-        <div className={cn("  rounded-xl border border-gray-500 overflow-hidden shadow-lg", className)}>
+        <div className={cn("  rounded-xl border border-gray-300 overflow-hidden shadow-lg", className)}>
             <div className="flex items-center border-b  border-gray-500 p-2">
                 <span className={cn("text-2xl mr-2", classNameIcon)} >{icon}</span>
                 <h2 className="  text-primary  font-semibold text-lg">{title}</h2>

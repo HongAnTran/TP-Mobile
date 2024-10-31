@@ -1,6 +1,6 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/api";
-import { Store } from "@/types/store";
+import { Store, StoreParams } from "@/types/store";
 
 class StoreService {
   private url: string = "/store";
@@ -13,9 +13,10 @@ class StoreService {
     return product
   }
 
-  async getList(init?:ConfigAPi) {
+  async getList(params?: StoreParams ,init?:ConfigAPi) {
     const stores = await fetchApi.get<Store[]>(`${this.url}`, {
-      ...init
+      ...init,
+      params : params,
     });
     return stores
   }

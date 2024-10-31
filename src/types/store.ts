@@ -4,4 +4,9 @@ interface Store extends AddressInffo {
   url_map: string
 }
 
-export type { Store }
+interface StoreParams{
+  latitude?: string
+  longitude?: string
+}
+
+export type { Store  , StoreParams}

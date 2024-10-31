@@ -13,13 +13,13 @@ import ButtonCompareProduct from '@/components/feature/buttons/ButtonCompareProd
 import ButtonWishlist from '@/components/feature/buttons/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
 import useCart from '@/hooks/useCart'
-import Link from '@/components/common/Link'
-import routes from '@/routes'
 import PromotionPolicy from '@/components/feature/policy/PromotionPolicy'
 import WarrantyPolicy from '@/components/feature/policy/WarrantyPolicy'
 import SpecialPromotionPolicy from '@/components/feature/policy/SpecialPromotionPolicy'
+import StoreListView from '@/components/feature/store/StoreListView'
+import { Store } from '@/types/store'
 
-export default function ProductDetail({ product }: { product: Product }) {
+export default function ProductDetail({ product, stores = [] }: { product: Product, stores?: Store[] }) {
   const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
 
@@ -68,6 +68,8 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className=' absolute top-1 right-1  w-8 h-8 flex justify-center items-center bg-white shadow-lg rounded-full'>
             <ButtonWishlist id={product.id} />
           </div>
+
+          <div className=' mt-4'> <StoreListView stores={stores} /> </div>
         </div>
         <div className=' md:col-span-6 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">
