@@ -1,29 +1,38 @@
 "use client"
 
-import { MapPinFilledIcon } from '@/components/icons'
+import { LoadingIcon, MapPinFilledIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
+import useCheckLocationPermission from '@/hooks/useCheckLocationPermission'
 import StoreServiceApi from '@/services/StoreService'
 import { Store } from '@/types/store'
 import { CaretSortIcon } from '@radix-ui/react-icons'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function StoreListView({ stores, storeActive, onSelectStore }: { stores: Store[], storeActive?: Store, onSelectStore?: (store: Store) => void }) {
 
     const [storeList, setStoreList] = useState<Store[]>(stores)
+    const [isSorted, setIsSorted] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const { isPermission } = useCheckLocationPermission()
+
+
 
     async function sortStoreNearLocationUser() {
         try {
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
+                    setIsLoading(true)
+
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
                     const datas = await StoreServiceApi.getList({
                         latitude: `${latitude}`,
                         longitude: `${longitude}`
                     });
-
                     setStoreList(datas);
+                    setIsSorted(true)
+                    setIsLoading(false)
                     if (datas.length > 0) {
                         onSelectStore?.(datas[0]);
                     }
@@ -34,13 +43,22 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
                 { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
             );
         } catch (error) {
+            setIsSorted(false)
             console.error("Đã xảy ra lỗi:", error);
+        } finally {
+            setIsLoading(false)
         }
     }
 
+    useEffect(()=>{
+        if(isPermission){
+            sortStoreNearLocationUser()
+        }
+    },[isPermission])
+
 
     return (
-        <div className='border rounded-lg border-gray-300 p-4 h-full max-h-[300px] md:max-h-[200px] bg-white overflow-y-auto'>
+        <div className='border relative rounded-lg border-gray-300 p-4 h-full bg-white overflow-y-auto'>
             <TypographyH2 className='text-center text-xl font-medium'>
                 Cửa hàng của TP Mobile
             </TypographyH2>
@@ -49,10 +67,9 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
 
             </TypographyP>
             <div className=' flex justify-center'>
-            <Button  className=' text-xs' onClick={sortStoreNearLocationUser}> <CaretSortIcon /> Sắp xếp theo cửa hàng gần bạn </Button>
-
+                {isSorted ? "Cửa hàng gần bạn" : <Button className=' text-xs' onClick={sortStoreNearLocationUser}> <CaretSortIcon /> Sắp xếp theo cửa hàng gần bạn </Button>}
             </div>
-            <div className='mt-4  flex flex-col gap-2'>
+            <div className='mt-4  flex flex-col gap-2  '>
                 {storeList.map((store) => (
                     <div
                         key={store.id}
@@ -65,12 +82,16 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
                         </div>
                         <div>
                             <TypographyP>{store.detail_address}</TypographyP>
-                            <TypographyP>Hotline: <a href={`tel:${store.phone}`}><b>{store.phone}</b></a></TypographyP>
+                            <TypographyP>Hotline: <a href={`tel:${store.phone}`} className=' hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
                         </div>
                     </div>
                 ))}
 
             </div>
+            {isLoading && <div className=' absolute inset-0 flex items-center justify-center bg-black/30'>
+                <LoadingIcon />
+            </div>}
+
         </div>
     )
 }
