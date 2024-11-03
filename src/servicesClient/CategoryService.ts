@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { OptionsUseQuery, ResList } from "@/types/common";
+import { OptionsUseQuery, ResList } from "@/types/common.type";
 import CategoryServiceApi from "@/services/categoryService";
 import { CategoryProduct } from "@/types/categoryProduct";
 

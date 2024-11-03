@@ -1,7 +1,6 @@
-"use client"
+// "use client"
 
 import { Product, ProductInList } from '@/types/Product.types'
-import React, { useState } from 'react'
 import { Card, CardBadge, CardContent, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
 import PriceText from "@/components/common/PriceText"
@@ -9,16 +8,16 @@ import { cn } from '@/lib/utils'
 
 import { TypographySpan } from '../../ui/typography'
 import badgeBG from "../../../../public/productTagBg.png"
-import { Button } from '../../ui/button'
-import Modal from '@/components/ui/Modal'
+// import { Button } from '../../ui/button'
+// import Modal from '@/components/ui/Modal'
 import Link from "@/components/common/Link";
 
 import routes from '@/routes'
-import ProductQuickView from './ProductQuickView'
+// import ProductQuickView from './ProductQuickView'
 import ButtonWishlist from '@/components/feature/buttons/ButtonWishlist'
 
-export default function ProductCard({ product }: { product: ProductInList }) {
-  const [open, setOpen] = useState(false)
+export default function ProductCard({ product, className }: { product: ProductInList, className?: string }) {
+  // const [open, setOpen] = useState(false)
   return (
     <>
 
@@ -27,10 +26,9 @@ export default function ProductCard({ product }: { product: ProductInList }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       > */}
-      <Card className=' border border-gray-300 group relative   hover:shadow-2xl'>
-        <CardContent className="flex flex-col   gap-2 aspect-square py-4 p-2 lg:p-4">
-          <div className=' relative w-full aspect-square overflow-hidden p-[2px]' >
-            <Link href={`${routes.products}/${product.slug}`}  >
+      <Card className={cn(' border border-gray-300 group relative   hover:shadow-2xl', className)}>
+        <CardContent className="flex flex-col   gap-2 h-full py-4 p-2 lg:p-4">
+            <Link href={`${routes.products}/${product.slug}`}  className=' relative w-full aspect-square overflow-hidden p-[2px] flex-shrink-0'>
               <ProductCardImage images={product.images} title={product.title} />
             </Link>
             {/* <Button onClick={(e) => {
@@ -40,24 +38,22 @@ export default function ProductCard({ product }: { product: ProductInList }) {
             }}
              className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh
              </Button> */}
+          <div className=' flex-1 flex flex-col  justify-between'>
+            <Link href={`${routes.products}/${product.slug}`}  className=' flex-shrink-0'>
+              <CardTitle className='   hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
+            </Link>
+            <ProductCardPrice  product={product} />
           </div>
-          <Link href={`${routes.products}/${product.slug}`} >
 
-            <CardTitle className='   hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
-          </Link>
-          <ProductCardPrice product={product} />
-
-          <div className=' flex justify-between items-center pt-2 border-t border-gray-200'>
+          <div className=' flex justify-between items-center mt-auto pt-2 border-t border-gray-200'>
             {/* {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />} */}
-
             <ButtonWishlist id={product.id} />
           </div>
         </CardContent>
         <ProductCardDiscount product={product} />
         <CardBadge className='  right-2 top-2 z-20'>
           <div className=' shadow-md  w-fit  px-1 py-[2px] rounded-lg  bg-primary'>
-
-              <TypographySpan className=' text-xs   text-secondary font-semibold ' >Trả góp 0%</TypographySpan>
+            <TypographySpan className=' text-xs   text-secondary font-semibold ' >Trả góp 0%</TypographySpan>
           </div>
         </CardBadge>
       </Card>
@@ -129,7 +125,7 @@ function ProductCardDiscount({ product }: { product: ProductInList }) {
 
   const discountPercent = ((product.compare_at_price - product.price) / product.compare_at_price) * 100
 
-  if (!product.compare_at_price || product.compare_at_price <= product.price) return  null
+  if (!product.compare_at_price || product.compare_at_price <= product.price) return null
   return (<CardBadge className=' top-2 -left-[3px] z-20 '>
     <div className=' flex flex-col gap-1'>
 

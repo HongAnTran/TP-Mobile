@@ -80,12 +80,14 @@ function objectToSearchParamsValue(obj: ObjectWithArrayValues): { [key: string]:
   return processedObj
 }
 
-function objectToSearchParams(obj: any): string {
+function objectToSearchParams(data: ObjectWithArrayValues): string {
+  const obj = objectToSearchParamsValue(data)
   return Object.keys(obj)
     .filter(key => obj[key] !== undefined && obj[key] !== null && obj[key] !== '')
     .map(key => `${encodeURIComponent(key)}=${obj[key]}`)
     .join('&');
 }
+
 
 function formatDate(date: string): string {
   const dateObj = new Date(date);

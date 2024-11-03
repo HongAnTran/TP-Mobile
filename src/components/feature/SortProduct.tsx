@@ -54,7 +54,7 @@ export function SortProduct({ searchParams }: { searchParams?: any }) {
         break;
     }
     setValueFilter(value)
-    const valueSearch = objectToSearchParams(objectToSearchParamsValue({ ...searchParams, ...query  , page : 1}))
+    const valueSearch = objectToSearchParams({ ...searchParams, ...query  , page : 1})
     const querySearch = valueSearch ? `?${valueSearch}` : "";
     window.history.pushState(null, '', querySearch)
     router.push(pathname + querySearch)

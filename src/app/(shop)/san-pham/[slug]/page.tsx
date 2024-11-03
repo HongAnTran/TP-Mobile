@@ -6,6 +6,8 @@ import { Metadata } from 'next'
 import routes from '@/routes'
 import { Product as ProductType } from '@/types/Product.types'
 import { Product as ProductSchema, WithContext } from "schema-dts";
+import Head from 'next/head'
+import { SearchParams } from '@/types/common.type'
 
 function generateStrucDataProduct(
   product: ProductType
@@ -21,18 +23,33 @@ function generateStrucDataProduct(
       "@type": "Brand",
       name: product.brand?.name || "Apple",
     },
+    review: {
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5
+      },
+      "author": {
+        "@type": "Person",
+        "name": "hongantran"
+      }
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 5,
+      reviewCount: Math.floor(Math.random() * 400),
+      bestRating: 5,
+      worstRating: 1,
+    },
     offers: {
       "@type": "Offer",
+      url: `${process.env.DOMAIN}${routes.products}/${product.slug}`,
       priceCurrency: "VND",
       price: product.price,
-      priceValidUntil: "2024-12-31", // Set a default date or use a specific one from the product
-      availability: "https://schema.org/InStock", // Updated to include full URL
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: 5, // Example default value
-        reviewCount: Math.floor(Math.random() * 400),
-
-      },
+      priceValidUntil: "2024-12-31",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
       seller: {
         "@type": "Organization",
         name: "TP Mobile",
@@ -63,14 +80,14 @@ export async function generateMetadata(
     const desShow = meta_data?.meta_description || product.short_description || undefined
     const keywords = meta_data?.meta_keywords || titleShow
     const DOMAIN = process.env.DOMAIN
-    const URL =`${DOMAIN}${routes.products}/${product.slug}`
+    const URL = `${DOMAIN}${routes.products}/${product.slug}`
     return {
       title: titleShow,
       description: desShow,
-      alternates:{
-          canonical : URL
+      alternates: {
+        canonical: URL
       },
-      authors:{name:"TP Mobile Store" , url : DOMAIN},
+      authors: { name: "TP Mobile Store", url: DOMAIN },
       openGraph: {
         title: titleShow,
         description: desShow,
@@ -90,23 +107,23 @@ export async function generateMetadata(
     }
   } catch (error) {
     notFound()
-
   }
 }
 
-
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function page({ params  , searchParams}: { params: { slug: string }, searchParams: SearchParams }) {
   const slug = params.slug
   const product = await getData(slug)
   const jsonLdProduct = generateStrucDataProduct(product);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
-      />
-      <Product product={product} />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
+        />
+      </Head>
+      <Product product={product} searchParams={searchParams} />
     </>
   )
 }

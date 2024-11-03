@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Attribute, AttributeValue } from "@/types/Attributestypes";
-import { OptionsUseQuery } from "@/types/common";
+import { OptionsUseQuery } from "@/types/common.type";
 import AttributeServiceApi from "@/services/AttributeService";
 type DataQuery = Attribute;
 

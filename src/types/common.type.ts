@@ -22,4 +22,7 @@ type ValueFiter =  {
   page : number
   [x: string]: number[] | string[] | string | undefined | number;
 }
-export type { FilterBase,ResList , OptionsUseQuery , ValueFiter}
+
+type SearchParams = { [key: string]: string | string[] | undefined }
+
+export type { FilterBase,ResList , OptionsUseQuery , ValueFiter , SearchParams}

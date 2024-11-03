@@ -15,11 +15,11 @@ import {
 import { Range } from '@/components/ui/slider'
 import { TypographyP } from '../ui/typography'
 import MutipleCheckbox from '../common/MutipleCheckbox'
-import { objectToSearchParams, objectToSearchParamsValue } from '@/utils'
+import { objectToSearchParams } from '@/utils'
 import { usePathname, useRouter } from 'next/navigation'
 import PriceText from '../common/PriceText'
 import AttributeServiceClient from '@/servicesClient/AttributeService'
-import { ValueFiter } from '@/types/common'
+import { ValueFiter } from '@/types/common.type'
 import { Skeleton } from '../ui/skeleton'
 import CategoryServiceClient from '@/servicesClient/CategoryService'
 import { Button } from '../ui/button'
@@ -46,7 +46,7 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
     const value: ValueFiter = { ...valueFiter, page: 1 }
     value[key] = data
     setValueFilter(value)
-    const valueSearch = objectToSearchParams(objectToSearchParamsValue({ ...searchParams, ...value }))
+    const valueSearch = objectToSearchParams({ ...searchParams, ...value })
     const query = valueSearch ? `?${valueSearch}` : "";
     window.history.pushState(null, '', query)
     router.push(pathname + query)

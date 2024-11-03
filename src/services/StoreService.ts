@@ -15,12 +15,12 @@ class StoreService {
 
   async getList(params?: StoreParams ,init?:ConfigAPi) {
     const stores = await fetchApi.get<Store[]>(`${this.url}`, {
+      next : {revalidate : 60 * 60 * 12},
       ...init,
       params : params,
     });
     return stores
   }
 }
-
 const StoreServiceApi = new StoreService();
 export default StoreServiceApi;

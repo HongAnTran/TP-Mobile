@@ -18,15 +18,16 @@ import WarrantyPolicy from '@/components/feature/policy/WarrantyPolicy'
 import SpecialPromotionPolicy from '@/components/feature/policy/SpecialPromotionPolicy'
 import StoreListView from '@/components/feature/store/StoreListView'
 import { Store } from '@/types/store'
+import { objectToSearchParams } from '@/utils'
 
-export default function ProductDetail({ product, stores = [] }: { product: Product, stores?: Store[] }) {
+export default function ProductDetail({ product, stores = [], optionsDefault }: { product: Product, stores?: Store[], optionsDefault?: number[] }) {
+  const [isTouchOption, setIsTouchOption] = useState(false)
+
+
   const { handleAddtoCart, handleBuyNow } = useCart()
-  const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product)
-
+  const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)
   const { addProductToRecentView } = useProductRecentView()
-
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
-
   const handleQuantity: ProductQuantityProps["handleQuantity"] = {
     add() {
       setQuantity(pre => pre < SETTINGS.MAX_SALE_PRODUCT ? pre + 1 : pre)
@@ -53,6 +54,18 @@ export default function ProductDetail({ product, stores = [] }: { product: Produ
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product])
 
+  useEffect(() => {
+    if (isTouchOption) {
+      const options = variantActive.attribute_values.map(value => value.slug)
+      const searchParams = {
+        [SETTINGS.KEY_ACTIVE_OPTIONS]: options
+      }
+      const valueSearch = objectToSearchParams({ ...searchParams })
+      const query = valueSearch ? `?${valueSearch}` : "";
+      window.history.pushState(null, '', query)
+    }
+
+  }, [variantActive, isTouchOption])
   return (
     <div >
       <div className=' flex   items-center gap-4'>
@@ -81,7 +94,10 @@ export default function ProductDetail({ product, stores = [] }: { product: Produ
             <ProductShowPrice variant={variantActive} className=' lg:text-lg' />
           </div>
           <div className=' mt-4'>
-            <ProductOptions product={product} optionsActive={optionActive} onSelectOption={handleSelectOption} />
+            <ProductOptions product={product} optionsActive={optionActive} onSelectOption={(index: number, id: number) => {
+              handleSelectOption(index, id)
+              setIsTouchOption(true)
+            }} />
 
           </div>
           <div className=' mt-4'>

@@ -12,7 +12,7 @@ import FilterProduct from '@/components/feature/FilterProduct'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
 import routes from '@/routes'
 import SETTINGS from '@/consts/settings'
-import { ValueFiter } from '@/types/common'
+import { ValueFiter } from '@/types/common.type'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {

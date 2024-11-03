@@ -3,25 +3,25 @@ import { Product,  ProductVariant } from '@/types/Product.types'
 import { findVariantActiveOption } from '@/utils'
 import { useCallback, useEffect, useState } from 'react'
 
-export default function useHandleVariant(product: Product) {
+export default function useHandleVariant(product: Product ,optionsDefault?: number[]) {
   const [variantActive, setVariantActive] = useState<ProductVariant>(product.variants[0])
 
   const [optionActive, setOptionActive] = useState(()=>{
+    if(optionsDefault){
+      return optionsDefault
+    }
     const atts = product.attributes.map(att=>att.attribute.id)
     return atts.map(att=>variantActive.attribute_values.find(va=>va.attribute_id === att)?.id || 0)
   })
-
   const [indexImageActive, setIndexImageActive] = useState<number>(0)
-
-
-
   const handleSelectOption = useCallback((index: number, value: number) => {
+    console.log(index,value)
     setOptionActive(pre => {
       const resuil = [...pre]
       resuil.splice(index, 1, value)
       return resuil
     })
-  }, [])
+  }, [setOptionActive])
 
 
   useEffect(() => {

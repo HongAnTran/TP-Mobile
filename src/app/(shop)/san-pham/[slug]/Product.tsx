@@ -12,8 +12,19 @@ import ProductsServiceApi from '@/services/ProductsService'
 import StoreServiceApi from '@/services/StoreService'
 import { TabsTrigger, Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
-export default async function Product({ product }: { product: ProductType }) {
+import { SearchParams } from '@/types/common.type'
+import SETTINGS from '@/consts/settings'
+export default async function Product({ product, searchParams }: { product: ProductType, searchParams: SearchParams }) {
   const stores = await StoreServiceApi.getList()
+  const params = searchParams[SETTINGS.KEY_ACTIVE_OPTIONS] as string || ""
+  const optionsSlug = params.split(",")
+  const variantActive = product.variants.find(variant => variant.attribute_values.every(value => optionsSlug.includes(value.slug)))
+  const groups = product.attributes
+  const attribute_values = variantActive?.attribute_values || []
+  const optionsDefault = groups.map(group => {
+    const actribute = attribute_values.find(op => group.attribute.id === op.attribute_id)
+    return actribute?.id as number
+  }).filter(Boolean)
   return (
     <LayoutContainer>
       <>
@@ -29,11 +40,9 @@ export default async function Product({ product }: { product: ProductType }) {
             isActive: true
           }
         ]
-
         } />
-
         <div className=' mt-6'>
-          <ProductDetail product={product} stores={stores} />
+          <ProductDetail product={product} stores={stores} optionsDefault={optionsDefault.length ? optionsDefault : undefined} />
         </div>
         <div className=' mt-16'>
           <ProductDescription product={product} />
@@ -41,17 +50,17 @@ export default async function Product({ product }: { product: ProductType }) {
         <div className=' mt-16'>
           <Tabs defaultValue={product.related.length ? "buy" : "related"} className="w-full">
             <TabsList >
-            {product.related.length ?      <TabsTrigger value="buy" >Phụ kiện mua kèm</TabsTrigger>  : null}
-          
+              {product.related.length ? <TabsTrigger value="buy" >Phụ kiện mua kèm</TabsTrigger> : null}
+
               <TabsTrigger value="related">Sản phẩm tương tự</TabsTrigger>
             </TabsList>
-            {product.related.length ?   <TabsContent value="buy" className=' w-full'>
+            {product.related.length ? <TabsContent value="buy" className=' w-full'>
               <Suspense fallback={<ProductsSkeleton />}>
                 <ProductBuy ids={product.related} />
               </Suspense>
 
             </TabsContent> : null}
-          
+
             <TabsContent value="related" className=' w-full'>
               <Suspense fallback={<ProductsSkeleton />}>
                 <ProductRelated categoryId={product.category_id} productId={product.id} />

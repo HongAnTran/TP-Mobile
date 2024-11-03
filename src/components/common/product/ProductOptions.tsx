@@ -7,7 +7,7 @@ import React, { useMemo } from 'react'
 import TooltipUi from '../TooltipUi'
 
 export default function ProductOptions({ product, optionsActive, onSelectOption }:
-  { product: Product, optionsActive: number[], onSelectOption: (index: number, value: number) => void }) {
+  { product: Product, optionsActive: number[], onSelectOption: (index: number, id: number) => void }) {
 
 
 

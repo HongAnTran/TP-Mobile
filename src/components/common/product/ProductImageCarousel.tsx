@@ -35,7 +35,7 @@ export default function ProductImageCarousel({ images, alt, imageActive, setImag
         <CarouselContent>
           {images.map((img, index) => (
             <CarouselItem key={index}>
-              <Image src={img.url} alt={alt} className='  object-contain  aspect-square' width={500} height={500} />
+              <Image src={img.url} alt={alt} priority className='  object-contain  aspect-square' width={500} height={500} />
             </CarouselItem>
           ))}
         </CarouselContent>
