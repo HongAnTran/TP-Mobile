@@ -9,7 +9,6 @@ class LocationService {
   async getList(params: LocationFilter) {
     return fetchApi.get<Location[]>(`${this.url}`, {
       params,
-      isLogger : true
     });
   }
 }

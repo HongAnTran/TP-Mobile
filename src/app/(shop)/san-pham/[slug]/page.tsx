@@ -23,24 +23,18 @@ function generateStrucDataProduct(
       "@type": "Brand",
       name: product.brand?.name || "Apple",
     },
-    review: {
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5
-      },
-      "author": {
-        "@type": "Person",
-        "name": "hongantran"
-      }
-    },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: 5,
       reviewCount: Math.floor(Math.random() * 400),
       bestRating: 5,
       worstRating: 1,
+      name: product.title,
+      itemReviewed: {
+        "@type": "Product",
+        name: product.title,
+      },
+      author: "TP Mobile Store"
     },
     offers: {
       "@type": "Offer",
@@ -110,7 +104,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function page({ params  , searchParams}: { params: { slug: string }, searchParams: SearchParams }) {
+export default async function page({ params, searchParams }: { params: { slug: string }, searchParams: SearchParams }) {
   const slug = params.slug
   const product = await getData(slug)
   const jsonLdProduct = generateStrucDataProduct(product);

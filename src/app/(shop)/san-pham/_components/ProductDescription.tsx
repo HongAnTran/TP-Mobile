@@ -7,9 +7,7 @@ import BoxInnerHtml from '@/components/common/BoxInnerHtml'
 export default async function ProductDescription({ product }: { product: Product }) {
   const types = await ProductSpecificationsServiceApi.getListType()
   const groups = await ProductSpecificationsServiceApi.getListGroup()
-  const specifications = await ProductSpecificationsServiceApi.getList({ product_id: product.id }, {
-    // isLogger: true
-  })
+  const specifications = await ProductSpecificationsServiceApi.getList({ product_id: product.id })
 
   return (
     <div className=' grid grid-cols-12 lg:gap-8'>

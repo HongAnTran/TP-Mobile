@@ -18,9 +18,8 @@ export default async function ProductCollectionList({ searchParams, slug }: Prod
   const { datas, total } = await ProductsServiceApi.getList({
     limit: LIMIT,
     ...searchParams
-  }, {
-    // isLogger: true
   })
+  
   if (!datas.length) {
     return (
       <div>Chưa có sản phẩm</div>
