@@ -30,10 +30,10 @@ function generateStrucDataProduct(
       bestRating: 5,
       worstRating: 1,
       name: product.title,
-      itemReviewed: {
-        "@type": "Product",
-        name: product.title,
-      },
+      // itemReviewed: {
+      //   "@type": "Product",
+      //   name: product.title,
+      // },
       author: "TP Mobile Store"
     },
     offers: {
