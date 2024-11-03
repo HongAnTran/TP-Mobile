@@ -37,6 +37,7 @@ export default function ButtonUpToTop() {
         variant="outline"
         className=' rounded-full w-10 h-10 p-0 hover:-translate-y-1 transition-transform'
         onClick={scrollToTop}
+        aria-label="ButtonUpToTop"
       >
         <ArrowUpIcon />
       </Button>

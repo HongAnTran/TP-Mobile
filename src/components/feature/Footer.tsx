@@ -69,7 +69,7 @@ export default function Footer() {
             <form action="#" method="POST" className="mt-6">
               <div className=' mb-4'>
                 <label className="sr-only">Email</label>
-                <input type="email" name="email" id="email" placeholder="Nhập email của bạn" className="block w-full p-4  text-secondary placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                <input type="email" name="email" id="email" placeholder="Nhập email của bạn" className="block w-full p-4   text-gray-900 placeholder-gray-900 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
               </div>
 
               <Button variant="destructive" type="submit" >Đăng ký</Button>

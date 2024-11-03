@@ -12,29 +12,29 @@ export default function ListStickyButton() {
   return (
     <div className=' fixed   bottom-44  lg:bottom-20 right-4 z-50'>
       <div className=' flex-col gap-4 hidden lg:flex '>
-        <Link href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
-          <Button size="icon" variant="link" className=' relative'>
+        <Link aria-label="link"  href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
+          <Button aria-label="InstagramLogoIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
             <InstagramLogoIcon className=' w-16 h-16' />
 
           </Button>
         </Link>
-        <Link href={"tel:0347907042"} target="_blank">
-          <Button size="icon" variant="link" className=' relative'>
+        <Link aria-label="link"  href={"tel:0347907042"} target="_blank">
+          <Button aria-label="PhoneIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
             <PhoneIcon />
 
           </Button>
         </Link>
-        <Link href={"https://m.me/100369039524995"} target="_blank">
-          <Button size="icon" variant="link" className=' relative'>
+        <Link aria-label="link"  href={"https://m.me/100369039524995"} target="_blank">
+          <Button  aria-label="MessengerIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
             <MessengerIcon />
 
           </Button>
         </Link>
 
-        {/* <Link href={"https://zalo.me/0347907042"} target="_blank">
+        {/* <Link aria-label="link"  href={"https://zalo.me/0347907042"} target="_blank">
           <Button size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
             <ZaloIcon />
@@ -45,7 +45,7 @@ export default function ListStickyButton() {
 
       <div className=' lg:hidden'>
         <Popover>
-          <PopoverTrigger asChild>
+          <PopoverTrigger asChild aria-label="call-icon" >
             <div className=' bg-red-500 p-1 rounded-full   relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
 
@@ -54,29 +54,29 @@ export default function ListStickyButton() {
           </PopoverTrigger>
           <PopoverContent className=" w-10">
             <div className=' flex-col gap-4 flex '>
-              <Link href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
-                <Button size="icon" variant="link" className=' relative '  aria-label="ig">
+              <Link aria-label="link"  href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
+                <Button aria-label="InstagramLogoIcon" size="icon" variant="link" className=' relative '  >
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
                   <InstagramLogoIcon className=' w-16 h-16' />
 
                 </Button>
               </Link>
-              <Link href={"tel:0347907042"} target="_blank">
-                <Button size="icon" variant="link" className=' relative' aria-label="ig">
+              <Link aria-label="link"  href={"tel:0347907042"} target="_blank">
+                <Button aria-label="PhoneIcon" size="icon" variant="link" className=' relative' >
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
                   <PhoneIcon />
 
                 </Button>
               </Link>
-              <Link href={"https://www.facebook.com/messages/t/100369039524995"} target="_blank">
-                <Button size="icon" variant="link" className=' relative' aria-label="ig">
+              <Link aria-label="link"  href={"https://www.facebook.com/messages/t/100369039524995"} target="_blank">
+                <Button  aria-label="MessengerIcon" size="icon" variant="link" className=' relative' >
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
                   <MessengerIcon  />
 
                 </Button>
               </Link>
 
-              {/* <Link href={"https://zalo.me/0347907042"} target="_blank">
+              {/* <Link aria-label="link"  href={"https://zalo.me/0347907042"} target="_blank">
           <Button size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
             <ZaloIcon />

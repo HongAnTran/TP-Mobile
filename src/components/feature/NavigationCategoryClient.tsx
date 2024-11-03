@@ -28,15 +28,14 @@ export default function NavigationCategoryClient({ className, data }: { data: Ca
         <ul className=' flex flex-nowrap   overflow-y-auto gap-4 lg:gap-8 items-center justify-center '>
           {data.map(category => {
             return (
-              <NavLink scroll absolute href={`${routes.category}/${category.slug}`} key={category.id} activeClassName='text-blue-500    font-bold'>
-                <li className='  flex gap-[2px] flex-col items-center '>
+              <li key={category.id}>
+                <NavLink className='  flex gap-[2px] flex-col items-center ' scroll absolute href={`${routes.category}/${category.slug}`}  activeClassName='text-blue-500    font-bold'>
                   {category?.image?.includes("https") ? <Image className=' w-[22px] h-[28px]' alt="icon" src={category.image} width={50} height={50} /> : null}
                   <span className='  whitespace-nowrap text-current    text-sm font-bold  hover:text-blue-500 transition-colors'>
                     {category.title}
-
                   </span>
-                </li>
-              </NavLink>
+                </NavLink>
+              </li>
             )
           })}
         </ul>

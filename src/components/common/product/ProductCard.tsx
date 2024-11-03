@@ -101,7 +101,7 @@ function ProductCardImage({ images, title }: Pick<Product, "images" | "title">) 
 function ProductCardPrice({ product }: { product: ProductInList }) {
   return (
     <div className=' flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
-      <PriceText className='text-red-500 font-bold' price={product.price} />
+      <PriceText className='text-red-600 font-bold' price={product.price} />
       {product.compare_at_price && product.compare_at_price > product.price ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
     </div>
   )

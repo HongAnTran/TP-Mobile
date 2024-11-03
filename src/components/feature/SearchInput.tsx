@@ -21,7 +21,6 @@ import { cn } from '@/lib/utils';
 const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
 
 export default function SearchInput({ className }: { className?: string }) {
-
   const [productsSearch, setProductsSearch] = useState<ProductInList[]>([])
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -122,7 +121,9 @@ export default function SearchInput({ className }: { className?: string }) {
           {productsSearch.map(product => {
             return <ProductItemSearch key={product.id} product={product} />
           })}
-          <Link className=' text-[#f8f8d9]    text-center' href={`${routes.search}?keyword=${keyword}`}>Xem tất cả</Link>
+          <p className=' text-[#f8f8d9]    text-center' onClick={() => {
+            router.push(`${routes.search}?keyword=${keyword}`)
+          }} >Xem tất cả</p>
         </ul> : <TypographyP className='  text-[#f8f8d9]  '>Không có kết quả</TypographyP>}
       </HoverCardContent>
     </HoverCard>
