@@ -1,5 +1,5 @@
 import fetchApi from "@/api/instances/baseInstance";
-import fetchApiPublic from "@/api/instances/routerhandlersInstance"
+import fetchApiPublic from "@/api/instances/baseInstance"
 import { ConfigAPi } from "@/types/api";
 import { ProductGroupSpecifications, ProductSpecifications, ProductTypeSpecifications } from "@/types/Product.types";
 class productSpecificationsService {

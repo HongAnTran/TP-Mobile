@@ -14,14 +14,14 @@ export default function PromotionPolicy() {
   return (
     <div className="max-w-sm   rounded-xl overflow-hidden shadow-lg">
       <div className="flex items-center   p-3   bg-primary">
-        <span className="text-2xl mr-2 animate-wiggle" >🎁</span>
+        <span className="text-xl mr-2 animate-wiggle" >🎁</span>
         <h2 className=" text-secondary font-semibold text-lg">Chính sách khuyến mãi</h2>
       </div>
       <ul className="space-y-3 text-gray-700 p-4">
         {promotionPolicy.map((item, index) => {
           return (<li key={item.id} className="flex items-start">
-            <span className="bg-red-500 flex-shrink-0 text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-3">{index + 1}</span>
-            <div>
+            <span className="bg-red-500 flex-shrink-0 text-white rounded-full h-5 w-5 flex items-center justify-center  text-xs font-bold mr-3">{index + 1}</span>
+            <div className=' text-xs'>
               {item.description}
             </div>
           </li>)

@@ -2,7 +2,7 @@ import { generateUniqueId } from "@/utils";
 import { Cart } from "@/types/cart";
 import { Order, OrderCheckoutInput } from "@/types/order";
 import fetchApi from "@/api/instances/baseInstance";
-import fetchApiPublic from "@/api/instances/routerhandlersInstance";
+import fetchApiPublic from "@/api/instances/baseInstance";
 
 class OrderService {
   private url: string = "/orders";

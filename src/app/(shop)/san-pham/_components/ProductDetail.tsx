@@ -82,7 +82,7 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
             <ButtonWishlist id={product.id} />
           </div>
 
-          <div className=' mt-4'> <StoreListView stores={stores} /> </div>
+          <div className=' mt-2'> <StoreListView stores={stores} /> </div>
         </div>
         <div className=' md:col-span-6 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">

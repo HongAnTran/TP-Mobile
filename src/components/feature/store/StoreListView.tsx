@@ -58,18 +58,18 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
 
 
     return (
-        <div className='border relative rounded-lg border-gray-300 p-4 h-full bg-white overflow-y-auto'>
-            <TypographyH2 className='text-center text-xl font-medium'>
+        <div className='border relative rounded-lg border-gray-300 p-2 h-full bg-white overflow-y-auto'>
+            <TypographyH2 className='text-center text-lg font-medium'>
                 Cửa hàng của TP Mobile
             </TypographyH2>
-            <TypographyP className='text-center text-base   text-gray-500'>
+            {/* <TypographyP className='text-center text-base   text-gray-500'>
                 {storeList.length} cửa hàng trên toàn quốc
 
-            </TypographyP>
+            </TypographyP> */}
             <div className=' flex justify-center'>
-                {isSorted ? "Cửa hàng gần bạn" : <Button className=' text-xs' onClick={sortStoreNearLocationUser}> <CaretSortIcon /> Sắp xếp theo cửa hàng gần bạn </Button>}
+                {isSorted ? "Cửa hàng gần bạn" : <Button className=' py-1 px-2 text-xs' onClick={sortStoreNearLocationUser}> <CaretSortIcon /> Sắp xếp theo cửa hàng gần bạn </Button>}
             </div>
-            <div className='mt-4  flex flex-col gap-2  '>
+            <div className='mt-2  flex flex-col gap-2  '>
                 {storeList.map((store) => (
                     <div
                         key={store.id}
@@ -82,7 +82,8 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
                         </div>
                         <div>
                             <TypographyP>{store.detail_address}</TypographyP>
-                            <TypographyP>Hotline: <a href={`tel:${store.phone}`} className=' hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
+                            <TypographyP>Hotline: <a href={`tel:${store.phone.replaceAll("." ,"")}`} className=' hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
+                            <TypographyP>Hotline phản ánh: <a href={`tel:0347907042`} className=' hover:text-blue-500'><b>0347.90.70.42</b></a></TypographyP>
                         </div>
                     </div>
                 ))}

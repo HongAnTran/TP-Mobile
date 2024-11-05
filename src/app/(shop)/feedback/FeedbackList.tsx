@@ -1,5 +1,5 @@
 "use client"
-import fetchApiPublic from '@/api/instances/routerhandlersInstance'
+import fetchApi from '@/api/instances/baseInstance'
 import { Card, CardContent } from '@/components/ui/card'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
@@ -11,7 +11,7 @@ export default function FeedbackList() {
   useEffect(()=>{
   (async()=>{
 
-    const images = await fetchApiPublic.get<string[]>("/images")
+    const images = await fetchApi.get<string[]>("/images")
     setImages(images)
 
   })()
