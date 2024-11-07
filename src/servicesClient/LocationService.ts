@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { OptionsUseQuery, ResList } from "@/types/common.type";
+import { OptionsUseQuery, ResList } from "@/types/Common.type";
 import LocationServiceApi from "@/services/locationService";
 import { Location, LocationFilter } from "@/types/location";
 

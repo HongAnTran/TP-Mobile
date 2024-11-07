@@ -2,7 +2,7 @@ import BoxInnerHtml from '@/components/common/BoxInnerHtml'
 import Link from '@/components/common/Link'
 import { TypographyH1 } from '@/components/ui/typography'
 import routes from '@/routes'
-import { Article } from '@/types/article'
+import { Article } from '@/types/Article.type'
 import { formatDate } from '@/utils'
 import React from 'react'
 

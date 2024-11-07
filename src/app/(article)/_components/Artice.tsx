@@ -1,5 +1,5 @@
 import Link from "@/components/common/Link";
-import { Article } from "@/types/article";
+import { Article } from "@/types/Article.type";
 import ArticleCardList from "@/components/common/article/ArticleCardList";
 import {  TypographyH4 } from "@/components/ui/typography";
 

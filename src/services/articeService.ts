@@ -1,5 +1,5 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { Article, Articles, ArticlesParams } from "@/types/article";
+import { Article, Articles, ArticlesParams } from "@/types/Article.type";
 
 class ArticeService {
   private url: string = "/articles";

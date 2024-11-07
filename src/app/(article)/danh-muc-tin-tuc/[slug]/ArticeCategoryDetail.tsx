@@ -1,4 +1,4 @@
-import { Article } from '@/types/article'
+import { Article } from '@/types/Article.type'
 import { CategoryArtice } from '@/types/categoryArtice'
 import React from 'react'
 import Artice from '../../_components/Artice'

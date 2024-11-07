@@ -12,19 +12,22 @@ import ProductsServiceApi from '@/services/ProductsService'
 import StoreServiceApi from '@/services/StoreService'
 import { TabsTrigger, Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
-import { SearchParams } from '@/types/common.type'
+import { SearchParams } from '@/types/Common.type'
 import SETTINGS from '@/consts/settings'
 export default async function Product({ product, searchParams }: { product: ProductType, searchParams: SearchParams }) {
   const stores = await StoreServiceApi.getList()
+
   const params = searchParams[SETTINGS.KEY_ACTIVE_OPTIONS] as string || ""
   const optionsSlug = params.split(",")
   const variantActive = product.variants.find(variant => variant.attribute_values.every(value => optionsSlug.includes(value.slug)))
   const groups = product.attributes
   const attribute_values = variantActive?.attribute_values || []
+
   const optionsDefault = groups.map(group => {
     const actribute = attribute_values.find(op => group.attribute.id === op.attribute_id)
     return actribute?.id as number
   }).filter(Boolean)
+
   return (
     <LayoutContainer>
       <>
@@ -60,7 +63,6 @@ export default async function Product({ product, searchParams }: { product: Prod
               </Suspense>
 
             </TabsContent> : null}
-
             <TabsContent value="related" className=' w-full'>
               <Suspense fallback={<ProductsSkeleton />}>
                 <ProductRelated categoryId={product.category_id} productId={product.id} />

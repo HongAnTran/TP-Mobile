@@ -1,5 +1,5 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { Page } from "@/types/page";
+import { Page } from "@/types/Page.type";
 import pagesJson from "@/data/pages.json"
 
 

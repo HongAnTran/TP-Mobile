@@ -5,14 +5,12 @@ import ProductsServiceApi from '@/services/ProductsService'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import ProductCard from '@/components/common/product/ProductCard'
-
-
 import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
 import routes from '@/routes'
 import SETTINGS from '@/consts/settings'
-import { ValueFiter } from '@/types/common.type'
+import { ValueFiter } from '@/types/Common.type'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
@@ -30,14 +28,12 @@ export default async function page({ searchParams }: { searchParams: { [key: str
     price: searchParams?.price?.split(",").map(Number) || [0, 100],
     keyword: keyword,
     page,
-
   }
   const { datas: products, total } = await ProductsServiceApi.getList({
     keyword: keyword ? keyword.toString() : undefined,
     limit: LIMIT,
     ...searchParams
   })
-
   return (
     <div className=' my-8'>
       <div className=' container'>

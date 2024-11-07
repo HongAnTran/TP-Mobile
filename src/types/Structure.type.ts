@@ -1,10 +1,16 @@
 import { Feedback } from "./feedback";
 
-// Định nghĩa các loại Card Type
+
+export interface PageStructure {
+  zones: Zone[];
+  metadata?: {
+    title: string,
+    description: string,
+    keywords: string
+  }
+}
+
 export type CardType = 'default' | 'mini'
-
-// Định nghĩa các kiểu dữ liệu riêng cho từng zone
-
 export interface BannerZone {
   zone: 'BANNERS';
   isLazy?: boolean
@@ -23,7 +29,7 @@ export interface CategoryZone {
   zone: 'CATEGORIES';
   isLazy?: boolean
   active:boolean
-  data: ZoneData<ProductRow>; // Bạn có thể sử dụng ProductRow hoặc tạo một interface riêng
+  data: ZoneData<ProductRow>; 
 }
 
 export interface FeedbackZone {
@@ -37,10 +43,9 @@ export interface ArticleZone {
   zone: 'ARTICLES';
   isLazy?: boolean
   active:boolean
-  data: ZoneData<ProductRow>; // Bạn có thể sử dụng ProductRow hoặc tạo một interface riêng
+  data: ZoneData<ProductRow>; 
 }
 export interface ColSettings {
-  // Cấu hình số cột tại từng breakpoint giống như trong Tailwind
   xs?: number;  // Extra small devices (<640px)
   sm?: number;  // Small devices (≥640px)
   md?: number;  // Medium devices (≥768px)
@@ -50,13 +55,11 @@ export interface ColSettings {
 }
 
 
-// Định nghĩa cấu trúc cho tag
 export interface Tag {
   name: string;
   link: string;
 }
 
-// Định nghĩa cấu trúc cho các hàng trong Banners
 export interface BannerRow {
   title?: string;
   link: string;
@@ -68,12 +71,10 @@ export interface BannerRow {
   }
 }
 
-// Định nghĩa cấu trúc cho các hàng trong Products và Categories
 export type ProductRow = number
 
 
 
-// Định nghĩa cấu trúc cho phần dữ liệu chung
 export interface ZoneData<T> {
   type: 'grid' | 'slider';
   typeCard?: CardType;
@@ -88,14 +89,4 @@ export interface ZoneData<T> {
 }
 
 export type Zone = BannerZone | ProductZone | CategoryZone | FeedbackZone | ArticleZone;
-// Định nghĩa cấu trúc tổng thể cho toàn bộ JSON
-export interface PageStructure {
-  zones: Zone[];
-  metadata?: {
-    title: string,
-    description: string,
-    keywords: string
-  }
-}
-// Định nghĩa các giá trị hợp lệ cho zone
-// Tạo một union type để kết hợp tất cả các zone
+

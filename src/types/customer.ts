@@ -1,4 +1,4 @@
-import { Address } from "./address";
+import { Address } from "./Address.type";
 type CustomerGender = "male" | "female" | "other" | "unknown";
 interface Customer {
   id: number

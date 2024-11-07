@@ -1,4 +1,4 @@
-import { AddressInffo } from "./address";
+import { AddressInffo } from "./Address.type";
 
 interface Store extends AddressInffo {
   url_map: string

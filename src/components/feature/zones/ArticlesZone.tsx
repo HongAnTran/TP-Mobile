@@ -3,7 +3,7 @@ import React from 'react'
 import { TypographyH3 } from '../../ui/typography'
 import Link from "@/components/common/Link";
 import { Button } from '../../ui/button'
-import { Article } from '@/types/article'
+import { Article } from '@/types/Article.type'
 import routes from '@/routes'
 import ArticleCardList from '../../common/article/ArticleCardList';
 import ArticeServiceApi from '@/services/articeService';

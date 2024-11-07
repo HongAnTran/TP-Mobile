@@ -23,7 +23,7 @@ export default function NavigationCategoryClient({ className, data }: { data: Ca
     }
   }, [])
   return (
-    <div className={cn(' hidden md:block px-4   bg-secondary text-primary     py-2 transition-all ', isSticky ? ' fixed top-0 left-0 right-0 z-50  shadow-2xl' : '', className)}>
+    <nav className={cn(' hidden md:block px-4   bg-secondary text-primary     py-2 transition-all ', isSticky ? ' fixed top-0 left-0 right-0 z-50  shadow-2xl' : '', className)}>
       <div className=' container '>
         <ul className=' flex flex-nowrap   overflow-y-auto gap-4 lg:gap-8 items-center justify-center '>
           {data.map(category => {
@@ -40,6 +40,6 @@ export default function NavigationCategoryClient({ className, data }: { data: Ca
           })}
         </ul>
       </div>
-    </div>
+    </nav>
   )
 }

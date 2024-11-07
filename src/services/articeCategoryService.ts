@@ -1,6 +1,6 @@
 import fetchApi from '@/api/instances/baseInstance';
 import { CategoryArtice } from '@/types/categoryArtice';
-import { ResList } from '@/types/common.type';
+import { ResList } from '@/types/Common.type';
 
 
 

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Link from "@/components/common/Link";
 
 import routes from '@/routes'
-import { Article } from '@/types/article';
+import { Article } from '@/types/Article.type';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 

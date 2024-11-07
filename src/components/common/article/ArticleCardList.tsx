@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import routes from "@/routes";
-import { Article } from "@/types/article";
+import { Article } from "@/types/Article.type";
 import Image from "next/image";
 import Link from "@/components/common/Link";
 import { PhotoIcon } from "../../icons";

@@ -1,7 +1,6 @@
 import { Location } from "./location";
 
 
-// type AddressType = "home" | "office"
 
 interface AddressInffo {
   id : number
@@ -15,7 +14,6 @@ interface AddressInffo {
 }
 interface Address extends AddressInffo {
   id: number,
-  // type: AddressType
   isDefault: boolean
   created_at : string
   updated_at : string | null

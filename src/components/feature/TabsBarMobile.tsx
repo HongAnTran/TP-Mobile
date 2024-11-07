@@ -74,13 +74,13 @@ export default function TabsBarMobile() {
     // customerItem
   ]
   return (
-    <div className='  text-secondary rounded-t-xl flex justify-between fixed -bottom-[6px] left-0 right-0  z-50 bg-primary p-4 md:hidden'>
+    <nav className='  text-secondary rounded-t-xl flex justify-between fixed -bottom-[6px] left-0 right-0  z-50 bg-primary p-4 md:hidden'>
       {
         itemsMobile.map((item, index) => {
           return <HeaderItemMobile {...item} key={index} />
         })
       }
-    </div>
+    </nav>
   )
 }
 

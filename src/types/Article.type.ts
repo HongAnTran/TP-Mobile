@@ -1,30 +1,29 @@
 import { CategoryArtice } from "./categoryArtice";
-import { ResList } from "./common.type";
+import { ResList } from "./Common.type";
 
 enum ArticleStatus {
   DRAFT,
   SHOW,
 }
 interface Article {
-  id: number; // ID của bài viết
-  title: string; // Tiêu đề của bài viết
+  id: number; 
+  title: string;
   slug: string;
-  content: string; // Nội dung của bài viết
-  author_id: number; // ID của tác giả (khóa ngoại)
+  content: string; 
+  author_id: number; 
   author : null
-  category_id: number; // ID của danh mục bài viết (khóa ngoại)
+  category_id: number; 
   category: CategoryArtice
-  created_at: string; // Ngày và giờ tạo bài viết
-  updated_at: string | null; // Ngày và giờ cập nhật gần đây nhất
+  created_at: string;
+  updated_at: string | null; 
   description: string | null;
   thumnal_url: string
   status: ArticleStatus
-  // meta
   meta_data: {
     meta_title: string | null
     meta_description: string | null
     meta_keywords: string | null
-  }
+  } | null
 }
 type Articles = ResList<Article>
 
