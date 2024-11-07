@@ -5,21 +5,21 @@ import { Store, StoreParams } from "@/types/store";
 class StoreService {
   private url: string = "/store";
 
-  constructor() { }
-  async getDetail(id: number , init?:ConfigAPi) {
+  constructor() {}
+  async getDetail(id: number, init?: ConfigAPi) {
     const product = await fetchApi.get<Store>(`${this.url}/${id}`, {
-      ...init
+      ...init,
     });
-    return product
+    return product;
   }
 
-  async getList(params?: StoreParams ,init?:ConfigAPi) {
+  async getList(params?: StoreParams, init?: ConfigAPi) {
     const stores = await fetchApi.get<Store[]>(`${this.url}`, {
-      next : {revalidate : 60 * 60 * 12},
+      next: { revalidate: 60 * 60 * 12, tags: [this.url] },
       ...init,
-      params : params,
+      params: params,
     });
-    return stores
+    return stores;
   }
 }
 const StoreServiceApi = new StoreService();
