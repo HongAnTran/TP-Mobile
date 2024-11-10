@@ -1,4 +1,4 @@
-import { ResList } from '@/types/Common.type';
+import { ResList } from '@/types/common.type';
 
 import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/api";

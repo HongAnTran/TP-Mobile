@@ -7,7 +7,7 @@ import routes from '@/routes'
 import { Product as ProductType } from '@/types/Product.types'
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import Head from 'next/head'
-import { SearchParams } from '@/types/Common.type'
+import { SearchParams } from '@/types/common.type'
 
 function generateStrucDataProduct(
   product: ProductType

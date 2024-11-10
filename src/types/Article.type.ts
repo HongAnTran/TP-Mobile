@@ -1,5 +1,5 @@
 import { CategoryArtice } from "./categoryArtice";
-import { ResList } from "./Common.type";
+import { ResList } from "./common.type";
 
 enum ArticleStatus {
   DRAFT,
