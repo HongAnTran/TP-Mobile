@@ -24,7 +24,7 @@ import { Skeleton } from '../ui/skeleton'
 import CategoryServiceClient from '@/servicesClient/CategoryService'
 import { Button } from '../ui/button'
 import FilterListIcon from '@mui/icons-material/FilterList';
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 
 export default function FilterProduct({ defaultValue, searchParams, isUseCategory }: { defaultValue?: ValueFiter, searchParams?: any, isUseCategory?: boolean }) {
   const router = useRouter()

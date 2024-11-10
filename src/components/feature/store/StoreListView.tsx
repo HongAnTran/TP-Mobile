@@ -6,6 +6,7 @@ import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import useCheckLocationPermission from '@/hooks/useCheckLocationPermission'
 import StoreServiceApi from '@/services/StoreService'
 import { Store } from '@/types/store'
+import { convertHotlineToTel } from '@/utils'
 import { CaretSortIcon } from '@radix-ui/react-icons'
 import React, { useEffect, useState } from 'react'
 
@@ -82,7 +83,7 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
                         </div>
                         <div>
                             <TypographyP>{store.detail_address}</TypographyP>
-                            <TypographyP>Hotline: <a href={`tel:${store.phone.replaceAll("." ,"")}`} className=' hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
+                            <TypographyP>Hotline: <a href={`tel:${convertHotlineToTel(store.phone)}`} className=' hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
                             <TypographyP>Hotline phản ánh: <a href={`tel:0347907042`} className=' hover:text-blue-500'><b>0347.90.70.42</b></a></TypographyP>
                         </div>
                     </div>

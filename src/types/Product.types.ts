@@ -1,7 +1,7 @@
 import { Attribute, AttributeValue } from "./Attributestypes";
+import { ResList } from "@/types/common.type";
 import { Brand } from "./brand";
 import { CategoryProduct } from "./categoryProduct";
-import { ResList } from "./Common.type";
 
 type ProductId = number
 

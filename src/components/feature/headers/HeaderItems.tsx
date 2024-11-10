@@ -10,6 +10,8 @@ import CartHeader from './CartHeader';
 import { useSession } from 'next-auth/react';
 import IconBorder from '../../common/IconBorder';
 import NavLink from '../../common/NavLink';
+import CONFIG from '@/consts/config'
+import { convertHotlineToTel } from '@/utils'
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 
@@ -37,8 +39,8 @@ export default function HeaderItems() {
         <PhoneFilledIcon className=' w-6 h-6' />
       </IconBorder>
       ,
-      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>0347.907.042</b> </span>,
-      href: "tel:0347907042"
+      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
+      href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
     },
     {
       icon: <IconBorder>

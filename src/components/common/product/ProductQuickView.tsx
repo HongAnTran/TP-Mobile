@@ -11,7 +11,7 @@ import ProductShowPrice from "./ProductShowPrice";
 import ProductOptions from "./ProductOptions";
 import ProductActionButton from "./ProductActionButton";
 import ProductQuantity, { ProductQuantityProps } from "./ProductQuantity";
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 import { Product, ProductInList } from "@/types/Product.types";
 import ButtonCompareProduct from "@/components/feature/buttons/ButtonCompareProduct";
 import useProduct from "@/hooks/useProduct";

@@ -9,7 +9,7 @@ import { SortProduct } from '@/components/feature/SortProduct'
 import FilterProduct from '@/components/feature/FilterProduct'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
 import routes from '@/routes'
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 import { ValueFiter } from '@/types/Common.type'
 
 

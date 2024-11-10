@@ -127,5 +127,9 @@ function debounce<T extends (...args: any[]) => void>(func: T, wait: number): (.
   };
 }
 
+function convertHotlineToTel(phone :string){
 
-export { debounce, convetNumberToPriceVND, findVariantMinPrice, generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams, formatDate, checkIsClient }
+  return phone.replaceAll(".","")
+}
+
+export {convertHotlineToTel, debounce, convetNumberToPriceVND, findVariantMinPrice, generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams, formatDate, checkIsClient }
