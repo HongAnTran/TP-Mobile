@@ -2,11 +2,12 @@
 import React from 'react'
 import ButtonUpToTop from '../feature/buttons/ButtonUpToTop'
 import { Button } from '../ui/button'
-import { MessengerIcon, PhoneIcon, ZaloIcon, InstagramIcon, InstagramLogoIcon, PhoneFilledIcon } from '../icons'
+import { MessengerIcon, PhoneIcon,  InstagramLogoIcon,  } from '../icons'
 import Link from "@/components/common/Link";
 import { Popover, PopoverContent, PopoverTrigger } from '@radix-ui/react-popover'
-import { PlusCircledIcon } from '@radix-ui/react-icons'
 import CallIcon from '@mui/icons-material/Call';
+import CONFIG from '@/consts/config'
+import { convertHotlineToTel } from '@/utils'
 
 export default function ListStickyButton() {
   return (
@@ -19,7 +20,7 @@ export default function ListStickyButton() {
 
           </Button>
         </Link>
-        <Link aria-label="link"  href={"tel:0347907042"} target="_blank">
+        <Link aria-label="link"  href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`} target="_blank">
           <Button aria-label="PhoneIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
             <PhoneIcon />
@@ -61,18 +62,16 @@ export default function ListStickyButton() {
 
                 </Button>
               </Link>
-              <Link aria-label="link"  href={"tel:0347907042"} target="_blank">
+              <Link aria-label="link"  href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`} target="_blank">
                 <Button aria-label="PhoneIcon" size="icon" variant="link" className=' relative' >
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
                   <PhoneIcon />
-
                 </Button>
               </Link>
               <Link aria-label="link"  href={"https://www.facebook.com/messages/t/100369039524995"} target="_blank">
                 <Button  aria-label="MessengerIcon" size="icon" variant="link" className=' relative' >
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
                   <MessengerIcon  />
-
                 </Button>
               </Link>
 

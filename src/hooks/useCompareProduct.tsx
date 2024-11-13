@@ -1,7 +1,7 @@
 "use client"
 
 import { toast } from '@/components/ui/use-toast'
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 import { useShopStore } from '@/providers/shop-store-provider'
 import { Product } from '@/types/Product.types'
 import { useCallback, useState } from 'react'

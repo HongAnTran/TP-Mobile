@@ -1,7 +1,7 @@
 
 "use client"
 import { KEYS } from '@/consts/localStorage'
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 import ProductsServiceApi from '@/services/ProductsService'
 import { Product, ProductInList } from '@/types/Product.types'
 import LocalStorageService from '@/utils/localStorage'

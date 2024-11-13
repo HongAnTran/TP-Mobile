@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { OptionsUseQuery } from "@/types/Common.type";
+import { OptionsUseQuery } from "@/types/common.type";
 import ProductSpecificationsServiceApi from "@/services/productSpecifications";
 import { ProductSpecifications } from "@/types/Product.types";
 

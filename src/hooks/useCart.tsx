@@ -1,5 +1,4 @@
 "use client"
-
 import { useToast } from '@/components/ui/use-toast'
 import { useShopStore } from '@/providers/shop-store-provider'
 import routes from '@/routes'
@@ -20,9 +19,7 @@ export default function useCart() {
   const handleAddtoCart = useCallback((product: Product, variant: ProductVariant, quantity: number) => {
     cartClient.add(product, variant, quantity)
     setCart(cartClient.cart)
-    toast({
-      title: `Thêm ${product.title + "-" + variant.title} vào giỏ hàng thành công`
-    })
+
   }, [cartClient, setCart, toast])
 
   const handleDeleteItem = useCallback((id: ProductOrder["id"]) => {
@@ -52,7 +49,7 @@ export default function useCart() {
   }, [cartClient, setCart])
 
   const handleChangeSelectItems = useCallback((products: ProductOrder[], value: boolean) => {
-    products.forEach(product=>{
+    products.forEach(product => {
       const productNew: ProductOrder = { ...product, selected: value }
       cartClient.update(productNew)
     })

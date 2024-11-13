@@ -3,7 +3,7 @@ import ProductCard from '@/components/common/product/ProductCard'
 import ProductsServiceApi from '@/services/ProductsService'
 import {  ProductsParams } from '@/types/Product.types'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
-import SETTINGS from '@/consts/settings'
+import CONFIG from '@/consts/config'
 
 interface ProductCollectionListProps {
   searchParams: ProductsParams
@@ -12,7 +12,7 @@ interface ProductCollectionListProps {
 
 export default async function ProductCollectionList({ searchParams, slug }: ProductCollectionListProps) {
   const page = Number(searchParams.page) || 1
-  const LIMIT = SETTINGS.LIMIT_SHOW_PRODUCT_LIST
+  const LIMIT = CONFIG.LIMIT_SHOW_PRODUCT_LIST
 
   const {category_id , ...query} = searchParams
   const { datas, total } = await ProductsServiceApi.getList({

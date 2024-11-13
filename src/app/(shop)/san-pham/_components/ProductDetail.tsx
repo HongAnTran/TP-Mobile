@@ -4,11 +4,11 @@ import ProductOptions from '@/components/common/product/ProductOptions'
 import ProductShowPrice from '@/components/common/product/ProductShowPrice'
 import { TypographyH1, TypographyP } from '@/components/ui/typography'
 import useHandleVariant from '@/hooks/useHandleVariant'
-import { Product } from '@/types/Product.types'
+import { Product, ProductVariant } from '@/types/Product.types'
 import React, { useEffect, useState } from 'react'
 import ProductQuantity, { ProductQuantityProps } from '@/components/common/product/ProductQuantity'
 import ProductActionButton from '@/components/common/product/ProductActionButton'
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 import ButtonCompareProduct from '@/components/feature/buttons/ButtonCompareProduct'
 import ButtonWishlist from '@/components/feature/buttons/ButtonWishlist'
 import useProductRecentView from '@/hooks/useProductRecentView'
@@ -19,6 +19,9 @@ import SpecialPromotionPolicy from '@/components/feature/policy/SpecialPromotion
 import StoreListView from '@/components/feature/store/StoreListView'
 import { Store } from '@/types/store'
 import { objectToSearchParams } from '@/utils'
+import { toast } from '@/components/ui/use-toast'
+import Image from 'next/image'
+import PriceText from '@/components/common/PriceText'
 
 export default function ProductDetail({ product, stores = [], optionsDefault }: { product: Product, stores?: Store[], optionsDefault?: number[] }) {
   const [isTouchOption, setIsTouchOption] = useState(false)
@@ -45,6 +48,20 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
       }
       setQuantity(quantityNew)
     }
+  }
+
+  function onAddTocart(product: Product, variantActive: ProductVariant, quantity: number) {
+    handleAddtoCart(product, variantActive, quantity)
+    toast({
+      title: `Thêm vào giỏ hàng thành công`,
+      description: <div className=' flex gap-2'>
+        <Image className=' w-10 h-10' alt={product.title} src={variantActive.image?.url || ""} width={60} height={60} />
+        <div>
+          <p>{product.title + "-" + variantActive.title} x <b>{quantity}</b></p>
+          <PriceText price={variantActive.price * quantity} />
+        </div>
+      </div>
+    })
   }
 
   useEffect(() => {
@@ -112,7 +129,7 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
           </div>
 
           <div className=' mt-8 '>
-            <ProductActionButton onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)} onBuyNow={
+            <ProductActionButton onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
               () => {
                 handleBuyNow(product, variantActive, quantity)
               }

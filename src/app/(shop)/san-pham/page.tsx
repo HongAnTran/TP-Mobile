@@ -7,7 +7,7 @@ import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import ProductCollectionList from '../danh-muc/_components/ProductCollectionList'
 import routes from '@/routes'
 import LayoutContainer from '@/layouts/LayoutContainer'
-import SETTINGS from '@/consts/settings'
+import SETTINGS from '@/consts/config'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
