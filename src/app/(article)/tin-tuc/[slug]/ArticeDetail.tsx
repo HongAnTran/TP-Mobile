@@ -5,11 +5,11 @@ import routes from '@/routes'
 import { Article } from '@/types/Article.type'
 import { formatDate } from '@/utils'
 import React from 'react'
-
+import "../../style/style.css"
 export default function ArticeDetail({ artice }: { artice: Article }) {
   return (
-    <div>
-      <TypographyH1 className=' lg:text-4xl'>
+    <div >
+      <TypographyH1 className=' lg:text-2xl'>
         {artice.title}
       </TypographyH1>
       <div className=' flex justify-between '>
