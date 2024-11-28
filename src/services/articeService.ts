@@ -10,7 +10,7 @@ class ArticeService {
     return fetchApi.get<Articles>(this.url, {
       params: params,
       next: {
-        next: { tags: [this.url], revalidate: 60 * 60 * 24 * 30 },
+       tags: [this.url], revalidate: 60 * 60 * 24 * 30
       }
     });
   }
