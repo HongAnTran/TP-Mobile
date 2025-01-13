@@ -9,13 +9,13 @@ import "../../style/style.css"
 export default function ArticeDetail({ artice }: { artice: Article }) {
   return (
     <div >
-      <TypographyH1 className=' lg:text-2xl'>
+      <TypographyH1 className='text-lg text-center lg:text-left lg:text-2xl'>
         {artice.title}
       </TypographyH1>
       <div className=' flex justify-between '>
 
         <p className=' my-2  '><b>Danh mục: </b><Link className=' font-bold text-blue-500' href={`${routes.articeCategory}/${artice.category.slug}`} >{artice.category.title} </Link></p>
-        <p className=' my-2  '><b>Đăng vào: </b> {formatDate(artice.created_at)}</p>
+        <p className=' my-2  '><b className=' hidden md:inline'>Đăng vào: </b> {formatDate(artice.created_at)}</p>
       </div>
 
       <div className=' mt-4'>

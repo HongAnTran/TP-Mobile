@@ -9,6 +9,7 @@ import { formatDate } from "@/utils";
 // import { PhotoIcon } from "@heroicons/react/24/outline";
 // import CategoryLabel from "@/components/blog/category";
 import { Badge } from "@/components/ui/badge"
+import { TypographyP } from "@/components/ui/typography";
 
 
 interface Props {
@@ -32,12 +33,12 @@ export default function ArticleCardList({
     <>
       <div
         className={cn(
-          "group cursor-pointer relative",
+          "group cursor-pointer relative h-full  overflow-hidden rounded-lg shadow-lg bg-white",
           minimal && "grid gap-10 md:grid-cols-2"
         )}>
         <div
           className={cn(
-            " overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800"
+            " rounded-md bg-white transition-all hover:scale-105   dark:bg-gray-800"
           )}>
           <Link
             className={cn(
@@ -55,7 +56,7 @@ export default function ArticleCardList({
 
                 alt={article.title || "Thumbnail"}
                 priority={preloadImage ? true : false}
-                className="object-cover transition-all"
+                className=" object-contain transition-all"
                 fill
                 sizes="(max-width: 768px) 30vw, 33vw"
               />
@@ -67,9 +68,16 @@ export default function ArticleCardList({
           </Link>
         </div>
 
-        <div className={cn(minimal && "flex items-center" , " absolute bottom-0 left-0  right-0 p-4")}>
+        <div className={cn(minimal && "flex items-center", " p-4")}>
           <div>
-            <Badge >{article?.category?.title}</Badge>
+            <div className=" flex  justify-between items-center">
+
+              {article?.category && <Link href={`${routes.articeCategory}/${article?.category?.slug}`}>
+                <Badge >{article?.category?.title}</Badge>
+              </Link>}
+              <TypographyP>{formatDate(article.created_at)}</TypographyP>
+            </div>
+
             <h2
               className={cn(
                 fontSize === "large"
@@ -78,15 +86,15 @@ export default function ArticleCardList({
                     ? "text-3xl"
                     : "text-lg",
                 fontWeight === "normal"
-                  ? "line-clamp-2 font-medium  tracking-normal text-white"
-                  : "font-semibold leading-snug tracking-tight",
-                "mt-2    dark:text-white"
+                  ? "line-clamp-2 font-medium  tracking-normal text-primary"
+                  : "font-semibold line-clamp-2  leading-snug tracking-tight",
+                "mt-2    dark:text-primary"
               )}>
               <Link
                 href={`${routes.artice}/${article.slug}`}>
 
                 <span
-                  className="text-white bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
+                  className="text-primary bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
       transition-[background-size]
       duration-500

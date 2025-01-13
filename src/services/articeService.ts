@@ -4,14 +4,16 @@ import { Article, Articles, ArticlesParams } from "@/types/Article.type";
 class ArticeService {
   private url: string = "/articles";
 
-  constructor() { }
+  constructor() {}
 
   async getList(params?: ArticlesParams) {
     return fetchApi.get<Articles>(this.url, {
       params: params,
       next: {
-       tags: [this.url], revalidate: 60 * 60 * 24 * 30
-      }
+        tags: [this.url],
+        revalidate: 60 * 60 * 24 * 30,
+      },
+      isLogger: true,
     });
   }
   async getDetail(slug: string) {

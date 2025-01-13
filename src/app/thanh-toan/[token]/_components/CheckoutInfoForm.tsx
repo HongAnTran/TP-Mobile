@@ -95,7 +95,6 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     if (!districts) {
       return
     }
-
     setLocation(pre => ({ ...pre, districts: districts }))
     setValue("district.code", districts[0].code)
   }, [setValue, districts])
@@ -129,7 +128,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         },
         shipping: {
           create: {
-            email : data.email || null,
+            email: data.email || null,
             fullname: data.full_name,
             address: data.street,
             province: data.province.code,

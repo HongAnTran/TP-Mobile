@@ -14,9 +14,10 @@ import { TypographyP, TypographySpan } from '../ui/typography';
 import Link from "@/components/common/Link";
 
 import routes from '@/routes';
-import { debounce } from '@/utils';
+import { convetNumberToPriceVND, debounce } from '@/utils';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import PriceText from '../common/PriceText';
 
 const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
 
@@ -142,7 +143,12 @@ function ProductItemSearch({ product }: { product: ProductInList }) {
         <div>
           <Image className='  rounded' src={product.images[0].url} alt='product' width={50} height={50} />
         </div>
-        <TypographySpan className=' text-[#f8f8d9]    group-hover:text-blue-500 hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
+        <div className=' flex flex-col gap-2'>
+
+          <TypographySpan className=' text-[#f8f8d9]    group-hover:text-blue-500 hover:text-blue-500 font-bold line-clamp-2 ' >{product.title}</TypographySpan>
+          <TypographySpan><PriceText price={product.price} className=' text-[#f8f8d9]   ' /></TypographySpan>
+        </div>
+
       </li>
     </Link>
   )

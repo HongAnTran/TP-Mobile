@@ -23,23 +23,32 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
         try {
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
-                    setIsLoading(true)
+                    try {
+                        setIsLoading(true)
 
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    const datas = await StoreServiceApi.getList({
-                        latitude: `${latitude}`,
-                        longitude: `${longitude}`
-                    });
-                    setStoreList(datas);
-                    setIsSorted(true)
-                    setIsLoading(false)
-                    if (datas.length > 0) {
-                        onSelectStore?.(datas[0]);
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        const datas = await StoreServiceApi.getList({
+                            latitude: `${latitude}`,
+                            longitude: `${longitude}`
+                        });
+                        setStoreList(datas);
+                        setIsSorted(true)
+                        setIsLoading(false)
+                        if (datas.length > 0) {
+                            onSelectStore?.(datas[0]);
+                        }
+                    } catch (error) {
+                        setIsLoading(false)
+
+                    } finally {
+                        setIsLoading(false)
+
                     }
                 },
                 (error) => {
                     console.error("Không thể lấy tọa độ người dùng:", error);
+                    setIsLoading(false)
                 },
                 { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
             );
@@ -51,11 +60,11 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
         }
     }
 
-    useEffect(()=>{
-        if(isPermission){
+    useEffect(() => {
+        if (isPermission) {
             sortStoreNearLocationUser()
         }
-    },[isPermission])
+    }, [isPermission])
 
 
     return (

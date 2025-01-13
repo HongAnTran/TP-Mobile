@@ -7,9 +7,12 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <MainLayout> 
-      <div className=" container  py-8 ">
-        {children}
+    <MainLayout>
+      <div className="bg-[#f5f5f7]">
+
+        <div className=" container  py-8 ">
+          {children}
+        </div>
       </div>
     </MainLayout>
   );

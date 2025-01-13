@@ -8,9 +8,9 @@ import routes from '@/routes'
 
 export default async function page({ params }: { params: { slug: string } }) {
   const slug = params.slug
-  const {datas} = await ArticeServiceApi.getList()
-
   const articeCategory = await ArticeCategoryServiceApi.getDetail(slug)
+  const { datas } = await ArticeServiceApi.getList({ categoryId: articeCategory.id })
+
 
   if (!articeCategory) {
     notFound()
