@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react"
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { WebSite, WithContext } from "schema-dts";
 const inter = Inter({ subsets: ["vietnamese"] });
 
 

@@ -54,12 +54,10 @@ export default async function page() {
   const { zones } = value
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BannerLarge />
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>

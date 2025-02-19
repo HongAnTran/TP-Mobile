@@ -112,12 +112,10 @@ export default async function page({ params, searchParams }: { params: { slug: s
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
+      />
       <Product product={product} searchParams={searchParams} />
     </>
   )
