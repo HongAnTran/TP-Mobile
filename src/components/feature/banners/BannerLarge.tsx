@@ -24,7 +24,7 @@ const datas: BannerHeroItem[] = [
     image: "/Apple-iPad-Air-2024-PNG.png",
     title: "Ipad Air 6",
     description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 15,790,000đ",
-    link: "/san-pham/ipad-air-6-13-inch-lte-new-seal"
+    link: "/san-pham/ipad-air-6-13-inch-wifi-new-seal"
   },
 ]
 export default function BannerLarge() {
