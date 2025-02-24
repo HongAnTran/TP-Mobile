@@ -12,21 +12,21 @@ const nextConfig = {
       },
     ],
   },
-  modularizeImports: {
-    "react-hook-form": {
-      transform: "react-hook-form/{{member}}",
-    },
-    "framer-motion": {
-      transform: "framer-motion/{{member}}",
-    },
-    "@mui/icons-material": {
-      transform: "@mui/icons-material/{{member}}",
-    },
-  },
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false, path: false };
-    return config;
-  },
+  // modularizeImports: {
+  //   "react-hook-form": {
+  //     transform: "react-hook-form/{{member}}",
+  //   },
+  //   "framer-motion": {
+  //     transform: "framer-motion/{{member}}",
+  //   },
+  //   "@mui/icons-material": {
+  //     transform: "@mui/icons-material/{{member}}",
+  //   },
+  // },
+  // webpack: (config) => {
+  //   config.resolve.fallback = { fs: false, path: false };
+  //   return config;
+  // },
   swcMinify: true,
   async headers() {
     return [
