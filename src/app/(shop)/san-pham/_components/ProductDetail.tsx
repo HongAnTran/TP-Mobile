@@ -79,9 +79,8 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
       }
       const valueSearch = objectToSearchParams({ ...searchParams })
       const query = valueSearch ? `?${valueSearch}` : "";
-      window.history.pushState(null, '', query)
+      window.history.replaceState(null, '', query)
     }
-
   }, [variantActive, isTouchOption])
   return (
     <div >

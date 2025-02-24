@@ -10,21 +10,7 @@ const inter = Inter({ subsets: ["vietnamese"] });
 
 
 
-function generateStrucDataWeb(): WithContext<WebSite> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "TP Mobile", // Replace with your website's name
-    url: process.env.DOMAIN, // Replace with your website's URL
-    // potentialAction: {
-    //   "@type": "SearchAction",
-    //   target: `${process.env.DOMAIN}/tim-kiem?keyword={ipad}`,
-    //   "query": "required name=ipad",
 
-    // },
-    description: "TP Mobile Store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chuyên cung cấp iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn, TP Mobile cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
-  };
-}
 export const metadata: Metadata = {
   title: "TP MOBILE STORE",
   description: "TP Mobile Store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chuyên cung cấp iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn, TP Mobile cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
@@ -74,20 +60,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = generateStrucDataWeb();
 
   return (
     <html lang="vi">
 
       <link rel="icon" href="/icon.ico" sizes="any" />
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      {/* <GoogleAnalytics /> */}
-      {/* <meta name="google-site-verification" content="ooNv-cj6ianI3N7tJxrulG6ihHMwq092YA0XfTxksuQ" /> */}
+      <GoogleAnalytics />
+      <meta name="google-site-verification" content="ooNv-cj6ianI3N7tJxrulG6ihHMwq092YA0XfTxksuQ" />
       <body className={inter.className}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         <SessionProvider>
           <ReactQueryProvider>
             {children}

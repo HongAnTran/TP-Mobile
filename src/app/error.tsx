@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 
 export default function GlobalError({
@@ -11,13 +11,29 @@ export default function GlobalError({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+
+  const route = useRouter()
+
   return (
- 
-        <div className=' flex  flex-col justify-center items-center min-h-[400px] py-20'>
-          <h2>Hê thống tạm thời gián đoạn<br /> vui lòng thử lại trong giây lát</h2>
-          <Image src={"/Error 500.gif"} alt="error" width={500} height={500}/>
-          <Button onClick={() => reset()}>Thử lại</Button>
+    <div className={'h-svh w-full'} >
+      <div className='m-auto flex h-full w-full flex-col items-center justify-center gap-2'>
+        <h1 className='text-[7rem] font-bold leading-tight'>500</h1>
+
+        <span className='font-medium'>Rất tiếc đã có lỗi xảy ra {`:')`}</span>
+        <p className='text-center text-muted-foreground'>
+          Xin lỗi vì sự bất tiện này. <br /> Vui lòng thử lại sau.
+        </p>
+
+        <div className='mt-6 flex gap-4'>
+          <Button variant='outline' onClick={() => reset()}>
+            Thử lại
+          </Button>
+          <Button onClick={() => route.push('/')}>Trở về trang chủ</Button>
         </div>
-   
+
+      </div>
+    </div>
   )
 }
+
+

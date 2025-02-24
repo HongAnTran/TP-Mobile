@@ -8,6 +8,7 @@ import { Product as ProductType } from '@/types/Product.types'
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import Head from 'next/head'
 import { SearchParams } from '@/types/common.type'
+import CONFIG from '@/consts/config'
 
 function generateStrucDataProduct(
   product: ProductType
@@ -73,7 +74,7 @@ export async function generateMetadata(
     const titleShow = meta_data?.meta_title || product.title
     const desShow = meta_data?.meta_description || product.short_description || undefined
     const keywords = meta_data?.meta_keywords || titleShow
-    const DOMAIN = process.env.DOMAIN
+    const DOMAIN = CONFIG.DOMAIN
     const URL = `${DOMAIN}${routes.products}/${product.slug}`
     return {
       title: titleShow,
@@ -111,12 +112,10 @@ export default async function page({ params, searchParams }: { params: { slug: s
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
+      />
       <Product product={product} searchParams={searchParams} />
     </>
   )
