@@ -9,6 +9,6 @@ export default function WarrantyPolicy() {
     { id: 4, description: <span>Vệ sinh sản phẩm <b>trọn đời</b></span> },
   ];
   return (
-  <BoxViewTextList list={benefits} title='Chính sách bảo hành' icon={"🛡️"} />
+    <BoxViewTextList list={benefits} title='Chính sách bảo hành' icon={"🛡️"} iconItem={"🛡️"} />
   )
 }

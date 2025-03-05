@@ -3,14 +3,17 @@ import React, { ReactNode } from 'react'
 
 export default function SpecialPromotionPolicy() {
   const benefits: BoxViewTextItem[] = [
-    { id: 1, description: <span>Apple Pencil 2 giá chỉ <b>1.500.000</b> khi mua kèm với iPad</span> },
-    { id: 2, description: <span>Apple Pencil 1 giá chỉ <b>900.000</b> khi mua kèm với iPad</span> },
-    // { id: 3, description: <span>Giảm ngay <b> 300k</b> khi mua với Apple Pencil</span> },
-    { id: 4, description: <span>Giảm ngay <b> 300k </b>khi mua với AirPods</span> },
-    { id: 5, description: <span>Giảm ngay <b> 300k </b>khi mua với Magic/Folio</span> },
-    { id: 6, description: <span>Giảm ngay <b> 300k </b>cho khách hàng thân thiết</span> },
+    { id: 1, description: <span>Mua Apple pencil 1 like new  1.490.000 giảm còn <b>1.190.000</b></span> },
+    { id: 2, description: <span>Mua Apple Pencil 2 like new 2.090.000 giảm còn <b>1.500.000</b></span> },
+    { id: 4, description: <span>Mua Apple Pencil 2 openbox 2.290.000 giảm còn <b>1.790.000</b></span> },
+    { id: 5, description: <span>Mua Apple Pencil 2 newseal 2.490.000 giảm còn <b>2.000.000</b></span> },
+    { id: 6, description: <span>Mua Apple Pencil Pro newbody 2.900.000 giảm còn <b>2.400.000</b></span> },
+    { id: 7, description: <span>Mua Apple Pencil Pro openbox 3.050.000 giảm còn <b>2.550.000</b> </span> },
+    { id: 8, description: <span>Mua Apple Pencil Pro newseal 3.290.000 giảm còn <b>2.790.000</b></span> },
   ];
   return (
-    <BoxViewTextList classNameIcon='animate-wiggle  animate-infinite' list={benefits} title='Ưu đãi đặc biệt' icon={"🎁"} />
+    <BoxViewTextList classNameIcon='animate-wiggle  animate-infinite' list={benefits}
+      title='khi mua combo Apple pencil kèm iPad quý khách hàng sẽ mua được với giá cực hời 🔥'
+      icon={"🎁"} iconItem={"✨"} />
   )
 }
