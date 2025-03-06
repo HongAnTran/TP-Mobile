@@ -11,7 +11,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <ShopStoreProvider>
             <main className=' min-h-screen flex flex-col scroll-smooth ' >
                 <Header />
-                <NavigationCategory  />
+                <NavigationCategory />
                 <div className=' flex-1'>
                     {children}
                 </div>

@@ -14,6 +14,7 @@ import { TabsTrigger, Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import { SearchParams } from '@/types/common.type'
 import SETTINGS from '@/consts/config'
+import EventPopup from '@/components/feature/eventPopup/EventPopup'
 export default async function Product({ product, searchParams }: { product: ProductType, searchParams: SearchParams }) {
   const stores = await StoreServiceApi.getList()
 
@@ -74,6 +75,7 @@ export default async function Product({ product, searchParams }: { product: Prod
           <ProductsRecentViewList />
         </div>
       </>
+      <EventPopup />
     </LayoutContainer>
   )
 }

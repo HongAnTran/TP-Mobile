@@ -11,6 +11,7 @@ import BannerZone from '@/components/feature/zones/BannerZone'
 import { WithContext, BreadcrumbList } from 'schema-dts'
 import Head from 'next/head'
 import CONFIG from '@/consts/config'
+import EventPopup from '@/components/feature/eventPopup/EventPopup'
 
 function generateStructData(
 ): WithContext<BreadcrumbList> {
@@ -83,6 +84,7 @@ export default async function page() {
           })}
         </div>
       </div>
+      <EventPopup />
     </>
   )
 }
