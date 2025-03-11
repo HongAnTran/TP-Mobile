@@ -18,14 +18,14 @@ const routes = {
   compareProduct: "/so-sanh-san-pham",
   wishlist: "/yeu-thich",
   guaranteePolicy: "/chinh-sach-bao-hanh",
-  endow: "/uu-dai-tai-tpmobile",
+  endow: "/chinh-sach-uu-dai",
   changePolicy: "/chinh-sach-doi-tra",
   deliveryPolicy: "/chinh-sach-giao-hang",
   introduce: "/gioi-thieu-tpmobile",
 };
 
 const privateToutes = {
-  account: "tai-khoan"
+  account: "tai-khoan",
 };
-export { privateToutes }
+export { privateToutes };
 export default routes;
