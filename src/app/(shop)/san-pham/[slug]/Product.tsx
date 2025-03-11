@@ -75,7 +75,7 @@ export default async function Product({ product, searchParams }: { product: Prod
           <ProductsRecentViewList />
         </div>
       </>
-      <EventPopup />
+      {/* <EventPopup /> */}
     </LayoutContainer>
   )
 }

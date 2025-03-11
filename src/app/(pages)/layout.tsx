@@ -1,4 +1,4 @@
-import NoNavigationLayout from "@/layouts/NoNavigationLayout";
+import MainLayout from "@/layouts/MainLayout";
 
 export default function Layout({
   children,
@@ -6,8 +6,8 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-      <NoNavigationLayout>
-        {children}
-      </NoNavigationLayout>
+    <MainLayout>
+      {children}
+    </MainLayout>
   );
 }

@@ -9,7 +9,6 @@ import SettingsServiceApi from '@/services/SettingsService'
 import { SETTINGKEYS } from '@/consts/settingsKey'
 import BannerZone from '@/components/feature/zones/BannerZone'
 import { WithContext, BreadcrumbList } from 'schema-dts'
-import Head from 'next/head'
 import CONFIG from '@/consts/config'
 import EventPopup from '@/components/feature/eventPopup/EventPopup'
 
@@ -59,6 +58,7 @@ export default async function page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
       <BannerLarge />
       <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
@@ -84,7 +84,8 @@ export default async function page() {
           })}
         </div>
       </div>
-      <EventPopup />
+      {/* <EventPopup /> */}
+
     </>
   )
 }
