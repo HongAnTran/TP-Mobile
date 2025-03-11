@@ -36,7 +36,7 @@ export default function EventPopup() {
             <Link href={event.link} target="_blank" title='8/3 - Quà iu cho nàng, ưu đãi xịn cho bạn'>
                 <Image className='' src={event.image} alt='8-3 tp mobile' width={500} height={500} />
             </Link>
-            <DialogFooter className=' p-2  bg-pink-300 items-center flex-row justify-between'>
+            <DialogFooter className=' p-2  bg-pink-300 items-center flex-row justify-between sm:justify-between'>
                 <div className="flex items-center space-x-2">
                     <Checkbox id="terms" onCheckedChange={(data) => {
                         setIsCheck(!!data.valueOf())
