@@ -92,8 +92,8 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
                         </div>
                         <div>
                             <TypographyP>{store.detail_address}</TypographyP>
-                            <TypographyP>Hotline: <a href={`tel:${convertHotlineToTel(store.phone)}`} className=' hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
-                            <TypographyP>Hotline phản ánh: <a href={`tel:0347907042`} className=' hover:text-blue-500'><b>0347.90.70.42</b></a></TypographyP>
+                            <TypographyP>Hotline: <a href={`tel:${convertHotlineToTel(store.phone)}`} className=' text-sm hover:text-blue-500'><b>{store.phone}</b></a></TypographyP>
+                            <TypographyP>Phản ánh: <a href={`tel:0347907042`} className='text-sm hover:text-blue-500'><b>0347.90.70.42</b></a></TypographyP>
                         </div>
                     </div>
                 ))}

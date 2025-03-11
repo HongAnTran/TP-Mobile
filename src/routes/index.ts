@@ -21,6 +21,7 @@ const routes = {
   endow: "/chinh-sach-uu-dai",
   changePolicy: "/chinh-sach-doi-tra",
   deliveryPolicy: "/chinh-sach-giao-hang",
+  installmentPolicy: "/chinh-sach-tra-gop",
   introduce: "/gioi-thieu-tpmobile",
 };
 
