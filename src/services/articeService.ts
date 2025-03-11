@@ -13,7 +13,7 @@ class ArticeService {
         tags: [this.url],
         revalidate: 60 * 60 * 24 * 30,
       },
-      isLogger: true,
+      // isLogger: true,
     });
   }
   async getDetail(slug: string) {
