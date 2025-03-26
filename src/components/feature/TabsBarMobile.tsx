@@ -7,7 +7,6 @@ import StoreIcon from '../icons/StoreIcon'
 import { NewsIcon, PhoneFilledIcon } from '../icons'
 import { TypographyP, TypographySpan } from '../ui/typography'
 import routes, { privateToutes } from '@/routes'
-import { useSession } from 'next-auth/react';
 import IconBorder from '../common/IconBorder';
 import HomeIcon from '@mui/icons-material/Home';
 import GridViewIcon from '@mui/icons-material/GridView';
@@ -19,9 +18,8 @@ interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onC
 
 
 export default function TabsBarMobile() {
-  const { data } = useSession()
-  const customer = data?.user
 
+  const customer = null
 
 
   const customerItem = customer ? {

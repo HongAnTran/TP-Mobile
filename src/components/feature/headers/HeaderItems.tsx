@@ -7,7 +7,6 @@ import { PhoneFilledIcon } from '../../icons'
 import { TypographyP, TypographySpan } from '../../ui/typography'
 import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
-import { useSession } from 'next-auth/react';
 import IconBorder from '../../common/IconBorder';
 import NavLink from '../../common/NavLink';
 import CONFIG from '@/consts/config'
@@ -18,9 +17,8 @@ interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onC
 
 
 export default function HeaderItems() {
-  const { data } = useSession()
-  const customer = data?.user
 
+  const customer = null
 
 
   const customerItem = customer ? {
@@ -74,7 +72,7 @@ export default function HeaderItems() {
     // customerItem
   ]
 
- 
+
   return (
     <>
       <div className=' justify-end  gap-8 h-full    flex  '>
@@ -91,7 +89,7 @@ export default function HeaderItems() {
 
 function HeaderItem({ icon, text, href }: HeaderItemProps) {
   return <>
-    {href ? <NavLink  href={href} >
+    {href ? <NavLink href={href} >
       <div className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
         {icon}
         <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium   hidden xl:block' >{text}</TypographyP>

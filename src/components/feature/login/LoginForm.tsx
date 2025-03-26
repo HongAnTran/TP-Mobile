@@ -17,7 +17,6 @@ export default function LoginForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      // Xử lý đăng nhập tại đây
       console.log("Logging in with", formData);
     } catch (error) {
       console.error("Login failed", error);

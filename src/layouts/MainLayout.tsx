@@ -5,6 +5,7 @@ import ListStickyButton from '@/components/common/ListStickyButton'
 import NavigationCategory from '@/components/feature/NavigationCategory'
 import { ShopStoreProvider } from '@/providers/shop-store-provider'
 import TabsBarMobile from '@/components/feature/TabsBarMobile'
+import LoginDialog from '@/components/feature/login/LoginDialog'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -19,6 +20,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 <Footer />
                 <CompareProduct />
                 <ListStickyButton />
+                <LoginDialog />
+
             </main>
         </ShopStoreProvider>
     )
