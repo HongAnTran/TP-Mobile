@@ -1,6 +1,6 @@
 import { generateUniqueId } from "@/utils";
-import { Cart } from "@/types/cart";
-import { Order, OrderCheckoutInput } from "@/types/order";
+import { Cart } from "@/types/Cart.type";
+import { Order, OrderCheckoutInput } from "@/types/Order.type";
 import fetchApi from "@/api/instances/baseInstance";
 import fetchApiPublic from "@/api/instances/baseInstance";
 

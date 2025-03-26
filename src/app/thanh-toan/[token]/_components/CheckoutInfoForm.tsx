@@ -6,7 +6,7 @@ import PriceText from '@/components/common/PriceText'
 import { Button } from '@/components/ui/button'
 import { TypographySpan } from '@/components/ui/typography'
 import { Location, LocationTypeCode } from '@/types/location'
-import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/order'
+import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/Order.type'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';

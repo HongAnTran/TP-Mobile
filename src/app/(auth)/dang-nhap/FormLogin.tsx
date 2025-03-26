@@ -1,6 +1,6 @@
 // "use client"
 import React from 'react'
-import { signIn } from "@/auth"
+// import { signIn } from "@/auth"
 import Link from "@/components/common/Link";
 import { FacebookIcon, GoogleFilledIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -12,12 +12,7 @@ export default function FormLogin() {
   return (
     <section className=" py-10 flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
       <div className="md:w-1/3 max-w-sm">
-        <Image
-          src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          alt="Sample image"
-          width={500}
-          height={500}
-        />
+
       </div>
       <div className="md:w-1/3 max-w-sm">
         <TypographyH2 className=" text-center mb-4 uppercase text-primary">Đăng nhập</TypographyH2>

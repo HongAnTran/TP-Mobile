@@ -1,69 +1,66 @@
-import { KEYS } from '@/consts/localStorage'
-import CartServiceApi from '@/services/cartService'
-import { Cart } from '@/types/cart'
-import { Product } from '@/types/Product.types'
-import { Wishlist } from '@/types/wishlist'
-import LocalStorageService from '@/utils/localStorage'
-import { createStore } from 'zustand/vanilla'
+import { KEYS } from "@/consts/localStorage";
+import CartServiceApi from "@/services/cartService";
+import { Cart } from "@/types/Cart.type";
+import { Product } from "@/types/Product.types";
+import { Wishlist } from "@/types/wishlist";
+import LocalStorageService from "@/utils/localStorage";
+import { createStore } from "zustand/vanilla";
 
 export type ShopState = {
-  wishlist: Wishlist[],
-  productsCompare: Product[]
-  cart: Cart,
-  isLoadingCard: boolean
-}
+  wishlist: Wishlist[];
+  productsCompare: Product[];
+  cart: Cart;
+  isLoadingCard: boolean;
+  openLogin: boolean;
+};
 
 export type ShopActions = {
-  setWishlist: (list: Wishlist[]) => void
-  setProductsCompare: (list: Product[]) => void
-  setCart: (cart: Cart) => void
-}
+  setWishlist: (list: Wishlist[]) => void;
+  setProductsCompare: (list: Product[]) => void;
+  setCart: (cart: Cart) => void;
+  setOpenLogin: (open: boolean) => void;
+};
 
-export type ShopStore = ShopState & ShopActions
+export type ShopStore = ShopState & ShopActions;
 
 export const defaultInitState: ShopState = {
   wishlist: [],
   productsCompare: [],
   cart: {} as Cart,
-  isLoadingCard: true
-}
+  isLoadingCard: true,
+  openLogin: false,
+};
 
 export const initShopStore = async (): Promise<ShopState> => {
   try {
-    const response = await CartServiceApi.getDetail(1)
-    const wishlist = (LocalStorageService.getItem(KEYS.WISHLIST, []))
+    const response = await CartServiceApi.getDetail(1);
+    const wishlist = LocalStorageService.getItem(KEYS.WISHLIST, []);
     return {
       productsCompare: [],
       wishlist: wishlist,
       cart: response,
-      isLoadingCard: false
+      isLoadingCard: false,
+      openLogin: false,
     };
   } catch (error) {
-    const wishlist = (LocalStorageService.getItem(KEYS.WISHLIST, []))
+    const wishlist = LocalStorageService.getItem(KEYS.WISHLIST, []);
     return {
       ...defaultInitState,
       isLoadingCard: false,
-      wishlist: wishlist
+      wishlist: wishlist,
     };
   }
 };
 
-
-
-
-export const createShopStore = (
-  initState: Promise<ShopState>,
-) => {
-
+export const createShopStore = (initState: Promise<ShopState>) => {
   const store = createStore<ShopStore>()((set) => ({
     ...defaultInitState,
     ...initState,
     setWishlist: (list) => set((state) => ({ wishlist: list })),
     setProductsCompare: (list) => set((state) => ({ productsCompare: list })),
     setCart: (cart) => set((state) => ({ cart: cart })),
-
-  }))
+    setOpenLogin: (open) => set((state) => ({ openLogin: open })),
+  }));
   initState.then(store.setState);
   return store;
-}
-
+};

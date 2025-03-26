@@ -1,6 +1,6 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { ConfigAPi } from "@/types/api";
-import { Store, StoreParams } from "@/types/store";
+import { ConfigAPi } from "@/types/Api.type";
+import { Store, StoreParams } from "@/types/Store.type";
 
 class StoreService {
   private url: string = "/store";

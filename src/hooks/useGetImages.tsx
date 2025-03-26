@@ -1,6 +1,6 @@
 "use client"
 import fetchApi from '@/api/instances/baseInstance'
-import { StoreImage } from '@/types/store'
+import { StoreImage } from '@/types/Store.type'
 import { useQuery } from '@tanstack/react-query'
 
 export default function useGetImages(folderName: 'feedback' | 'thuduc' | 'tanphu') {

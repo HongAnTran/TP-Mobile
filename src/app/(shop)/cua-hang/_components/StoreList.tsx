@@ -1,6 +1,6 @@
 "use client"
 import StoreListView from '@/components/feature/store/StoreListView'
-import { Store } from '@/types/store'
+import { Store } from '@/types/Store.type'
 import React, { useState } from 'react'
 import GalleryGrid from './GalleryGrid'
 import useGetImages from '@/hooks/useGetImages'

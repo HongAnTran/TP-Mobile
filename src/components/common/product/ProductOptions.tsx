@@ -1,7 +1,7 @@
 "use client"
 import { TypographyP, TypographySpan } from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import { AttributeStyle, AttributeValue } from '@/types/Attributestypes'
+import { AttributeStyle, AttributeValue } from '@/types/Attributes.type'
 import { Product, ProductAttribute } from '@/types/Product.types'
 import React, { useMemo } from 'react'
 import TooltipUi from '../TooltipUi'
@@ -14,7 +14,7 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
   return (
     <div className=' flex flex-col gap-4'>
       {
-        product.attributes.map((option , index) => {
+        product.attributes.map((option, index) => {
           return <div key={option.id} className=' flex  gap-4'>
             <TypographyP className=' font-bold min-w-[90px] lg:min-w-[100px]'>
               {option.attribute.name}:
@@ -65,15 +65,15 @@ function AttributeColor({ attributes, optionsActive, onSelectOption, indexGroup 
         return (
           <TooltipUi key={data.id} title={data.value}>
 
-            <div 
-               onClick={() => onSelectOption(indexGroup, data.id)}
-            className={cn(' flex items-center gap-1 border   rounded-lg p-1 ' ,{
-              "  bg-primary text-secondary border-secondary ": optionsActive.includes(data.id)
-            })}>
+            <div
+              onClick={() => onSelectOption(indexGroup, data.id)}
+              className={cn(' flex items-center gap-1 border   rounded-lg p-1 ', {
+                "  bg-primary text-secondary border-secondary ": optionsActive.includes(data.id)
+              })}>
               <div className={
-                cn('  border bg-white flex items-center justify-center rounded-full overflow-hidden border-[hsla(0,0%,60%,.4)]   p-[2px] w-6 h-6' )
+                cn('  border bg-white flex items-center justify-center rounded-full overflow-hidden border-[hsla(0,0%,60%,.4)]   p-[2px] w-6 h-6')
               }
-               
+
               >
                 <p className={cn(' transition-all   w-4 h-4  rounded-full    ')
                 }

@@ -1,6 +1,6 @@
 import { TypographyH3, TypographySpan } from "@/components/ui/typography";
 import BoxLayout from "./BoxLayout";
-import { Cart } from "@/types/cart";
+import { Cart } from "@/types/Cart.type";
 import PriceText from "@/components/common/PriceText";
 
 export default function CartTotal({ cart }: { cart: Cart }) {

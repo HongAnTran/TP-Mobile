@@ -1,4 +1,4 @@
-import { ErrorResponeInterFace } from "@/types/api";
+import { ErrorResponeInterFace } from "@/types/Api.type";
 
 export default class ErrorRespone {
   statusCode: number;

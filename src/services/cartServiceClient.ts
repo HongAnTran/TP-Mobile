@@ -1,38 +1,45 @@
 import { KEYS } from "@/consts/localStorage";
-import { Cart } from "@/types/cart";
+import { Cart } from "@/types/Cart.type";
 import { Product, ProductOrder, ProductVariant } from "@/types/Product.types";
 import LocalStorageService from "@/utils/localStorage";
 
 class CartServiceClient {
-  cart: Cart
+  cart: Cart;
 
   constructor(cart: Cart) {
-    this.cart = cart
+    this.cart = cart;
   }
 
   getDetail() {
-    return this.cart
+    return this.cart;
   }
 
   add(product: Product, variant: ProductVariant, quantity: number) {
-    const itemIndex = this.cart.items.findIndex(item => item.product_id === product.id && variant.id === item.variant_id)
+    const itemIndex = this.cart.items.findIndex(
+      (item) => item.product_id === product.id && variant.id === item.variant_id
+    );
 
     if (itemIndex < 0) {
-      const data = this.convertToProductOrder(product, variant, quantity)
+      const data = this.convertToProductOrder(product, variant, quantity);
       this.cart.items.unshift(data);
-
     } else {
-      const itemFind = this.cart.items[itemIndex]
-      const quantityCombine = quantity + itemFind.quantity
-      const data = this.convertToProductOrder(product, variant, quantityCombine)
-      this.cart.items.splice(itemIndex, 1)
+      const itemFind = this.cart.items[itemIndex];
+      const quantityCombine = quantity + itemFind.quantity;
+      const data = this.convertToProductOrder(
+        product,
+        variant,
+        quantityCombine
+      );
+      this.cart.items.splice(itemIndex, 1);
       this.cart.items.unshift(data);
     }
 
-    this.calcTotalCart()
+    this.calcTotalCart();
   }
   update(productorder: ProductOrder) {
-    const itemIndex = this.cart.items.findIndex(item => item.id === productorder.id);
+    const itemIndex = this.cart.items.findIndex(
+      (item) => item.id === productorder.id
+    );
     if (itemIndex >= 0) {
       this.cart.items[itemIndex] = productorder;
       this.calcTotalCart();
@@ -40,26 +47,34 @@ class CartServiceClient {
   }
 
   delete(id: ProductOrder["id"]) {
-    this.cart.items = this.cart.items.filter(item => item.id !== id)
-    this.calcTotalCart()
+    this.cart.items = this.cart.items.filter((item) => item.id !== id);
+    this.calcTotalCart();
   }
 
   private calcTotalCart() {
-    this.cart.item_count = this.cart.items.length
-    this.cart.total_price = this.cart.items.filter(item=>item.selected).reduce((pre, item) => {
-      return pre + item.line_price
-    }, 0)
+    this.cart.item_count = this.cart.items.length;
+    this.cart.total_price = this.cart.items
+      .filter((item) => item.selected)
+      .reduce((pre, item) => {
+        return pre + item.line_price;
+      }, 0);
 
-    this.saveCartToLocalStorage()
+    this.saveCartToLocalStorage();
   }
 
- private saveCartToLocalStorage() {
-    LocalStorageService.setItem(KEYS.CART, this.cart)
+  private saveCartToLocalStorage() {
+    LocalStorageService.setItem(KEYS.CART, this.cart);
   }
 
-  private convertToProductOrder(product: Product, variant: ProductVariant, quantity: number): ProductOrder {
-    const imageVariant = product.images.find(img=>img.id === variant.image_id)
-    const imgSrc = imageVariant ? imageVariant.url :  product.images[0].url
+  private convertToProductOrder(
+    product: Product,
+    variant: ProductVariant,
+    quantity: number
+  ): ProductOrder {
+    const imageVariant = product.images.find(
+      (img) => img.id === variant.image_id
+    );
+    const imgSrc = imageVariant ? imageVariant.url : product.images[0].url;
     return {
       id: Math.floor(new Date().getTime() * Math.random()),
       title: product.title,
@@ -77,12 +92,13 @@ class CartServiceClient {
       image: imgSrc ? imgSrc : product.images?.[0].url, // You need to provide the image URL here
       product_title: product.title,
       variant_title: variant.title,
-      variant_options: variant.attribute_values.map(item=>item.value).filter(opt => opt), // Filter out empty options
+      variant_options: variant.attribute_values
+        .map((item) => item.value)
+        .filter((opt) => opt), // Filter out empty options
       quantity: quantity,
-      selected : true
+      selected: true,
     };
   }
-
 }
 
-export default CartServiceClient
+export default CartServiceClient;

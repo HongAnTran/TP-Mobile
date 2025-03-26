@@ -1,4 +1,4 @@
-import { StoreImage } from "@/types/store";
+import { StoreImage } from "@/types/Store.type";
 import Image from "next/image";
 import React from "react";
 const GalleryGrid = ({ images, isLoading }: { images: StoreImage[], isLoading: boolean }) => {

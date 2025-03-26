@@ -1,5 +1,5 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { ConfigAPi } from "@/types/api";
+import { ConfigAPi } from "@/types/Api.type";
 import {
   Product,
   Products,

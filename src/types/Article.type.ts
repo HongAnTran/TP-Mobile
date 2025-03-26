@@ -1,43 +1,37 @@
 import { CategoryArtice } from "./categoryArtice";
-import { ResList } from "./common.type";
+import { PaginationParams, ResList } from "./Common.type";
 
 enum ArticleStatus {
   DRAFT,
   SHOW,
 }
 interface Article {
-  id: number; 
+  id: number;
   title: string;
   slug: string;
-  content: string; 
-  author_id: number; 
-  author : null
-  category_id: number; 
-  category: CategoryArtice
+  content: string;
+  author_id: number;
+  author: any;
+  category_id: number;
+  category: CategoryArtice;
   created_at: string;
-  updated_at: string | null; 
+  updated_at: string | null;
   description: string | null;
-  thumnal_url: string
-  status: ArticleStatus
+  thumnal_url: string;
+  status: ArticleStatus;
   meta_data: {
-    meta_title: string | null
-    meta_description: string | null
-    meta_keywords: string | null
-  } | null
+    meta_title: string | null;
+    meta_description: string | null;
+    meta_keywords: string | null;
+  } | null;
 }
-type Articles = ResList<Article>
+type Articles = ResList<Article>;
 
-
-interface ArticlesParams {
-  status?: ArticleStatus
-  categoryId?: number
-  ids?: string
-  keyword?: string
-  page?: number,
-  limit?: number
-  sort_by?: keyof Article
-  sort_type?: "desc" | "asc"
+interface ArticlesParams extends PaginationParams<Article> {
+  status?: ArticleStatus;
+  categoryId?: number;
+  ids?: string;
+  keyword?: string;
 }
-
-export type { Article, Articles , ArticlesParams }
-export { ArticleStatus }
+export type { Article, Articles, ArticlesParams };
+export { ArticleStatus };
