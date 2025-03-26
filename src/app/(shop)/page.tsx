@@ -52,6 +52,7 @@ export default async function page() {
   const { value } = await SettingsServiceApi.getDetail<PageStructure>(SETTINGKEYS.homePageStructure)
 
   const { zones } = value
+
   return (
     <>
       <BannerLarge />
