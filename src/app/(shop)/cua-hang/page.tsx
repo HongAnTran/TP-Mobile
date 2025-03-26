@@ -16,9 +16,10 @@ export default async function page() {
             isActive: true
           }]} />
         <div className=' mt-8'>
-          { stores.length ? <StoreList stores={stores} /> : null }
-          
+          {stores.length ? <StoreList stores={stores} /> : null}
+
         </div>
+
       </div>
 
     </div>

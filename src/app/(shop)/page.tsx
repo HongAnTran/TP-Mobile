@@ -11,7 +11,6 @@ import BannerZone from '@/components/feature/zones/BannerZone'
 import CONFIG from '@/consts/config'
 import EventPopup from '@/components/feature/eventPopup/EventPopup'
 
-
 export const metadata: Metadata = {
   title: "TP MOBILE STORE - Trang chủ",
   description: "TP Mobile store chuyên bán iPad có tâm nhất Sài Gòn. Danh mục: iPad Pro, iPad Air, iPad Mini, iPad Gen.",
