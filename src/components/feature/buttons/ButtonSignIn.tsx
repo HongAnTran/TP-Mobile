@@ -1,5 +1,4 @@
 
-import { signIn } from "@/auth"
 import { LoginForm } from "@/types/Auth.type"
 import { ReactNode } from "react"
 
@@ -8,7 +7,6 @@ export function ButtonSignIn({ type, children, info }: { children: ReactNode, ty
     <form
       action={async () => {
         "use server"
-        const res = await signIn(type)
       }}
     >
       {children}

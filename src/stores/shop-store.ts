@@ -11,14 +11,12 @@ export type ShopState = {
   productsCompare: Product[];
   cart: Cart;
   isLoadingCard: boolean;
-  openLogin: boolean;
 };
 
 export type ShopActions = {
   setWishlist: (list: Wishlist[]) => void;
   setProductsCompare: (list: Product[]) => void;
   setCart: (cart: Cart) => void;
-  setOpenLogin: (open: boolean) => void;
 };
 
 export type ShopStore = ShopState & ShopActions;
@@ -28,7 +26,6 @@ export const defaultInitState: ShopState = {
   productsCompare: [],
   cart: {} as Cart,
   isLoadingCard: true,
-  openLogin: false,
 };
 
 export const initShopStore = async (): Promise<ShopState> => {
@@ -40,7 +37,6 @@ export const initShopStore = async (): Promise<ShopState> => {
       wishlist: wishlist,
       cart: response,
       isLoadingCard: false,
-      openLogin: false,
     };
   } catch (error) {
     const wishlist = LocalStorageService.getItem(KEYS.WISHLIST, []);
@@ -59,7 +55,6 @@ export const createShopStore = (initState: Promise<ShopState>) => {
     setWishlist: (list) => set((state) => ({ wishlist: list })),
     setProductsCompare: (list) => set((state) => ({ productsCompare: list })),
     setCart: (cart) => set((state) => ({ cart: cart })),
-    setOpenLogin: (open) => set((state) => ({ openLogin: open })),
   }));
   initState.then(store.setState);
   return store;

@@ -11,12 +11,16 @@ import IconBorder from '../../common/IconBorder';
 import NavLink from '../../common/NavLink';
 import CONFIG from '@/consts/config'
 import { convertHotlineToTel } from '@/utils'
+import { useAuthStore } from '@/providers/auth-store-provider'
+import { cn } from '@/lib/utils'
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 
 
 
 export default function HeaderItems() {
+
+  const { setOpenLogin } = useAuthStore(state => state)
 
   const customer = null
 
@@ -27,19 +31,21 @@ export default function HeaderItems() {
     href: privateToutes.account,
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
-    text: "Đăng nhập",
-    href: routes.login
+    text: <span>Tài khoản</span>,
+    onClick: () => {
+      setOpenLogin(true)
+    }
   }
 
   const items: HeaderItemProps[] = [
-    {
-      icon: <IconBorder>
-        <PhoneFilledIcon className=' w-6 h-6' />
-      </IconBorder>
-      ,
-      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
-      href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
-    },
+    // {
+    //   icon: <IconBorder>
+    //     <PhoneFilledIcon className=' w-6 h-6' />
+    //   </IconBorder>
+    //   ,
+    //   text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
+    //   href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
+    // },
     {
       icon: <IconBorder>
         <ReaderIcon className=' w-6 h-6' />
@@ -69,7 +75,7 @@ export default function HeaderItems() {
       href: routes.cart
 
     },
-    // customerItem
+    customerItem
   ]
 
 
@@ -87,15 +93,17 @@ export default function HeaderItems() {
 }
 
 
-function HeaderItem({ icon, text, href }: HeaderItemProps) {
+function HeaderItem({ icon, text, href, onClick }: HeaderItemProps) {
   return <>
-    {href ? <NavLink href={href} >
-      <div className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
+    {href ? <NavLink href={href}  >
+      <div onClick={onClick} className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
         {icon}
         <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium   hidden xl:block' >{text}</TypographyP>
 
       </div>
-    </NavLink> : <div className='  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
+    </NavLink> : <div onClick={onClick} className={cn('  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row ', {
+      "cursor-pointer": !!onClick
+    })}>
       {icon}
       <div >
         <TypographyP className='  block  md:hidden lg:block' >{text}</TypographyP>

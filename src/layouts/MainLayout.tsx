@@ -6,23 +6,26 @@ import NavigationCategory from '@/components/feature/NavigationCategory'
 import { ShopStoreProvider } from '@/providers/shop-store-provider'
 import TabsBarMobile from '@/components/feature/TabsBarMobile'
 import LoginDialog from '@/components/feature/login/LoginDialog'
+import { AuthStoreProvider } from '@/providers/auth-store-provider'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
-        <ShopStoreProvider>
-            <main className=' min-h-screen flex flex-col scroll-smooth ' >
-                <Header />
-                <NavigationCategory />
-                <div className=' flex-1'>
-                    {children}
-                </div>
-                <TabsBarMobile />
-                <Footer />
-                <CompareProduct />
-                <ListStickyButton />
-                <LoginDialog />
+        <AuthStoreProvider >
+            <ShopStoreProvider>
+                <main className=' min-h-screen flex flex-col scroll-smooth ' >
+                    <Header />
+                    <NavigationCategory />
+                    <div className=' flex-1'>
+                        {children}
+                    </div>
+                    <TabsBarMobile />
+                    <Footer />
+                    <CompareProduct />
+                    <ListStickyButton />
+                    <LoginDialog />
 
-            </main>
-        </ShopStoreProvider>
+                </main>
+            </ShopStoreProvider>
+        </AuthStoreProvider>
     )
 }
