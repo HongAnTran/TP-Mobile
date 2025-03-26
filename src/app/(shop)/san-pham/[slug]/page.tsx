@@ -64,7 +64,6 @@ async function getData(slug: string) {
 export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
-  // read route params
   try {
     const slug = params.slug
 
@@ -91,6 +90,12 @@ export async function generateMetadata(
         siteName: DOMAIN,
         type: "website",
       },
+      twitter: {
+        title: titleShow,
+        description: desShow,
+        images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
+      },
+
       keywords: keywords,
       category: product.category.title,
       other: {
