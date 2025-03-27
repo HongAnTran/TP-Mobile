@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -21,38 +20,49 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import Logo from '@/components/common/Logo'
 import { GoogleFilledIcon } from '@/components/icons'
 import routes from '@/routes'
 import { PasswordInput } from '@/components/ui/password-input'
-import { login } from '@/app/actions'
+import loginSchema, { LoginValues } from './schema'
+import { useToast } from '@/components/ui/use-toast'
+import ErrorRespone from '@/api/error'
+import AuthServiceApi from '@/services/authService'
+import { useRouter } from 'next/navigation'
 
-// Improved schema with additional validation rules
-const formSchema = z.object({
-  email: z.string().nonempty({ message: "Vui lòng nhập email" }).email({ message: 'Địa chỉ email không hợp lệ' }),
-  password: z
-    .string()
-    .nonempty({ message: "Vui lòng nhập mật khẩu" })
-    .min(6, { message: 'Mật khẩu phải có ít nhất 6 kí tự' })
-    .max(100, { message: 'Mật khẩu không được quá 100 kí tự' }),
-})
 
-export default function LoginPreview() {
+
+export default function LoginForm() {
+  const { toast } = useToast()
+  const router = useRouter()
   const defaultValues = {
     email: '',
     password: '',
   }
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<LoginValues>({
+    resolver: zodResolver(loginSchema),
     defaultValues
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: LoginValues) {
     try {
-      await login(values)
+      const isLogin = await AuthServiceApi.login({
+        ...values,
+      })
+      if (isLogin) {
+        router.push('/')
+        toast({
+          title: 'Đăng nhập thành công',
+          description: 'Chào mừng bạn quay trở lại',
+        })
+      }
     } catch (error) {
-      console.error('Form submission error', error)
+      if (error instanceof ErrorRespone) {
+        toast({
+          title: 'Đăng nhập thất bại',
+          description: error.message,
+        })
+      }
     }
   }
 
@@ -61,10 +71,8 @@ export default function LoginPreview() {
       <Card className="w-full  h-full">
         <CardHeader>
           <CardTitle className="text-2xl text-center flex justify-center flex-col items-center">
-            <Logo className=' rounded-sm' href={""} />
             Đăng nhập
           </CardTitle>
-
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -75,7 +83,7 @@ export default function LoginPreview() {
                   name="email"
                   render={({ field }) => (
                     <FormItem className="grid gap-2">
-                      <FormLabel htmlFor="email">Email</FormLabel>
+                      <FormLabel req htmlFor="email">Email</FormLabel>
                       <FormControl>
                         <Input
                           id="email"
@@ -94,7 +102,7 @@ export default function LoginPreview() {
                   render={({ field }) => (
                     <FormItem className="grid gap-2">
                       <div className="flex justify-between items-center">
-                        <FormLabel htmlFor="password">Mật khẩu</FormLabel>
+                        <FormLabel req htmlFor="password">Mật khẩu</FormLabel>
                         <Link
                           href="#"
                           className="ml-auto inline-block text-sm underline"

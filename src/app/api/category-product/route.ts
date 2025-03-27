@@ -1,13 +1,13 @@
-import CategoryServiceApi from '@/services/categoryService'
-import { type NextRequest } from 'next/server'
+import ErrorRespone from "@/api/error";
+import CategoryServiceApi from "@/services/categoryService";
+import { type NextRequest } from "next/server";
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-  const take = Number(searchParams.get('take'))
-  const skip = Number(searchParams.get('skip'))
-
-  const data = await CategoryServiceApi.getList({
-    take : take || undefined,
-    skip : skip || undefined,
-  })
-  return Response.json(data)
+  try {
+    const data = await CategoryServiceApi.getList();
+    return Response.json(data);
+  } catch (error) {
+    if (error instanceof ErrorRespone) {
+      return Response.json(error, { status: error.statusCode });
+    }
+  }
 }

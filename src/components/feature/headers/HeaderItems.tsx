@@ -13,6 +13,7 @@ import CONFIG from '@/consts/config'
 import { convertHotlineToTel } from '@/utils'
 import { useAuthStore } from '@/providers/auth-store-provider'
 import { cn } from '@/lib/utils'
+import useProfile from '@/hooks/useProfile'
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 
@@ -22,7 +23,7 @@ export default function HeaderItems() {
 
   const { setOpenLogin } = useAuthStore(state => state)
 
-  const customer = null
+  const { data: customer } = useProfile()
 
 
   const customerItem = customer ? {
@@ -31,10 +32,8 @@ export default function HeaderItems() {
     href: privateToutes.account,
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
-    text: <span>Tài khoản</span>,
-    onClick: () => {
-      setOpenLogin(true)
-    }
+    text: <span>Đăng nhập</span>,
+    href: routes.login,
   }
 
   const items: HeaderItemProps[] = [

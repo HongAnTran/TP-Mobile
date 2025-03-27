@@ -1,10 +1,6 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/Api.type";
-import {
-  Attribute,
-  AttributeStyle,
-  AttributeValue,
-} from "@/types/Attributes.type";
+import { Attribute, AttributeValue } from "@/types/Attributes.type";
 class AttributeService {
   url: string = "/attributes";
   url_value: string = "/attribute-values";

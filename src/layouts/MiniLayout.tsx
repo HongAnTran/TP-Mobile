@@ -3,9 +3,9 @@ import HeaderMini from "@/components/feature/headers/HeaderMini";
 
 export default function MiniLayout({ children }: { children: React.ReactNode }) {
     return (
-        <main>
+        <main className=" min-h-screen ">
             <HeaderMini />
-            <div className=" bg-[#f7f7ff]">
+            <div className="  container">
                 {children}
             </div>
             <Footer />
