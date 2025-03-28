@@ -1,5 +1,5 @@
 "use client"
-import fetchApi from '@/api/instances/baseInstance'
+import fetchApi from '@/api/instances/clientInstance'
 import { StoreImage } from '@/types/Store.type'
 import { useQuery } from '@tanstack/react-query'
 

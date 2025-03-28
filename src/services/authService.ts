@@ -13,16 +13,17 @@ class AuthService {
   constructor() {}
 
   async login(payload: LoginPayload) {
-    return fetchApi.post<LoginResponse>(this.url + " /login", payload);
-  }
-  async loginClient(payload: LoginPayload) {
-    return fetchApiClient.post<LoginResponse>(this.url + " /login", payload);
+    return fetchApi.post<LoginResponse>(this.url + "/login", payload);
   }
   async register(payload: RegisterPayload) {
-    return fetchApi.post<Customer>(this.url + "/register-public", payload);
+    return fetchApi.post<Customer>(this.url + "/register", payload);
   }
   async profile() {
     return fetchApi.get<Customer>(this.url + "/profile");
+  }
+
+  async active(token: string) {
+    return fetchApi.get<Customer>(this.url + "/active/" + token);
   }
 
   async logout() {

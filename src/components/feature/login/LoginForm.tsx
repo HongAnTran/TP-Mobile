@@ -26,7 +26,7 @@ import { PasswordInput } from '@/components/ui/password-input'
 import loginSchema, { LoginValues } from './schema'
 import { useToast } from '@/components/ui/use-toast'
 import ErrorRespone from '@/api/error'
-import AuthServiceApi from '@/services/authService'
+import AuthServiceApi from '@/services/client/authService'
 import { useRouter } from 'next/navigation'
 
 

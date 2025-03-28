@@ -3,7 +3,7 @@ import { CategoryArtice } from "@/types/categoryArtice";
 import { ResList } from "@/types/Common.type";
 
 class ArticeCategoryService {
-  private url: string = "/category-article";
+  private url: string = "/category-articles";
 
   constructor() {}
 

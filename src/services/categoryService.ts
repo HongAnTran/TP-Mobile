@@ -8,7 +8,7 @@ import {
 } from "@/types/categoryProduct";
 
 class CategoryService {
-  private url: string = "/category-product";
+  private url: string = "/categories";
   constructor() {}
 
   async getList(params?: CategoryProductFilter, init?: ConfigAPi) {

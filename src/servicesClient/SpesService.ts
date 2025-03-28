@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { OptionsUseQuery } from "@/types/Common.type";
-import ProductSpecificationsServiceApi from "@/services/productSpecifications";
+import ProductSpecificationsServiceApi from "@/services/client/productSpecifications";
 import { ProductSpecifications } from "@/types/Product.types";
 
 const SpesServiceClient = {

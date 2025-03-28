@@ -24,11 +24,11 @@ export default function HeaderItems() {
   const { setOpenLogin } = useAuthStore(state => state)
 
   const { data: customer } = useProfile()
-
+  // const customer = null
 
   const customerItem = customer ? {
     icon: <IconBorder> <PersonIcon width={20} height={20} /></IconBorder>,
-    text: customer.name,
+    text: customer.first_name,
     href: privateToutes.account,
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,

@@ -26,12 +26,16 @@ import routes from '@/routes'
 import SelectOptions from '@/components/common/SelectOptions'
 import { GENDER_OPTIONS } from '@/consts/customer'
 import Datepicker from '@/components/common/Datepicker'
+import AuthServiceApi from '@/services/client/authService'
+import { useToast } from '@/components/ui/use-toast'
 
 export default function RegisterForm() {
+    const { toast } = useToast()
     const form = useForm<RegisterValues>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
-            name: '',
+            first_name: '',
+            last_name: '',
             email: '',
             phone: '',
             password: '',
@@ -41,11 +45,16 @@ export default function RegisterForm() {
 
     async function onSubmit(values: RegisterValues) {
         try {
-            // Assuming an async registration function
-            console.log(values)
-
+            const { confirmPassword, ...res } = values
+            await AuthServiceApi.register(res)
+            toast({
+                title: "Đăng kí thành công",
+                description: "Hãy truy cập vào địa chỉ email của bạn để xác nhận tài khoản và đăng nhập",
+            })
         } catch (error) {
-
+            toast({
+                title: "Đăng kí thất bại",
+            })
         }
     }
 
@@ -59,19 +68,34 @@ export default function RegisterForm() {
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <div className="grid gap-4">
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem className="grid gap-2">
-                                            <FormLabel req htmlFor="name">Họ và tên</FormLabel>
-                                            <FormControl>
-                                                <Input id="name" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
+                                <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="last_name"
+                                        render={({ field }) => (
+                                            <FormItem className="grid gap-2">
+                                                <FormLabel req htmlFor="name">Họ</FormLabel>
+                                                <FormControl>
+                                                    <Input id="name" {...field} />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="first_name"
+                                        render={({ field }) => (
+                                            <FormItem className="grid gap-2">
+                                                <FormLabel req htmlFor="name">Tên</FormLabel>
+                                                <FormControl>
+                                                    <Input id="name" {...field} />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
                                 <FormField
                                     control={form.control}
                                     name="email"

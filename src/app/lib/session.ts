@@ -6,12 +6,12 @@ const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 const KEY = "auth-session";
 export async function createSession(accessToken: string, refreshToken: string) {
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
   const session = await encrypt({ refreshToken, accessToken, expiresAt });
   cookies().set(KEY, session, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    maxAge: 60 * 60 * 24 * 7,
+    maxAge: 60 * 60 * 24 * 30,
     path: "/",
   });
 }
@@ -35,7 +35,7 @@ export async function encrypt(payload: SessionPayload) {
   })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("7d")
+    .setExpirationTime("30d")
     .sign(encodedKey);
 }
 

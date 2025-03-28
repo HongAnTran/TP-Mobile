@@ -1,4 +1,5 @@
 import fetchApi from "@/api/instances/baseInstance";
+import fetchClientApi from "@/api/instances/clientInstance";
 import { ConfigAPi } from "@/types/Api.type";
 import {
   Product,
@@ -19,6 +20,19 @@ class ProductsService {
       status: ProductStatus.SHOW,
     };
     return fetchApi.get<Products>(this.url, {
+      params: paramsDefault,
+      next: { revalidate: 60 * 5 },
+      ...init,
+    });
+  }
+  async getListClient(params?: ProductsParams, init?: ConfigAPi) {
+    const paramsDefault: ProductsParams = {
+      sortBy: "created_at",
+      sortType: "desc",
+      ...params,
+      status: ProductStatus.SHOW,
+    };
+    return fetchClientApi.get<Products>(this.url, {
       params: paramsDefault,
       next: { revalidate: 60 * 5 },
       ...init,

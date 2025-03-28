@@ -17,8 +17,9 @@ interface LoginResponse {
 interface RegisterPayload {
   email: string;
   password: string;
-  name: string;
-  gender: Gender;
+  first_name: string;
+  last_name: string;
+  gender?: string;
   phone?: string;
   birthday?: Date;
 }

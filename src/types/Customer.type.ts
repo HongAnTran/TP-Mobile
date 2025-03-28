@@ -8,16 +8,15 @@ export enum Gender {
 
 interface Customer {
   id: number;
-  email: string | null;
+  email: string;
   address: Address[];
-  phone: string;
+  phone: string | null;
   gender: Gender;
   birthday: Date | null;
-  image: string;
-  name: string;
-  provider: string;
-  created_at: Date;
-  updated_at: Date | null;
+  avatar: string | null;
+  first_name: string;
+  last_name: string;
+  full_name: string;
 }
 
 export type { Customer };

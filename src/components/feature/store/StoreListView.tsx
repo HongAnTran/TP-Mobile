@@ -4,7 +4,7 @@ import { LoadingIcon, MapPinFilledIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { TypographyH2, TypographyP } from '@/components/ui/typography'
 import useCheckLocationPermission from '@/hooks/useCheckLocationPermission'
-import StoreServiceApi from '@/services/StoreService'
+import StoreServiceClientApi from '@/services/client/StoreService'
 import { Store } from '@/types/Store.type'
 import { convertHotlineToTel } from '@/utils'
 import { CaretSortIcon } from '@radix-ui/react-icons'
@@ -28,7 +28,7 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
 
                         const latitude = position.coords.latitude;
                         const longitude = position.coords.longitude;
-                        const datas = await StoreServiceApi.getList({
+                        const datas = await StoreServiceClientApi.getList({
                             latitude: `${latitude}`,
                             longitude: `${longitude}`
                         });
