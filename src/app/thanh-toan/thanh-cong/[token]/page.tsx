@@ -38,7 +38,13 @@ export default async function page({ params }: { params: { token: string } }) {
     <div className=' container'>
       <CheckoutHeader steps={steps} />
       <TypographyH2 className=' text-center my-4 '>Đặt hàng thành công</TypographyH2>
-      <TypographyP className=' text-center my-4 '>Cảm ơn bạn đã đặt hàng tại TP Mobile</TypographyP>
+      <TypographyP className=' text-center my-4 '>
+        Cảm ơn bạn đã mua sắm tại TP Mobile Store. Mã đơn hàng <b>{order.code}</b>.
+
+      </TypographyP>
+      <TypographyP className=' text-center my-4 '>
+        Chúng tôi sẽ liên hệ với bạn trong vòng 24H nếu không nhận được sự hỗ trợ trong vòng 24H vui lòng liên hệ 0568.44.77.99.
+      </TypographyP>
       <div className="grid  lg:grid-cols-2 ">
         <div className="px-4 pt-8">
           <p className="text-xl font-medium capitalize">Tóm tắt đơn hàng</p>
@@ -55,33 +61,37 @@ export default async function page({ params }: { params: { token: string } }) {
         <div className="mt-10  px-4 py-8  border">
           <p className="text-xl text-center font-medium capitalize">Thông tin đơn hàng</p>
           <ul className=' flex flex-col gap-4  my-4  '>
-            <li className=' flex items-center justify-between'>
-              <TypographySpan >Địa chỉ giao hàng</TypographySpan>
-              <TypographySpan className=' font-bold'  >{order.shipping?.address_full}</TypographySpan>
+            <li className=' flex  justify-between'>
+              <TypographySpan >Khách:</TypographySpan>
+              <TypographySpan className=' font-bold' >{order.shipping?.fullname}</TypographySpan>
             </li>
-            <li className=' flex items-center justify-between'>
-              <TypographySpan >Số điện thoại</TypographySpan>
+            <li className=' flex justify-between gap-4'>
+              <TypographySpan className=' flex-shrink-0'>Địa chỉ giao hàng:</TypographySpan>
+              <TypographySpan  >{order.shipping?.address_full}</TypographySpan>
+            </li>
+            <li className=' flex  justify-between'>
+              <TypographySpan >Số điện thoại:</TypographySpan>
               <TypographySpan className=' font-bold' >{order.shipping?.phone}</TypographySpan>
             </li>
-            <li className=' flex items-center justify-between'>
-              <TypographySpan className=' text-gray-500'>Tạm tính</TypographySpan>
+            <li className=' flex  justify-between'>
+              <TypographySpan className=' text-gray-500'>Tạm tính:</TypographySpan>
               <PriceText className=' text-sm' price={order.total_price} />
             </li>
-            <li className=' flex items-center justify-between'>
-              <TypographySpan className=' text-gray-500'>Khuyến mãi</TypographySpan>
+            {/* <li className=' flex items-center justify-between'>
+              <TypographySpan className=' text-gray-500'>Khuyến mãi:</TypographySpan>
               <PriceText className=' text-sm' price={0} notAutoChange />
-            </li>
-            <li className=' flex items-center justify-between'>
-              <TypographySpan className=' text-gray-500'>Vận chuyển</TypographySpan>
+            </li> */}
+            {/* <li className=' flex items-center justify-between'>
+              <TypographySpan className=' text-gray-500'>Vận chuyển:</TypographySpan>
               <PriceText className=' text-sm' price={0} notAutoChange />
-            </li>
+            </li> */}
             <hr />
 
             <li className=' flex items-center justify-between'>
               <TypographySpan className=' font-bold'>Tổng tiền:</TypographySpan>
               <div className=' flex gap-1 items-center'>
                 <PriceText className=' text-sm text-red-500 font-bold' price={order.total_price} />
-                <TypographySpan > ({order.items.length}) </TypographySpan>
+                {/* <TypographySpan > ({order.items.length}) </TypographySpan> */}
               </div>
             </li>
           </ul>

@@ -1,13 +1,10 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { ConfigAPi } from "@/types/api";
-import { Attribute, AttributeStyle, AttributeValue } from "@/types/Attributestypes";
+import { ConfigAPi } from "@/types/Api.type";
+import { Attribute, AttributeValue } from "@/types/Attributes.type";
 class AttributeService {
   url: string = "/attributes";
-  url_value: string = "/attribute-values";
 
-  constructor() { }
-
-
+  constructor() {}
 
   async getList(init?: ConfigAPi) {
     return fetchApi.get<Attribute[]>(this.url, {
@@ -16,9 +13,9 @@ class AttributeService {
     });
   }
   async getListValue(params?: { attribute_id: number }, init?: ConfigAPi) {
-    return fetchApi.get<AttributeValue[]>(this.url_value, {
+    return fetchApi.get<AttributeValue[]>(this.url + "/values", {
       ...init,
-      params:params,
+      params: params,
       next: { revalidate: 60 * 60 * 12 },
     });
   }

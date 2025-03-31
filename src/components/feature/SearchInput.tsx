@@ -1,8 +1,7 @@
 "use client"
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import InputController from "@/components/common/inputs/InputController"
 import { useForm } from 'react-hook-form'
-import ProductsServiceApi from '@/services/ProductsService';
 import { ProductInList } from '@/types/Product.types';
 import {
   HoverCardTrigger,
@@ -14,10 +13,11 @@ import { TypographyP, TypographySpan } from '../ui/typography';
 import Link from "@/components/common/Link";
 
 import routes from '@/routes';
-import { convetNumberToPriceVND, debounce } from '@/utils';
+import { debounce } from '@/utils';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import PriceText from '../common/PriceText';
+import ProductsServiceClientApi from '@/services/client/ProductsService';
 
 const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
 
@@ -46,7 +46,7 @@ export default function SearchInput({ className }: { className?: string }) {
       setProductsSearch([])
       return
     }
-    const { datas: products } = await ProductsServiceApi.getList({ limit: 5, keyword: keyword })
+    const { datas: products } = await ProductsServiceClientApi.getList({ limit: 5, keyword: keyword })
     setProductsSearch(products)
     setOpenSearch(true)
   }, 500), [])

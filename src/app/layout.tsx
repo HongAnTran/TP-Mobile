@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { SessionProvider } from "next-auth/react"
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import SessionProvider from "@/providers/SessionProvider";
 const inter = Inter({ subsets: ["vietnamese"] });
 
 

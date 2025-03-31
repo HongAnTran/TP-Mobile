@@ -1,20 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { OptionsUseQuery, ResList } from "@/types/common.type";
-import CategoryServiceApi from "@/services/categoryService";
+import { OptionsUseQuery, ResList } from "@/types/Common.type";
+import CategoryServiceApi from "@/services/client/categoryService";
 import { CategoryProduct } from "@/types/categoryProduct";
 
 const CategoryServiceClient = {
   useList: (options?: OptionsUseQuery) => {
-    return useQuery<ResList<CategoryProduct>, Error>(
-      {
-        queryKey: ["category"],
-        queryFn: () => CategoryServiceApi.getList(),
-        staleTime: Infinity,
-        ...options
-      }
-    );
+    return useQuery<ResList<CategoryProduct>, Error>({
+      queryKey: ["category"],
+      queryFn: () => CategoryServiceApi.getList(),
+      staleTime: Infinity,
+      ...options,
+    });
   },
 };
 
-
-export default CategoryServiceClient
+export default CategoryServiceClient;

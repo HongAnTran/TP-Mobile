@@ -6,12 +6,12 @@ import PriceText from '@/components/common/PriceText'
 import { Button } from '@/components/ui/button'
 import { TypographySpan } from '@/components/ui/typography'
 import { Location, LocationTypeCode } from '@/types/location'
-import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/order'
+import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/Order.type'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import OrderServiceApi from '@/services/orderService'
+import OrderServiceApi from '@/services/client/orderService'
 import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
 import routes from '@/routes'
@@ -53,7 +53,6 @@ const AddressInfoSchema = yup.object().shape({
 export type Address = yup.InferType<typeof AddressInfoSchema>;
 
 export default function CheckoutInfoForm({ order }: { order: Order }) {
-
   const [isSubmit, setIsSubmit] = useState(false)
   const [location, setLocation] = useState<LocationState>({
     provices: [],
@@ -89,8 +88,6 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       setLocation(pre => ({ ...pre, provices: provices }))
     }
   }, [provices])
-
-
   useEffect(() => {
     if (!districts) {
       return
@@ -142,7 +139,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
       }
 
-      const res = await OrderServiceApi.checkoutClient(order.id, body)
+      const res = await OrderServiceApi.checkoutClient(order.token, body)
       router.replace(`${routes.checkoutSuccess}/${res.token}`)
     } catch (error) {
       toast({ title: "Đặt hàng thất bại vui lòng thử lại hoặc liên hệ 0347.907.042" })

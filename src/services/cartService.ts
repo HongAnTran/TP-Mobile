@@ -1,9 +1,8 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { checkIsClient, generateUniqueId, sleep } from "@/utils";
-import { Cart } from "@/types/cart";
+import { Cart } from "@/types/Cart.type";
 import LocalStorageService from "@/utils/localStorage";
 import { KEYS } from "@/consts/localStorage";
-
 
 class CartService {
   private url: string = "/cart";
@@ -14,19 +13,22 @@ class CartService {
     items: [],
     note: "",
     total_price: 0,
-    token: generateUniqueId()
-  }
+    token: generateUniqueId(),
+  };
 
-  constructor() { }
-
-
+  constructor() {}
 
   async getDetail(id: Cart["id"]) {
     // await sleep(3000)
     if (checkIsClient()) {
-      return LocalStorageService.getItem(KEYS.CART, this.cart)
+      const cart = LocalStorageService.getItem(KEYS.CART, this.cart);
+      if (cart.items.some((item: any) => item.product_title)) {
+        LocalStorageService.setItem(KEYS.CART, this.cart);
+        return this.cart;
+      }
+      return cart;
     }
-    return this.cart
+    return this.cart;
     // return fetchApi.get<Product>(`${this.url}/${id}`, {});
   }
 }

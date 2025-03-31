@@ -1,13 +1,11 @@
-import fetchApi from '@/api/instances/baseInstance';
-import { CategoryArtice } from '@/types/categoryArtice';
-import { ResList } from '@/types/common.type';
-
-
+import fetchApi from "@/api/instances/baseInstance";
+import { CategoryArtice } from "@/types/categoryArtice";
+import { ResList } from "@/types/Common.type";
 
 class ArticeCategoryService {
-  private url: string = "/category-article";
+  private url: string = "/category-articles";
 
-  constructor() { }
+  constructor() {}
 
   async getList() {
     return fetchApi.get<ResList<CategoryArtice>>(this.url);

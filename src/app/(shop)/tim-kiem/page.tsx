@@ -10,7 +10,7 @@ import FilterProduct from '@/components/feature/FilterProduct'
 import PaginationServer from '@/components/common/paginations/PaginationServer'
 import routes from '@/routes'
 import SETTINGS from '@/consts/config'
-import { ValueFiter } from '@/types/common.type'
+import { ValueFiter } from '@/types/Common.type'
 
 
 export default async function page({ searchParams }: { searchParams: { [key: string]: string } }) {
@@ -71,8 +71,8 @@ export default async function page({ searchParams }: { searchParams: { [key: str
                 })}
               </div>
               <div className=' mt-10 flex justify-center'>
-                 <PaginationServer query={searchParams} page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} />
-                 </div>
+                <PaginationServer query={searchParams} page={page} total={total} pageSize={LIMIT} urlSrc={routes.search} />
+              </div>
             </div>
           </div>
 

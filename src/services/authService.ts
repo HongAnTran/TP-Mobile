@@ -1,30 +1,40 @@
 import fetchApi from "@/api/instances/baseInstance";
-import { Page } from "@/types/Page.type";
-import pagesJson from "@/data/pages.json"
-import { Customer } from "@/types/customer";
-
-
+import fetchApiAuth from "@/api/instances/authInstance";
+import {
+  LoginPayload,
+  LoginResponse,
+  RegisterPayload,
+} from "@/types/Auth.type";
+import { Customer } from "@/types/Customer.type";
 
 class AuthService {
   private url: string = "/auth";
-  // private pages: Page[] = JSON.parse(JSON.stringify(pagesJson)) as Page[]
 
-  constructor() { }
+  constructor() {}
 
-
-
-  async getCustomer(id: Customer["id"]) {
-    // await sleep(3000)
-
-    // return this.pages.find(item => item.slug === slug)
-    // return fetchApi.get<Product>(`${this.url}/${id}`, {});
+  async login(payload: LoginPayload) {
+    return fetchApi.post<LoginResponse>(this.url + "/login", payload);
+  }
+  async register(payload: RegisterPayload) {
+    return fetchApi.post<Customer>(this.url + "/register", payload);
+  }
+  async profile() {
+    return fetchApiAuth.get<Customer>(this.url + "/profile");
+  }
+  async active(token: string) {
+    return fetchApi.get<Customer>(this.url + "/active/" + token);
   }
 
-  async login(email: string, password: string) {
-    return true
+  async logout() {
+    return fetchApi.post(this.url + "/logout", {});
   }
-  async register(email: string, password: string) {
-    return true
+
+  async refreshToken(refreshToken: string) {
+    return fetchApi.post<{
+      accessToken: string;
+    }>(this.url + "/refresh", {
+      refreshToken,
+    });
   }
 }
 

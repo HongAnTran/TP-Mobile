@@ -17,7 +17,7 @@ import PromotionPolicy from '@/components/feature/policy/PromotionPolicy'
 import WarrantyPolicy from '@/components/feature/policy/WarrantyPolicy'
 import SpecialPromotionPolicy from '@/components/feature/policy/SpecialPromotionPolicy'
 import StoreListView from '@/components/feature/store/StoreListView'
-import { Store } from '@/types/store'
+import { Store } from '@/types/Store.type'
 import { objectToSearchParams } from '@/utils'
 import { toast } from '@/components/ui/use-toast'
 import Image from 'next/image'
@@ -25,7 +25,6 @@ import PriceText from '@/components/common/PriceText'
 
 export default function ProductDetail({ product, stores = [], optionsDefault }: { product: Product, stores?: Store[], optionsDefault?: number[] }) {
   const [isTouchOption, setIsTouchOption] = useState(false)
-
 
   const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)

@@ -1,11 +1,10 @@
-import { ConfigAPi, Interceptor } from "@/types/api";
+import { ConfigAPi, Interceptor } from "@/types/Api.type";
 import ErrorRespone from "../error";
 
 export default class FetchApi {
   init: ConfigAPi = {
     baseURL: "",
     method: "GET",
-
   };
 
   interceptors: Interceptor[] = [];
@@ -34,7 +33,9 @@ export default class FetchApi {
       const path = url ? url : urlReq;
       // Convert params to query string
       const filteredParams = Object.fromEntries(
-        Object.entries(params || {}).filter(([key, value]) => value !== undefined)
+        Object.entries(params || {}).filter(
+          ([key, value]) => value !== undefined
+        )
       );
       const queryString = new URLSearchParams(filteredParams).toString();
 
@@ -53,7 +54,11 @@ export default class FetchApi {
         method: method,
         body: data ? JSON.stringify(data) : undefined,
         params: params,
-        cache: restInit.cache ? restInit.cache : restInit.next?.revalidate ? undefined : "no-store"
+        cache: restInit.cache
+          ? restInit.cache
+          : restInit.next?.revalidate
+          ? undefined
+          : "no-store",
       };
 
       for (const interceptor of this.interceptors) {
@@ -78,13 +83,13 @@ export default class FetchApi {
             statusCode: response.status,
             error: dataResponse.error,
             data: dataResponse.data,
-            message: dataResponse.message
+            message: dataResponse.message,
           });
         } else {
           throw new ErrorRespone({
             statusCode: response.status,
             error: response.statusText,
-            message: "error not handle"
+            message: "error not handle",
           });
         }
       }
@@ -108,14 +113,12 @@ export default class FetchApi {
         throw new ErrorRespone({
           statusCode: 0,
           error: "error exception",
-
         });
       }
     }
   }
 
   async get<TResponse>(url: string, init: ConfigAPi = {}): Promise<TResponse> {
-
     return this.request(url, "GET", undefined, init);
   }
 
@@ -131,5 +134,3 @@ export default class FetchApi {
     return this.request<TResponse>(url, "DELETE", undefined, init);
   }
 }
-
-

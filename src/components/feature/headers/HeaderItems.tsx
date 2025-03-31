@@ -7,41 +7,52 @@ import { PhoneFilledIcon } from '../../icons'
 import { TypographyP, TypographySpan } from '../../ui/typography'
 import routes, { privateToutes } from '@/routes'
 import CartHeader from './CartHeader';
-import { useSession } from 'next-auth/react';
 import IconBorder from '../../common/IconBorder';
 import NavLink from '../../common/NavLink';
 import CONFIG from '@/consts/config'
 import { convertHotlineToTel } from '@/utils'
+import { useAuthStore } from '@/providers/auth-store-provider'
+import { cn } from '@/lib/utils'
+import useProfile from '@/hooks/useProfile'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import Spinner from '@/components/loading/Spinner'
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 
 
 
 export default function HeaderItems() {
-  const { data } = useSession()
-  const customer = data?.user
 
+  const { setOpenLogin } = useAuthStore(state => state)
 
+  const { data: customer , isLoading } = useProfile()
+  // const customer = null
 
-  const customerItem = customer ? {
-    icon: <IconBorder> <PersonIcon width={20} height={20} /></IconBorder>,
-    text: customer.name,
+  const customerItem =isLoading ?{
+    icon :  <><Spinner /></> ,
+    text : "",
+  } :  customer ? {
+    icon: <Avatar  >
+    <AvatarImage src={customer.avatar || undefined} />
+    <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
+  </Avatar>,
+    text: customer.first_name,
     href: privateToutes.account,
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
-    text: "Đăng nhập",
-    href: routes.login
+    text: <span>Đăng nhập</span>,
+    href: routes.login,
   }
 
   const items: HeaderItemProps[] = [
-    {
-      icon: <IconBorder>
-        <PhoneFilledIcon className=' w-6 h-6' />
-      </IconBorder>
-      ,
-      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
-      href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
-    },
+    // {
+    //   icon: <IconBorder>
+    //     <PhoneFilledIcon className=' w-6 h-6' />
+    //   </IconBorder>
+    //   ,
+    //   text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
+    //   href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
+    // },
     {
       icon: <IconBorder>
         <ReaderIcon className=' w-6 h-6' />
@@ -71,10 +82,10 @@ export default function HeaderItems() {
       href: routes.cart
 
     },
-    // customerItem
+    customerItem
   ]
 
- 
+
   return (
     <>
       <div className=' justify-end  gap-8 h-full    flex  '>
@@ -89,15 +100,17 @@ export default function HeaderItems() {
 }
 
 
-function HeaderItem({ icon, text, href }: HeaderItemProps) {
+function HeaderItem({ icon, text, href, onClick }: HeaderItemProps) {
   return <>
-    {href ? <NavLink  href={href} >
-      <div className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
+    {href ? <NavLink href={href}  >
+      <div onClick={onClick} className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
         {icon}
         <TypographyP className='text-sm      hover:text-blue-500 transition-colors font-medium   hidden xl:block' >{text}</TypographyP>
 
       </div>
-    </NavLink> : <div className='  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
+    </NavLink> : <div onClick={onClick} className={cn('  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row ', {
+      "cursor-pointer": !!onClick
+    })}>
       {icon}
       <div >
         <TypographyP className='  block  md:hidden lg:block' >{text}</TypographyP>

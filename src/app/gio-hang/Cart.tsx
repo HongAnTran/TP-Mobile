@@ -9,9 +9,9 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { toast } from '@/components/ui/use-toast'
+import { toast, useToast } from '@/components/ui/use-toast'
 import routes from '@/routes'
-import OrderServiceApi from '@/services/orderService'
+import OrderServiceClientApi from '@/services/client/orderService'
 import DialogUi from '@/components/common/Dialog'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
@@ -25,7 +25,7 @@ export default function Cart() {
   const { cart, isLoadingCard, handleChangeQuantity, handleDeleteItem, handleChangeSelectItem, handleChangeSelectItems } = useCart()
   const [open, setOpen] = useState(false)
   const router = useRouter()
-
+  const { toast } = useToast()
 
   function handleCheckAllItems(value: boolean) {
     handleChangeSelectItems(cart.items, value)
@@ -35,13 +35,14 @@ export default function Cart() {
     try {
       if (cart.items.filter(item => item.selected).some(item => item.line_price === 0)) {
         setOpen(true)
-
         return
       }
-      const order = await OrderServiceApi.createOrderClient(cart)
+      const order = await OrderServiceClientApi.createOrderClient(cart)
       router.push(`${routes.checkout}/${order.token}`)
     } catch (error) {
-      alert(JSON.stringify(error))
+      toast({
+        title: "Đã có lỗi xảy ra vui lòng thử lại trong ít phút"
+      })
     }
   }
 

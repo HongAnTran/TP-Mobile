@@ -1,25 +1,27 @@
-import { ResList } from '@/types/common.type';
+import { ResList } from "@/types/Common.type";
 
 import fetchApi from "@/api/instances/baseInstance";
-import { ConfigAPi } from "@/types/api";
-import { CategoryProduct, CategoryProductFilter } from "@/types/categoryProduct";
-
+import { ConfigAPi } from "@/types/Api.type";
+import {
+  CategoryProduct,
+  CategoryProductFilter,
+} from "@/types/categoryProduct";
 
 class CategoryService {
-  private url: string = "/category-product";
-  constructor() { }
+  private url: string = "/categories";
+  constructor() {}
 
   async getList(params?: CategoryProductFilter, init?: ConfigAPi) {
     return fetchApi.get<ResList<CategoryProduct>>(this.url, {
       params: {
         orderBy: "id",
         orderType: "asc",
-        ...params
+        ...params,
       },
       next: {
-        revalidate: 60 * 10
+        revalidate: 60 * 10,
       },
-      ...init
+      ...init,
     });
   }
   async getDetail(slug: string) {

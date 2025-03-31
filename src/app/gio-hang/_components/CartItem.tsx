@@ -20,9 +20,10 @@ interface CartItemProps {
   onChangeSelect?: (product: ProductOrder, value: boolean) => void
 }
 
-export default function CartItem({ product, onDelete, onChangeQuantity, onChangeSelect }: CartItemProps) {
+export default function CartItem({ product: productOrder, onDelete, onChangeQuantity, onChangeSelect }: CartItemProps) {
 
-  const quantity = product.quantity
+  const quantity = productOrder.quantity
+  const { product, variant } = productOrder
 
   const handleQuantity: ProductQuantityProps["handleQuantity"] = {
     add() {
@@ -46,31 +47,32 @@ export default function CartItem({ product, onDelete, onChangeQuantity, onChange
 
     }
   }
+  const img = variant.image?.url || product.images[0].url
   return (
     <li className=' py-4 border-y border-gray-200  md:items-center flex flex-col md:flex-row gap-4  justify-between relative'>
       <div className=' flex-shrink-0 flex gap-2 items-center  min-w-[260px]  lg:min-w-[400px] max-w-[400px]'>
-        <Checkbox checked={product.selected} onCheckedChange={(check) => {
-          onChangeSelect?.(product, !!check.valueOf())
+        <Checkbox checked={productOrder.selected} onCheckedChange={(check) => {
+          onChangeSelect?.(productOrder, !!check.valueOf())
         }} />
         <div className=' lg:w-[120px] lg:h-[120px] w-[80px] h-[80px] '>
 
-        <Image alt={product.title + product.variant_title} src={product.image} width={120} height={120} />
+          <Image alt={product.title + variant.title} src={img} width={120} height={120} />
         </div>
         <div>
           <Link className='  text-sm md:text-base line-clamp-2 font-semibold' href={`${routes.products}/${product.slug}`}>{product.title}</Link>
           <div className=' mt-2 flex gap-1'>
-            {product.variant_options.map(option => {
-              return <Badge key={option}>
-                {option}
+            {variant.attribute_values.map(option => {
+              return <Badge key={option.value}>
+                {option.value}
               </Badge>
             })}
           </div>
         </div>
       </div>
       <ProductQuantity className=' justify-end md:justify-start' quantity={quantity} handleQuantity={handleQuantity} label={null} disableInput />
-      <PriceText price={product.price} className=' hidden  lg:inline-block' />
-      <PriceText className=' text-red-500 text-right' price={product.line_price} />
-      <Button onClick={() => onDelete?.(product.id)} size="icon" variant="link" className=' absolute bottom-2 md:right-2 md:left-auto left-2' ><CloseCircleIcon /></Button>
+      <PriceText price={productOrder.price} className=' hidden  lg:inline-block' />
+      <PriceText className=' text-red-500 text-right' price={productOrder.line_price} />
+      <Button onClick={() => onDelete?.(productOrder.id)} size="icon" variant="link" className=' absolute bottom-2 md:right-2 md:left-auto left-2' ><CloseCircleIcon /></Button>
     </li>
   )
 }

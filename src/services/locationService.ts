@@ -1,5 +1,4 @@
 import { Location, LocationFilter, LocationTypeCode } from "@/types/location";
-import fetchApi from "@/api/instances/baseInstance";
 import provincesJson from "@/data/provinces.json";
 import districtsJson from "@/data/districts.json";
 import wardsJson from "@/data/wards.json";

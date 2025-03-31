@@ -6,8 +6,7 @@ import { Metadata } from 'next'
 import routes from '@/routes'
 import { Product as ProductType } from '@/types/Product.types'
 import { Product as ProductSchema, WithContext } from "schema-dts";
-import Head from 'next/head'
-import { SearchParams } from '@/types/common.type'
+import { SearchParams } from '@/types/Common.type'
 import CONFIG from '@/consts/config'
 
 function generateStrucDataProduct(
@@ -17,13 +16,13 @@ function generateStrucDataProduct(
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.title,
-    image: product.images?.[0]?.url,
+    image: product.images.map(img => img.url),
     category: product.category.title,
     description: product.short_description || undefined,
-    brand: {
+    brand: product.brand ? {
       "@type": "Brand",
-      name: product.brand?.name || "Apple",
-    },
+      name: product.brand.name,
+    } : undefined,
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: 5,
@@ -31,18 +30,14 @@ function generateStrucDataProduct(
       bestRating: 5,
       worstRating: 1,
       name: product.title,
-      // itemReviewed: {
-      //   "@type": "Product",
-      //   name: product.title,
-      // },
       author: "TP Mobile Store"
     },
     offers: {
       "@type": "Offer",
       url: `${process.env.DOMAIN}${routes.products}/${product.slug}`,
       priceCurrency: "VND",
-      price: product.price,
-      priceValidUntil: "2024-12-31",
+      price: String(product.price),
+      priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       seller: {
@@ -50,6 +45,7 @@ function generateStrucDataProduct(
         name: "TP Mobile",
       },
     },
+
   };
 }
 async function getData(slug: string) {
@@ -85,7 +81,7 @@ export async function generateMetadata(
       openGraph: {
         title: titleShow,
         description: desShow,
-        images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
+        images: product.images.map(img => ({ url: img.url, width: 500, height: 500 })) || [],
         url: URL,
         siteName: DOMAIN,
         type: "website",
@@ -93,7 +89,7 @@ export async function generateMetadata(
       twitter: {
         title: titleShow,
         description: desShow,
-        images: product.images.map(img => ({ url: img.url, width: 800, height: 600 })) || [],
+        images: product.images.map(img => ({ url: img.url, width: 500, height: 500 })) || [],
       },
 
       keywords: keywords,

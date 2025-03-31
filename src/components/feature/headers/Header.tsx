@@ -28,7 +28,6 @@ export default function Header() {
               <Link href={routes.cart}>
                 <CartHeader />
               </Link>
-
             </div>
           </div>
           <div className='  w-full sm:max-w-[300px]    xl:max-w-[400px]  hidden md:block'>

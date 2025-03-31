@@ -1,12 +1,10 @@
 import FetchApi from "@/api/fetch";
-import { checkIsClient } from "@/utils";
-
 const fetchApi = new FetchApi({
-  baseURL: checkIsClient() ? process.env.NEXT_PUBLIC_BASE_URL : process.env.BASE_URL,
+  baseURL: process.env.BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 5 * 1000,
+  timeout: 10 * 1000,
 });
 
 fetchApi.use({
