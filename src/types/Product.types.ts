@@ -177,6 +177,11 @@ type ProductInList = Pick<
 >;
 type Products = ResList<ProductInList>;
 
+type ProductRatingResponse = {
+  id : Product['id'],
+  ratings : ProductRating[],
+}
+
 export type {
   Product,
   ProductCategories,
@@ -193,4 +198,5 @@ export type {
   ProductAttribute,
   ProductId,
   Tags,
+  ProductRatingResponse
 };

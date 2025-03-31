@@ -2,6 +2,7 @@ import fetchClientApi from "@/api/instances/clientInstance";
 import { ConfigAPi } from "@/types/Api.type";
 import {
   Product,
+  ProductRatingResponse,
   Products,
   ProductsParams,
   ProductStatus,
@@ -30,6 +31,12 @@ class ProductsServiceClient {
       next: { tags: [this.url, slug], revalidate: 60 * 60 * 24 * 3 },
     });
     return product;
+  }
+
+  async getRating(slug : Product["slug"], init?: ConfigAPi) {
+    return fetchClientApi.get<ProductRatingResponse>(this.url + '/ratings/' + slug, {
+      ...init,
+    });
   }
 }
 
