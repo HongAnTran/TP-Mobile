@@ -49,14 +49,14 @@ export const metadata: Metadata = {
 };
 
 export default async function page() {
-  // const { value } = await SettingsServiceApi.getDetail<PageStructure>(SETTINGKEYS.homePageStructure)
+  const { value } = await SettingsServiceApi.getDetail<PageStructure>(SETTINGKEYS.homePageStructure)
 
-  // const { zones } = value
+  const { zones } = value
 
   return (
     <>
       <BannerLarge />
-      {/* <div className=' container py-4 mt-10'>
+      <div className=' container py-4 mt-10'>
         <div className=' flex flex-col   gap-16'>
           {zones.map((zone, index) => {
             if (!zone.active) return null
@@ -79,7 +79,7 @@ export default async function page() {
             }
           })}
         </div>
-      </div> */}
+      </div>
       {/* <EventPopup /> */}
 
     </>

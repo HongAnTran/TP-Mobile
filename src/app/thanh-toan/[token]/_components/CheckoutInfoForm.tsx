@@ -53,7 +53,6 @@ const AddressInfoSchema = yup.object().shape({
 export type Address = yup.InferType<typeof AddressInfoSchema>;
 
 export default function CheckoutInfoForm({ order }: { order: Order }) {
-
   const [isSubmit, setIsSubmit] = useState(false)
   const [location, setLocation] = useState<LocationState>({
     provices: [],
@@ -89,8 +88,6 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       setLocation(pre => ({ ...pre, provices: provices }))
     }
   }, [provices])
-
-
   useEffect(() => {
     if (!districts) {
       return

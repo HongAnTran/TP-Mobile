@@ -49,7 +49,10 @@ interface ProductAttribute {
   id: number;
   position: number;
   attribute: Attribute;
-  values: AttributeValue[];
+  values: {
+    position: number;
+    attributeValue: AttributeValue;
+  }[];
 }
 
 interface Tags {
@@ -76,7 +79,6 @@ interface ProductVariant {
   title: string;
   created_at: string;
   updated_at: null | string;
-
   inventory_quantity: number;
   sold_quantity: number;
   image_id: number | null;
@@ -113,10 +115,7 @@ interface ProductGroupSpecifications {
   type_id: number;
 }
 
-type ProductOrder = Pick<
-  Product,
-  "title" | "slug" | "category_id" | "barcode"
-> & {
+type ProductOrder = {
   id: number;
   line_price: number;
   price: number;
@@ -124,14 +123,10 @@ type ProductOrder = Pick<
   line_price_original: number;
   variant_id: number;
   product_id: ProductId;
-  product_title: string;
-  variant_title: string;
-  variant_options: string[];
   quantity: number;
-  image: string;
   selected: boolean;
-  category_title: string;
-  vendor?: string;
+  product: Product;
+  variant: ProductVariant;
 };
 interface ProductRating {
   id: number;

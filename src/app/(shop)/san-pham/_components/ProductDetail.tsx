@@ -26,7 +26,6 @@ import PriceText from '@/components/common/PriceText'
 export default function ProductDetail({ product, stores = [], optionsDefault }: { product: Product, stores?: Store[], optionsDefault?: number[] }) {
   const [isTouchOption, setIsTouchOption] = useState(false)
 
-
   const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)
   const { addProductToRecentView } = useProductRecentView()

@@ -71,32 +71,18 @@ class CartServiceClient {
     variant: ProductVariant,
     quantity: number
   ): ProductOrder {
-    const imageVariant = product.images.find(
-      (img) => img.id === variant.image_id
-    );
-    const imgSrc = imageVariant ? imageVariant.url : product.images[0].url;
     return {
       id: Math.floor(new Date().getTime() * Math.random()),
-      title: product.title,
-      slug: product.slug,
-      category_title: product.category.title,
-      category_id: product.category_id,
-      vendor: product.brand?.name,
-      barcode: product.barcode, // null check for barcode
       line_price: variant.price * quantity,
       price: variant.price,
       price_original: variant.price,
       line_price_original: variant.price * quantity,
       variant_id: variant.id,
       product_id: product.id,
-      image: imgSrc ? imgSrc : product.images?.[0].url, // You need to provide the image URL here
-      product_title: product.title,
-      variant_title: variant.title,
-      variant_options: variant.attribute_values
-        .map((item) => item.value)
-        .filter((opt) => opt), // Filter out empty options
       quantity: quantity,
       selected: true,
+      product,
+      variant,
     };
   }
 }

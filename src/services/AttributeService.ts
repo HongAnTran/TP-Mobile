@@ -2,8 +2,7 @@ import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/Api.type";
 import { Attribute, AttributeValue } from "@/types/Attributes.type";
 class AttributeService {
-  url: string = "/  ";
-  url_value: string = "/attribute-values";
+  url: string = "/attributes";
 
   constructor() {}
 

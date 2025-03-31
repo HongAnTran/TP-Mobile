@@ -21,7 +21,12 @@ class CartService {
   async getDetail(id: Cart["id"]) {
     // await sleep(3000)
     if (checkIsClient()) {
-      return LocalStorageService.getItem(KEYS.CART, this.cart);
+      const cart = LocalStorageService.getItem(KEYS.CART, this.cart);
+      if (cart.items.some((item: any) => item.product_title)) {
+        LocalStorageService.setItem(KEYS.CART, this.cart);
+        return this.cart;
+      }
+      return cart;
     }
     return this.cart;
     // return fetchApi.get<Product>(`${this.url}/${id}`, {});

@@ -5,7 +5,7 @@ const fetchApiClient = new FetchApi({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 5 * 1000,
+  timeout: 10 * 1000,
 });
 
 fetchApiClient.use({

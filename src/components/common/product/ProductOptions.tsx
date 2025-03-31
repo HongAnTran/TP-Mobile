@@ -20,8 +20,8 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
               {option.attribute.name}:
             </TypographyP>
             <div className=' flex gap-2 md:gap-4 items-center  flex-wrap'>
-              {option.attribute.style === AttributeStyle.RECTANGLE && <AttributeRectangle attributes={option.values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
-              {option.attribute.style === AttributeStyle.COLOR && <AttributeColor attributes={option.values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
+              {option.attribute.style === AttributeStyle.RECTANGLE && <AttributeRectangle attributes={option.values.map(va => va.attributeValue)} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
+              {option.attribute.style === AttributeStyle.COLOR && <AttributeColor attributes={option.values.map(va => va.attributeValue)} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
             </div>
           </div>
         })

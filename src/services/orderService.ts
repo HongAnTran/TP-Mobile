@@ -11,11 +11,15 @@ class OrderService {
     token: Order["token"],
     order: OrderCheckoutInput
   ): Promise<Order> {
-    return fetchApi.put(`${this.url}/checkout/${token}`, order);
+    return fetchApi.put(`${this.url}/checkout/${token}`, order, {
+      timeout: 60 * 1000,
+    });
   }
 
   async createOrder(data: any) {
-    return fetchApi.post(this.url, data);
+    return fetchApi.post(this.url, data, {
+      timeout: 60 * 1000,
+    });
   }
 }
 

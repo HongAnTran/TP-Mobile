@@ -40,14 +40,18 @@ class OrderServiceClient {
       discount: 0,
     };
 
-    return fetchApiPublic.post(this.url, order);
+    return fetchApiPublic.post(this.url, order, {
+      timeout: 60 * 1000,
+    });
   }
 
   async checkoutClient(
     token: Order["token"],
     order: OrderCheckoutInput
   ): Promise<Order> {
-    return fetchApiPublic.post(`${this.url}/checkout/${token}`, order);
+    return fetchApiPublic.post(`${this.url}/checkout/${token}`, order, {
+      timeout: 60 * 1000,
+    });
   }
 }
 

@@ -3,7 +3,6 @@
 import { type ReactNode, createContext, useRef, useContext } from 'react'
 import { type StoreApi, useStore } from 'zustand'
 import { type ShopStore, createShopStore, initShopStore } from '@/stores/shop-store'
-import LoginDialog from '@/components/feature/login/LoginDialog'
 export const ShopStoreContext = createContext<StoreApi<ShopStore> | null>(
   null,
 )

@@ -5,7 +5,7 @@ import routes from '@/routes'
 import CartServiceClient from '@/services/cartServiceClient'
 import { Product, ProductOrder, ProductVariant } from '@/types/Product.types'
 import { useRouter } from 'next/navigation'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 
 export default function useCart() {
   const { cart, setCart, isLoadingCard } = useShopStore(state => state)
@@ -14,6 +14,7 @@ export default function useCart() {
   const cartClient = useMemo(() => {
     return new CartServiceClient(cart)
   }, [cart])
+
 
 
   const handleAddtoCart = useCallback((product: Product, variant: ProductVariant, quantity: number) => {
