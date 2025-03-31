@@ -28,12 +28,16 @@ import { useToast } from '@/components/ui/use-toast'
 import ErrorRespone from '@/api/error'
 import AuthServiceApi from '@/services/client/authService'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import Spinner from '@/components/loading/Spinner'
 
 
 
 export default function LoginForm() {
   const { toast } = useToast()
   const router = useRouter()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const defaultValues = {
     email: '',
     password: '',
@@ -46,6 +50,7 @@ export default function LoginForm() {
 
   async function onSubmit(values: LoginValues) {
     try {
+      setIsSubmitting(true)
       const isLogin = await AuthServiceApi.login({
         ...values,
       })
@@ -63,6 +68,8 @@ export default function LoginForm() {
           description: error.message,
         })
       }
+    }finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -122,8 +129,11 @@ export default function LoginForm() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">
-                  Đăng nhập
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                 
+                     {
+                                                          isSubmitting ? <Spinner /> : " Đăng nhập"
+                                                      } 
                 </Button>
                 <Button variant="outline" className="w-full">
                   <GoogleFilledIcon className=' mr-2' />  Đăng nhập với Google

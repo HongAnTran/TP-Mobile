@@ -1,4 +1,4 @@
-import fetchApiPublic from "@/api/instances/baseInstance";
+import fetchApiPublic from "@/api/instances/clientInstance";
 import { ConfigAPi } from "@/types/Api.type";
 import {
   ProductGroupSpecifications,

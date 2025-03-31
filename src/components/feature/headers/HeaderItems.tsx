@@ -14,6 +14,8 @@ import { convertHotlineToTel } from '@/utils'
 import { useAuthStore } from '@/providers/auth-store-provider'
 import { cn } from '@/lib/utils'
 import useProfile from '@/hooks/useProfile'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import Spinner from '@/components/loading/Spinner'
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
 
@@ -23,11 +25,17 @@ export default function HeaderItems() {
 
   const { setOpenLogin } = useAuthStore(state => state)
 
-  const { data: customer } = useProfile()
+  const { data: customer , isLoading } = useProfile()
   // const customer = null
 
-  const customerItem = customer ? {
-    icon: <IconBorder> <PersonIcon width={20} height={20} /></IconBorder>,
+  const customerItem =isLoading ?{
+    icon :  <><Spinner /></> ,
+    text : "",
+  } :  customer ? {
+    icon: <Avatar  >
+    <AvatarImage src={customer.avatar || undefined} />
+    <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
+  </Avatar>,
     text: customer.first_name,
     href: privateToutes.account,
   } : {

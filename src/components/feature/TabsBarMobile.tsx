@@ -11,6 +11,9 @@ import IconBorder from '../common/IconBorder';
 import HomeIcon from '@mui/icons-material/Home';
 import GridViewIcon from '@mui/icons-material/GridView';
 import NavLink from '../common/NavLink';
+import useProfile from '@/hooks/useProfile'
+import Spinner from '../loading/Spinner'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
 
@@ -19,12 +22,18 @@ interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onC
 
 export default function TabsBarMobile() {
 
-  const customer = null
+  const { data: customer, isLoading } = useProfile()
 
 
-  const customerItem = customer ? {
-    icon: <IconBorder> <PersonIcon width={20} height={20} /></IconBorder>,
-    text: customer.name,
+  const customerItem = isLoading ? {
+    icon: <><Spinner /></>,
+    text: "",
+  } : customer ? {
+    icon: <Avatar  >
+      <AvatarImage src={customer.avatar || undefined} />
+      <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
+    </Avatar>,
+    text: customer.first_name,
     href: privateToutes.account,
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
@@ -63,13 +72,13 @@ export default function TabsBarMobile() {
       href: routes.stores
     },
 
-    {
-      icon: <IconBorder><NewsIcon /></IconBorder>,
-      text: "Tin tức",
-      href: routes.artice
-    },
+    // {
+    //   icon: <IconBorder><NewsIcon /></IconBorder>,
+    //   text: "Tin tức",
+    //   href: routes.artice
+    // },
 
-    // customerItem
+    customerItem
   ]
   return (
     <nav className='  text-secondary rounded-t-xl flex justify-between fixed -bottom-[6px] left-0 right-0  z-50 bg-primary p-4 md:hidden'>

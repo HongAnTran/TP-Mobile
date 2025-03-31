@@ -1,5 +1,8 @@
 import FetchApi from "@/api/fetch";
-const fetchApi = new FetchApi({
+import { getSession } from "@/app/lib/session";
+import { checkIsClient } from "@/utils";
+
+const fetchApiAuth = new FetchApi({
   baseURL: process.env.BASE_URL,
   headers: {
     "Content-Type": "application/json",
@@ -7,10 +10,19 @@ const fetchApi = new FetchApi({
   timeout: 5 * 1000,
 });
 
-fetchApi.use({
+fetchApiAuth.use({
   request: async (config) => {
     if (config.isLogger) {
       console.log(config);
+    }
+    if (!checkIsClient()) {
+      const session = await getSession();
+      if (session) {
+        config.headers = {
+          ...config.headers,
+          Authorization: `Bearer ${session.accessToken}`,
+        };
+      }
     }
     return config;
   },
@@ -21,4 +33,4 @@ fetchApi.use({
     return response;
   },
 });
-export default fetchApi;
+export default fetchApiAuth;

@@ -2,7 +2,7 @@
 "use client"
 import { KEYS } from '@/consts/localStorage'
 import SETTINGS from '@/consts/config'
-import ProductsServiceApi from '@/services/ProductsService'
+import ProductsServiceApi from '@/services/client/ProductsService'
 import { Product, ProductInList } from '@/types/Product.types'
 import LocalStorageService from '@/utils/localStorage'
 import { useCallback, useEffect, useState } from 'react'

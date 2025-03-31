@@ -3,7 +3,7 @@ import { ConfigAPi } from "@/types/Api.type";
 import { Store, StoreParams } from "@/types/Store.type";
 
 class StoreServiceClient {
-  private url: string = "/stores";
+  private url: string = "/store";
 
   constructor() {}
   async getDetail(id: number, init?: ConfigAPi) {

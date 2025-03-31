@@ -13,7 +13,6 @@ import Link from "@/components/common/Link";
 import routes from '@/routes'
 import { Product, ProductGroupSpecifications, ProductTypeSpecifications } from '@/types/Product.types'
 import PriceText from '@/components/common/PriceText'
-import Rating from '@/components/common/Rating'
 import Image from 'next/image'
 import { convetNumberToPriceVND, fillArrayToLength, findVariantMinPrice } from '@/utils'
 import { TypographyH3 } from '@/components/ui/typography'

@@ -1,5 +1,4 @@
 import ErrorRespone from "@/api/error";
-import { createSession } from "@/app/lib/session";
 import AuthServiceApi from "@/services/authService";
 import { NextRequest, NextResponse } from "next/server";
 

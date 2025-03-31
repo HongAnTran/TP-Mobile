@@ -1,5 +1,5 @@
 "use client"
-import fetchApi from '@/api/instances/baseInstance'
+import fetchApi from '@/api/instances/clientInstance'
 import { Card, CardContent } from '@/components/ui/card'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'

@@ -9,10 +9,12 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as LoginPayload;
     const { callbackUrl, ...payload } = body;
     const respon = await AuthServiceApi.login(payload);
-    const { accessToken, refreshToken } = respon;
-    await createSession(accessToken, refreshToken);
+    const { accessToken } = respon;
+    console.log(respon)
+    await createSession(accessToken);
     return NextResponse.json({ status: true });
   } catch (error) {
+    console.log(error)
     if (error instanceof ErrorRespone) {
       return NextResponse.json(error, { status: error.statusCode });
     }

@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import {
-    Card,
+Card,
     CardContent,
     CardHeader,
     CardTitle,
@@ -28,9 +28,16 @@ import { GENDER_OPTIONS } from '@/consts/customer'
 import Datepicker from '@/components/common/Datepicker'
 import AuthServiceApi from '@/services/client/authService'
 import { useToast } from '@/components/ui/use-toast'
+import ErrorRespone from '@/api/error'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import Spinner from '@/components/loading/Spinner'
 
 export default function RegisterForm() {
     const { toast } = useToast()
+    const router = useRouter()
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
     const form = useForm<RegisterValues>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
@@ -45,16 +52,23 @@ export default function RegisterForm() {
 
     async function onSubmit(values: RegisterValues) {
         try {
+            setIsSubmitting(true)
             const { confirmPassword, ...res } = values
             await AuthServiceApi.register(res)
             toast({
                 title: "Đăng kí thành công",
                 description: "Hãy truy cập vào địa chỉ email của bạn để xác nhận tài khoản và đăng nhập",
             })
+            router.push(routes.login)
         } catch (error) {
+           if(error instanceof ErrorRespone) {
             toast({
                 title: "Đăng kí thất bại",
+                description: error.message,
             })
+        }
+    }finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -212,8 +226,10 @@ export default function RegisterForm() {
                                     )}
                                 />
 
-                                <Button type="submit" className="w-full">
-                                    Đăng kí
+                                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                                    {
+                                        isSubmitting ? <Spinner /> : "Đăng kí"
+                                    } 
                                 </Button>
                             </div>
                         </form>

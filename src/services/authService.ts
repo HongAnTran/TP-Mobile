@@ -1,5 +1,5 @@
 import fetchApi from "@/api/instances/baseInstance";
-import fetchApiClient from "@/api/instances/clientInstance";
+import fetchApiAuth from "@/api/instances/authInstance";
 import {
   LoginPayload,
   LoginResponse,
@@ -19,9 +19,8 @@ class AuthService {
     return fetchApi.post<Customer>(this.url + "/register", payload);
   }
   async profile() {
-    return fetchApi.get<Customer>(this.url + "/profile");
+    return fetchApiAuth.get<Customer>(this.url + "/profile");
   }
-
   async active(token: string) {
     return fetchApi.get<Customer>(this.url + "/active/" + token);
   }
