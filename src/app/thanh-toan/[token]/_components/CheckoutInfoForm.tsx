@@ -8,7 +8,7 @@ import { TypographySpan } from '@/components/ui/typography'
 import { Location, LocationTypeCode } from '@/types/location'
 import { Order, OrderCheckoutInput, PaymentMethod, PaymentStatus } from '@/types/Order.type'
 import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm, useFormContext } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import OrderServiceApi from '@/services/client/orderService'
@@ -18,6 +18,10 @@ import routes from '@/routes'
 import BoxFixedBottom from '@/components/common/BoxFixedBottom'
 import LocationServiceClient from '@/servicesClient/LocationService'
 import { LoadingIcon } from '@/components/icons'
+import useProfile from '@/hooks/useProfile'
+import useCustomerAddress from '@/hooks/useCustomerAddress'
+import ConditionView from '@/components/common/ConditionView'
+import CustomerAddressList from './CustomerAddressList'
 
 interface LocationState {
   provices: Location[],
@@ -53,6 +57,16 @@ const AddressInfoSchema = yup.object().shape({
 export type Address = yup.InferType<typeof AddressInfoSchema>;
 
 export default function CheckoutInfoForm({ order }: { order: Order }) {
+  const { toast } = useToast()
+  const router = useRouter()
+
+  const { data : customer , isLoading : isLoadingCustomer } = useProfile()
+
+  const {data : address , isLoading : isLoadingAddress , isSuccess:isSuccessAddress} = useCustomerAddress(customer?.email || "", {
+    enabled: !!customer?.email
+  })
+
+
   const [isSubmit, setIsSubmit] = useState(false)
   const [location, setLocation] = useState<LocationState>({
     provices: [],
@@ -60,16 +74,14 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     wards: [],
   })
 
-  const { toast } = useToast()
-  const router = useRouter()
 
-
-  const { control, handleSubmit, watch, setValue, formState } = useForm<Address>({
+  const { control, handleSubmit, watch, setValue, formState , ...res } = useForm<Address>({
     // defaultValues: order.shipping,
     resolver: yupResolver(AddressInfoSchema)
   })
   const watchProvice = watch("province.code")
   const watchDistrict = watch("district.code")
+
 
   const { data: provices } = LocationServiceClient.useList({ type: LocationTypeCode.PROVINCE })
   const { data: districts } = LocationServiceClient.useList({ type: LocationTypeCode.DISTRICT, parent_code: watchProvice }, {
@@ -81,6 +93,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     }
   )
 
+  
 
 
   useEffect(() => {
@@ -142,7 +155,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       const res = await OrderServiceApi.checkoutClient(order.token, body)
       router.replace(`${routes.checkoutSuccess}/${res.token}`)
     } catch (error) {
-      toast({ title: "Đặt hàng thất bại vui lòng thử lại hoặc liên hệ 0347.907.042" })
+      toast({ title: "Đã có lỗi xảy ra vui lòng thử lại hoặc liên hệ 0559.010.261" })
     } finally {
       setIsSubmit(false)
     }
@@ -151,48 +164,26 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
 
 
   return (
+    <FormProvider 
+      {...res} 
+      control={control}
+      handleSubmit={handleSubmit}
+      setValue={setValue}
+      watch={watch}
+      formState={formState}
+    >
 
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className=' form-list flex flex-col gap-4 mt-4'>
-        <InputController inputProps={{ required: true }} label='Họ và tên' name="full_name" control={control} isShowError />
-        <div className='   grid grid-cols-1 lg:grid-cols-2  gap-2'>
-          <InputController inputProps={{ required: true }} isNumber label='Số điện thoại' name="phone" control={control} isShowError />
-          <InputController label='Email' name="email" control={control} />
-        </div>
-        <div className=' grid grid-cols-1 lg:grid-cols-3 gap-2'>
-          <SelectController
-            required
-            items={location.provices.map(item => {
-              return { label: item.name_with_type, value: item.code.toString() }
-            })}
-            label='Tỉnh / thành'
-            name="province.code"
-            control={control} />
-
-          <SelectController
-            required
-
-            items={location.districts.map(item => {
-              return { label: item.name_with_type, value: item.code.toString() }
-            })}
-            label='Quận / huyện'
-            name="district.code"
-            control={control} />
-
-          <SelectController
-            required
-
-            items={location.wards.map(item => {
-              return { label: item.name_with_type, value: item.code.toString() }
-            })}
-            label='Phường / xã'
-            name="ward.code"
-            control={control} />
-        </div>
-        <InputController inputProps={{ required: true }} label='Tên đường' name="street" control={control} isShowError />
-        <InputController label='Ghi chú' name="note" control={control} />
-      </div>
-
+      <ConditionView isFallback={isLoadingCustomer || isLoadingAddress} fallBack={<div className=' h-40 flex items-center justify-center'> <LoadingIcon /> </div>}>
+            <>
+        {
+            customer && isSuccessAddress ? <div className=' form-list flex flex-col gap-4 mt-4'>
+              <CustomerAddressList customer={customer} addressList={address} />
+              </div>  : <FormPublicInfo location={location} />
+          }
+        </>
+      </ConditionView>
+    
       <div className=' mt-8 '>
         <p className="text-lg font-medium">Phương thức thanh toán</p>
         <div className="mt-5 grid gap-6">
@@ -251,5 +242,55 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
         </Button>
       </BoxFixedBottom>
     </form>
+    </FormProvider>
+
   )
+}
+
+
+function FormPublicInfo({
+location
+}:{
+  location: LocationState,
+}){
+  const {control} = useFormContext()
+  return     <div className=' form-list flex flex-col gap-4 mt-4'>
+  <InputController inputProps={{ required: true }} label='Họ và tên' name="full_name" control={control} isShowError />
+  <div className='   grid grid-cols-1 lg:grid-cols-2  gap-2'>
+    <InputController inputProps={{ required: true }} isNumber label='Số điện thoại' name="phone" control={control} isShowError />
+    <InputController label='Email' name="email" control={control} />
+  </div>
+  <div className=' grid grid-cols-1 lg:grid-cols-3 gap-2'>
+    <SelectController
+      required
+      items={location.provices.map(item => {
+        return { label: item.name_with_type, value: item.code.toString() }
+      })}
+      label='Tỉnh / thành'
+      name="province.code"
+      control={control} />
+
+    <SelectController
+      required
+
+      items={location.districts.map(item => {
+        return { label: item.name_with_type, value: item.code.toString() }
+      })}
+      label='Quận / huyện'
+      name="district.code"
+      control={control} />
+
+    <SelectController
+      required
+
+      items={location.wards.map(item => {
+        return { label: item.name_with_type, value: item.code.toString() }
+      })}
+      label='Phường / xã'
+      name="ward.code"
+      control={control} />
+  </div>
+  <InputController inputProps={{ required: true }} label='Tên đường' name="street" control={control} isShowError />
+  <InputController label='Ghi chú' name="note" control={control} />
+</div>
 }

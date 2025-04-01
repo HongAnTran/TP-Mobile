@@ -131,6 +131,9 @@ export default class FetchApi {
   async put<TResponse>(url: string, data: any, init: ConfigAPi = {}) {
     return this.request<TResponse>(url, "PUT", data, init);
   }
+  async patch<TResponse>(url: string, data: any, init: ConfigAPi = {}) {
+    return this.request<TResponse>(url, "PATCH", data, init);
+  }
 
   async delete<TResponse>(url: string, init: ConfigAPi = {}) {
     return this.request<TResponse>(url, "DELETE", undefined, init);

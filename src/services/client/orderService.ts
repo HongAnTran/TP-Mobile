@@ -26,9 +26,9 @@ class OrderServiceClient {
                 price_original,
                 line_price,
                 line_price_original,
-                variant_id,
-                product_id,
                 quantity,
+                variant_id,
+                product_id
               };
             }),
         },

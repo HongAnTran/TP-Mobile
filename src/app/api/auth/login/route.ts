@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
     await createSession(accessToken);
     return NextResponse.json({ status: true });
   } catch (error) {
-    console.log(error)
     if (error instanceof ErrorRespone) {
       return NextResponse.json(error, { status: error.statusCode });
     }

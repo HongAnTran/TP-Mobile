@@ -1,5 +1,6 @@
 import { Order, OrderCheckoutInput } from "@/types/Order.type";
 import fetchApi from "@/api/instances/baseInstance";
+import fetchApiAuth from "@/api/instances/authInstance";
 
 class OrderService {
   private url: string = "/orders";
@@ -17,7 +18,23 @@ class OrderService {
   }
 
   async createOrder(data: any) {
-    return fetchApi.post(this.url, data, {
+    return fetchApi.post<Order>(this.url, data, {
+      timeout: 60 * 1000,
+    });
+  }
+
+  
+  async createOrderCustomer(data: any) {
+    return fetchApiAuth.post<Order>(`${this.url}/customer`, data, {
+      timeout: 60 * 1000,
+    });
+  }
+
+  async checkoutCustomer(
+    token: Order["token"],
+    order: OrderCheckoutInput
+  ): Promise<Order> {
+    return fetchApiAuth.put<Order>(`${this.url}/checkout/customer/${token}`, order, {
       timeout: 60 * 1000,
     });
   }

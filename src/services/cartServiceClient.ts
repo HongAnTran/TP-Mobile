@@ -70,8 +70,10 @@ class CartServiceClient {
     variant: ProductVariant,
     quantity: number
   ): ProductOrder {
+    // gen id for product order ramdom max 999 and unique
+    const id =  Number(new Date().getTime().toString().slice(-3)) + Math.floor(Math.random() * 1000)
     return {
-      id: 0,
+      id: id,
       line_price: variant.price * quantity,
       price: variant.price,
       price_original: variant.price,

@@ -9,26 +9,26 @@ import { useCallback, useEffect, useMemo, useRef } from 'react'
 import useProfile from './useProfile'
 import { useQuery } from '@tanstack/react-query'
 import CartServiceClientApi from '@/services/client/cartService'
+import { Cart } from '@/types/Cart.type'
 
 export default function useCart() {
-  const {data : customer , isSuccess} = useProfile()
-  const { cart, setCart } = useShopStore(state => state)
-console.log(cart)
+  // const {data : customer , isSuccess} = useProfile()
+  const { cart, setCart , isLoadingCard } = useShopStore(state => state)
+// console.log(cart)
   
-  const {data : cartsCustomer , isLoading : isLoadingCard } = useQuery({
-    queryKey: ["cart" , customer?.email],
-    queryFn: async () => {
-      const res = await CartServiceClientApi.getMyCart()
-      if(res?.cart) {
-        return res.cart
-      }
-      return await CartServiceClientApi.saveCart(null)
-    },
-    enabled: isSuccess && !!customer.email,
-    staleTime : 1000 * 60 * 5,
-  })
+//   const {data : cartsCustomer , isLoading : isLoadingCard } = useQuery({
+//     queryKey: ["cart" , customer?.email],
+//     queryFn: async () => {
+//       const res = await CartServiceClientApi.getMyCart()
+//       if(res?.cart) {
+//         return res.cart
+//       }
+//       return await CartServiceClientApi.saveCart(null)
+//     },
+//     enabled: isSuccess && !!customer.email,
+//     staleTime : 1000 * 60 * 5,
+//   })
 
-  const timmer = useRef<NodeJS.Timeout | null>(null)
 
   const { toast } = useToast()
   const router = useRouter()
@@ -36,13 +36,16 @@ console.log(cart)
     return new CartServiceClient(cart)
   }, [cart ])
 
-
+  // async function  saveCartToServer(cart : Cart){
+  //   if(cart.customer_id && cart.items.length > 0){
+  //     await CartServiceClientApi.saveCart(cart)
+  //   }
+  // }
 
   const handleAddtoCart = useCallback((product: Product, variant: ProductVariant, quantity: number) => {
     cartClient.add(product, variant, quantity)
     setCart(cartClient.cart)
-
-  }, [cartClient, setCart, toast])
+  }, [cartClient, setCart])
 
   const handleDeleteItem = useCallback((id: ProductOrder["id"]) => {
     cartClient.delete(id)
@@ -78,32 +81,11 @@ console.log(cart)
     setCart(cartClient.cart)
   }, [cartClient, setCart])
 
-  const  saveCartToServer = useCallback(async () => {
-    if(cart.customer_id && cart.items.length > 0){
-      await CartServiceClientApi.saveCart(cart)
-    }
-  } , [JSON.stringify(cart)])
+  
 
-  useEffect(() => {
-    cartsCustomer && setCart(cartsCustomer)
-  }, [cartsCustomer, setCart])
-
-  useEffect(() => {
-    // save cart to server with customer id debounce 1s
-    if(timmer.current) {
-      clearTimeout(timmer.current)
-    }
-    timmer.current = setTimeout(() => {
-      if(cart.customer_id && cart.items.length > 0){
-        saveCartToServer()
-      }
-    }, 1000)
-    return () => {
-      if(timmer.current) {
-        clearTimeout(timmer.current)
-      }
-    }
-  },[saveCartToServer])
+  // useEffect(() => {
+  //   cartsCustomer && setCart(cartsCustomer)
+  // }, [cartsCustomer, setCart])
   return {
     cart,
     setCart,
