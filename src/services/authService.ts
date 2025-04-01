@@ -19,7 +19,7 @@ class AuthService {
     return fetchApi.post<Customer>(this.url + "/register", payload);
   }
   async profile() {
-    return fetchApiAuth.get<Customer>(this.url + "/profile");
+    return fetchApiAuth.get<Customer>("/customers/profile");
   }
   async active(token: string) {
     return fetchApi.get<Customer>(this.url + "/active/" + token);

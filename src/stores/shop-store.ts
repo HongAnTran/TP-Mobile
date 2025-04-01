@@ -1,5 +1,5 @@
 import { KEYS } from "@/consts/localStorage";
-import CartServiceApi from "@/services/cartService";
+import CartServiceApi from "@/services/client/cartService";
 import { Cart } from "@/types/Cart.type";
 import { Product } from "@/types/Product.types";
 import { Wishlist } from "@/types/wishlist";
@@ -24,13 +24,20 @@ export type ShopStore = ShopState & ShopActions;
 export const defaultInitState: ShopState = {
   wishlist: [],
   productsCompare: [],
-  cart: {} as Cart,
+  cart: {
+    item_count: 0,
+    items: [],
+    note: "",
+    total_price: 0,
+    token: "",
+    customer_id: null,
+  } as Cart,
   isLoadingCard: true,
 };
 
 export const initShopStore = async (): Promise<ShopState> => {
   try {
-    const response = await CartServiceApi.getDetail(1);
+    const response = await CartServiceApi.getDetail();
     const wishlist = LocalStorageService.getItem(KEYS.WISHLIST, []);
     return {
       productsCompare: [],

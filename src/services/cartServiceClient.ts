@@ -13,7 +13,6 @@ class CartServiceClient {
   getDetail() {
     return this.cart;
   }
-
   add(product: Product, variant: ProductVariant, quantity: number) {
     const itemIndex = this.cart.items.findIndex(
       (item) => item.product_id === product.id && variant.id === item.variant_id
@@ -72,7 +71,7 @@ class CartServiceClient {
     quantity: number
   ): ProductOrder {
     return {
-      id: Math.floor(new Date().getTime() * Math.random()),
+      id: 0,
       line_price: variant.price * quantity,
       price: variant.price,
       price_original: variant.price,

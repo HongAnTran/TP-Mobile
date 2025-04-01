@@ -106,13 +106,15 @@ export default class FetchApi {
         throw error;
       } else if (error instanceof Error) {
         throw new ErrorRespone({
-          statusCode: 0,
+          statusCode: 500,
           error: error.message,
+          message: error.message,
         });
       } else {
         throw new ErrorRespone({
-          statusCode: 0,
-          error: "error exception",
+          statusCode: 500,
+          error: "Server error",
+          message: "Server error",
         });
       }
     }

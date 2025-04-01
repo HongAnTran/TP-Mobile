@@ -59,7 +59,6 @@ export default function Cart() {
     </div>
   }
 
-
   const isCheckAll = !cart.items.some(item => !item.selected)
   const isValid = cart.items.filter(item => item.selected).length > 0
 

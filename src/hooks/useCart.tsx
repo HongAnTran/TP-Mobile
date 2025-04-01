@@ -5,15 +5,36 @@ import routes from '@/routes'
 import CartServiceClient from '@/services/cartServiceClient'
 import { Product, ProductOrder, ProductVariant } from '@/types/Product.types'
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
+import useProfile from './useProfile'
+import { useQuery } from '@tanstack/react-query'
+import CartServiceClientApi from '@/services/client/cartService'
 
 export default function useCart() {
-  const { cart, setCart, isLoadingCard } = useShopStore(state => state)
+  const {data : customer , isSuccess} = useProfile()
+  const { cart, setCart } = useShopStore(state => state)
+console.log(cart)
+  
+  const {data : cartsCustomer , isLoading : isLoadingCard } = useQuery({
+    queryKey: ["cart" , customer?.email],
+    queryFn: async () => {
+      const res = await CartServiceClientApi.getMyCart()
+      if(res?.cart) {
+        return res.cart
+      }
+      return await CartServiceClientApi.saveCart(null)
+    },
+    enabled: isSuccess && !!customer.email,
+    staleTime : 1000 * 60 * 5,
+  })
+
+  const timmer = useRef<NodeJS.Timeout | null>(null)
+
   const { toast } = useToast()
   const router = useRouter()
   const cartClient = useMemo(() => {
     return new CartServiceClient(cart)
-  }, [cart])
+  }, [cart ])
 
 
 
@@ -57,8 +78,35 @@ export default function useCart() {
     setCart(cartClient.cart)
   }, [cartClient, setCart])
 
+  const  saveCartToServer = useCallback(async () => {
+    if(cart.customer_id && cart.items.length > 0){
+      await CartServiceClientApi.saveCart(cart)
+    }
+  } , [JSON.stringify(cart)])
+
+  useEffect(() => {
+    cartsCustomer && setCart(cartsCustomer)
+  }, [cartsCustomer, setCart])
+
+  useEffect(() => {
+    // save cart to server with customer id debounce 1s
+    if(timmer.current) {
+      clearTimeout(timmer.current)
+    }
+    timmer.current = setTimeout(() => {
+      if(cart.customer_id && cart.items.length > 0){
+        saveCartToServer()
+      }
+    }, 1000)
+    return () => {
+      if(timmer.current) {
+        clearTimeout(timmer.current)
+      }
+    }
+  },[saveCartToServer])
   return {
     cart,
+    setCart,
     isLoadingCard,
     handleAddtoCart,
     handleBuyNow,

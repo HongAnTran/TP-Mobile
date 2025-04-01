@@ -28,7 +28,8 @@ export default async function page({ params }: {
     return (
         <div className=' container min-h-screen'>
             <div className=' flex justify-center   flex-col items-center py-8'>
-                <h2>Xác minh tài khoản thành công đăng nhập ngay</h2>
+            <h2>Chào mừng bạn đến với TP Mobile Store</h2>
+                <h4>Chúc mừng bạn đã xác minh tài khoản thành công đăng nhập ngay</h4>
                 <Image alt="login" src="/register.svg" width={400} height={400} />
 
                 <Link href={routes.login}>

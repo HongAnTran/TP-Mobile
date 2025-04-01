@@ -14,12 +14,13 @@ import { Button } from '../../ui/button'
 import Link from '../../common/Link'
 import routes from '@/routes'
 import IconBorder from '../../common/IconBorder'
+import useCart from '@/hooks/useCart'
 
 
 
 
 export default function CartHeader() {
-  const { cart, isLoadingCard } = useShopStore(state => state)
+  const { cart, isLoadingCard } = useCart()
   return (
     <>
       <HoverCard>
