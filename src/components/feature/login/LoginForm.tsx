@@ -74,7 +74,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="flex flex-col   min-w-96 h-full w-full items-center justify-center">
+    <div className="flex flex-col   lg:min-w-96 h-full w-full items-center justify-center">
       <Card className="w-full  h-full">
         <CardHeader>
           <CardTitle className="text-2xl text-center flex justify-center flex-col items-center">
@@ -135,9 +135,9 @@ export default function LoginForm() {
                                                           isSubmitting ? <Spinner /> : " Đăng nhập"
                                                       } 
                 </Button>
-                <Button variant="outline" className="w-full">
+                {/* <Button variant="outline" className="w-full">
                   <GoogleFilledIcon className=' mr-2' />  Đăng nhập với Google
-                </Button>
+                </Button> */}
               </div>
             </form>
           </Form>

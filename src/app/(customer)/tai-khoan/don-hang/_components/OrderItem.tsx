@@ -15,6 +15,7 @@ export function OrderItem({ order }: { order: Order }) {
 
     const [open , setOpen] = useState(false)
     const [timeLeftFormatted, setTimeLeftFormatted] = useState("")
+    const [isExpired, setIsExpired] = useState(false)
     const {status} = order
     const isDraft = status === OrderStatus.DRAFT
     const isAllowCancel = status === OrderStatus.PENDING || status === OrderStatus.PROCESSING
@@ -37,24 +38,31 @@ export function OrderItem({ order }: { order: Order }) {
                 const minutesLeft = Math.floor((timeLeft / (1000 * 60)) % 60);
                 const secondsLeft = Math.floor((timeLeft / 1000) % 60);
                 
+                // nếu thời gian còn lại <= 0 thì không cho phép hủy đơn hàng
+                if (timeLeft <= 0) {
+                    setIsExpired(true)
+                    setTimeLeftFormatted("Hết hạn")
+                    return
+                }
+
                 const formatNumber = (num : number) => num < 10 ? `0${num}` : num;
-                const timeLeftFormatted = `${formatNumber(hoursLeft)} giờ ${formatNumber(minutesLeft)} phút`;
+                const timeLeftFormatted = `còn ${formatNumber(hoursLeft)} giờ ${formatNumber(minutesLeft)} phút`;
                 setTimeLeftFormatted(timeLeftFormatted)
         },[order.created_at])
 
 
     return  <>
-    <TableRow  className=" border-0 hover:bg-slate-50 data-[state=active]:bg-slate-100">
+    <TableRow  className=" w-[100px] border-0 hover:bg-slate-50 data-[state=active]:bg-slate-100">
     <TableCell>{isDraft ? "Chưa xác định" :  <b>#{order.code}</b>}</TableCell>
     <TableCell>{dateFormatted}</TableCell>
     <TableCell>{convetNumberToPriceVND(order.total_price)}</TableCell>
     <TableCell>
-       {isDraft ? `còn ${timeLeftFormatted}` : <OrderStatusTag status={status} />}
+       {isDraft ? `${timeLeftFormatted}` : <OrderStatusTag status={status} />}
     </TableCell>
     <TableCell>
-        {isDraft ? <Button variant="outline" size="sm" asChild>
+        {isDraft ? !isExpired ?  <Button variant="outline" size="sm" asChild>
             <Link href={`${routes.checkout}/${order.token}`}>Tiếp tục</Link>
-        </Button> :      <Button variant="link" size="sm" asChild>
+        </Button> : null :      <Button variant="link" size="sm" asChild>
         <Link href={`${privateRoutes.accountOrders}/${order.code}`}>Chi tiết</Link>
       </Button>}
  

@@ -3,6 +3,8 @@ import NavLink from "@/components/common/NavLink";
 import NoNavigationLayout from "@/layouts/NoNavigationLayout";
 import { cn } from "@/lib/utils"; // Utility function từ ShadUI để kết hợp classNames
 import { privateRoutes } from "@/routes";
+import { ExitIcon } from "@radix-ui/react-icons";
+import LogoutItem from "./tai-khoan/don-hang/_components/LogoutItem";
 
 export default function CustomerAccountLayout({
   children,
@@ -42,6 +44,7 @@ export default function CustomerAccountLayout({
                       {item.title}
                     </NavLink>
                   ))}
+          <LogoutItem />
                 </nav>
               </div>
             </aside>

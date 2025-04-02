@@ -1,12 +1,10 @@
 // app/account/orders/[code]/page.tsx
 import OrderServiceApi from '@/services/orderService';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { notFound } from 'next/navigation';
 import { Order } from '@/types/Order.type';
-import { OrderStatus } from 'schema-dts';
 import OrderStatusTag from '@/components/common/OrderStatusTag';
 import { format } from 'date-fns';
 import { convetNumberToPriceVND } from '@/utils';
@@ -30,9 +28,6 @@ export default async function OrderDetailPage({ params }: { params: { code: stri
   } catch (error) {
     return notFound();
   }
-  console.log(order.items)
-
-
     const date = order.sold_at ? order.sold_at : order.created_at
     const dateFormatted = format(new Date(date), 'hh:mm - dd/MM/yyyy')
 
@@ -95,7 +90,7 @@ export default async function OrderDetailPage({ params }: { params: { code: stri
                   <TableRow key={item.id}>
                     <TableCell>
                         {item.variant.image?.url && 
-                        <Image src={item.variant.image?.url} alt={item.product.title}  />
+                        <Image width={100} height={100} src={item.variant.image?.url} alt={item.product.title}  />
                         }
                     </TableCell>
 

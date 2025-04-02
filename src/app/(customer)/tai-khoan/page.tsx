@@ -21,8 +21,8 @@ export default async function AccountOverview() {
             <CardTitle>Xin chào, {customer.full_name}!</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-4">
-              <Avatar className="h-16 w-16">
+            <div className="flex  lg:flex-row flex-col gap-2 lg:gap-4">
+              <Avatar className="lg:h-16 lg:w-16 w-10 h-10">
                 <AvatarImage src={customer.avatar || undefined} alt={customer.full_name} />
                 <AvatarFallback>
                   {customer.first_name

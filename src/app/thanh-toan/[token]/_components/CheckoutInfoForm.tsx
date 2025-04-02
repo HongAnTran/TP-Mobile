@@ -229,7 +229,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     >
       <p className=' mt-8'>Chọn hình thức giao hàng</p>
     <RadioGroup  defaultValue={shippingType.toString()}
-      className=' flex gap-8'
+      className=' flex lg:gap-8 lg:flex-row flex-col'
     onValueChange={(value) => {
       setValue("shippingType", +value as unknown as ShippingType)
       setShippingType(+value as unknown as ShippingType)
@@ -237,7 +237,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     } >
       {ShippingTypeOptions.map((item)=>{
         return <div key={item.value} className="flex  items-center space-x-2">
-          <RadioGroupItem value={item.value.toString()} />
+          <RadioGroupItem value={item.value.toString()}className=' h-6 w-6' />
           <Label htmlFor={item.value.toString()} className=' text-lg'>{item.label}</Label>
         </div>
       })}
@@ -424,10 +424,10 @@ function FormPickupInfo({
       >
         {stores.map((item) => (
           <div key={item.id.toString()} className="flex items-center space-x-2">
-            <RadioGroupItem value={item.id.toString()} />
+            <RadioGroupItem className=' h-6 w-6' value={item.id.toString()} />
             <Label htmlFor={item.id.toString()} className="text-lg">
               <div>
-                <p className="font-medium">{item.name} - {item.phone}</p>
+                <p className="font-medium  text-sm  lg:text-lg">{item.name} - {item.phone}</p>
                 <p className="text-sm text-gray-500">{item.detail_address}</p>
               </div>
             </Label>

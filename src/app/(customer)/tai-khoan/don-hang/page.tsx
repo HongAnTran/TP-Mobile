@@ -23,7 +23,7 @@ export default async function OrdersPage() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Mã đơn hàng</TableHead>
+            <TableHead >Mã đơn hàng</TableHead>
             <TableHead>Ngày đặt</TableHead>
             <TableHead>Tổng tiền</TableHead>
             <TableHead>Trạng thái</TableHead>
@@ -53,7 +53,7 @@ export default async function OrdersPage() {
           </CardHeader>
           <CardContent>
               <Tabs defaultValue="draft" className="w-full">
-                <TabsList className="grid w-full grid-cols-5">
+                <TabsList className="grid h-auto w-full grid-cols-2  lg:grid-cols-5">
                   {/* <TabsTrigger value="all">Tất cả ({orders.length})</TabsTrigger> */}
                   <TabsTrigger value="draft">Chưa hoàn tất ({draftOrders.length})</TabsTrigger>
                   <TabsTrigger value="pending">Chờ xác nhận ({pendingOrders.length})</TabsTrigger>
