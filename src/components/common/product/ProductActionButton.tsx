@@ -15,7 +15,7 @@ export default function ProductActionButton({ onAddtoCart, onBuyNow,product }: {
   return (
     <div>
       <div className=' flex gap-2'>
-      <Button className=' w-full group uppercase font-bold'  onClick={() => {
+      <Button className=' w-full group uppercase font-bold  '  onClick={() => {
         setIsOpen(true)
        }}>
       <PhoneFilledIcon className='  group-hover:animate-bounce mr-2' />Đăng ký nhận tư vấn</Button>
@@ -25,12 +25,10 @@ export default function ProductActionButton({ onAddtoCart, onBuyNow,product }: {
       </div>
       <div className=' mt-2 grid grid-cols-2 gap-2'>
       <Button className=' flex-1 uppercase font-bold' variant="outline" onClick={onAddtoCart}>Thêm vào giỏ hàng</Button>
-
         <Link href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`}>
           <Button className=' w-full group uppercase font-bold' >
-            <PhoneFilledIcon className='  group-hover:animate-bounce mr-2' />Gọi đặt mua {CONFIG.HOTLINE}</Button>
+            <PhoneFilledIcon className='text-xs lg:text-sm  group-hover:animate-bounce mr-2' />Gọi đặt mua {" "} <span className=' hidden md:inline ml-1'> {CONFIG.HOTLINE}</span></Button>
         </Link>
-        
       </div>
           <ConsultationDialog product={product} isOpen={isOpen} onClose={()=>{
     setIsOpen(false)
