@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { BadgeIcon } from "@radix-ui/react-icons";
+import { BadgeIcon, CubeIcon } from "@radix-ui/react-icons";
 import { MapPinFilledIcon } from "@/components/icons";
 import CustomerServiceApi from "@/services/customerService";
 import { formatDate } from "@/utils";
@@ -49,9 +49,9 @@ export default async function AccountOverview() {
                   <b>Tham gia từ:</b> {formatDate(customer.created_at)}
                 </p>
                </div>
-                <Button variant="outline" size="sm" className="mt-2">
+                {/* <Button variant="outline" size="sm" className="mt-2">
                   Chỉnh sửa hồ sơ
-                </Button>
+                </Button> */}
               </div>
             </div>
           </CardContent>
@@ -67,28 +67,28 @@ export default async function AccountOverview() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <BadgeIcon className="h-5 w-5 text-muted-foreground" />
+                    <CubeIcon className="h-5 w-5 text-muted-foreground" />
                     <span>Tổng số đơn hàng</span>
                   </div>
                   <Badge variant="secondary">{customer.orders.total}</Badge>
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <BadgeIcon className="h-5 w-5 text-muted-foreground" />
+                    <CubeIcon className="h-5 w-5 text-muted-foreground" />
                     <span>Đơn hàng chưa hoàn thành</span>
                   </div>
                   <Badge variant="default">{customer.orders.draft}</Badge>
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <BadgeIcon className="h-5 w-5 text-muted-foreground" />
+                    <CubeIcon className="h-5 w-5 text-muted-foreground" />
                     <span>Đơn hàng đang xử lý</span>
                   </div>
                   <Badge variant="secondary">{customer.orders.pending}</Badge>
                 </div>
                 <div className="flex  items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <BadgeIcon className="h-5 w-5 text-muted-foreground" />
+                    <CubeIcon className="h-5 w-5 text-muted-foreground" />
                     <span>Đơn hàng đã hoàn thành</span>
                   </div>
                   <Badge variant="succsess">{customer.orders.success}</Badge>

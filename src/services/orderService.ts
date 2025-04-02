@@ -8,6 +8,9 @@ class OrderService {
   async getDetail(token: Order["token"]) {
     return fetchApi.get<Order>(`${this.url}/token/${token}`);
   }
+  async getDetailByCode(code: Order["code"]) {
+    return fetchApi.get<Order>(`${this.url}/code/${code}`);
+  }
   async checkout(
     token: Order["token"],
     order: OrderCheckoutInput

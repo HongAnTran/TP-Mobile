@@ -1,12 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import CustomerServiceApi from "@/services/customerService"; // Giả định API service
+import CustomerServiceApi from "@/services/customerService"; 
 import { Order, OrderStatus } from "@/types/Order.type";
-import { convetNumberToPriceVND, formatDate } from "@/utils";
-import OrderStatusTag from "@/components/common/OrderStatusTag";
+import { OrderItem } from "./_components/OrderItem";
 export const dynamic = 'force-dynamic'
 
 
@@ -28,7 +25,6 @@ export default async function OrdersPage() {
           <TableRow>
             <TableHead>Mã đơn hàng</TableHead>
             <TableHead>Ngày đặt</TableHead>
-            {/* <TableHead>Số lượng</TableHead> */}
             <TableHead>Tổng tiền</TableHead>
             <TableHead>Trạng thái</TableHead>
             <TableHead>Hành động</TableHead>
@@ -37,19 +33,7 @@ export default async function OrdersPage() {
         <TableBody>
           {orders.length > 0 ? (
             orders.map((order) => (
-              <TableRow key={order.id}>
-                <TableCell>{order.code}</TableCell>
-                <TableCell>{order.sold_at ? formatDate(order.sold_at) : formatDate(order.created_at)}</TableCell>
-                <TableCell>{convetNumberToPriceVND(order.total_price)}</TableCell>
-                <TableCell>
-                <OrderStatusTag status={order.status} />
-                </TableCell>
-                <TableCell>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={`/account/orders/${order.id}`}>Xem chi tiết</a>
-                  </Button>
-                </TableCell>
-              </TableRow>
+              <OrderItem key={order.id} order={order} />
             ))
           ) : (
             <TableRow>
@@ -68,17 +52,20 @@ export default async function OrdersPage() {
             <CardTitle>Đơn hàng của tôi</CardTitle>
           </CardHeader>
           <CardContent>
-              <Tabs defaultValue="all" className="w-full">
+              <Tabs defaultValue="draft" className="w-full">
                 <TabsList className="grid w-full grid-cols-5">
-                  <TabsTrigger value="all">Tất cả ({orders.length})</TabsTrigger>
+                  {/* <TabsTrigger value="all">Tất cả ({orders.length})</TabsTrigger> */}
+                  <TabsTrigger value="draft">Chưa hoàn tất ({draftOrders.length})</TabsTrigger>
                   <TabsTrigger value="pending">Chờ xác nhận ({pendingOrders.length})</TabsTrigger>
                   <TabsTrigger value="processing">Đang xử lý ({processingOrders.length})</TabsTrigger>
                   <TabsTrigger value="success">Hoàn thành ({successOrders.length})</TabsTrigger>
                   <TabsTrigger value="cancelled">Đã hủy ({cancelledOrders.length})</TabsTrigger>
                 </TabsList>
-  
-                <TabsContent value="all">
+                {/* <TabsContent value="all">
                   <OrderTable orders={orders} />
+                </TabsContent> */}
+                <TabsContent value="draft">
+                  <OrderTable orders={draftOrders} />
                 </TabsContent>
                 <TabsContent value="pending">
                   <OrderTable orders={pendingOrders} />
@@ -97,3 +84,4 @@ export default async function OrdersPage() {
         </Card>
     );
   }
+

@@ -14,7 +14,7 @@ export default function CustomerAccountLayout({
     { title: "Tổng quan", href: privateRoutes.account },
     { title: "Đơn hàng", href: privateRoutes.accountOrders },
     // { title: "Địa chỉ", href:privateRoutes.accountAddress },
-    { title: "Đổi mật khẩu", href: privateRoutes.accountChangePassword },
+    // { title: "Đổi mật khẩu", href: privateRoutes.accountChangePassword },
   ];
 
   return (

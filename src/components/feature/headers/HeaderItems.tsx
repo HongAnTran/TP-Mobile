@@ -29,15 +29,12 @@ import { useQueryClient } from '@tanstack/react-query'
 interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void , hoverContent?: ReactNode }
 export default function HeaderItems() {
 
-  const queryClient = useQueryClient()
   const { data: customer , isLoading   } = useProfile()
-  const router = useRouter()
   const {toast} = useToast()
  async function handleLogout() {
     try {
         await AuthServiceClientApi.logout()
-        router.push(routes.home)
-        location.reload()
+        location.href = routes.home
     } catch (error) {
         toast({
           title: "Đăng xuất không thành công",
