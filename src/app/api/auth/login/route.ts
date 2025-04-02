@@ -3,6 +3,7 @@ import { createSession } from "@/app/lib/session";
 import AuthServiceApi from "@/services/authService";
 import { LoginPayload } from "@/types/Auth.type";
 import { NextRequest, NextResponse } from "next/server";
+export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
   try {

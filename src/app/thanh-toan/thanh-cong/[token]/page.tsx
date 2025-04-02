@@ -7,6 +7,7 @@ import { TypographyH2, TypographyP, TypographySpan } from '@/components/ui/typog
 import PriceText from '@/components/common/PriceText';
 import { Button } from '@/components/ui/button';
 import Link from '@/components/common/Link';
+import { ShippingType } from '@/types/Order.type';
 
 const steps: StepProps[] = [
   {
@@ -34,6 +35,7 @@ const steps: StepProps[] = [
 export default async function page({ params }: { params: { token: string } }) {
   const token = params.token
   const order = await OrderServiceApi.getDetail(token)
+  const { shipping, pickup } = order
   return (
     <div className=' container'>
       <CheckoutHeader steps={steps} />
@@ -61,18 +63,42 @@ export default async function page({ params }: { params: { token: string } }) {
         <div className="mt-10  px-4 py-8  border">
           <p className="text-xl text-center font-medium capitalize">Thông tin đơn hàng</p>
           <ul className=' flex flex-col gap-4  my-4  '>
-            <li className=' flex  justify-between'>
+            {order.shipping_type === ShippingType.SHIP && shipping ? <>
+              <li className=' flex  justify-between'>
               <TypographySpan >Khách:</TypographySpan>
-              <TypographySpan className=' font-bold' >{order.shipping?.fullname}</TypographySpan>
+              <TypographySpan className=' font-bold' >{shipping.fullname}</TypographySpan>
             </li>
             <li className=' flex justify-between gap-4'>
               <TypographySpan className=' flex-shrink-0'>Địa chỉ giao hàng:</TypographySpan>
-              <TypographySpan  >{order.shipping?.address_full}</TypographySpan>
+              <TypographySpan  >{shipping.address_full}</TypographySpan>
             </li>
             <li className=' flex  justify-between'>
               <TypographySpan >Số điện thoại:</TypographySpan>
-              <TypographySpan className=' font-bold' >{order.shipping?.phone}</TypographySpan>
+              <TypographySpan className=' font-bold' >{shipping.phone}</TypographySpan>
             </li>
+        
+            </> : pickup && <>
+            <li className=' flex  justify-between'>
+              <TypographySpan >Khách:</TypographySpan>
+              <TypographySpan className=' font-bold' >{pickup.fullname}</TypographySpan>
+            </li>
+            <li className=' flex  justify-between'>
+              <TypographySpan >Số điện thoại:</TypographySpan>
+              <TypographySpan className=' font-bold' >{pickup.phone}</TypographySpan>
+            </li>
+            <li className=' flex justify-between gap-4'>
+              <TypographySpan className=' flex-shrink-0'>Nhận tại cửa hàng:</TypographySpan>
+              <TypographySpan  >{pickup.store.name}</TypographySpan>
+            </li>
+            <li className=' flex justify-between gap-4'>
+              <TypographySpan className=' flex-shrink-0'>Địa chỉ cửa hàng:</TypographySpan>
+              <TypographySpan  >{pickup.store.detail_address}</TypographySpan>
+            </li>
+            <li className=' flex justify-between gap-4'>
+              <TypographySpan className=' flex-shrink-0'>SDT cửa hàng:</TypographySpan>
+              <TypographySpan  >{pickup.store.phone}</TypographySpan>
+            </li>
+            </>}
             <li className=' flex  justify-between'>
               <TypographySpan className=' text-gray-500'>Tạm tính:</TypographySpan>
               <PriceText className=' text-sm' price={order.total_price} />
@@ -85,6 +111,7 @@ export default async function page({ params }: { params: { token: string } }) {
               <TypographySpan className=' text-gray-500'>Vận chuyển:</TypographySpan>
               <PriceText className=' text-sm' price={0} notAutoChange />
             </li> */}
+            
             <hr />
 
             <li className=' flex items-center justify-between'>

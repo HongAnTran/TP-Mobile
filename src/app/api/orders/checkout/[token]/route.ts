@@ -2,6 +2,8 @@ import ErrorRespone from "@/api/error";
 import { getSession } from "@/app/lib/session";
 import OrderServiceApi from "@/services/orderService";
 import { NextResponse, type NextRequest } from "next/server";
+const dynamic = 'force-dynamic'
+
 export async function POST(
   request: NextRequest,
   { params }: { params: { token: string } }

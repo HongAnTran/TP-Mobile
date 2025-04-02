@@ -1,6 +1,6 @@
-import { Address } from "@/types/Address.type";
 import { ProductOrder } from "./Product.types";
 import { Customer } from "./Customer.type";
+import { Store } from './Store.type';
 
 interface Order {
   id: number;
@@ -15,21 +15,22 @@ interface Order {
   note: string | null;
   promotions: [];
   shipping: Shipping | null;
+  pickup : OrderPickup | null
   status: OrderStatus; // Trạng thái của đơn hàng
   payment: Payment | null;
   customer: Customer | null;
-  created_at: Date;
-  updated_at: Date | null;
+  created_at:string;
+  updated_at:string | null;
   shipping_type: ShippingType;
+  sold_at:string | null; 
 }
-// status: number
-// fullname: string
-// phone: string
-// email?: string | null
-// note?: string | null
-// created_at?: Date | string
-// updated_at?: Date | string | null
-// store: StoreCreateNestedOneWithoutOrder_pickupInput
+interface OrderPickup{
+fullname: string
+phone: string
+email?: string | null
+note?: string | null
+store : Store
+}
 interface OrderCheckoutInput {
   customer_id?: number;
   discount?: number;
@@ -47,11 +48,11 @@ interface OrderCheckoutInput {
   };
 }
 interface OrderPickupCreate{
-status: OrderPickupStatus
 fullname: string
 phone: string
 email?: string | null
 note?: string | null
+status : OrderPickupStatus
 store:{
   connect: {
     id: number
@@ -112,7 +113,7 @@ interface Payment {
 
 type PaymentCreate = Pick<
   Payment,
-  "amount" | "method" | "status" | "payment_date"
+  "amount" | "method" | "payment_date" | "status"
 >;
 export enum PaymentStatus {
   PENDING = "PENDING",

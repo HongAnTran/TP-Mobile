@@ -1,12 +1,14 @@
 import ErrorRespone from "@/api/error";
-import AuthServiceApi from "@/services/customerService";
+import {  deleteSession } from "@/app/lib/session";
+import AuthServiceApi from "@/services/authService";
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = 'force-dynamic'
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const respon = await AuthServiceApi.getListAddress();
-    return NextResponse.json(respon);
+     await AuthServiceApi.logout();
+    await deleteSession();
+    return NextResponse.json({ status: true });
   } catch (error) {
     if (error instanceof ErrorRespone) {
       return NextResponse.json(error, { status: error.statusCode });

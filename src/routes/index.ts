@@ -1,3 +1,5 @@
+import { access } from "fs";
+
 const routes = {
   home: "/",
   api: "/api",
@@ -25,8 +27,12 @@ const routes = {
   introduce: "/gioi-thieu-tpmobile",
 };
 
-const privateToutes = {
-  account: "tai-khoan",
+const privateRoutes = {
+  account: "/tai-khoan",
+  accountProfile: "/tai-khoan/thong-tin",
+  accountAddress: "/tai-khoan/dia-chi",
+  accountOrders: "/tai-khoan/don-hang",
+  accountChangePassword: "/tai-khoan/doi-mat-khau",
 };
-export { privateToutes };
+export { privateRoutes };
 export default routes;

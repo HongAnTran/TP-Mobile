@@ -6,7 +6,7 @@ import { PersonIcon, ReaderIcon } from "@radix-ui/react-icons"
 import StoreIcon from '../icons/StoreIcon'
 import { NewsIcon, PhoneFilledIcon } from '../icons'
 import { TypographyP, TypographySpan } from '../ui/typography'
-import routes, { privateToutes } from '@/routes'
+import routes, { privateRoutes } from '@/routes'
 import IconBorder from '../common/IconBorder';
 import HomeIcon from '@mui/icons-material/Home';
 import GridViewIcon from '@mui/icons-material/GridView';
@@ -34,7 +34,7 @@ export default function TabsBarMobile() {
       <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
     </Avatar>,
     text: customer.first_name,
-    href: privateToutes.account,
+    href: privateRoutes.account,
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
     text: "Đăng nhập",

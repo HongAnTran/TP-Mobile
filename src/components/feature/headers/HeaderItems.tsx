@@ -1,43 +1,76 @@
 "use client"
 import React from 'react'
 import { ReactNode } from 'react'
-import { PersonIcon, ReaderIcon } from "@radix-ui/react-icons"
+import { ExitIcon, PersonIcon, ReaderIcon } from "@radix-ui/react-icons"
 import StoreIcon from '../../icons/StoreIcon'
 import { PhoneFilledIcon } from '../../icons'
 import { TypographyP, TypographySpan } from '../../ui/typography'
-import routes, { privateToutes } from '@/routes'
+import routes, { privateRoutes } from '@/routes'
 import CartHeader from './CartHeader';
 import IconBorder from '../../common/IconBorder';
 import NavLink from '../../common/NavLink';
 import CONFIG from '@/consts/config'
 import { convertHotlineToTel } from '@/utils'
-import { useAuthStore } from '@/providers/auth-store-provider'
 import { cn } from '@/lib/utils'
 import useProfile from '@/hooks/useProfile'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Spinner from '@/components/loading/Spinner'
-interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void }
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+import Link from '@/components/common/Link'
+import AuthServiceClientApi from '@/services/client/authService'
+import { useRouter } from 'next/navigation'
+import { useToast } from '@/components/ui/use-toast'
+import { useQueryClient } from '@tanstack/react-query'
 
-
-
-
+interface HeaderItemProps { icon: ReactNode, text: ReactNode, href?: string, onClick?: () => void , hoverContent?: ReactNode }
 export default function HeaderItems() {
 
-  const { setOpenLogin } = useAuthStore(state => state)
-
-  const { data: customer , isLoading } = useProfile()
-  // const customer = null
+  const queryClient = useQueryClient()
+  const { data: customer , isLoading   } = useProfile()
+  const router = useRouter()
+  const {toast} = useToast()
+ async function handleLogout() {
+    try {
+        await AuthServiceClientApi.logout()
+        router.push(routes.home)
+        location.reload()
+    } catch (error) {
+        toast({
+          title: "Đăng xuất không thành công",
+          description: "Vui lòng thử lại sau",
+          variant: "destructive",
+        })
+    }
+  }
 
   const customerItem =isLoading ?{
     icon :  <><Spinner /></> ,
     text : "",
   } :  customer ? {
-    icon: <Avatar  >
+    icon:<>  <Avatar>
     <AvatarImage src={customer.avatar || undefined} />
     <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
-  </Avatar>,
+      </Avatar>
+    </>,
     text: customer.first_name,
-    href: privateToutes.account,
+    hoverContent :  <ul className=' flex flex-col gap-2'>
+      <Link href={privateRoutes.account}>
+           <li className=' flex gap-2 items-center p-1 hover:bg-slate-200'>
+            <PersonIcon />
+            Tài khoản
+
+           </li>
+      </Link>
+    <li className=' flex gap-2 items-center p-1 hover:bg-slate-200   cursor-pointer'
+    onClick={handleLogout}
+    >
+        <ExitIcon />
+      Đăng xuất</li>
+</ul>
   } : {
     icon: <IconBorder><PersonIcon width={20} height={20} /></IconBorder>,
     text: <span>Đăng nhập</span>,
@@ -45,22 +78,22 @@ export default function HeaderItems() {
   }
 
   const items: HeaderItemProps[] = [
-    // {
-    //   icon: <IconBorder>
-    //     <PhoneFilledIcon className=' w-6 h-6' />
-    //   </IconBorder>
-    //   ,
-    //   text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
-    //   href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
-    // },
     {
       icon: <IconBorder>
-        <ReaderIcon className=' w-6 h-6' />
+        <PhoneFilledIcon className=' w-6 h-6' />
       </IconBorder>
       ,
-      text: <span className='  text-[11px]  font-medium uppercase'>Giới thiệu <br /> <b>TP MOBILE</b> </span>,
-      href: routes.introduce
+      text: <span className='  text-[11px]  font-medium uppercase'>Hotline <br /> <b>{CONFIG.HOTLINE}</b> </span>,
+      href: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`
     },
+    // {
+    //   icon: <IconBorder>
+    //     <ReaderIcon className=' w-6 h-6' />
+    //   </IconBorder>
+    //   ,
+    //   text: <span className='  text-[11px]  font-medium uppercase'>Giới thiệu <br /> <b>TP MOBILE</b> </span>,
+    //   href: routes.introduce
+    // },
     {
       icon: <div className=' relative'>
         <IconBorder >
@@ -100,7 +133,26 @@ export default function HeaderItems() {
 }
 
 
-function HeaderItem({ icon, text, href, onClick }: HeaderItemProps) {
+function HeaderItem({ icon, text, href, onClick , hoverContent}: HeaderItemProps) {
+
+
+  if(hoverContent){
+
+    return <HoverCard openDelay={100} closeDelay={100}>
+      <HoverCardTrigger asChild>
+      <div onClick={onClick} className={cn('  flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row ')}>
+      {icon}
+      <div >
+        <TypographyP className='  block  md:hidden lg:block' >{text}</TypographyP>
+      </div>
+    </div>
+        </HoverCardTrigger>
+        <HoverCardContent  sideOffset={5}>
+          {hoverContent}
+          </HoverCardContent>
+        </HoverCard>
+  }
+
   return <>
     {href ? <NavLink href={href}  >
       <div onClick={onClick} className=' flex  flex-shrink-0 gap-2   items-center  flex-col md:flex-row '>
