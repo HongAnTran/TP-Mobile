@@ -1,6 +1,8 @@
 import fetchApiClient from "@/api/instances/clientInstance";
+import { KEYS } from "@/consts/localStorage";
 import { Cart, CartSave } from "@/types/Cart.type";
-import { generateUniqueId } from "@/utils";
+import { checkIsClient, generateUniqueId } from "@/utils";
+import LocalStorageService from "@/utils/localStorage";
 
 class CartService {
   private url: string = "/carts";
@@ -20,6 +22,10 @@ class CartService {
     }>(`${this.url}/me`);
   }
   async getDetail() {
+    if(checkIsClient()){
+      const cart = LocalStorageService.getItem(KEYS.CART, null) as Cart | null;
+      return cart || this.cart;
+    }
     return this.cart;
   }
 

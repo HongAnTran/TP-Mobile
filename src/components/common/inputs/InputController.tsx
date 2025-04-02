@@ -35,7 +35,6 @@ export default function InputController<
         <div className={cn(' grid w-full  items-center gap-1.5 relative ')}>
           <Label htmlFor={id}  >{label} {inputProps?.required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
           <Input
-
             {...inputProps}
             id={id}
             name={name}
@@ -44,13 +43,10 @@ export default function InputController<
               if (inputProps?.onBlur) {
                 inputProps.onBlur(e)
               }
-
               onBlur()
             }}
             onChange={(e) => {
               onChange(e)
-
-
             }}
             value={value}
             disabled={disabled}

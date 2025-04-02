@@ -20,19 +20,51 @@ interface Order {
   customer: Customer | null;
   created_at: Date;
   updated_at: Date | null;
+  shipping_type: ShippingType;
 }
-
+// status: number
+// fullname: string
+// phone: string
+// email?: string | null
+// note?: string | null
+// created_at?: Date | string
+// updated_at?: Date | string | null
+// store: StoreCreateNestedOneWithoutOrder_pickupInput
 interface OrderCheckoutInput {
   customer_id?: number;
   discount?: number;
   note?: string;
   promotions?: [];
-  shipping: {
+  shipping_type: ShippingType;
+  shipping?: {
     create: ShippingCreate;
   };
+  pickup?:{
+    create: OrderPickupCreate
+  }
   payment: {
     create: PaymentCreate;
   };
+}
+interface OrderPickupCreate{
+status: OrderPickupStatus
+fullname: string
+phone: string
+email?: string | null
+note?: string | null
+store:{
+  connect: {
+    id: number
+  }
+}
+}
+
+export enum OrderPickupStatus {
+  PENDING = 1, 
+  PROCESSING = 2, 
+  SUCCESS = 3, 
+  FAILED = 4,
+  CANCELLED = 5, 
 }
 
 interface Shipping {
@@ -86,6 +118,11 @@ export enum PaymentStatus {
   PENDING = "PENDING",
   COMPLETED = "COMPLETED",
   FAILED = "FAILED",
+}
+
+export enum ShippingType{
+  SHIP=1,
+  PICKUP
 }
 
 export enum OrderStatus {

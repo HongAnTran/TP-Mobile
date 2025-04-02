@@ -47,8 +47,7 @@ export default function Checkout({ order }: { order: Order }) {
 
         </div>
         <div className="mt-10 bg-gray-50 px-4 py-8 lg:mt-0">
-          <p className="text-xl font-medium capitalize">Thông tin thanh toán</p>
-          <p className="text-gray-400">Hoàn tất đơn đặt hàng của bạn.</p>
+          <p className="text-xl font-medium capitalize text-center">Thông tin thanh toán</p>
           <CheckoutInfoForm order={order} />
         </div>
       </div>
