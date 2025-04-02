@@ -29,28 +29,49 @@ async function getCategoryDetail(slug: string) {
 export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
-  // read route params
   const slug = params.slug
-
   const category = await getCategoryDetail(slug)
-  const titleShow = category.title
-  const desShow = category.description || undefined
+  const {meta_data} =  category
+  const titleShow = meta_data?.meta_title ? meta_data?.meta_title : category.title
+  const desShow = meta_data?.meta_description ? meta_data?.meta_description : category.description
+  const keywords = meta_data?.meta_keywords ? meta_data?.meta_keywords : ""
+  const image = meta_data?.meta_image ? meta_data?.meta_image : category.image 
   const DOMAIN = process.env.DOMAIN
   return {
     title: titleShow,
     description: desShow,
+    keywords: keywords,
+    authors: [{ name: "TP Mobile", url: DOMAIN }],
+    creator: "TP Mobile",
+    generator: "TP Mobile",
+    applicationName: "TP Mobile",
+    publisher: "TP Mobile",
+
     alternates: {
       canonical: `${DOMAIN}${routes.category}/${category.slug}`
     },
     openGraph: {
       title: titleShow,
-      description: desShow,
-      images: { url: category.image, width: 800, height: 600 },
+      description: desShow || "",
+      images: { url: image, width: 800, height: 600 },
       url: `${DOMAIN}${routes.category}/${category.slug}`,
       siteName: DOMAIN,
     },
+    twitter: {
+      title: titleShow,
+      description: desShow || "",
+      images: { url: image, width: 800, height: 600 },
+      card: "summary_large_image",
+      creator: "TP Mobile",
+    },
     other: {
       "og:type": "category",
+      "og:description": desShow || "",
+      "og:title": titleShow,
+      "og:image": image,
+      "og:url": `${DOMAIN}${routes.category}/${category.slug}`,
+      "og:image:width": 800,
+      "og:image:height": 600,
     },
   }
 }

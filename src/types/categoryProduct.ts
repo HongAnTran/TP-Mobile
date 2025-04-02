@@ -9,7 +9,12 @@ interface CategoryProduct {
   image: string;
   slug: string;
   published: boolean;
-  meta_data: object;
+  meta_data: {
+    meta_title?: string;
+    meta_description?: string; 
+    meta_keywords?: string;
+    meta_image?: string;
+  } | null; 
 }
 
 export type { CategoryProduct, CategoryProductFilter };

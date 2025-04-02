@@ -90,6 +90,7 @@ function ProductQuickViewContent({ product }: { product: Product }) {
         </div>
         <div className=' mt-8  pr-8   '>
           <ProductActionButton
+            product={product}
             onAddtoCart={() => handleAddtoCart(product, variantActive, quantity)}
             onBuyNow={() => handleBuyNow(product, variantActive, quantity)} />
         </div>

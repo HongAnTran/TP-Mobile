@@ -27,6 +27,7 @@ import { RadioGroupItem , RadioGroup } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import useStores from '@/hooks/useStores'
 import { Store } from '@/types/Store.type'
+import { vietnamPhoneRegex } from '@/utils/regex'
 interface LocationState {
   provices: Location[],
   districts: Location[],
@@ -34,7 +35,6 @@ interface LocationState {
 }
 
 const AddressType = yup.mixed<'home' | 'office'>().oneOf(['home', 'office']);
-const vietnamPhoneRegex = /^(0|\+84)[\s.-]?((3[2-9]|5[2689]|7[06-9]|8[1-689]|9[0-46-9])[\s.-]?\d{3}[\s.-]?\d{4}|\d{9})$/;
 // Định nghĩa AddressInffo schema
 const AddressInfoSchema = yup.object().shape({
   email: yup.string().nullable().email("Không đúng định dạng"), // Địa chỉ email của người nhận hàng (có thể là null)

@@ -33,7 +33,7 @@ export default function DialogUi({ children, onClose, open, title, closeOnMask =
         }}
       >
         <DialogHeader>
-          {title ? <DialogTitle >{title}</DialogTitle> : null}
+          {title ? <DialogTitle className=' text-center' >{title}</DialogTitle> : null}
         </DialogHeader>
         {children}
       </DialogContent>

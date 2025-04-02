@@ -105,7 +105,6 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
             {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
             {/* <TypographyP ><b>Danh mục:</b>  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
             <TypographyP ><b>Thương hiệu:</b> <b className=' text-blue-500'>{product.brand?.name}</b></TypographyP> */}
-            <TypographyP className=' line-clamp-2'>{product.short_description}</TypographyP>
             <ProductShowPrice variant={variantActive} className=' lg:text-lg' />
           </div>
           <div className=' mt-4'>
@@ -113,12 +112,9 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
               handleSelectOption(index, id)
               setIsTouchOption(true)
             }} />
-
+            {/* <TypographyP className=' line-clamp-3 mt-4'>{product.short_description}</TypographyP> */}
           </div>
-          <div className=' mt-4'>
-            <SpecialPromotionPolicy />
-          </div>
-
+          
           <div className=' mt-4'>
             <ProductQuantity
               quantity={quantity}
@@ -127,12 +123,18 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
           </div>
 
           <div className=' mt-8 '>
-            <ProductActionButton onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
+            <ProductActionButton 
+              product={product}
+            onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
               () => {
                 handleBuyNow(product, variantActive, quantity)
               }
             } />
           </div>
+          <div className=' mt-4'>
+            <SpecialPromotionPolicy />
+          </div>
+
         </div>
         <div className=' col-span-12 lg:col-span-3'>
           <div className=' flex flex-col gap-2'>

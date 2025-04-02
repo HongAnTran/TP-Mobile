@@ -13,13 +13,14 @@ import EventPopup from '@/components/feature/eventPopup/EventPopup'
 
 export const metadata: Metadata = {
   title: "TP MOBILE STORE - Trang chủ",
-  description: "TP Mobile store chuyên bán iPad có tâm nhất Sài Gòn. Danh mục: iPad Pro, iPad Air, iPad Mini, iPad Gen.",
+  description: "TP Mobile store chuyên bán iPad có tâm nhất Sài Gòn. Chúng tôi cung cấp các sản phẩm iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn. Cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
   authors: [{ name: "TP Mobile", url: CONFIG.DOMAIN }],
-  keywords: ['ipad cũ', "ipad", "ipad like new", "ipad có tâm", "ipad sỉ lẻ", 'ipad pro', 'ipad air', 'ipad mini', 'ipad gen'],
+  keywords: ['ipad cũ', "ipad", "ipad like new", "ipad có tâm", "ipad sỉ lẻ", 'ipad pro', 'ipad air', 'ipad mini', 'ipad gen' , 'ipad 10', 'ipad 9', 'ipad 8', 'ipad 7', 'ipad 6', 'ipad 5', 'ipad 4', 'ipad 3', 'ipad 2'],
+  abstract: "TP Mobile Store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chuyên cung cấp iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn, TP Mobile cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
   openGraph: {
     type: 'website',
     url: process.env.DOMAIN,
-    title: "TP MOBILE STORE",
+    title: "TP MOBILE STORE - Trang chủ",
     description: "TP Mobile Store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chuyên cung cấp iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn, TP Mobile cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
     images: [
       {
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     site: '@TPMobile',
-    title: "TP MOBILE STORE",
+    title: "TP MOBILE STORE - Trang chủ",
     description: "TP Mobile Store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chuyên cung cấp iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn, TP Mobile cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
     images: [
       {
