@@ -44,26 +44,17 @@ const AddressInfoSchema = yup.object().shape({
     then: (schema) => schema.required("Vui lòng nhập"),
     otherwise: (schema) => schema.notRequired(),
   }), // Đường
-  province: yup.object().shape({
-    code: yup.string().required("Vui lòng chọn"), // Mã code của thành phố
-    name: yup.string(), // Tên của thành phố
-  }).when("shippingType", {
+  province: yup.string().when("shippingType", {
     is: ShippingType.SHIP, 
     then: (schema) => schema.required("Vui lòng nhập"),
     otherwise: (schema) => schema.notRequired(),
   }),
-  district: yup.object().shape({
-    code: yup.string().required("Vui lòng chọn").min(2), // Mã code của thành phố
-    name: yup.string(), // Tên của thành phố
-  }).when("shippingType", {
+  district: yup.string().when("shippingType", {
     is: ShippingType.SHIP, 
     then: (schema) => schema.required("Vui lòng nhập"),
     otherwise: (schema) => schema.notRequired(),
   }),
-  ward: yup.object().shape({
-    code: yup.string().required("Vui lòng chọn").min(2), // Mã code của thành phố
-    name: yup.string(), // Tên của thành phố
-  }).when("shippingType", {
+  ward: yup.string().when("shippingType", {
     is: ShippingType.SHIP, 
     then: (schema) => schema.required("Vui lòng nhập"),
     otherwise: (schema) => schema.notRequired(),
@@ -97,14 +88,14 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     wards: [],
   })
 
-  const { control, handleSubmit, watch, setValue, formState , ...res } = useForm<Address>({
+  const { control, handleSubmit, watch, setValue, formState,trigger , ...res } = useForm<Address>({
     // defaultValues: order.shipping,
     resolver: yupResolver(AddressInfoSchema),
     mode : "onChange"
   })
 
-  const watchProvice = watch("province.code")
-  const watchDistrict = watch("district.code")
+  const watchProvice = watch("province")
+  const watchDistrict = watch("district")
 
 
   const { data: provices } = LocationServiceClient.useList({ type: LocationTypeCode.PROVINCE })
@@ -130,7 +121,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       return
     }
     setLocation(pre => ({ ...pre, districts: districts }))
-    setValue("district.code", districts[0].code)
+    setValue("district", districts[0].code)
   }, [setValue, districts])
 
   useEffect(() => {
@@ -138,17 +129,17 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       return
     }
     setLocation(pre => ({ ...pre, wards: wards }))
-    setValue("ward.code", wards[0].code)
+    setValue("ward", wards[0].code)
   }, [setValue, wards])
 
 
   useEffect(() => {
-    setValue("district.code", "")
-    setValue("ward.code", "")
+    setValue("district", "")
+    setValue("ward", "")
   }, [watchProvice, setValue])
 
   useEffect(() => {
-    if(customer && isSuccessAddress){
+    if(customer){
       setValue("full_name", customer.full_name)
       setValue("email", customer.email)
       if(customer.phone){
@@ -157,10 +148,12 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     }
   }, [customer, setValue])
 
+  useEffect(() => {
+    trigger("shippingType")
+  },[shippingType, trigger])
+
   async function onSubmit(data: Address) {
     try {
-      console.log(data)
-      return
       setIsSubmit(true)
       let body: OrderCheckoutInput = {
         note: data.note,
@@ -169,8 +162,8 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
           create: {
             amount: order.total_price,
             method: PaymentMethod.COD,
-            status: PaymentStatus.PENDING,
-            payment_date: null
+            payment_date: null,
+            status :PaymentStatus.PENDING
           }
         },
       }
@@ -179,11 +172,11 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
             ...body,
             pickup:{
              create:{
-              status : OrderPickupStatus.PENDING,
               fullname: data.full_name,
               phone: data.phone,
               email: data.email || null,
               note: data.note,
+              status : OrderPickupStatus.PENDING,
               store:{
                 connect:{
                   id: storePickup.id
@@ -201,12 +194,12 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
               email: data.email || null,
               fullname: data.full_name,
               address: data.street || "",
-              province: data.province.code,
+              province: data.province || "",
               country: "vi",
-              district: data.district.code,
-              ward: data.ward.code,
+              district: data.district|| "",
+              ward: data.ward|| "",
               phone: data.phone,
-              address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward.code)?.name_with_type}, ${location.districts.find(ward => ward.code === data.district.code)?.name_with_type}, ${location.provices.find(ward => ward.code === data.province.code)?.name_with_type}`,
+              address_full: `${data.street}, ${location.wards.find(ward => ward.code === data.ward)?.name_with_type}, ${location.districts.find(ward => ward.code === data.district)?.name_with_type}, ${location.provices.find(ward => ward.code === data.province)?.name_with_type}`,
             }
           }
         }
@@ -232,10 +225,11 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
       setValue={setValue}
       watch={watch}
       formState={formState}
+      trigger={trigger}
     >
       <p className=' mt-8'>Chọn hình thức giao hàng</p>
     <RadioGroup  defaultValue={shippingType.toString()}
-      className=' flex gap-8'
+      className=' flex lg:gap-8 lg:flex-row flex-col'
     onValueChange={(value) => {
       setValue("shippingType", +value as unknown as ShippingType)
       setShippingType(+value as unknown as ShippingType)
@@ -243,7 +237,7 @@ export default function CheckoutInfoForm({ order }: { order: Order }) {
     } >
       {ShippingTypeOptions.map((item)=>{
         return <div key={item.value} className="flex  items-center space-x-2">
-          <RadioGroupItem value={item.value.toString()} />
+          <RadioGroupItem value={item.value.toString()}className=' h-6 w-6' />
           <Label htmlFor={item.value.toString()} className=' text-lg'>{item.label}</Label>
         </div>
       })}
@@ -353,7 +347,7 @@ location
         return { label: item.name_with_type, value: item.code.toString() }
       })}
       label='Tỉnh / thành'
-      name="province.code"
+      name="province"
       control={control} />
 
     <SelectController
@@ -363,7 +357,7 @@ location
         return { label: item.name_with_type, value: item.code.toString() }
       })}
       label='Quận / huyện'
-      name="district.code"
+      name="district"
       control={control} />
 
     <SelectController
@@ -373,7 +367,7 @@ location
         return { label: item.name_with_type, value: item.code.toString() }
       })}
       label='Phường / xã'
-      name="ward.code"
+      name="ward"
       control={control} />
   </div>
   <InputController inputProps={{ required: true }} label='Tên đường' name="street" control={control} isShowError />
@@ -430,10 +424,10 @@ function FormPickupInfo({
       >
         {stores.map((item) => (
           <div key={item.id.toString()} className="flex items-center space-x-2">
-            <RadioGroupItem value={item.id.toString()} />
+            <RadioGroupItem className=' h-6 w-6' value={item.id.toString()} />
             <Label htmlFor={item.id.toString()} className="text-lg">
               <div>
-                <p className="font-medium">{item.name} - {item.phone}</p>
+                <p className="font-medium  text-sm  lg:text-lg">{item.name} - {item.phone}</p>
                 <p className="text-sm text-gray-500">{item.detail_address}</p>
               </div>
             </Label>

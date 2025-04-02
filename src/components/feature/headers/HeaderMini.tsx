@@ -12,7 +12,7 @@ export default function HeaderMini({ title, href, onBackClick }: { title?: strin
   return (
     <header className='  bg-primary   py-2 '>
       <div className=' container flex items-center justify-center flex-col  relative'>
-        <div className=' w-fit p-1 md:hidden absolute left-4 top-6' onClick={() => {
+        <div className=' w-fit p-1 md:hidden absolute left-4 top-0' onClick={() => {
           if (onBackClick) {
             onBackClick()
           } else {

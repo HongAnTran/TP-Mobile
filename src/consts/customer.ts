@@ -15,4 +15,8 @@ const GENDER_OPTIONS = [
   },
 ];
 
+export function getGenderLabel(value:Gender){
+  return GENDER_OPTIONS.find((option) => option.value === value)?.label || "Khác";
+}
+
 export { GENDER_OPTIONS };

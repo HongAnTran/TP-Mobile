@@ -2,6 +2,7 @@ import fetchApiAuth from "@/api/instances/authInstance";
 import { Address, AddressCreate } from "@/types/Address.type";
 
 import { Customer } from "@/types/Customer.type";
+import { Order } from "@/types/Order.type";
 
 class CustomerService {
   private url: string = "/customers";
@@ -14,6 +15,9 @@ class CustomerService {
 
     async getListAddress() {
         return fetchApiAuth.get<Customer[]>(`${this.url}/address`);
+    }
+    async getListOrder() {
+        return fetchApiAuth.get<Order[]>(`${this.url}/orders`);
     }
 
     async getDetailAddress(id: number) {

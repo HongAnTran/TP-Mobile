@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import CONFIG from "@/consts/config";
-import Img from 'public/mantain.jpg';
 export default function MaintenancePage() {
     return (
         <div className="flex flex-col justify-center items-center py-10 text-center">
@@ -10,7 +9,7 @@ export default function MaintenancePage() {
                 Trang web hiện đang được bảo trì từ 23h - 5h để cải thiện trải nghiệm của bạn.<br />  Vui lòng quay lại sau hoặc liên hệ hotline <b>{CONFIG.HOTLINE}</b><br /> rất xin lỗi về sự bất tiện này.
             </h4>
             <Image
-                src={Img.src}
+                src="/mantain.jpg"
                 alt="Bảo trì"
                 width={500}
                 height={500}

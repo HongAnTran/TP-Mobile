@@ -5,6 +5,6 @@ export default function useProfile() {
     return useQuery({
         queryKey: ['profile'],
         queryFn: () => AuthServiceClientApi.profile(),
-        // staleTime : Infinity
+        staleTime : 1000 * 60 * 5,
     })
 }
