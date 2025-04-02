@@ -42,7 +42,7 @@ export default function SelectController<
       control={control}
       name={name}
       render={({ field: { onChange, value, name, disabled }, fieldState }) => (
-        <div className=' grid w-full  items-center gap-1.5 pb-5 relative'>
+        <div className=' grid w-full  items-center gap-1.5  relative'>
           <Label htmlFor={id}  >{label} {required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
           <Select required={required} value={value} onValueChange={(value) => { onChange(value) }}
             name={name} disabled={disabled} >

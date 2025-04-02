@@ -2,33 +2,41 @@
 
 import InputController from '@/components/common/inputs/InputController'
 import { Button } from '@/components/ui/button'
+import { vietnamPhoneRegex } from '@/utils/regex'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Schema, z } from 'zod'
+import { z } from 'zod'
+import SelectController from '@/components/common/inputs/SelectController'
+
 const schemas =     z.object({
     name: z.string().min(2, { message: "Tên không được để trống" }),
-    phone: z.string().min(1, { message: "Số điện thoại không được để trống" }),
+    phone: z.string().min(1, { message: "Số điện thoại không được để trống" }).regex(vietnamPhoneRegex, { message: "Số điện thoại không hợp lệ" }),
     email: z.string().email({ message: "Email không hợp lệ" }).optional(),
     message: z.string().optional(),
+    gender : z.string().optional(),
     })
 
  
-type ConsultationForm = z.infer<typeof schemas>
-const defaultValues: ConsultationForm = {
+export type ConsultationFormValues = z.infer<typeof schemas>
+const defaultValues: ConsultationFormValues = {
     name: "",
     phone: "",
 }
-export default function ConsultationForm() {
-
-    const {control , handleSubmit} = useForm<ConsultationForm>({
+export default function ConsultationForm({
+onSubmit,
+isSubmitting
+}: {
+    onSubmit: (data: ConsultationFormValues) => void
+    isSubmitting?: boolean
+}) {
+ 
+    const {control , handleSubmit} = useForm<ConsultationFormValues>({
         defaultValues,
         resolver: zodResolver(schemas),
     })
 
-    function onSubmit(data: ConsultationForm) {
-        console.log(data)
-    }
+
 
   return (
     <form onSubmit={handleSubmit((data) => {
@@ -42,11 +50,31 @@ export default function ConsultationForm() {
                 inputProps={{ required: true }}
             
             label='Số điện thoại' />
-            <InputController control={control} name="email" label='Email' inputProps={{ type: "email" }} />
+          <div className='grid lg:grid-cols-2 gap-4 grid-cols-1'> 
+          <SelectController control={control} name="gender"
+          label='Xưng hô'
+          items={[
+            {
+                value : "Anh",
+                label : "Anh"
+
+            },
+            {
+                value : "Chị",
+                label : "Chị"
+                
+            }
+          ]}
+          />
+          <InputController control={control} name="email" label='Email' inputProps={{ type: "email" }} />
+
+          </div>
             <InputController control={control} name="message" label='Tin nhắn' inputProps={{ type: "text" }} />
         </div>
-        <Button className=' w-full uppercase font-bold' type='submit'>
-            Gửi thông tin
+        <Button className=' w-full uppercase font-bold' type='submit'
+            disabled={isSubmitting}
+        >
+            {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
         </Button>
     </form>
   )
