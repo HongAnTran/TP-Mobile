@@ -19,8 +19,8 @@ export default async function Product({ product, searchParams }: { product: Prod
   const stores = await StoreServiceApi.getList()
 
   const params = searchParams[SETTINGS.KEY_ACTIVE_OPTIONS] as string || ""
-  const optionsSlug = params.split(",")
-  const variantActive = product.variants.find(variant => variant.attribute_values.every(value => optionsSlug.includes(value.slug)))
+  const variantSKU = params
+  const variantActive = product.variants.find(variant => variant.sku === variantSKU) || product.variants[0]
   const groups = product.attributes
   const attribute_values = variantActive?.attribute_values || []
 

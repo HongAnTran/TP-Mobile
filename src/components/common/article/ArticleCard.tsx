@@ -1,39 +1,47 @@
-"use client"
-
-
-import React from 'react'
-import { Card, CardContent,  CardTitle } from '@/components/ui/card'
-import { motion } from "framer-motion";
-import Link from "@/components/common/Link";
-
+import Link from '@/components/common/Link'
 import routes from '@/routes'
-import { Article } from '@/types/Article.type';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import { Article } from '@/types/Article.type'
+import Image from 'next/image'
+import React from 'react'
 
-export default function ArticleCard({ article  ,classNameImage}: { article: Article  , classNameImage?: string}) {
-
+export default function ArticleCard({
+    article 
+} : {
+    article : Article
+}) {
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0.2 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <Link href={`${routes.artice}/${article.slug}`}>
-          <Card className=' border border-gray-300 group relative'>
-            <CardContent className="flex flex-col gap-2  py-4">
-              <div>
-                <Image className={cn( "w-full h-auto",classNameImage)}   src={article.thumnal_url} alt={article.title} width={500} height={500} />
-              </div>
-              <CardTitle className='   group-hover:text-blue-500 transition-colors' >{article.title}</CardTitle>
-            </CardContent>
-          </Card>
-        </Link>
-      </motion.div>
+    <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xs relative">
+  <Image
+    alt=""
+    src={article.thumnal_url}
+    className=" h-72 w-full object-cover"
+    width={500}
+    height={500}
+  />
 
-    </>
+  <div className="p-4 sm:p-6">
+    <Link href={`${routes.artice}/${article.slug}`}>
+      <h3 className="text-lg font-medium text-gray-900 line-clamp-2">
+       {article.title}
+      </h3>
+    </Link>
 
+    <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+  {article.description}
+    </p>
+
+    <Link href={`${routes.artice}/${article.slug}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+     Xem thêm
+      <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+        &rarr;
+      </span>
+    </Link>
+  </div>
+  <span
+    className="absolute text-sm -top-px -right-px rounded-tr-lg rounded-bl-3xl  bg-secondary px-4 py-2 font-medium  text-primary uppercase"
+  >
+    {article.category.title}
+  </span>
+</article>
   )
 }
-

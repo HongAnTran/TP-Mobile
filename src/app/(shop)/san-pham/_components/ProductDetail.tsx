@@ -72,7 +72,7 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
 
   useEffect(() => {
     if (isTouchOption) {
-      const options = variantActive.attribute_values.map(value => value.slug)
+      const options = variantActive.sku
       const searchParams = {
         [SETTINGS.KEY_ACTIVE_OPTIONS]: options
       }

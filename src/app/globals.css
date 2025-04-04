@@ -20,6 +20,9 @@
     @apply border border-gray-300 p-1;
 
   }
+  /* a {
+    @apply text-blue-500 hover:text-blue-700;
+  } */
   :root {
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;

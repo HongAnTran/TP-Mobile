@@ -10,6 +10,7 @@ import ArticeServiceApi from '@/services/articeService';
 import { ArticleZone } from '@/types/Structure.type';
 import { generateGridClasses, sortByRows } from '@/utils/helper';
 import { cn } from '@/lib/utils';
+import ArticleCard from '@/components/common/article/ArticleCard';
 
 export default async function ArticlesZone({ data }: Pick<ArticleZone, "data">) {
   const { title, col, rows, type, button, tags, typeCard } = data
@@ -26,7 +27,7 @@ export default async function ArticlesZone({ data }: Pick<ArticleZone, "data">) 
       <TypographyH3 className=' text-center uppercase text-primary'>{title}</TypographyH3>
       <div className={cn(gridClasses)}>
         {articlesSorted.map((article) => (
-          <ArticleCardList article={article} key={article.id} aspect="landscape" />
+          <ArticleCard article={article} key={article.id}/>
         ))}
       </div>
       {button ? <div className=' flex gap-4 justify-center mt-2'>

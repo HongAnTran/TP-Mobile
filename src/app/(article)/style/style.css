@@ -8,3 +8,10 @@ figure {
     margin: auto;
   }
   
+
+  #artice-detail a{
+    text-decoration: none;
+    color: blue
+  }
+
+ 

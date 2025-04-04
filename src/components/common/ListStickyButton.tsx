@@ -13,13 +13,13 @@ export default function ListStickyButton() {
   return (
     <div className=' fixed   bottom-44  lg:bottom-20 right-4 z-50'>
       <div className=' flex-col gap-4 hidden lg:flex '>
-        <Link aria-label="link"  href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
+        {/* <Link aria-label="link"  href={"https://www.instagram.com/tpmobile.store/"} target="_blank">
           <Button aria-label="InstagramLogoIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
             <InstagramLogoIcon className=' w-16 h-16' />
 
           </Button>
-        </Link>
+        </Link> */}
         <Link aria-label="link"  href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`} target="_blank">
           <Button aria-label="PhoneIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
@@ -90,3 +90,6 @@ export default function ListStickyButton() {
     </div>
   )
 }
+
+
+

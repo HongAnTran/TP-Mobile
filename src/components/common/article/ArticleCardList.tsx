@@ -56,7 +56,7 @@ export default function ArticleCardList({
 
                 alt={article.title || "Thumbnail"}
                 priority={preloadImage ? true : false}
-                className=" object-contain transition-all"
+                className="  object-cover transition-all"
                 fill
                 sizes="(max-width: 768px) 30vw, 33vw"
               />

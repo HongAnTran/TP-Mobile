@@ -8,18 +8,17 @@ import React from 'react'
 import "../../style/style.css"
 export default function ArticeDetail({ artice }: { artice: Article }) {
   return (
-    <div >
-      <TypographyH1 className='text-lg text-center lg:text-left lg:text-2xl'>
+    <div id='artice-detail'>
+      <TypographyH1 className='text-lg text-center lg:text-2xl'>
         {artice.title}
       </TypographyH1>
       <div className=' flex justify-between '>
-
         <p className=' my-2  '><b>Danh mục: </b><Link className=' font-bold text-blue-500' href={`${routes.articeCategory}/${artice.category.slug}`} >{artice.category.title} </Link></p>
         <p className=' my-2  '><b className=' hidden md:inline'>Đăng vào: </b> {formatDate(artice.created_at)}</p>
       </div>
 
       <div className=' mt-4'>
-        <BoxInnerHtml html={artice.content} className=' bg-white p-2 rounded-lg shadow-lg'>
+        <BoxInnerHtml  html={artice.content} className=' bg-white p-6 rounded-lg shadow-lg'>
 
         </BoxInnerHtml>
 
