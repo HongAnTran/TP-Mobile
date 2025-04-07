@@ -37,27 +37,26 @@ const ProductRatingSummary: React.FC<ProductRatingSummaryProps> = ({ ratings, pr
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-lg border">
+    <div className="p-4 bg-white rounded-lg shadow-lg border overflow-hidden">
       <h2 className="text-lg font-semibold mb-4">
         Đánh giá {productName}
       </h2>
       {/* Điểm trung bình và tổng số đánh giá */}
       <div className="grid grid-cols-12  gap-10">
-        <div className="flex items-center flex-col justify-center col-span-5">
+        <div className="flex items-center flex-col justify-center  col-span-12 lg:col-span-5">
           <p className="text-3xl font-bold">{averageRating}/5</p>
           <div className="flex justify-center mt-1">{renderStars(Math.round(Number(averageRating)))}</div>
           <p className="text-sm text-blue-600 mt-1">{totalRatings} đánh giá</p>
         </div>
-
         {/* Phân bố đánh giá theo sao */}
-        <div className="col-span-7">
+        <div className="col-span-12 lg:col-span-7">
           {ratingDistribution.map((count, index) => {
             const star = 5 - index;
             const percentage = totalRatings > 0 ? (count / totalRatings) * 100 : 0;
             return (
-              <div key={star} className="flex items-center space-x-2 mb-2">
+              <div key={star} className="flex items-center  mb-2">
                 <span className="text-sm min-w-8">{star} <StarFilledIcon className="w-4 h-4  text-yellow-400 fill-yellow-400" /></span>
-                <Progress value={percentage} className="w-64 h-2" />
+                <Progress value={percentage} className="w-40 lg:w-64 h-2" />
                 <span className="text-sm text-gray-600">{count} đánh giá</span>
               </div>
             );

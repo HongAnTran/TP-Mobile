@@ -15,7 +15,7 @@ export default function ProductRatingSection({product}:{product:Product}) {
   const ratings = data.pages[0].datas
   return (
     <div className=' grid grid-cols-12 gap-4'>
-      <div className=' col-span-8'>
+      <div className=' col-span-12 lg:col-span-8'>
         <ProductRatingSummary 
         averageRating={product.average_rating}
         productName={product.title}

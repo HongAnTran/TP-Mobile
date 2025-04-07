@@ -28,7 +28,7 @@ export default function NavigationZone({ data }: Pick<NavigationZoneType, "data"
                             </Link>
                         )
                     }
-                    return <li className='aspect-square py-1  rounded-lg flex flex-col  items-center justify-center '>
+                    return <li key={index} className='aspect-square py-1  rounded-lg flex flex-col  items-center justify-center '>
                         <Image quality={100} className='  object-contain h-full w-full ' key={index} src={image.src} alt={image.alt || ""} width={image.width} height={image.height} />
                         <TypographyP className='text-center text-xs md:text-sm   md:font-semibold color-gray-600'>{title}</TypographyP>
                     </li>
