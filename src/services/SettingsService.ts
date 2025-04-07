@@ -7,13 +7,11 @@ class SettingsService {
 
   constructor() {}
   async getDetail<T>(key: SettingKeyType, init?: ConfigAPi) {
-    // const setting = await fetchApi.get<Setting<T>>(`${this.url}/key/${key}`, {
-    //   next: { tags: [this.url, key], revalidate: 60 * 60 * 24 * 3 },
-    //   ...init,
-    // });
-    return {
-      value : JSON.parse(JSON.stringify(dataFake)) as Setting<T>,
-    };
+    const setting = await fetchApi.get<Setting<T>>(`${this.url}/key/${key}`, {
+      next: { tags: [this.url, key], revalidate: 60 * 60 * 24 * 3 },
+      ...init,
+    });
+    return setting
   }
 }
 const SettingsServiceApi = new SettingsService();
