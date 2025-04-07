@@ -2,7 +2,6 @@ import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/Api.type";
 import {
   Product,
-  ProductRatingResponse,
   Products,
   ProductsParams,
   ProductStatus,
@@ -32,11 +31,6 @@ class ProductsService {
     return product;
   }
 
-  async getRating(slug : Product["slug"], init?: ConfigAPi) {
-    return fetchApi.get<ProductRatingResponse>(this.url + '/ratings/' + slug, {
-      ...init,
-    });
-  }
 }
 
 const ProductsServiceApi = new ProductsService();
