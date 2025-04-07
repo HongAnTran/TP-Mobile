@@ -15,6 +15,7 @@ import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import { SearchParams } from '@/types/Common.type'
 import SETTINGS from '@/consts/config'
 import EventPopup from '@/components/feature/eventPopup/EventPopup'
+import ProductRatingSection from '../_components/ProductRatingSection'
 export default async function Product({ product, searchParams }: { product: ProductType, searchParams: SearchParams }) {
   const stores = await StoreServiceApi.getList()
 
@@ -32,24 +33,29 @@ export default async function Product({ product, searchParams }: { product: Prod
   return (
     <LayoutContainer>
       <>
-        <Breadcrumbs breadcrumbsList={[
+        <div className=' pt-4'>
+          <Breadcrumbs breadcrumbsList={[
 
-          {
-            label: "Sản phẩm",
-            slug: routes.products
-          },
+            {
+              label: "Sản phẩm",
+              slug: routes.products
+            },
 
-          {
-            label: product.title,
-            isActive: true
-          }
-        ]
-        } />
+            {
+              label: product.title,
+              isActive: true
+            }
+          ]
+          } />
+        </div>
         <div className=' mt-6'>
           <ProductDetail product={product} stores={stores} optionsDefault={optionsDefault.length ? optionsDefault : undefined} />
         </div>
-        <div className=' mt-16'>
+        <div className=' mt-10'>
           <ProductDescription product={product} />
+        </div>
+        <div className=' mt-10'>
+          <ProductRatingSection product={product} />
         </div>
         <div className=' mt-16'>
           <Tabs defaultValue={product.related.length ? "buy" : "related"} className="w-full">

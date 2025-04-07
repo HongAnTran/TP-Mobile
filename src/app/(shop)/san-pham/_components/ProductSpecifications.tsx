@@ -6,9 +6,10 @@ export default async function ProductSpecifications({ productId }: { productId: 
   const types = await ProductSpecificationsServiceApi.getListType()
   const groups = await ProductSpecificationsServiceApi.getListGroup()
   const specifications = await ProductSpecificationsServiceApi.getList({ product_id: productId })
+  
   return (
     <div>
-      {specifications.length ? <div className=' w-full rounded-md border border-gray-200 p-4'>
+      {specifications.length ? <div className=' w-full'>
         {types.map((type) => {
           const groupList = groups.filter(item => item.type_id === type.id)
           const groupListHasValue = groupList.filter(group => {
@@ -24,7 +25,7 @@ export default async function ProductSpecifications({ productId }: { productId: 
               <TypographyP className=' rounded text-primary  bg-[#f1f1f1] p-[10px] font-bold'>
                 {type.name}
               </TypographyP>
-              <div className=' p-2'>
+              <div className=' p-1'>
                 {groupList.map(group => {
                   const spes = specifications.filter(item => item.group_id === group.id)
                   if (spes.length) {
@@ -42,8 +43,8 @@ export default async function ProductSpecifications({ productId }: { productId: 
           )
         })}
       </div>
-        : <div>
-          Sản phẩm chưa có thông số
+        : <div className=' flex justify-center'>
+          Chưa cập nhập
         </div>}
     </div>
   )

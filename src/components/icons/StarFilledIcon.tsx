@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 const StarFilledIcon = ({ className }: { className?: string }) => {
   return (
-    <span className={cn("block w-4 h-4 text-red-500", className)}>
+    <span className={cn(" inline-block w-4 h-4 text-red-500", className)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"

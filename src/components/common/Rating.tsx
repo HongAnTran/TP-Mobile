@@ -5,13 +5,19 @@ import { TypographyP } from '../ui/typography';
 interface RatingProps {
   rate: number;
   count: number;
-  showCount?: boolean
 }
 
-export default function Rating({ count, rate, showCount }: RatingProps) {
+export default function Rating({  rate ,count }: RatingProps) {
   const starCount = Math.floor(rate); // Số nguyên phần của rate
   const hasHalfStar = rate - starCount !== 0; // Kiểm tra xem có phải là 0.5 hay không
   const totalStars = 5; // Tổng số sao
+
+  // 5 => 5.0
+  const ratingString = rate.toString();
+  const ratingParts = ratingString.split('.');
+  const integerPart = ratingParts[0]; // Phần nguyên
+  const decimalPart = ratingParts[1] ? ratingParts[1].charAt(0) : '0'; // Phần thập phân (nếu có)
+  const formattedRate = `${integerPart}.${decimalPart}`; // Định dạng lại thành 5.0
 
   // Hàm để tạo mảng chứa JSX của các sao
   const renderStars = () => {
@@ -29,9 +35,9 @@ export default function Rating({ count, rate, showCount }: RatingProps) {
     return stars;
   };
 
-  return <div className='flex gap-2 items-center'>
-    <div className=' flex gap-1'>{renderStars()}</div>
-    {showCount && <TypographyP>{count} đánh giá</TypographyP>}
+  return <div className='flex gap-2 items-center flex-1'>
+    {rate >0  ? <div className=' flex gap-1 '>{renderStars()}</div> : null} 
+   {count >0  ?  <TypographyP>({count})</TypographyP> : null} 
 
   </div>;
 }

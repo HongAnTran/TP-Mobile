@@ -10,6 +10,8 @@ import { SETTINGKEYS } from '@/consts/settingsKey'
 import BannerZone from '@/components/feature/zones/BannerZone'
 import CONFIG from '@/consts/config'
 import EventPopup from '@/components/feature/eventPopup/EventPopup'
+import NavigationZone from '@/components/feature/zones/NavigationZone'
+import BenefitsZone from '@/components/feature/zones/BenefitsZone'
 
 export const metadata: Metadata = {
   title: "TP MOBILE STORE - Trang chủ",
@@ -51,17 +53,19 @@ export const metadata: Metadata = {
 
 export default async function page() {
   const { value } = await SettingsServiceApi.getDetail<PageStructure>(SETTINGKEYS.homePageStructure)
-
+  
   const { zones } = value
 
   return (
     <>
       <BannerLarge />
-      <div className=' container py-4 mt-10'>
+      <div className=' container py-4 mt-2'>
         <div className=' flex flex-col   gap-16'>
           {zones.map((zone, index) => {
             if (!zone.active) return null
             switch (zone.zone) {
+              case "NAVIGATION":
+                return <NavigationZone key={index} data={zone.data} />
               case "PRODUCTS":
                 return <ProductsZone key={index} data={zone.data} />
               case "FEEDBACKS":
@@ -75,8 +79,10 @@ export default async function page() {
                     key={index}
                   />
                 );
+               case "BENEFITS":
+                return <BenefitsZone key={index} data={zone.data} /> 
               default:
-                return null;
+                return null;  
             }
           })}
         </div>

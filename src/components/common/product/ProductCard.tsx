@@ -15,6 +15,7 @@ import Link from "@/components/common/Link";
 import routes from '@/routes'
 // import ProductQuickView from './ProductQuickView'
 import ButtonWishlist from '@/components/feature/buttons/ButtonWishlist'
+import Rating from '../Rating'
 
 export default function ProductCard({ product, className }: { product: ProductInList, className?: string }) {
   // const [open, setOpen] = useState(false)
@@ -38,22 +39,22 @@ export default function ProductCard({ product, className }: { product: ProductIn
             }}
              className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh
              </Button> */}
-          <div className=' flex-1 flex flex-col  justify-between'>
+          <div className=' flex-1 flex flex-col gap-1  justify-between'>
             <Link href={`${routes.products}/${product.slug}`}  className=' flex-shrink-0'>
-              <CardTitle className='   hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
+              <CardTitle className='  text-sm  hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
             </Link>
             <ProductCardPrice  product={product} />
           </div>
 
           <div className=' flex justify-between items-center mt-auto pt-2 border-t border-gray-200'>
-            {/* {product.rating && <Rating rate={product.rating.rate} count={product.rating.count} />} */}
+            <Rating rate={product.average_rating} count={product.rating_count} />
             <ButtonWishlist id={product.id} />
           </div>
         </CardContent>
         <ProductCardDiscount product={product} />
         <CardBadge className='  right-2 top-2 z-20'>
-          <div className=' shadow-md  w-fit  px-1 py-[2px] rounded-lg  bg-primary'>
-            <TypographySpan className=' text-xs   text-secondary font-semibold ' >Trả góp 0%</TypographySpan>
+          <div className=' shadow-md  w-fit  px-1 py-[2px] rounded-lg   bg-white border border-red-600'>
+            <TypographySpan className=' text-xs   text-red-600 font-semibold' >Trả góp 0%</TypographySpan>
           </div>
         </CardBadge>
       </Card>
@@ -99,11 +100,21 @@ function ProductCardImage({ images, title }: Pick<Product, "images" | "title">) 
 
 
 function ProductCardPrice({ product }: { product: ProductInList }) {
+  const priceSale = product.compare_at_price - product.price
+  const isSale = product.compare_at_price && product.compare_at_price > product.price
   return (
-    <div className=' flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
+    <>
+
+    <div className='mb-1 flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
       <PriceText className='text-red-600 font-bold' price={product.price} />
-      {product.compare_at_price && product.compare_at_price > product.price ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
+      {isSale ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
     </div>
+    {isSale ? <div className=' flex items-center gap-1'>
+      <span className=' text-sm text-gray-500'>Giảm</span>
+      <PriceText className='text-blue-500' price={priceSale} />
+    </div>
+    : null}
+</>
   )
 
 

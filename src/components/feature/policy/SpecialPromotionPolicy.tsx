@@ -1,4 +1,5 @@
 import BoxViewTextList, { BoxViewTextItem } from '@/components/common/BoxViewTextList';
+import Image from 'next/image';
 import React, { ReactNode } from 'react'
 
 export default function SpecialPromotionPolicy() {
@@ -12,8 +13,12 @@ export default function SpecialPromotionPolicy() {
     { id: 8, description: <span>Mua Apple Pencil Pro newseal 3.290.000 giảm còn <b>2.790.000</b></span> },
   ];
   return (
-    <BoxViewTextList classNameIcon='animate-wiggle  animate-infinite' list={benefits}
-      title='khi mua combo Apple pencil kèm iPad quý khách hàng sẽ mua được với giá cực hời 🔥'
-      icon={"🎁"} iconItem={"✨"} />
+    <BoxViewTextList
+    classNameHeader='bg-[#fee2e2] text-[#d70018]'
+    classNameIcon='animate-wiggle  animate-infinite' list={benefits}
+      title='Mua combo Apple pencil kèm iPad với giá cực hời'
+      icon={
+                  <Image className=' w-5 h-5' alt="icon" src="/icons/gift.png" width={20} height={20} />
+      } iconItem={"✨"} />
   )
 }

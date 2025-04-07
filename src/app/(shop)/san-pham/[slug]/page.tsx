@@ -112,12 +112,12 @@ export default async function page({ params, searchParams }: { params: { slug: s
   const jsonLdProduct = generateStrucDataProduct(product);
 
   return (
-    <>
+    <div className=' bg-white'>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
       />
       <Product product={product} searchParams={searchParams} />
-    </>
+    </div>
   )
 }

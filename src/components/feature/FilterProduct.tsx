@@ -31,7 +31,6 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
   const pathname = usePathname();
 
   const [open, setOpen] = useState(false)
-
   const { data: attributes, isLoading, isSuccess } = AttributeServiceClient.useList()
   const { data: categories } = CategoryServiceClient.useList()
 
@@ -41,6 +40,8 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
     categories: defaultValue?.categories || [],
     page: searchParams?.page
   })
+  const [rangePrice, setRangePrice] = useState<number[]>(valueFiter.price)
+
 
   function onChageValueFilter(key: any, data: any) {
     const value: ValueFiter = { ...valueFiter, page: 1 }
@@ -87,21 +88,28 @@ export default function FilterProduct({ defaultValue, searchParams, isUseCategor
       value: "Mức giá",
       title: "Mức giá",
       content: <div className=' pt-2'>
-        <Range defaultValue={valueFiter.price} step={1} onValueCommit={(value) => {
+        <Range defaultValue={valueFiter.price} step={1}
+        min={0} max={100} value={rangePrice} onValueCommit={(value) => {
           onChageValueFilter("price", value)
         }}
+        onValueChange={(value) => {
+          setRangePrice(value)
+        }}
         />
-        <p className='mt-2 text-center'><PriceText price={valueFiter.price[0] * SETTINGS.ONE_HUN} />-<PriceText price={valueFiter.price[1] * SETTINGS.ONE_HUN} /></p>
+        <div className='mt-4 lg:mt-2 flex lg:flex-col justify-center gap-0 items-center'>
+          <PriceText price={rangePrice[0] * SETTINGS.ONE_HUN} />
+          -
+          <PriceText price={rangePrice[1] * SETTINGS.ONE_HUN} /></div>
       </div>
     }
   ]
   return (
-    <div>
+    <div className=' bg-white shadow-md rounded-lg p-4 sticky top-20'>
       <TypographyP className=' font-bold lg:block hidden text-xl'>Bộ lọc</TypographyP>
       <div className=' flex justify-end gap-4 lg:hidden'>
         <Button onClick={() => setOpen(true)}><FilterListIcon className=' mr-2' />Lọc</Button>
       </div>
-      <div className=' lg:block hidden'>
+      <div className=' lg:block hidden '>
         <Accordion type="multiple" defaultValue={[]}  >
           {filters.map((item, index) => {
             return (

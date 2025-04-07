@@ -1,4 +1,5 @@
 import BoxViewTextList, { BoxViewTextItem } from '@/components/common/BoxViewTextList';
+import Image from 'next/image';
 import React, { ReactNode } from 'react'
 
 export default function WarrantyPolicy() {
@@ -9,6 +10,10 @@ export default function WarrantyPolicy() {
     { id: 4, description: <span>Vệ sinh sản phẩm <b>trọn đời</b></span> },
   ];
   return (
-    <BoxViewTextList list={benefits} title='Chính sách bảo hành' icon={"🛡️"} iconItem={"🛡️"} />
+    <BoxViewTextList
+    list={benefits} title='Chính sách bảo hành' icon={
+                        <Image className=' w-5 h-5' alt="icon" src="/icons/shield.png" width={20} height={20} />
+      
+    } iconItem={<Image className=' w-5 h-5' alt="icon" src="/icons/shield.png" width={20} height={20} />} />
   )
 }

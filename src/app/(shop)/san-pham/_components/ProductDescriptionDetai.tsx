@@ -15,7 +15,7 @@ export default function ProductDescriptionDetai({detalHTML} : {detalHTML : strin
   return (
     <div className=' relative'>
      <BoxInnerHtml
-        className={cn(' overflow-hidden border mx-1 p-2 bg-white max-h-[500px] lg:max-h-[600px]')}
+        className={cn(' overflow-hidden   bg-white max-h-[400px] lg:max-h-[500px]')}
         html={detalHTML || "Hiện chưa có mô tả"}
       />
       {detalHTML && (

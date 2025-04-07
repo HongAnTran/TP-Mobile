@@ -23,8 +23,6 @@ const banners = [banner,banner2]
     plugins={[
       Autoplay({
         delay: 2000,
-        
-
       }),
     ]}
     >

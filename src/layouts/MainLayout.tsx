@@ -12,7 +12,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     return (
         <AuthStoreProvider >
             <ShopStoreProvider>
-                <main className=' min-h-screen flex flex-col scroll-smooth ' >
+                <main className=' bg-[#F5F5F7] min-h-screen flex flex-col scroll-smooth ' >
                     <Header />
                     <NavigationCategory />
                     <div className=' flex-1'>

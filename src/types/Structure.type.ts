@@ -17,6 +17,12 @@ export interface BannerZone {
   active:boolean
   data: ZoneData<BannerRow>;
 }
+export interface CategoryZone {
+  zone: 'NAVIGATION';
+  isLazy?: boolean
+  active:boolean
+  data: ZoneData<BannerRow>;
+}
 
 export interface ProductZone {
   zone: 'PRODUCTS';
@@ -25,11 +31,17 @@ export interface ProductZone {
   data: ZoneData<ProductRow>;
 }
 
-export interface CategoryZone {
-  zone: 'CATEGORIES';
+export interface NavigationZone {
+  zone: 'NAVIGATION';
   isLazy?: boolean
   active:boolean
-  data: ZoneData<ProductRow>; 
+  data: ZoneData<NavigationRow>; 
+}
+export interface BenefitsZone {
+  zone: 'BENEFITS';
+  isLazy?: boolean
+  active:boolean
+  data: ZoneData<BenefitsRow>; 
 }
 
 export interface FeedbackZone {
@@ -70,6 +82,26 @@ export interface BannerRow {
     height: number;
   }
 }
+export interface NavigationRow {
+  title?: string;
+  link: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }
+}
+export interface BenefitsRow {
+  description: string;
+  title: string;
+  icon: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }
+}
 
 export type ProductRow = number
 
@@ -88,5 +120,6 @@ export interface ZoneData<T> {
   col: ColSettings;
 }
 
-export type Zone = BannerZone | ProductZone | CategoryZone | FeedbackZone | ArticleZone;
+export type Zone = BannerZone | ProductZone | CategoryZone | FeedbackZone | ArticleZone | NavigationZone | BenefitsZone
+
 

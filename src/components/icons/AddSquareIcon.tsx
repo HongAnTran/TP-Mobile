@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 function AddSquareIcon({ className }: { className?: string }) {
   return (
-    <span className={cn("block w-6 h-6 text-gray-500", className)}>
+    <span className={cn(" inline-block w-6 h-6 text-gray-500", className)}>
       <svg
         width={"100%"}
         height={"100%"}

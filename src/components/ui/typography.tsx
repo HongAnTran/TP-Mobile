@@ -15,7 +15,7 @@ export function TypographyH1({ className, children }: Props) {
 
 export function TypographyH2({ className, children }: Props) {
   return (
-    <h2 className={cn(" text-3xl font-semibold ", className)}>
+    <h2 className={cn(" text-lg lg:text-2xl font-semibold ", className)}>
       {children}
     </h2>
   )

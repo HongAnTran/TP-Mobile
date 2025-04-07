@@ -35,6 +35,7 @@
 
     --primary: #0e2038;
     --secondary: #f8f8d9;
+    --color-heading:#1d1d1f;
 
     --text-color: #d0bea6;
 
@@ -79,7 +80,7 @@
     --accent: 215 27.9% 16.9%;
     --accent-foreground: 210 20% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 45% 35%;
     --destructive-foreground: 210 20% 98%;
 
     --border: 215 27.9% 16.9%;

@@ -10,6 +10,7 @@ import ErrorRespone from '@/api/error'
 import ProductsSkeleton from '@/components/common/product/ProductsSkeleton'
 import FilterProduct from '@/components/feature/FilterProduct'
 import { Metadata } from 'next'
+import TitleWithIcon from '@/components/common/TitleWithIcon'
 
 
 async function getCategoryDetail(slug: string) {
@@ -104,11 +105,11 @@ export default async function page({ params, searchParams }: { params: { slug: s
             isActive: true
           }]} />
 
-        <div className=' mt-16'>
-          <TypographyH2 className=' text-center'>{caregory.title}</TypographyH2>
+        <div className=' mt-8'>
+          <TitleWithIcon title={caregory.title}/>
         </div>
         <div className=' mt-8'>
-          <div className=' grid grid-cols-12 gap-8'>
+          <div className=' grid grid-cols-12 gap-8 relative'>
             <div className=' lg:col-span-2 col-span-12'>
               <FilterProduct defaultValue={defaultFilter} searchParams={searchParams} />
             </div>

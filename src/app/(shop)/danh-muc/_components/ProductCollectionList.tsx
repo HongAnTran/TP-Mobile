@@ -32,7 +32,7 @@ export default async function ProductCollectionList({ searchParams, slug }: Prod
           return <ProductCard key={pro.id} product={pro} />
         })}
       </div>
-      <div className=' mt-8 flex  justify-center'>
+      <div className=' mt-8 flex  justify-center bg-white shadow-md rounded-lg'>
       <PaginationServer page={page} pageSize={LIMIT} query={{...query}} total={total} urlSrc={slug} />
       </div>
     </>

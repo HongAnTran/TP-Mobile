@@ -11,6 +11,7 @@ import { convetNumberToPriceVND } from '@/utils';
 import Link from '@/components/common/Link';
 import routes, { privateRoutes } from '@/routes';
 import Image from 'next/image';
+import CONFIG from '@/consts/config';
 
 // Buộc route chạy động vì dùng API
 export const dynamic = 'force-dynamic';
@@ -30,7 +31,7 @@ export default async function OrderDetailPage({ params }: { params: { code: stri
   }
     const date = order.sold_at ? order.sold_at : order.created_at
     const dateFormatted = format(new Date(date), 'hh:mm - dd/MM/yyyy')
-
+  console.log('order', order.items);
   return (
       <Card>
         <CardHeader>
@@ -86,20 +87,27 @@ export default async function OrderDetailPage({ params }: { params: { code: stri
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {order.items.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell>
-                        {item.variant.image?.url && 
-                        <Image width={100} height={100} src={item.variant.image?.url} alt={item.product.title}  />
-                        }
-                    </TableCell>
-
-                    <TableCell>{item.product.title} - {item.variant.title}</TableCell>
-                    <TableCell>{item.quantity}</TableCell>
-                    <TableCell>{convetNumberToPriceVND(item.price)}</TableCell>
-                    <TableCell>{convetNumberToPriceVND(item.line_price)}</TableCell>
-                  </TableRow>
-                ))}
+                {order.items.map((item) => {
+                  const imageUrl = item.variant.image?.url || item.product.images[0]?.url;
+                  return (
+                    <TableRow key={item.id}>
+                      <TableCell>
+                          {imageUrl &&
+                          <Image width={100} height={100} src={imageUrl} alt={item.product.title}  />
+                          }
+                      </TableCell>
+  
+                      <TableCell>
+                        <Link href={`${routes.products}/${item.product.slug}?${CONFIG.KEY_ACTIVE_OPTIONS}=${item.variant.sku}`} className="text-sm font-medium text-primary hover:underline">
+                        {item.product.title} - {item.variant.title}
+                        </Link>
+                      </TableCell>
+                      <TableCell>{item.quantity}</TableCell>
+                      <TableCell>{convetNumberToPriceVND(item.price)}</TableCell>
+                      <TableCell>{convetNumberToPriceVND(item.line_price)}</TableCell>
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </div>

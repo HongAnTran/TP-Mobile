@@ -9,19 +9,31 @@ import TooltipUi from '../TooltipUi'
 export default function ProductOptions({ product, optionsActive, onSelectOption }:
   { product: Product, optionsActive: number[], onSelectOption: (index: number, id: number) => void }) {
 
-
-
+    const {variants} = product
+    const attribute_values = useMemo(() => {
+      const valueUnique : AttributeValue[] = []
+       variants.flatMap(variant => {
+        return variant.attribute_values
+      }).forEach(value => {
+        const isExist = valueUnique.findIndex(val => val.id === value.id)
+        if (isExist === -1) {
+          valueUnique.push(value)
+        }
+      })
+      return valueUnique
+    },[variants])
   return (
     <div className=' flex flex-col gap-4'>
       {
         product.attributes.map((option, index) => {
-          return <div key={option.id} className=' flex  gap-4'>
+          const values = attribute_values.filter(value => value.attribute_id === option.attribute.id)
+          return <div key={option.id} className=' flex flex-col gap-2'>
             <TypographyP className=' font-bold min-w-[90px] lg:min-w-[100px]'>
               {option.attribute.name}:
             </TypographyP>
             <div className=' flex gap-2 md:gap-4 items-center  flex-wrap'>
-              {option.attribute.style === AttributeStyle.RECTANGLE && <AttributeRectangle attributes={option.values.map(va => va.attributeValue)} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
-              {option.attribute.style === AttributeStyle.COLOR && <AttributeColor attributes={option.values.map(va => va.attributeValue)} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
+              {option.attribute.style === AttributeStyle.RECTANGLE && <AttributeRectangle attributes={values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
+              {option.attribute.style === AttributeStyle.COLOR && <AttributeColor attributes={values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
             </div>
           </div>
         })

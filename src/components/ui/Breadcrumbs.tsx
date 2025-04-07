@@ -1,12 +1,13 @@
 
 import { cn } from "@/lib/utils";
 import Link from "@/components/common/Link";
-import React from "react";
+import React, { ReactNode } from "react";
+import { ChevronRightIcon, HomeIcon } from "@radix-ui/react-icons";
 
 
 interface BreadcrumbsItemType {
   slug?: string;
-  label: string;
+  label: ReactNode;
   isActive?: boolean;
 }
 
@@ -19,16 +20,16 @@ interface BreadcrumbsProps {
 export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }: BreadcrumbsProps) {
   const defaultBreadcrumbs: BreadcrumbsItemType = defaultBreadcrumb ? defaultBreadcrumb : {
     slug: "/",
-    label: "Trang chủ",
+    label: <span className=" flex items-center gap-1"><HomeIcon /> Trang chủ</span>,
   };
   return (
 
-      <ul className=" flex gap-1 flex-wrap ">
+      <ul className=" flex gap-1  shadow bg-white rounded-lg p-2  border">
         {[defaultBreadcrumbs, ...breadcrumbsList].map((item, index, arr) => {
           if (!item.label) return null
           return (
             <>
-              <li key={index}>
+              <li key={index} className="flex-shrink-0">
                 {item.slug ? (
                   <Link href={item.slug}>
                     <BreadcrumbsText {...item} />
@@ -39,8 +40,9 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
               </li>
               {/* remove driver last item or  */}
               {arr.length - 1 === index ? null : (
-                <li>
-                  <BreadcrumbsText label="/" />
+                <li className=" flex items-center justify-center flex-shrink-0">
+                  <ChevronRightIcon />
+                  {/* <BreadcrumbsText label="/" /> */}
                 </li>
               )}
             </>
@@ -55,7 +57,7 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
 function BreadcrumbsText({ label, isActive }: BreadcrumbsItemType) {
   return (
     <span
-      className={cn("text-sm text-gray-800 line-clamp-2", {
+      className={cn("text-sm text-gray-800 line-clamp-1 max-w-[160px] md:max-w-full", {
         " text-gray-800 font-bold": isActive,
       })}>
       {label}

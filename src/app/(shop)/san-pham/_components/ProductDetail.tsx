@@ -22,10 +22,10 @@ import { objectToSearchParams } from '@/utils'
 import { toast } from '@/components/ui/use-toast'
 import Image from 'next/image'
 import PriceText from '@/components/common/PriceText'
+import ProductRating from './ProductRating'
 
 export default function ProductDetail({ product, stores = [], optionsDefault }: { product: Product, stores?: Store[], optionsDefault?: number[] }) {
   const [isTouchOption, setIsTouchOption] = useState(false)
-
   const { handleAddtoCart, handleBuyNow } = useCart()
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)
   const { addProductToRecentView } = useProductRecentView()
@@ -82,14 +82,15 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
     }
   }, [variantActive, isTouchOption])
   return (
-    <div >
+    <div  className=' '>
       <div className=' flex   items-center gap-4'>
 
         <TypographyH1 className=" line-clamp-2  font-medium  lg:text-2xl  text-xl">{product.title}</TypographyH1>
-        <ButtonCompareProduct product={product} />
 
+        <ButtonCompareProduct product={product} />
+      
       </div>
-      <hr className='  border-b border-gray-200 my-4' />
+      <hr className='  my-3 border-0' />
       <div className=' grid  gap-4 grid-cols-12'>
         <div className=' md:col-span-6 col-span-12 lg:col-span-4 product-images product-detail-left  relative'>
           <ProductImageCarousel setImageActive={setIndexImageActive} images={product.images} alt={product.title} imageActive={indexImageActive} />
@@ -105,7 +106,11 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
             {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
             {/* <TypographyP ><b>Danh mục:</b>  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
             <TypographyP ><b>Thương hiệu:</b> <b className=' text-blue-500'>{product.brand?.name}</b></TypographyP> */}
-            <ProductShowPrice variant={variantActive} className=' lg:text-lg' />
+        <a href='#rating' >
+        <ProductRating averageRating={product.average_rating} ratingCount={product.rating_count} />
+        </a>
+          
+            <ProductShowPrice variant={variantActive} className=' lg:text-xl' />
           </div>
           <div className=' mt-4'>
             <ProductOptions product={product} optionsActive={optionActive} onSelectOption={(index: number, id: number) => {
@@ -115,14 +120,14 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
             {/* <TypographyP className=' line-clamp-3 mt-4'>{product.short_description}</TypographyP> */}
           </div>
           
-          <div className=' mt-4'>
+          {/* <div className=' mt-4'>
             <ProductQuantity
               quantity={quantity}
               handleQuantity={handleQuantity}
             />
-          </div>
+          </div> */}
 
-          <div className=' mt-8 '>
+          <div className=' mt-12 '>
             <ProductActionButton 
               product={product}
             onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
