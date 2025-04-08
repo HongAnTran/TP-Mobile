@@ -25,8 +25,8 @@ function generateStrucDataProduct(
     } : undefined,
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: 5,
-      reviewCount: Math.floor(Math.random() * 400),
+      ratingValue: product.average_rating,
+      reviewCount: product.rating_count,
       bestRating: 5,
       worstRating: 1,
       name: product.title,

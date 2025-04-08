@@ -57,7 +57,7 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
 function BreadcrumbsText({ label, isActive }: BreadcrumbsItemType) {
   return (
     <span
-      className={cn("text-sm text-gray-800 line-clamp-1 max-w-[160px] md:max-w-full", {
+      className={cn("text-sm text-gray-800 line-clamp-1  max-w-[120px] sm:max-w-[160px] md:max-w-full", {
         " text-gray-800 font-bold": isActive,
       })}>
       {label}

@@ -4,14 +4,13 @@ import { format } from "date-fns"; // Để định dạng ngày tháng
 import { vi } from "date-fns/locale"; // Locale tiếng Việt cho date-fns
 import { StarFilledIcon } from "@/components/icons";
 import { Rating } from "@/types/Rating.type";
+import ImagePreview from "@/components/common/ImagePreview";
 
 interface ProductRatingListProps {
   ratings: Rating[];
-  averageRating: number;
-  countRating: number;
 }
 
-const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings ,averageRating}) => {
+const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings }) => {
     const renderStars = (rate : number) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
@@ -32,7 +31,7 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings ,averageR
   // Hàm định dạng ngày tháng
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return format(date, "dd/MM/yyyy HH:mm", { locale: vi });
+    return format(date, "HH:mm dd/MM/yyyy", { locale: vi });
   };
 
   return (
@@ -42,8 +41,9 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings ,averageR
           key={rating.id}
           className="border border-gray-200 pb-4 bg-white shadow-sm rounded-md p-4"
         >
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center">
+          <div className=" flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-full bg-primary  flex items-center justify-center">
                 {rating.customer?.avatar ? (
                   <Image
                     src={rating.customer.avatar}
@@ -69,11 +69,14 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings ,averageR
             <p className="text-xs text-gray-500">{formatDate(rating.created_at)}</p>
               </div>
             </div>
-          {/* Đánh giá: Số sao và nội dung */}
-          <div className="mt-2">
-            <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1">
               {renderStars(rating.rate)}
             </div>
+          </div>
+          
+          {/* Đánh giá: Số sao và nội dung */}
+          <div className="mt-2">
+         
             <p className="text-sm text-gray-700 mt-1">{rating.content}</p>
           </div>
 
@@ -81,7 +84,7 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings ,averageR
           {rating.images && rating.images.length > 0 && (
             <div className="mt-2 flex space-x-2">
               {rating.images.map((image, index) => (
-                <Image
+                <ImagePreview
                   key={index}
                   src={image}
                   alt={`Hình ảnh đánh giá ${index + 1}`}

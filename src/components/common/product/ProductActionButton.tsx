@@ -37,6 +37,19 @@ export default function ProductActionButton({ onAddtoCart, onBuyNow,product }: {
             <PhoneFilledIcon className='text-xs lg:text-sm  group-hover:animate-bounce mr-2' />Gọi đặt mua {" "} <span className=' hidden md:inline ml-1'> {CONFIG.HOTLINE}</span></Button>
         </Link>
       </div>
+      {/* <div className=' mt-2 grid grid-cols-2 gap-2'>
+      <div className=' flex gap-2'>
+      <Button variant="outline"  className='  text-xs w-full group uppercase font-bold  ' onClick={() => {
+        setIsOpen(true)
+       }}>
+      <ChatBubbleIcon className='  group-hover:animate-bounce mr-2' />Trả góp 0%</Button> 
+       
+      </div>
+        <Link href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`}>
+          <Button variant="outline" className=' text-xs w-full group uppercase font-bold' >
+            <PhoneFilledIcon className='text-xs lg:text-sm  group-hover:animate-bounce mr-2' />Lên đời ngay <span className=' hidden md:inline ml-1'> {CONFIG.HOTLINE}</span></Button>
+        </Link>
+      </div> */}
           <ConsultationDialog product={product} isOpen={isOpen} onClose={()=>{
     setIsOpen(false)
           }} />

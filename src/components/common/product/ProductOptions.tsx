@@ -23,7 +23,7 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
       return valueUnique
     },[variants])
   return (
-    <div className=' flex flex-col gap-4'>
+    <div className=' flex flex-col gap-6'>
       {
         product.attributes.map((option, index) => {
           const values = attribute_values.filter(value => value.attribute_id === option.attribute.id)
@@ -31,7 +31,7 @@ export default function ProductOptions({ product, optionsActive, onSelectOption 
             <TypographyP className=' font-bold min-w-[90px] lg:min-w-[100px]'>
               {option.attribute.name}:
             </TypographyP>
-            <div className=' flex gap-2 md:gap-4 items-center  flex-wrap'>
+            <div className=' flex gap-3 md:gap-4 items-center  flex-wrap'>
               {option.attribute.style === AttributeStyle.RECTANGLE && <AttributeRectangle attributes={values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
               {option.attribute.style === AttributeStyle.COLOR && <AttributeColor attributes={values} indexGroup={index} onSelectOption={onSelectOption} optionsActive={optionsActive} />}
             </div>

@@ -23,6 +23,7 @@ import { toast } from '@/components/ui/use-toast'
 import Image from 'next/image'
 import PriceText from '@/components/common/PriceText'
 import ProductRating from './ProductRating'
+import { ProductBuy } from './ProductBuy'
 
 export default function ProductDetail({ product, stores = [], optionsDefault }: { product: Product, stores?: Store[], optionsDefault?: number[] }) {
   const [isTouchOption, setIsTouchOption] = useState(false)
@@ -30,6 +31,7 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)
   const { addProductToRecentView } = useProductRecentView()
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
+  console.log(product)
   const handleQuantity: ProductQuantityProps["handleQuantity"] = {
     add() {
       setQuantity(pre => pre < SETTINGS.MAX_SALE_PRODUCT ? pre + 1 : pre)
@@ -92,20 +94,16 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
       </div>
       <hr className='  my-3 border-0' />
       <div className=' grid  gap-4 grid-cols-12'>
-        <div className=' md:col-span-6 col-span-12 lg:col-span-4 product-images product-detail-left  relative'>
+        <div className=' md:col-span-12 col-span-12 lg:col-span-4 product-images product-detail-left  relative'>
           <ProductImageCarousel setImageActive={setIndexImageActive} images={product.images} alt={product.title} imageActive={indexImageActive} />
           <div className=' absolute top-1 right-1  w-8 h-8 flex justify-center items-center bg-white shadow-lg rounded-full'>
             <ButtonWishlist id={product.id} />
           </div>
 
-          <div className=' mt-2'> <StoreListView stores={stores} /> </div>
+          <div className=' mt-2 hidden lg:block'> <StoreListView title='' stores={stores} /> </div>
         </div>
-        <div className=' md:col-span-6 col-span-12 lg:col-span-5'>
+        <div className=' md:col-span-12 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">
-
-            {/* {product.rating && <Rating showCount rate={product.rating.rate} count={product.rating.count} />} */}
-            {/* <TypographyP ><b>Danh mục:</b>  <Link href={`${routes.category}/${product.category.slug}`} ><b className=' text-blue-500'>{product.category.title}</b> </Link></TypographyP>
-            <TypographyP ><b>Thương hiệu:</b> <b className=' text-blue-500'>{product.brand?.name}</b></TypographyP> */}
         <a href='#rating' >
         <ProductRating averageRating={product.average_rating} ratingCount={product.rating_count} />
         </a>
@@ -117,17 +115,8 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
               handleSelectOption(index, id)
               setIsTouchOption(true)
             }} />
-            {/* <TypographyP className=' line-clamp-3 mt-4'>{product.short_description}</TypographyP> */}
           </div>
-          
-          {/* <div className=' mt-4'>
-            <ProductQuantity
-              quantity={quantity}
-              handleQuantity={handleQuantity}
-            />
-          </div> */}
-
-          <div className=' mt-12 '>
+          <div className=' mt-8 lg:mt-12 '>
             <ProductActionButton 
               product={product}
             onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
@@ -136,15 +125,17 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
               }
             } />
           </div>
-          <div className=' mt-4'>
+          <div className=' mt-6 lg:mt-10'>
             <SpecialPromotionPolicy />
           </div>
 
         </div>
-        <div className=' col-span-12 lg:col-span-3'>
-          <div className=' flex flex-col gap-2'>
+        <div className=' col-span-12 md:col-span-12 lg:col-span-3'>
+          <div className=' flex flex-col gap-4'>
             <PromotionPolicy />
             <WarrantyPolicy />
+           {product.related.length ?  <ProductBuy ids={product.related} /> : null} 
+          <div className=' block lg:hidden'> <StoreListView title='' stores={stores} /> </div>
           </div>
         </div>
 

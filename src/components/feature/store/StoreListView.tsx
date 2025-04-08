@@ -2,7 +2,7 @@
 
 import { LoadingIcon, MapPinFilledIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { TypographyH2, TypographyP } from '@/components/ui/typography'
+import { TypographyH2, TypographyH3, TypographyP } from '@/components/ui/typography'
 import useCheckLocationPermission from '@/hooks/useCheckLocationPermission'
 import StoreServiceClientApi from '@/services/client/StoreService'
 import { Store } from '@/types/Store.type'
@@ -10,7 +10,7 @@ import { convertHotlineToTel } from '@/utils'
 import { CaretSortIcon } from '@radix-ui/react-icons'
 import React, { useEffect, useState } from 'react'
 
-export default function StoreListView({ stores, storeActive, onSelectStore }: { stores: Store[], storeActive?: Store, onSelectStore?: (store: Store) => void }) {
+export default function StoreListView({ stores, storeActive, onSelectStore  , title = "Cửa hàng TP Mobile Store"}: { title?: string,stores: Store[], storeActive?: Store, onSelectStore?: (store: Store) => void }) {
 
     const [storeList, setStoreList] = useState<Store[]>(stores)
     const [isSorted, setIsSorted] = useState(false)
@@ -69,15 +69,13 @@ export default function StoreListView({ stores, storeActive, onSelectStore }: { 
 
     return (
         <div className='border relative rounded-lg border-gray-300 p-2 h-full bg-white overflow-y-auto'>
-            <TypographyH2 className='text-center text-lg font-medium'>
-                Cửa hàng của TP Mobile
-            </TypographyH2>
+         {title && <TypographyH3 className='text-center text-lg font-semibold'>{title}</TypographyH3>}
             {/* <TypographyP className='text-center text-base   text-gray-500'>
                 {storeList.length} cửa hàng trên toàn quốc
 
             </TypographyP> */}
             <div className=' flex justify-center'>
-                {isSorted ? "Cửa hàng gần bạn" : <Button className=' py-1 px-2 text-xs' onClick={sortStoreNearLocationUser}> <CaretSortIcon /> Sắp xếp theo cửa hàng gần bạn </Button>}
+                {isSorted ? "Cửa hàng gần bạn" : <Button variant="outline" className=' py-1 px-2 text-xs' onClick={sortStoreNearLocationUser}> <CaretSortIcon /> Sắp xếp theo cửa hàng gần bạn </Button>}
             </div>
             <div className='mt-2  flex flex-col gap-2  '>
                 {storeList.map((store) => (

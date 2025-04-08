@@ -37,33 +37,35 @@ const ProductRatingSummary: React.FC<ProductRatingSummaryProps> = ({ ratings, pr
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-lg border overflow-hidden">
+    <>
       <h2 className="text-lg font-semibold mb-4">
         Đánh giá {productName}
       </h2>
       {/* Điểm trung bình và tổng số đánh giá */}
-      <div className="grid grid-cols-12  gap-10">
-        <div className="flex items-center flex-col justify-center  col-span-12 lg:col-span-5">
+      <div className="lg:grid  grid-cols-12  gap-10">
+        <div className=" col-span-12 lg:col-span-4">
+
+        <div className="flex items-center flex-col justify-center  h-full  lg:border-r border-gray-200 ">
           <p className="text-3xl font-bold">{averageRating}/5</p>
           <div className="flex justify-center mt-1">{renderStars(Math.round(Number(averageRating)))}</div>
           <p className="text-sm text-blue-600 mt-1">{totalRatings} đánh giá</p>
         </div>
-        {/* Phân bố đánh giá theo sao */}
-        <div className="col-span-12 lg:col-span-7">
+        </div>
+        <div className="col-span-12 lg:col-span-8">
           {ratingDistribution.map((count, index) => {
             const star = 5 - index;
             const percentage = totalRatings > 0 ? (count / totalRatings) * 100 : 0;
             return (
-              <div key={star} className="flex items-center  mb-2">
-                <span className="text-sm min-w-8">{star} <StarFilledIcon className="w-4 h-4  text-yellow-400 fill-yellow-400" /></span>
-                <Progress value={percentage} className="w-40 lg:w-64 h-2" />
+              <div key={star} className="flex gap-2 items-center  mb-2">
+                <span className="text-sm min-w-8">{star}.0 <StarFilledIcon className="w-4 h-4  text-yellow-400 fill-yellow-400" /></span>
+                <Progress value={percentage} className=" flex-1 h-3" />
                 <span className="text-sm text-gray-600">{count} đánh giá</span>
               </div>
             );
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
