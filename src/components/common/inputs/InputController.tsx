@@ -1,6 +1,6 @@
 "use client"
 import { Input, InputProps } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Label  } from '@/components/ui/label'
 import { TypographyP, TypographySpan } from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 
@@ -10,6 +10,9 @@ import { Controller, FieldPath, FieldValues, UseControllerProps } from "react-ho
 
 interface InputControllerProps {
   inputProps?: InputProps
+  labelProps?: {
+    className?: string
+  }
   label?: string
   icon?: React.ReactNode
   isShowError?: boolean
@@ -23,7 +26,7 @@ export type InputPropsControl<
 export default function InputController<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
->({ control, name, inputProps, label, isNumber, icon, isShowError = true }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
+>({ control, name, inputProps, label, labelProps,isNumber, icon, isShowError = true }: InputPropsControl<TFieldValues, TName> & InputControllerProps) {
   const id = useId()
 
 
@@ -33,7 +36,7 @@ export default function InputController<
       name={name}
       render={({ field: { onChange, onBlur, value, ref, name, disabled }, fieldState }) => (
         <div className={cn(' grid w-full  items-center gap-1.5 relative ')}>
-          <Label htmlFor={id}  >{label} {inputProps?.required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
+          <Label {...labelProps} htmlFor={id}  >{label} {inputProps?.required ? <TypographySpan className=' text-red-700'>*</TypographySpan> : null}</Label>
           <Input
             {...inputProps}
             id={id}

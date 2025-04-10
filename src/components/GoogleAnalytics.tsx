@@ -4,8 +4,10 @@ import React from 'react';
 import Script from 'next/script';
 import { GoogleTagManager } from '@next/third-parties/google'
 const GoogleAnalytics = () => {
+  const isdev = process.env.NODE_ENV === 'development';
   return (
     <>
+    {isdev ? null : (<>
       <Script
         strategy='lazyOnload'
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`}
@@ -22,6 +24,8 @@ const GoogleAnalytics = () => {
           `}
       </Script>
     <GoogleTagManager gtmId='GTM-5B3VRRDF'/>
+    </>)}
+     
     </>
   );
 };

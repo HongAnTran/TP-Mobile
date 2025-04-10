@@ -1,22 +1,24 @@
 import React from 'react'
-import { TypographyP } from '../ui/typography'
 import Logo from '../common/Logo'
 import SocialList from './SocialList'
 import { Button } from '../ui/button'
 import Link from '../common/Link'
 import routes from '@/routes'
+import PromotionRegister from './PromotionRegister'
 
 export default function Footer() {
   return (
-    <footer className=' py-10  bg-primary  sm:pt-16 lg:pt-24  '  >
+    <footer className=' py-6 lg:py-10  bg-primary  sm:pt-16 lg:pt-24  '  >
 
       <div className="container">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-8 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-            <Logo />
+     <div className=' flex flex-col items-center lg:items-start'>
+     <Logo  className='  w-20 h-20 md:w-24 md:h-24'/>
             <div className='mt-9'>
               <SocialList />
             </div>
+     </div>
           </div>
 
           <div className=' lg:col-span-2'>
@@ -65,15 +67,7 @@ export default function Footer() {
 
           <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
             <p className="text-base font-semibold tracking-widest  text-secondary uppercase">Đăng ký nhận thông báo khuyến mãi</p>
-
-            <form action="#" method="POST" className="mt-6">
-              <div className=' mb-4'>
-                <label className="sr-only">Email</label>
-                <input type="email" name="email" id="email" placeholder="Nhập email của bạn" className="block w-full p-4   text-gray-900 placeholder-gray-900 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
-              </div>
-
-              <Button variant="destructive" type="submit" >Đăng ký</Button>
-            </form>
+                  <PromotionRegister />
           </div>
         </div>
 

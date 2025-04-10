@@ -29,7 +29,7 @@ export default function TabsBarMobile() {
     icon: <><Spinner /></>,
     text: "",
   } : customer ? {
-    icon: <Avatar  >
+    icon: <Avatar  className=' lg:w-10 lg:h-10 w-8 h-8'>
       <AvatarImage src={customer.avatar || undefined} />
       <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
     </Avatar>,

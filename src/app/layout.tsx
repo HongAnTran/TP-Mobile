@@ -73,13 +73,13 @@ export default function RootLayout({
         </SessionProvider>
         <Toaster />
 
-        <noscript>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B3VRRDF"
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B3VRRDF"
 height="0" width="0" style={{
   display: 'none',
   visibility: 'hidden'
-}}></iframe></noscript>
-        </noscript>
+}}></iframe>
+</noscript>
       </body>
     </html>
   );

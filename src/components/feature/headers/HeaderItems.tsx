@@ -48,7 +48,7 @@ export default function HeaderItems() {
     icon :  <><Spinner /></> ,
     text : "",
   } :  customer ? {
-    icon:<>  <Avatar>
+    icon:<>  <Avatar className=' lg:w-10 lg:h-10 w-6 h-6'>
     <AvatarImage src={customer.avatar || undefined} />
     <AvatarFallback className=' uppercase'>{customer.first_name[0]}</AvatarFallback>
       </Avatar>

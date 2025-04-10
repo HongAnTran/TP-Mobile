@@ -4,7 +4,7 @@ import React from "react";
 
 const PhoneIcon = ({ className }: { className?: string }) => {
   return (
-    <span className={cn("block w-12 h-12 text-red-500", className)}>
+    <span className={cn("  inline-block w-12 h-12 text-red-500", className)}>
       <svg
       aria-hidden="true"
         width="100%"

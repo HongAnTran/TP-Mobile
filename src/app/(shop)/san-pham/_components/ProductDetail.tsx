@@ -87,7 +87,7 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
     <div  className=' '>
       <div className=' flex   items-center gap-4'>
 
-        <TypographyH1 className=" line-clamp-2  font-medium  lg:text-2xl  text-xl">{product.title}</TypographyH1>
+        <TypographyH1 className=" line-clamp-2  font-medium  lg:text-2xl  text-base">{product.title}</TypographyH1>
 
         <ButtonCompareProduct product={product} />
       

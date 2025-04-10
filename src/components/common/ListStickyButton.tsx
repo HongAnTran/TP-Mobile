@@ -11,24 +11,24 @@ import { convertHotlineToTel } from '@/utils'
 
 export default function ListStickyButton() {
   return (
-    <div className=' fixed   bottom-44  lg:bottom-20 right-4 z-50'>
-      <div className=' flex-col gap-4 flex '>
+    <div className=' fixed    bottom-32  lg:bottom-20 right-2 z-50'>
+      <div className=' flex-col gap-3 lg:gap-4 flex '>
         <Link aria-label="link"  href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`} target="_blank">
           <Button aria-label="PhoneIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-red-400 opacity-75"></span>
-            <PhoneIcon />
+            <PhoneIcon className='w-8 h-8  lg:w-12 lg:h-12' />
           </Button>
         </Link>
         <Link aria-label="link"  href={"https://m.me/100369039524995"} target="_blank">
           <Button  aria-label="MessengerIcon" size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full  bg-pink-200 opacity-75"></span>
-            <MessengerIcon />
+            <MessengerIcon className='w-8 h-8  lg:w-12 lg:h-12' />
           </Button>
         </Link>
         <Link aria-label="link"  href={`https://zalo.me/${convertHotlineToTel(CONFIG.HOTLINE)}`} target="_blank">
           <Button size="icon" variant="link" className=' relative'>
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-            <ZaloIcon />
+            <ZaloIcon className='w-8 h-8  lg:w-12 lg:h-12'/>
           </Button>
         </Link>
         <ButtonUpToTop />

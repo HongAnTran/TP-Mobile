@@ -30,7 +30,7 @@ export default function SearchHeaderMobile() {
             <DrawerTitle>Tìm kiếm sản phẩm</DrawerTitle>
           </DrawerHeader>
           <div className=' min-h-[480px] md:min-h-[600px] p-4'>
-            <SearchInput className=' text-white bg-primary' />
+            <SearchInput className=' text-base text-white bg-primary' />
           </div>
         </DrawerContent>
       </Drawer>
