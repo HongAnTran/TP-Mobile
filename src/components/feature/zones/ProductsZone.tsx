@@ -50,7 +50,9 @@ export default async function ProductsZone({data}: Pick<ProductZone , "data">) {
       </div>
       <div className={cn(gridClasses)}>
         {productsSorted.map((product, index) => (
-          <ProductCard product={product} key={index} />
+          <ProductCard product={product} key={index} className={cn({
+            "hidden lg:flex" : index + 1 === productsSorted.length && productsSorted.length % 2 === 1,
+          })}/>
         ))}
       </div>
    

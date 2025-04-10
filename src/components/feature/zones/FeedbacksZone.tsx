@@ -36,7 +36,7 @@ export default function FeedbacksZone({ data }: Pick<FeedbackZone, "data">) {
         >
           <CarouselContent >
         {rows.map((feedback, index) => (
-          <CarouselItem key={index} className={cn("basis-1/3 lg:basis-1/5 ")}>
+          <CarouselItem key={index} className={cn("basis-1/1 lg:basis-1/4 ")}>
           <FeedbackCard  feedback={feedback} >
           </FeedbackCard>
             </CarouselItem>

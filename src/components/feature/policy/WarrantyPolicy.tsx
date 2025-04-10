@@ -11,6 +11,7 @@ export default function WarrantyPolicy() {
   ];
   return (
     <BoxViewTextList
+    classNameHeader='bg-[#eeeeee]'
     list={benefits} title='Chính sách bảo hành' icon={
                         <Image className=' w-5 h-5' alt="icon" src="/icons/shield.png" width={20} height={20} />
       

@@ -9,7 +9,7 @@ export default function BoxViewTextList({ list, icon, title, classNameIcon, clas
     { className?: string, classNameHeader?: string, list: BoxViewTextItem[], title?: string, icon?: ReactNode, iconItem?: ReactNode, classNameIcon?: string }) {
     return (
         <div className={cn(" max-w-sm lg:max-w-full rounded-xl border border-gray-300 overflow-hidden shadow-lg", className)}>
-            <div className={cn("flex items-center  bg-primary p-2 text-white", classNameHeader)}>
+            <div className={cn("flex items-center  p-2 text-primary", classNameHeader)}>
                 <span className={cn("text-xl mr-2 flex-shrink-0", classNameIcon)} >{icon}</span>
                 <h2 className="   font-semibold text-base">{title}</h2>
             </div>

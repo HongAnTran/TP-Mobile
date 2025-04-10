@@ -14,7 +14,7 @@ export default function SpecialPromotionPolicy() {
   ];
   return (
     <BoxViewTextList
-    classNameHeader='bg-[#fee2e2] text-[#d70018]'
+    classNameHeader='bg-[#eeeeee]'
     classNameIcon='animate-wiggle  animate-infinite' list={benefits}
       title='Mua combo Apple pencil kèm iPad với giá cực hời'
       icon={

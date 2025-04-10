@@ -14,11 +14,11 @@ export default function PromotionPolicy() {
   ];
   return (
     <div className="max-w-sm   rounded-xl overflow-hidden shadow-lg">
-      <div className="flex items-center   p-3   bg-primary">
+      <div className="flex items-center   p-3   bg-red-500 ">
         <span className="text-xl mr-2 animate-wiggle" >
           <Image className=' w-5 h-5' alt="icon" src="/icons/gift.png" width={20} height={20} />
         </span>
-        <h2 className=" text-secondary font-semibold text-lg">Chính sách khuyến mãi</h2>
+        <h2 className=" text-white font-semibold text-lg">Chính sách khuyến mãi</h2>
       </div>
       <ul className="space-y-3 text-gray-700 p-4">
         {promotionPolicy.map((item, index) => {
