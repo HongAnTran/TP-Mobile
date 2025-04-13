@@ -13,10 +13,10 @@ export async function generateMetadata() {
 }
 export default async function Page() {
     return (
-        <div className=' container mt-[-140px] p-10 pb-20 z-10 relative bg-white rounded-t-[40px] shadow-md'>
+        <div className=' container mt-[-100px] lg:mt-[-140px] p-4 lg:p-10 pb-20 z-10 relative bg-white rounded-t-[40px] shadow-md'>
             <div className="content-pag  ">
                 <h3 className={` p-2  text-center  text-xl lg:text-3xl  font-semibold  relative before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-16 before:h-0.5 before:bg-primary before:rounded-md`}>CHÍNH SÁCH ĐỔI TRẢ</h3>
-                <p className=' m-2 text-center  text-[#EF6837]'>TP Mobile cam kết mang đến trải nghiệm mua sắm an tâm với chính sách đổi trả linh hoạt, đảm bảo quyền lợi tốt nhất cho khách hàng.</p>
+                <p className=' m-2 text-center text-sm lg:text-base text-[#EF6837]'>TP Mobile cam kết mang đến trải nghiệm mua sắm an tâm với chính sách đổi trả linh hoạt, đảm bảo quyền lợi tốt nhất cho khách hàng.</p>
                 <p className=' mb-2 text-xl'><strong>1. PHƯƠNG THỨC ĐỔI TRẢ – DÀNH CHO IPHONE & IPAD:</strong></p>
                 <p className=' mb-2 text-xl'><strong>Điều kiện áp dụng:</strong></p>
 

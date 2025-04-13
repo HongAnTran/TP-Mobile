@@ -15,10 +15,10 @@ export async function generateMetadata() {
 }
 export default async function Page() {
     return (
-        <div className=' container mt-[-140px] p-10 pb-20 z-10 relative bg-white rounded-t-[40px] shadow-md'>
+        <div className=' container mt-[-100px] lg:mt-[-140px] p-4 lg:p-10 pb-20 z-10 relative bg-white rounded-t-[40px] shadow-md'>
             <div className="content-pag  ">
                 <h3 className={` p-2  text-center  text-xl lg:text-3xl  font-semibold  relative before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-16 before:h-0.5 before:bg-primary before:rounded-md`}>CHÍNH SÁCH BẢO HÀNH</h3>
-                <p className=' m-2 text-center  text-[#EF6837]'>Tại TP Mobile, chúng tôi cam kết mang đến chính sách bảo hành minh bạch – nhanh chóng – tiện lợi, giúp khách hàng yên tâm khi mua sắm và sử dụng sản phẩm.</p>
+                <p className=' m-2 text-center text-sm lg:text-base  text-[#EF6837]'>Tại TP Mobile, chúng tôi cam kết mang đến chính sách bảo hành minh bạch – nhanh chóng – tiện lợi, giúp khách hàng yên tâm khi mua sắm và sử dụng sản phẩm.</p>
                 <p className=' mb-2 text-xl'><strong>1. QUYỀN LỢI BẢO HÀNH:</strong></p>
                 <p className=' mb-2'>
                     Khách hàng không cần giữ phiếu bảo hành, chỉ cần cung cấp số điện thoại là có thể kiểm tra tình trạng bảo hành của sản phẩm.

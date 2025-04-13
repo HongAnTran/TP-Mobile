@@ -14,10 +14,10 @@ export async function generateMetadata() {
 }
 export default async function Page() {
     return (
-        <div className=' container mt-[-140px] p-10 pb-20 z-10 relative bg-white rounded-t-[40px] shadow-md'>
+        <div className=' container mt-[-100px] lg:mt-[-140px] p-4 lg:p-10 pb-20 z-10 relative bg-white rounded-t-[40px] shadow-md'>
             <div className="content-pag  ">
                 <h3 className={` p-2  text-center  text-xl lg:text-3xl  font-semibold  relative before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-16 before:h-0.5 before:bg-primary before:rounded-md`}>CHÍNH SÁCH TRẢ GÓP </h3>
-                <p className=' m-2 text-center  text-[#EF6837]'>TP Mobile cam kết mang đến cho khách hàng trải nghiệm mua sắm tiện lợi, linh hoạt với các chương trình trả góp hấp dẫn. Chúng tôi hợp tác với nhiều tổ chức tài chính, giúp khách hàng dễ dàng sở hữu sản phẩm mong muốn mà không cần lo lắng về tài chính.</p>
+                <p className=' m-2 text-center text-sm lg:text-base text-[#EF6837]'>TP Mobile cam kết mang đến cho khách hàng trải nghiệm mua sắm tiện lợi, linh hoạt với các chương trình trả góp hấp dẫn. Chúng tôi hợp tác với nhiều tổ chức tài chính, giúp khách hàng dễ dàng sở hữu sản phẩm mong muốn mà không cần lo lắng về tài chính.</p>
                 <p className=' mb-2 text-xl'><strong>1. MỨC TRẢ TRƯỚC:</strong></p>
 
 
