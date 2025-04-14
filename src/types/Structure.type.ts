@@ -43,7 +43,12 @@ export interface BenefitsZone {
   active:boolean
   data: ZoneData<BenefitsRow>; 
 }
-
+export interface CardsZone {
+  zone: 'CARDS';
+  isLazy?: boolean
+  active:boolean
+  data: ZoneData<CardsRow>; 
+}
 export interface FeedbackZone {
   zone: 'FEEDBACKS';
   isLazy?: boolean
@@ -103,6 +108,18 @@ export interface BenefitsRow {
   }
 }
 
+export interface CardsRow {
+  description?: string;
+  title: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }
+  link ?: string;
+}
+
 export type ProductRow = number
 
 
@@ -120,6 +137,6 @@ export interface ZoneData<T> {
   col: ColSettings;
 }
 
-export type Zone = BannerZone | ProductZone | CategoryZone | FeedbackZone | ArticleZone | NavigationZone | BenefitsZone
+export type Zone = BannerZone | ProductZone | CategoryZone | FeedbackZone | ArticleZone | NavigationZone | BenefitsZone | CardsZone
 
 

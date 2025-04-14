@@ -308,32 +308,8 @@
         },
         {
             "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    79,
-                    77,
-                    73,
-                    69,
-                    78
-                ],
-                "tags": [],
                 "type": "grid",
-                "title": "IPHONE",
-                "button": {
-                    "link": "/danh-muc/iphone",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
-            },
-            "zone": "PRODUCTS",
-            "active": false
-        },
-        {
-            "data": {
+                "title": "Tại sao nên mua hàng tại TP Mobile Store",
                 "col": {
                     "lg": 4,
                     "md": 2,
@@ -380,13 +356,39 @@
                         "title": "Tặng gói bảo hành 12 tháng",
                         "description": "Tặng ngay gói bảo hành 12 tháng, bảo vệ bạn an tâm sử dụng, cùng chính sách bao đổi trả trong vòng 1 tháng – cam kết chất lượng."
                     }
-                ],
-                "type": "grid",
-                "title": "Tại sao nên mua hàng tại TP Mobile Store"
+                ]
+          
             },
             "zone": "BENEFITS",
             "active": true
         },
+        {
+            "data": {
+                "col": {
+                    "lg": 5,
+                    "md": 3,
+                    "xs": 2
+                },
+                "rows": [
+                    79,
+                    77,
+                    73,
+                    69,
+                    78
+                ],
+                "tags": [],
+                "type": "grid",
+                "title": "IPHONE",
+                "button": {
+                    "link": "/danh-muc/iphone",
+                    "label": "Xem thêm"
+                },
+                "typeCard": "default"
+            },
+            "zone": "PRODUCTS",
+            "active": false
+        },
+       
         {
             "data": {
                 "col": {
@@ -473,6 +475,81 @@
             },
             "zone": "ARTICLES",
             "active": true
-        }
+        },
+        {
+    "data": {
+        "type": "grid",
+        "title": "Tiktok TP Mobile Store",
+        "col": {
+            "lg": 5,
+            "md": 3,
+            "xs": 2
+        },
+        "rows": [
+            {
+                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+                "image": {
+                    "alt": "",
+                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+                    "width": 200,
+                    "height": 200
+                },
+                "title": "Unboxing ipad air 7"
+            },
+            {
+                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+                "image": {
+                    "alt": "",
+                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+                    "width": 200,
+                    "height": 200
+                },
+                "title": "Unboxing ipad air 7"
+            },
+            {
+                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+                "image": {
+                    "alt": "",
+                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+                    "width": 200,
+                    "height": 200
+                },
+                "title": "Unboxing ipad air 7"
+            },
+            {
+                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+                "image": {
+                    "alt": "",
+                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+                    "width": 200,
+                    "height": 200
+                },
+                "title": "Unboxing ipad air 7"
+            },   {
+                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+                "image": {
+                    "alt": "",
+                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+                    "width": 200,
+                    "height": 200
+                },
+                "title": "Unboxing ipad air 7"
+            },   {
+                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+                "image": {
+                    "alt": "",
+                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+                    "width": 200,
+                    "height": 200
+                },
+                "title": "Unboxing ipad air 7"
+            }   
+        ]
+  
+    },
+    "zone": "CARDS",
+    "active": true
+}
     ]
 }
+

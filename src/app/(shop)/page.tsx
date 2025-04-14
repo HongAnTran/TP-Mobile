@@ -12,6 +12,7 @@ import CONFIG from '@/consts/config'
 import EventPopup from '@/components/feature/eventPopup/EventPopup'
 import NavigationZone from '@/components/feature/zones/NavigationZone'
 import BenefitsZone from '@/components/feature/zones/BenefitsZone'
+import CardZone from '@/components/feature/zones/CardZone'
 
 export const metadata: Metadata = {
   title: "TP MOBILE STORE - Trang chủ",
@@ -70,6 +71,8 @@ export default async function page() {
                 return <ProductsZone key={index} data={zone.data} />
               case "FEEDBACKS":
                 return <FeedbacksZone key={index} data={zone.data} />
+                case "CARDS":
+                  return <CardZone key={index} data={zone.data} />
               case "BANNERS":
                 return <BannerZone key={index} data={zone.data} />
               case "ARTICLES":
