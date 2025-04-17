@@ -34,9 +34,10 @@ export default function CardZone({ data }: Pick<CardsZone, "data">) {
             <Card className=' border border-gray-300 group relative pb-3'>
               <CardHeader className=' py-3 pt-0 px-0 flex flex-col items-center justify-center gap-1'>
                 <Image className='  object-contain' src={data.image.src} alt={data.image.alt || ""} width={data.image.width} height={data.image.height} />
-                <TypographyP className='text-xs md:text-sm uppercase text-muted-foreground font-semibold'>{data.title}</TypographyP>
+
               </CardHeader>
-              <CardContent className="flex flex-col gap-2  py-0">
+              <CardContent className="flex flex-col gap-2 px-2  py-0">
+                <TypographyP className='text-xs md:text-sm  text-muted-foreground font-semibold'>{data.title}</TypographyP>
                 <TypographyP className=' text-xs md:text-sm text-muted-foreground'>{data.description}</TypographyP>
               </CardContent>
             </Card>
