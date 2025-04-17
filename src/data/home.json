@@ -1,555 +1,493 @@
 {
-    "zones": [
-        {
-            "data": {
-                "col": {
-                    "lg": 10,
-                    "md": 5,
-                    "xs": 5
-                },
-                "rows": [
-                    {
-                        "link": "/danh-muc/ipad-pro",
-                        "image": {
-                            "alt": "Danh mục ipad pro",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744001818/tpmobile-images-public/uxexvbie6y4rr9viubbq.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Ipad Pro"
-                    },
-                    {
-                        "link": "/danh-muc/ipad-air",
-                        "image": {
-                            "alt": "Danh mục ipad air",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744001855/tpmobile-images-public/afjhaghehnlzgfk6lkxh.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Ipad Air"
-                    },
-                    {
-                        "link": "/danh-muc/ipad-gen",
-                        "image": {
-                            "alt": "Danh mục ipad Gen",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744001907/tpmobile-images-public/kub8fcfqwa04nqcpugtr.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Ipad Gen"
-                    },
-                    {
-                        "link": "/danh-muc/ipad-mini",
-                        "image": {
-                            "alt": "Danh mục ipad Mini",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744002022/tpmobile-images-public/hfkl7cbcuost5vp3jfsi.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Ipad Mini"
-                    },
-                    {
-                        "link": "/danh-muc/ipad-cu",
-                        "image": {
-                            "alt": "Danh mục ipad Like New",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744007624/tpmobile-images-public/vtba4ey8c03i12oudenx.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Ipad Like New"
-                    },
-                    {
-                        "link": "/danh-muc/iphone",
-                        "image": {
-                            "alt": "Danh mục Iphone",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1743957481/tpmobile-images-public/ozxltsckncvyomdfrzum.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Iphone"
-                    },
-                    {
-                        "link": "/danh-muc/phu-kien",
-                        "image": {
-                            "alt": "Danh mục phụ kiện",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744007612/tpmobile-images-public/kyuugmygabar2j8wvvt6.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Phụ kiện"
-                    },
-                    {
-                        "link": "/chinh-sach-tra-gop",
-                        "image": {
-                            "alt": "trả góp 0%",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744003387/tpmobile-images-public/ccjyyb2mx93ay9tz2tsu.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Trả góp 0%"
-                    },
-                    {
-                        "link": "",
-                        "image": {
-                            "alt": "Thu cũ đổi mới",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744003705/tpmobile-images-public/w2kflsi2wsmxtyoc0259.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Thu cũ đổi mới"
-                    },
-                    {
-                        "link": "/tin-tuc",
-                        "image": {
-                            "alt": "Tin tức",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1743958005/tpmobile-images-public/xpu0cmv8tiaqrpk1prgi.webp",
-                            "width": 100,
-                            "height": 100
-                        },
-                        "title": "Tin công nghệ"
-                    }
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": ""
-            },
-            "zone": "NAVIGATION",
-            "active": true
+  "zones": [
+    {
+      "data": {
+        "col": {
+          "lg": 10,
+          "md": 5,
+          "xs": 5
         },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    47,
-                    55,
-                    56,
-                    58,
-                    89
-                ],
-                "tags": [
-                    {
-                        "link": "/danh-muc/ipad-pro",
-                        "name": "Ipad Pro"
-                    },
-                    {
-                        "link": "/danh-muc/ipad-air",
-                        "name": "Ipad Air"
-                    }
-                ],
-                "type": "grid",
-                "title": "Sản phẩm nổi bật",
-                "typeCard": "default"
+        "rows": [
+          {
+            "link": "/danh-muc/ipad-pro",
+            "image": {
+              "alt": "Danh mục ipad pro",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744001818/tpmobile-images-public/uxexvbie6y4rr9viubbq.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": true
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    58,
-                    63,
-                    42,
-                    53,
-                    31,
-                    92
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "Sản phẩm mới",
-                "button": {
-                    "link": "/san-pham",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Ipad Pro"
+          },
+          {
+            "link": "/danh-muc/ipad-air",
+            "image": {
+              "alt": "Danh mục ipad air",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744001855/tpmobile-images-public/afjhaghehnlzgfk6lkxh.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": false
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    52,
-                    48,
-                    42,
-                    41,
-                    29,
-                    123
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "IPAD PRO",
-                "button": {
-                    "link": "/danh-muc/ipad-pro",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Ipad Air"
+          },
+          {
+            "link": "/danh-muc/ipad-gen",
+            "image": {
+              "alt": "Danh mục ipad Gen",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744001907/tpmobile-images-public/kub8fcfqwa04nqcpugtr.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": true
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    63,
-                    60,
-                    22,
-                    21,
-                    61
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "IPAD AIR",
-                "button": {
-                    "link": "/danh-muc/ipad-air",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Ipad Gen"
+          },
+          {
+            "link": "/danh-muc/ipad-mini",
+            "image": {
+              "alt": "Danh mục ipad Mini",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744002022/tpmobile-images-public/hfkl7cbcuost5vp3jfsi.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": true
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    14,
-                    18,
-                    10,
-                    15,
-                    11
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "IPAD GEN",
-                "button": {
-                    "link": "/danh-muc/ipad-gen",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Ipad Mini"
+          },
+          {
+            "link": "/danh-muc/ipad-cu",
+            "image": {
+              "alt": "Danh mục ipad Like New",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744007624/tpmobile-images-public/vtba4ey8c03i12oudenx.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": true
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    26,
-                    27,
-                    25,
-                    59,
-                    65,
-                    23
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "IPAD Mini",
-                "button": {
-                    "link": "/danh-muc/ipad-mini",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Ipad Like New"
+          },
+          {
+            "link": "/danh-muc/iphone",
+            "image": {
+              "alt": "Danh mục Iphone",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1743957481/tpmobile-images-public/ozxltsckncvyomdfrzum.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": false
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    84,
-                    85,
-                    81,
-                    80,
-                    99
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "Phụ Kiện",
-                "button": {
-                    "link": "/danh-muc/phu-kien",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Iphone"
+          },
+          {
+            "link": "/danh-muc/phu-kien",
+            "image": {
+              "alt": "Danh mục phụ kiện",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744007612/tpmobile-images-public/kyuugmygabar2j8wvvt6.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": false
-        },
-        {
-            "data": {
-                "type": "grid",
-                "title": "Tại sao nên mua hàng tại TP Mobile Store",
-                "col": {
-                    "lg": 4,
-                    "md": 2,
-                    "xs": 2
-                },
-                "rows": [
-                    {
-                        "icon": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014098/tpmobile-images-public/uge8anb8ywvimc87a3wc.webp",
-                            "width": 80,
-                            "height": 80
-                        },
-                        "title": "Miễn phí dán cường lực 1 năm",
-                        "description": "Cường lực cao cấp 10H siêu bền, chống trầy xước, chống bám vân tay, hạn chế bụi bẩn – bảo vệ màn hình luôn như mới."
-                    },
-                    {
-                        "icon": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014433/tpmobile-images-public/zjylu6cpif8cormfgjdm.webp",
-                            "width": 80,
-                            "height": 80
-                        },
-                        "title": "TẶNG CỦ SẠC NHANH CHÍNH HÃNG",
-                        "description": "Chuẩn Type-C công suất 20W – sạc nhanh, an toàn với công nghệ Power Delivery, tối ưu tốc độ và kéo dài tuổi thọ pin."
-                    },
-                    {
-                        "icon": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014413/tpmobile-images-public/aekb9kwxn3vg90oaontg.webp",
-                            "width": 80,
-                            "height": 80
-                        },
-                        "title": "MIỄN PHÍ VỆ SINH MÁY TRỌN ĐỜI",
-                        "description": "Vệ sinh máy miễn phí trong ngoài, kèm kiểm tra và tối ưu hiệu năng định kỳ – giữ thiết bị sạch sẽ, bền bỉ và luôn mượt mà"
-                    },
-                    {
-                        "icon": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014421/tpmobile-images-public/b6qxuz8iemivsofmqorp.webp",
-                            "width": 80,
-                            "height": 80
-                        },
-                        "title": "Tặng gói bảo hành 12 tháng",
-                        "description": "Tặng ngay gói bảo hành 12 tháng, bảo vệ bạn an tâm sử dụng, cùng chính sách bao đổi trả trong vòng 1 tháng – cam kết chất lượng."
-                    }
-                ]
-          
+            "title": "Phụ kiện"
+          },
+          {
+            "link": "/chinh-sach-tra-gop",
+            "image": {
+              "alt": "trả góp 0%",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744003387/tpmobile-images-public/ccjyyb2mx93ay9tz2tsu.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "BENEFITS",
-            "active": true
-        },
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 3,
-                    "xs": 2
-                },
-                "rows": [
-                    79,
-                    77,
-                    73,
-                    69,
-                    78
-                ],
-                "tags": [],
-                "type": "grid",
-                "title": "IPHONE",
-                "button": {
-                    "link": "/danh-muc/iphone",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+            "title": "Trả góp 0%"
+          },
+          {
+            "link": "",
+            "image": {
+              "alt": "Thu cũ đổi mới",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744003705/tpmobile-images-public/w2kflsi2wsmxtyoc0259.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "PRODUCTS",
-            "active": false
-        },
-       
-        {
-            "data": {
-                "col": {
-                    "lg": 5,
-                    "md": 2,
-                    "xs": 1
-                },
-                "rows": [
-                    {
-                        "image": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136866/tpmobile-images-public/rpfiq7ssu4eh9kl2xmb4.webp",
-                            "widht": 300,
-                            "height": 300
-                        }
-                    },
-                    {
-                        "image": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136840/tpmobile-images-public/omjpltzk5sjxkwyeudg1.webp",
-                            "widht": 300,
-                            "height": 300
-                        }
-                    },
-                    {
-                        "image": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136819/tpmobile-images-public/koizelev7ihrwkcatcdc.webp",
-                            "widht": 300,
-                            "height": 300
-                        }
-                    },
-                    {
-                        "image": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136809/tpmobile-images-public/ntjpqo156sbcy2q8nbwy.webp",
-                            "widht": 300,
-                            "height": 300
-                        }
-                    },
-                    {
-                        "image": {
-                            "alt": "",
-                            "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136797/tpmobile-images-public/b75bmzeyr935mh77zf0p.webp",
-                            "widht": 300,
-                            "height": 300
-                        }
-                    },
-                    {
-                        "image": {
-                            "alt": "",
-                            "src": "/feedback/z5516756870577_57a9c448a8a8bf090ebc46085d978c3a.jpg",
-                            "widht": 300,
-                            "height": 300
-                        }
-                    }
-                ],
-                "type": "grid",
-                "title": "Cảm ơn khách hàng đã tin tưởng TP Mobile Store",
-                "typeCard": "default"
+            "title": "Thu cũ đổi mới"
+          },
+          {
+            "link": "/tin-tuc",
+            "image": {
+              "alt": "Tin tức",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1743958005/tpmobile-images-public/xpu0cmv8tiaqrpk1prgi.webp",
+              "width": 100,
+              "height": 100
             },
-            "zone": "FEEDBACKS",
-            "active": true
+            "title": "Tin công nghệ"
+          }
+        ],
+        "tags": [],
+        "type": "grid",
+        "title": ""
+      },
+      "zone": "NAVIGATION",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
         },
-        {
-            "data": {
-                "col": {
-                    "lg": 3,
-                    "md": 2,
-                    "xs": 1
-                },
-                "rows": [
-                    56,
-                    55,
-                    4
-                ],
-                "type": "grid",
-                "title": "Tin tức mới",
-                "button": {
-                    "link": "/tin-tuc",
-                    "label": "Xem thêm"
-                },
-                "typeCard": "default"
+        "rows": [47, 55, 56, 58, 89],
+        "tags": [
+          {
+            "link": "/danh-muc/ipad-pro",
+            "name": "Ipad Pro"
+          },
+          {
+            "link": "/danh-muc/ipad-air",
+            "name": "Ipad Air"
+          }
+        ],
+        "type": "grid",
+        "title": "Sản phẩm nổi bật",
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
+        },
+        "rows": [58, 63, 42, 53, 31, 92],
+        "tags": [],
+        "type": "grid",
+        "title": "Sản phẩm mới",
+        "button": {
+          "link": "/san-pham",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": false
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
+        },
+        "rows": [52, 48, 42, 41, 29, 123],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD PRO",
+        "button": {
+          "link": "/danh-muc/ipad-pro",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
+        },
+        "rows": [63, 60, 22, 21, 61],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD AIR",
+        "button": {
+          "link": "/danh-muc/ipad-air",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
+        },
+        "rows": [14, 18, 10, 15, 11],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD GEN",
+        "button": {
+          "link": "/danh-muc/ipad-gen",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
+        },
+        "rows": [26, 27, 25, 59, 65, 23],
+        "tags": [],
+        "type": "grid",
+        "title": "IPAD Mini",
+        "button": {
+          "link": "/danh-muc/ipad-mini",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": false
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
+        },
+        "rows": [84, 85, 81, 80, 99],
+        "tags": [],
+        "type": "grid",
+        "title": "Phụ Kiện",
+        "button": {
+          "link": "/danh-muc/phu-kien",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": false
+    },
+    {
+      "data": {
+        "type": "grid",
+        "title": "Tại sao nên mua hàng tại TP Mobile Store",
+        "col": {
+          "lg": 4,
+          "md": 2,
+          "xs": 2
+        },
+        "rows": [
+          {
+            "icon": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014098/tpmobile-images-public/uge8anb8ywvimc87a3wc.webp",
+              "width": 80,
+              "height": 80
             },
-            "zone": "ARTICLES",
-            "active": true
+            "title": "Miễn phí dán cường lực 1 năm",
+            "description": "Cường lực cao cấp 10H siêu bền, chống trầy xước, chống bám vân tay, hạn chế bụi bẩn – bảo vệ màn hình luôn như mới."
+          },
+          {
+            "icon": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014433/tpmobile-images-public/zjylu6cpif8cormfgjdm.webp",
+              "width": 80,
+              "height": 80
+            },
+            "title": "TẶNG CỦ SẠC NHANH CHÍNH HÃNG",
+            "description": "Chuẩn Type-C công suất 20W – sạc nhanh, an toàn với công nghệ Power Delivery, tối ưu tốc độ và kéo dài tuổi thọ pin."
+          },
+          {
+            "icon": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014413/tpmobile-images-public/aekb9kwxn3vg90oaontg.webp",
+              "width": 80,
+              "height": 80
+            },
+            "title": "MIỄN PHÍ VỆ SINH MÁY TRỌN ĐỜI",
+            "description": "Vệ sinh máy miễn phí trong ngoài, kèm kiểm tra và tối ưu hiệu năng định kỳ – giữ thiết bị sạch sẽ, bền bỉ và luôn mượt mà"
+          },
+          {
+            "icon": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744014421/tpmobile-images-public/b6qxuz8iemivsofmqorp.webp",
+              "width": 80,
+              "height": 80
+            },
+            "title": "Tặng gói bảo hành 12 tháng",
+            "description": "Tặng ngay gói bảo hành 12 tháng, bảo vệ bạn an tâm sử dụng, cùng chính sách bao đổi trả trong vòng 1 tháng – cam kết chất lượng."
+          }
+        ]
+      },
+      "zone": "BENEFITS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 3,
+          "xs": 2
         },
-        {
-    "data": {
+        "rows": [79, 77, 73, 69, 78],
+        "tags": [],
+        "type": "grid",
+        "title": "IPHONE",
+        "button": {
+          "link": "/danh-muc/iphone",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "PRODUCTS",
+      "active": false
+    },
+
+    {
+      "data": {
+        "col": {
+          "lg": 5,
+          "md": 2,
+          "xs": 1
+        },
+        "rows": [
+          {
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136866/tpmobile-images-public/rpfiq7ssu4eh9kl2xmb4.webp",
+              "widht": 300,
+              "height": 300
+            }
+          },
+          {
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136840/tpmobile-images-public/omjpltzk5sjxkwyeudg1.webp",
+              "widht": 300,
+              "height": 300
+            }
+          },
+          {
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136819/tpmobile-images-public/koizelev7ihrwkcatcdc.webp",
+              "widht": 300,
+              "height": 300
+            }
+          },
+          {
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136809/tpmobile-images-public/ntjpqo156sbcy2q8nbwy.webp",
+              "widht": 300,
+              "height": 300
+            }
+          },
+          {
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744136797/tpmobile-images-public/b75bmzeyr935mh77zf0p.webp",
+              "widht": 300,
+              "height": 300
+            }
+          },
+          {
+            "image": {
+              "alt": "",
+              "src": "/feedback/z5516756870577_57a9c448a8a8bf090ebc46085d978c3a.jpg",
+              "widht": 300,
+              "height": 300
+            }
+          }
+        ],
+        "type": "grid",
+        "title": "Cảm ơn khách hàng đã tin tưởng TP Mobile Store",
+        "typeCard": "default"
+      },
+      "zone": "FEEDBACKS",
+      "active": true
+    },
+    {
+      "data": {
+        "col": {
+          "lg": 3,
+          "md": 2,
+          "xs": 1
+        },
+        "rows": [56, 55, 4],
+        "type": "grid",
+        "title": "Tin tức mới",
+        "button": {
+          "link": "/tin-tuc",
+          "label": "Xem thêm"
+        },
+        "typeCard": "default"
+      },
+      "zone": "ARTICLES",
+      "active": true
+    },
+    {
+      "data": {
         "type": "grid",
         "title": "Tiktok TP Mobile Store",
         "col": {
-            "lg": 5,
-            "md": 3,
-            "xs": 2
+          "lg": 6,
+          "md": 3,
+          "xs": 2
         },
         "rows": [
-            {
-                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
-                "image": {
-                    "alt": "",
-                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
-                    "width": 200,
-                    "height": 200
-                },
-                "title": "Unboxing ipad air 7"
+          {
+            "link": "https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+            "title": "Unboxing ipad air 7"
+          },
+          {
+            "link": "https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+              "width": 200,
+              "height": 200
             },
-            {
-                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
-                "image": {
-                    "alt": "",
-                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
-                    "width": 200,
-                    "height": 200
-                },
-                "title": "Unboxing ipad air 7"
+            "title": "Unboxing ipad air 7"
+          },
+          {
+            "link": "https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+              "width": 200,
+              "height": 200
             },
-            {
-                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
-                "image": {
-                    "alt": "",
-                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
-                    "width": 200,
-                    "height": 200
-                },
-                "title": "Unboxing ipad air 7"
+            "title": "Unboxing ipad air 7"
+          },
+          {
+            "link": "https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+              "width": 200,
+              "height": 200
             },
-            {
-                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
-                "image": {
-                    "alt": "",
-                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
-                    "width": 200,
-                    "height": 200
-                },
-                "title": "Unboxing ipad air 7"
-            },   {
-                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
-                "image": {
-                    "alt": "",
-                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
-                    "width": 200,
-                    "height": 200
-                },
-                "title": "Unboxing ipad air 7"
-            },   {
-                "link":"https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
-                "image": {
-                    "alt": "",
-                    "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
-                    "width": 200,
-                    "height": 200
-                },
-                "title": "Unboxing ipad air 7"
-            }   
+            "title": "Unboxing ipad air 7"
+          },
+          {
+            "link": "https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+              "width": 200,
+              "height": 200
+            },
+            "title": "Unboxing ipad air 7"
+          },
+          {
+            "link": "https://www.tiktok.com/@tpmobilestore/video/7488302514660445448",
+            "image": {
+              "alt": "",
+              "src": "https://cdn.tpmobile.com.vn/image/upload/v1744620961/tpmobile-images-public/kpktobukw1mddspxqoji.webp",
+              "width": 200,
+              "height": 200
+            },
+            "title": "Unboxing ipad air 7"
+          }
         ]
-  
-    },
-    "zone": "CARDS",
-    "active": true
+      },
+      "zone": "CARDS",
+      "active": true
+    }
+  ]
 }
-    ]
-}
-
