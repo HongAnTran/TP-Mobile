@@ -8,6 +8,10 @@ const CONFIG = {
   KEY_ACTIVE_OPTIONS: "variant",
   HOTLINE: "0566.44.77.99",
   DOMAIN: process.env.DOMAIN,
+  ZALO: "https://zalo.me/0566447799",
+  MESSENGER: "https://m.me/100369039524995",
+  INSTAGRAM: "https://www.instagram.com/tpmobile.store/",
+  FACEBOOK: "https://www.facebook.com/tpmobile.store",
 };
 
 export default CONFIG;

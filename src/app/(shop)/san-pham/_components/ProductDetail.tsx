@@ -31,7 +31,6 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)
   const { addProductToRecentView } = useProductRecentView()
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
-  console.log(product)
   const handleQuantity: ProductQuantityProps["handleQuantity"] = {
     add() {
       setQuantity(pre => pre < SETTINGS.MAX_SALE_PRODUCT ? pre + 1 : pre)
@@ -84,13 +83,13 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
     }
   }, [variantActive, isTouchOption])
   return (
-    <div  className=' '>
+    <div className=' '>
       <div className=' flex   items-center gap-4'>
 
         <TypographyH1 className=" line-clamp-2  font-medium  lg:text-2xl  text-base">{product.title}</TypographyH1>
 
         <ButtonCompareProduct product={product} />
-      
+
       </div>
       <hr className='  my-3 border-0' />
       <div className=' grid  gap-4 grid-cols-12'>
@@ -104,10 +103,10 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
         </div>
         <div className=' md:col-span-12 col-span-12 lg:col-span-5'>
           <div className=" flex flex-col gap-2">
-        <a href='#rating' >
-        <ProductRating averageRating={product.average_rating} ratingCount={product.rating_count} />
-        </a>
-          
+            <a href='#rating' >
+              <ProductRating averageRating={product.average_rating} ratingCount={product.rating_count} />
+            </a>
+
             <ProductShowPrice variant={variantActive} className=' lg:text-xl' />
           </div>
           <div className=' mt-4'>
@@ -117,13 +116,13 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
             }} />
           </div>
           <div className=' mt-8 lg:mt-12 '>
-            <ProductActionButton 
+            <ProductActionButton
               product={product}
-            onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
-              () => {
-                handleBuyNow(product, variantActive, quantity)
-              }
-            } />
+              onAddtoCart={() => onAddTocart(product, variantActive, quantity)} onBuyNow={
+                () => {
+                  handleBuyNow(product, variantActive, quantity)
+                }
+              } />
           </div>
           <div className=' mt-6 lg:mt-10'>
             <SpecialPromotionPolicy />
@@ -134,8 +133,8 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
           <div className=' flex flex-col gap-4'>
             <PromotionPolicy />
             <WarrantyPolicy />
-           {product.related.length ?  <ProductBuy ids={product.related} /> : null} 
-          <div className=' block lg:hidden'> <StoreListView title='' stores={stores} /> </div>
+            {product.related.length ? <ProductBuy ids={product.related} /> : null}
+            <div className=' block lg:hidden'> <StoreListView title='' stores={stores} /> </div>
           </div>
         </div>
 

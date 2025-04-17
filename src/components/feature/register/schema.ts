@@ -1,3 +1,4 @@
+import { vietnamPhoneRegex } from "@/utils/regex";
 import { z } from "zod";
 
 const registerSchema = z
@@ -14,7 +15,12 @@ const registerSchema = z
       .string()
       .nonempty({ message: "Vui lòng nhập trường này" })
       .email({ message: "Địa chỉ email không hợp lệ" }),
-    phone: z.string().min(10, { message: "Số điện thoại không hợp lệ" }),
+    phone: z
+      .string()
+      .nonempty({ message: "Vui lòng nhập trường này" })
+      .regex(vietnamPhoneRegex, {
+        message: "Số điện thoại không hợp lệ",
+      }),
     birthday: z.date().optional(),
     gender: z.enum(["MALE", "FEMALE", "OTHER"]).optional(),
     password: z

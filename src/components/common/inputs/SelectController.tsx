@@ -57,7 +57,7 @@ export default function SelectController<
               </SelectGroup>
             </SelectContent>
           </Select>
-          {fieldState.error ? <TypographyP className='  font-medium absolute bottom-0 left-0 right-0 text-red-700'>{fieldState.error?.message}</TypographyP> : null}
+          {fieldState.error ? <TypographyP className='  font-medium  text-red-700'>{fieldState.error?.message}</TypographyP> : null}
 
         </div>
       )}
