@@ -1,6 +1,8 @@
 import { PaginationParams } from "./Common.type";
 
-interface CategoryProductFilter extends PaginationParams<CategoryProduct> {}
+interface CategoryProductFilter extends PaginationParams<CategoryProduct> {
+  slugs: string;
+}
 
 interface CategoryProduct {
   id: number;
@@ -11,10 +13,10 @@ interface CategoryProduct {
   published: boolean;
   meta_data: {
     meta_title?: string;
-    meta_description?: string; 
+    meta_description?: string;
     meta_keywords?: string;
     meta_image?: string;
-  } | null; 
+  } | null;
 }
 
 export type { CategoryProduct, CategoryProductFilter };

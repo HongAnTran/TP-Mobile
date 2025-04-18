@@ -1,7 +1,6 @@
 import fetchApi from "@/api/instances/baseInstance";
 import { ConfigAPi } from "@/types/Api.type";
 import { Setting, SettingKeyType } from "@/types/Settings.type";
-import dataFake from "@/data/home.json";
 class SettingsService {
   private url: string = "/settings";
 
@@ -11,7 +10,7 @@ class SettingsService {
       next: { tags: [this.url, key], revalidate: 60 * 60 * 24 * 3 },
       ...init,
     });
-    return setting
+    return setting;
   }
 }
 const SettingsServiceApi = new SettingsService();

@@ -31,7 +31,6 @@ export default function ProductDetail({ product, stores = [], optionsDefault }: 
   const { variantActive, handleSelectOption, optionActive, indexImageActive, setIndexImageActive } = useHandleVariant(product, optionsDefault)
   const { addProductToRecentView } = useProductRecentView()
   const [quantity, setQuantity] = useState(SETTINGS.MIN_SALE_PRODUCT)
-  console.log(product)
   const handleQuantity: ProductQuantityProps["handleQuantity"] = {
     add() {
       setQuantity(pre => pre < SETTINGS.MAX_SALE_PRODUCT ? pre + 1 : pre)
