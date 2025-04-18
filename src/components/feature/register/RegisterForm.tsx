@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import {
-Card,
+    Card,
     CardContent,
     CardHeader,
     CardTitle,
@@ -25,7 +25,6 @@ import registerSchema, { RegisterValues } from './schema'
 import routes from '@/routes'
 import SelectOptions from '@/components/common/SelectOptions'
 import { GENDER_OPTIONS } from '@/consts/customer'
-import Datepicker from '@/components/common/Datepicker'
 import AuthServiceApi from '@/services/client/authService'
 import { useToast } from '@/components/ui/use-toast'
 import ErrorRespone from '@/api/error'
@@ -61,13 +60,13 @@ export default function RegisterForm() {
             })
             router.push(routes.login)
         } catch (error) {
-           if(error instanceof ErrorRespone) {
-            toast({
-                title: "Đăng kí thất bại",
-                description: error.message,
-            })
-        }
-    }finally {
+            if (error instanceof ErrorRespone) {
+                toast({
+                    title: "Đăng kí thất bại",
+                    description: error.message,
+                })
+            }
+        } finally {
             setIsSubmitting(false)
         }
     }
@@ -135,7 +134,7 @@ export default function RegisterForm() {
                                         name="phone"
                                         render={({ field }) => (
                                             <FormItem className="grid gap-2">
-                                                <FormLabel htmlFor="phone">Số điện thoại</FormLabel>
+                                                <FormLabel req htmlFor="phone">Số điện thoại</FormLabel>
                                                 <FormControl>
                                                     <Input {...field} id='phone' autoComplete='phone' />
                                                 </FormControl>
@@ -229,7 +228,7 @@ export default function RegisterForm() {
                                 <Button type="submit" className="w-full" disabled={isSubmitting}>
                                     {
                                         isSubmitting ? <Spinner /> : "Đăng kí"
-                                    } 
+                                    }
                                 </Button>
                             </div>
                         </form>
