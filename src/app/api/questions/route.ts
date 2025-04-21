@@ -1,24 +1,29 @@
 import ErrorRespone from "@/api/error";
 import { getSession } from "@/app/lib/session";
-import OrderServiceApi from "@/services/orderService";
+import CustomerServiceApi from "@/services/customerService";
+import QuestionsServiceApi from "@/services/QuestionsService";
 import { NextResponse, type NextRequest } from "next/server";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
     const res = await request.json();
-    const sesstion = await getSession();
-    console.log(sesstion);
-    if (sesstion) {
-      const { token } = await OrderServiceApi.createOrderCustomer(res);
+    const secstion = await getSession();
+    if (secstion) {
+      const customer = await CustomerServiceApi.profile();
+      await QuestionsServiceApi.create({
+        ...res,
+        customer_id: customer.id,
+      });
       return Response.json({
-        token,
+        status: true,
       });
     }
-
-    const { token } = await OrderServiceApi.createOrder(res);
+    await QuestionsServiceApi.create({
+      ...res,
+    });
     return Response.json({
-      token,
+      status: true,
     });
   } catch (error) {
     if (error instanceof ErrorRespone) {

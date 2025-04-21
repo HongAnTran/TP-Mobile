@@ -13,6 +13,7 @@ import StoreServiceApi from '@/services/StoreService'
 import { SearchParams } from '@/types/Common.type'
 import SETTINGS from '@/consts/config'
 import dynamic from 'next/dynamic'
+import ProductQuestions from '../_components/ProductQuestions'
 const ProductRatingSection = dynamic(() => import('../_components/ProductRatingSection'), { ssr: false })
 export default async function Product({ product, searchParams }: { product: ProductType, searchParams: SearchParams }) {
   const stores = await StoreServiceApi.getList()
@@ -52,16 +53,17 @@ export default async function Product({ product, searchParams }: { product: Prod
           <ProductDescription product={product} />
         </div>
         <div className=' mt-10'>
-        <div className='grid grid-cols-12 gap-4'>
-        <div className=' col-span-12 lg:col-span-8 scroll-m-24' id='rating'>
-        <ProductRatingSection product={product} />
-          </div>
-        <div className=' col-span-12 lg:col-span-4'>
-          </div>
+          <div className='grid grid-cols-12 gap-4'>
+            <div className=' col-span-12 lg:col-span-8 scroll-m-24' id='rating'>
+              <ProductRatingSection product={product} />
+            </div>
+            <div className=' col-span-12 lg:col-span-4'>
+              <ProductQuestions product={product} />
+            </div>
           </div>
         </div>
         <div className=' mt-16'>
-        <ProductRelated categoryId={product.category_id} productId={product.id} />
+          <ProductRelated categoryId={product.category_id} productId={product.id} />
         </div>
         <div className=' mt-16'>
           <ProductsRecentViewList />

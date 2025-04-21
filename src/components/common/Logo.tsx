@@ -8,10 +8,10 @@ export default function Logo({ className, height = 100, width = 100, isAvtBig, h
     if (href) {
         return (
             <Link href={href} >
-                <Image unoptimized priority quality={100} className={cn(" w-[50px] h-[50px] md:w-[70px] md:h-[70px]", className)} src={isAvtBig ? "/avatar_new.png" : "/avatar_new.png"} alt='TP Mobile logo' width={width} height={height} />
+                <Image unoptimized priority quality={100} className={cn(" w-[50px] h-[50px] md:w-[70px] md:h-[70px]", className)} src={isAvtBig ? "/ava_nobg.png" : "/ava_nobg.png"} alt='TP Mobile logo' width={width} height={height} />
             </Link>
         )
     }
 
-    return <Image unoptimized priority quality={100} className={cn(" w-[50px] h-[50px] md:w-[70px] md:h-[70px]", className)} src={isAvtBig ? "/avatar_new.png" : "/avatar_new.png"} alt='TP Mobile logo' width={width} height={height} />
+    return <Image unoptimized priority quality={100} className={cn(" w-[50px] h-[50px] md:w-[70px] md:h-[70px]", className)} src={isAvtBig ? "/ava_nobg.png" : "/ava_nobg.png"} alt='TP Mobile logo' width={width} height={height} />
 }
