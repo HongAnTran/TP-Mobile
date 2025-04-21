@@ -1,14 +1,19 @@
-import { SETTINGKEYS } from "@/consts/settingsKey"
+import { SETTINGKEYS } from "@/consts/settingsKey";
 
 interface Setting<T> {
-  id: number
-  key: string
-  value: T
-  description: string | null
-  access_control: number[]
-  createdAt: Date
-  updatedAt: Date | null
+  id: number;
+  key: string;
+  value: T;
+  description: string | null;
+  access_control: number[];
+  createdAt: Date;
+  updatedAt: Date | null;
 }
-type SettingKeyType = typeof SETTINGKEYS[keyof typeof SETTINGKEYS];
+type SettingKeyType = (typeof SETTINGKEYS)[keyof typeof SETTINGKEYS];
 
-export type {Setting , SettingKeyType}
+type MenuSettings = {
+  slug: string;
+  children: MenuSettings[];
+};
+
+export type { Setting, SettingKeyType, MenuSettings };
