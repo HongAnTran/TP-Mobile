@@ -24,31 +24,31 @@ export default function Breadcrumbs({ breadcrumbsList = [], defaultBreadcrumb }:
   };
   return (
 
-      <ul className=" flex gap-1  shadow bg-white rounded-lg p-2  border">
-        {[defaultBreadcrumbs, ...breadcrumbsList].map((item, index, arr) => {
-          if (!item.label) return null
-          return (
-            <>
-              <li key={index} className="flex-shrink-0">
-                {item.slug ? (
-                  <Link href={item.slug}>
-                    <BreadcrumbsText {...item} />
-                  </Link>
-                ) : (
+    <ul className=" flex gap-1   bg-white rounded-lg p-2  border">
+      {[defaultBreadcrumbs, ...breadcrumbsList].map((item, index, arr) => {
+        if (!item.label) return null
+        return (
+          <>
+            <li key={index} className="flex-shrink-0">
+              {item.slug ? (
+                <Link href={item.slug}>
                   <BreadcrumbsText {...item} />
-                )}
-              </li>
-              {/* remove driver last item or  */}
-              {arr.length - 1 === index ? null : (
-                <li className=" flex items-center justify-center flex-shrink-0">
-                  <ChevronRightIcon />
-                  {/* <BreadcrumbsText label="/" /> */}
-                </li>
+                </Link>
+              ) : (
+                <BreadcrumbsText {...item} />
               )}
-            </>
-          );
-        })}
-      </ul>
+            </li>
+            {/* remove driver last item or  */}
+            {arr.length - 1 === index ? null : (
+              <li className=" flex items-center justify-center flex-shrink-0">
+                <ChevronRightIcon />
+                {/* <BreadcrumbsText label="/" /> */}
+              </li>
+            )}
+          </>
+        );
+      })}
+    </ul>
 
   );
 }
