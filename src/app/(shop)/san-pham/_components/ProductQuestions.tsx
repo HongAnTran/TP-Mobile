@@ -81,9 +81,9 @@ export default function ProductQuestions({ product }: {
     return (
         <>
             <div className='p-2 pb-4 lg:p-4 bg-white rounded-lg shadow-lg border overflow-hidden'>
-                <h3 className=' text-lg lg:text-2xl font-semibold text-center'>Hỏi và Đáp ({questions.length})</h3>
+                <h3 className=' text-lg lg:text-xl font-semibold text-center'>Hỏi và Đáp ({questions.length})</h3>
                 <div className=' flex  flex-col gap-2 mt-4'>
-                    <Textarea placeholder='TP Mobile sẽ trả lời trong 1 giờ (sau 22h, phản hồi vào sáng hôm sau)' rows={3} />
+                    <Textarea disabled placeholder='TP Mobile sẽ trả lời trong 1 giờ (sau 22h, phản hồi vào sáng hôm sau)' rows={3} />
                     <Button variant="outline" onClick={() => {
                         setOpen(true)
                     }}>Gửi câu hỏi</Button>
