@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import SessionProvider from "@/providers/SessionProvider";
+import { RouterProvider } from "@/providers/RouterProvider";
 const inter = Inter({ subsets: ["vietnamese"] });
 
 
@@ -66,20 +67,22 @@ export default function RootLayout({
       <GoogleAnalytics />
       <meta name="google-site-verification" content="ooNv-cj6ianI3N7tJxrulG6ihHMwq092YA0XfTxksuQ" />
       <body className={inter.className}>
-        <SessionProvider>
-          <ReactQueryProvider>
-            {children}
-          </ReactQueryProvider>
-        </SessionProvider>
+        <RouterProvider>
+          <SessionProvider>
+            <ReactQueryProvider>
+              {children}
+            </ReactQueryProvider>
+          </SessionProvider>
+        </RouterProvider>
         <Toaster />
 
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B3VRRDF"
-height="0" width="0" style={{
-  display: 'none',
-  visibility: 'hidden'
-}}></iframe>
-</noscript>
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B3VRRDF"
+            height="0" width="0" style={{
+              display: 'none',
+              visibility: 'hidden'
+            }}></iframe>
+        </noscript>
       </body>
     </html>
   );

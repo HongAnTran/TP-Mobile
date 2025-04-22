@@ -17,7 +17,6 @@ class QuestionsService {
   async getList(data: QuestionParams) {
     const response = await fetchApi.get<QuestionDetail[]>(this.url, {
       params: data,
-      next: { revalidate: 1000 * 60 * 3 },
     });
     return response;
   }

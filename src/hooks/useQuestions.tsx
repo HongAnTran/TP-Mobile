@@ -14,6 +14,7 @@ export default function useQuestions({ productSlug, page = 1 }: { productSlug: n
         getNextPageParam: (lastPage, pages) => {
             return 1
         },
+        staleTime: 1000 * 60 * 5,
     })
     return query
 }
