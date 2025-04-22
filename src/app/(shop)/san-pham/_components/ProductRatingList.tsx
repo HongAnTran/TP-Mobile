@@ -11,24 +11,22 @@ interface ProductRatingListProps {
 }
 
 const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings }) => {
-    const renderStars = (rate : number) => {
-        const stars = [];
-        for (let i = 1; i <= 5; i++) {
-          stars.push(
-            <StarFilledIcon
-              key={i}
-              className={`w-5 h-5 ${
-                i <= Math.floor(rate) 
-                  ? 'fill-yellow-400 text-yellow-400' 
-                  : 'text-gray-300'
-              }`}
-            />
-          );
-        }
-        return stars;
-      };
+  const renderStars = (rate: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <StarFilledIcon
+          key={i}
+          className={`w-5 h-5 ${i <= Math.floor(rate)
+              ? 'fill-yellow-400 text-yellow-400'
+              : 'text-gray-300'
+            }`}
+        />
+      );
+    }
+    return stars;
+  };
 
-  // Hàm định dạng ngày tháng
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return format(date, "HH:mm dd/MM/yyyy", { locale: vi });
@@ -42,7 +40,7 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings }) => {
           className="border border-gray-200 pb-4 bg-white shadow-sm rounded-md p-4"
         >
           <div className=" flex justify-between items-center">
-          <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3">
               <div className="w-8 h-8 rounded-full bg-primary  flex items-center justify-center">
                 {rating.customer?.avatar ? (
                   <Image
@@ -66,17 +64,17 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings }) => {
                   {rating.customer?.full_name || rating.customer_seed?.name || "Ẩn danh"}
                 </p>
                 <p className="text-xs text-green-600">Đã mua tại TP Mobile</p>
-            <p className="text-xs text-gray-500">{formatDate(rating.created_at)}</p>
+                <p className="text-xs text-gray-500">{formatDate(rating.created_at)}</p>
               </div>
             </div>
-          <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-1">
               {renderStars(rating.rate)}
             </div>
           </div>
-          
+
           {/* Đánh giá: Số sao và nội dung */}
           <div className="mt-2">
-         
+
             <p className="text-sm text-gray-700 mt-1">{rating.content}</p>
           </div>
 
@@ -97,7 +95,7 @@ const ProductRatingList: React.FC<ProductRatingListProps> = ({ ratings }) => {
           )}
 
           <div className="mt-2 flex space-x-2">
-            {rating.tags.map(tag=>{
+            {rating.tags.map(tag => {
               return (
                 <span key={tag.id} className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
                   {tag.title}

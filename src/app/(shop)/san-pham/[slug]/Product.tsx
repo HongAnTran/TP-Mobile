@@ -13,8 +13,8 @@ import StoreServiceApi from '@/services/StoreService'
 import { SearchParams } from '@/types/Common.type'
 import SETTINGS from '@/consts/config'
 import dynamic from 'next/dynamic'
-import ProductQuestions from '../_components/ProductQuestions'
 const ProductRatingSection = dynamic(() => import('../_components/ProductRatingSection'), { ssr: false })
+const ProductQuestions = dynamic(() => import('../_components/ProductQuestions'), { ssr: false })
 export default async function Product({ product, searchParams }: { product: ProductType, searchParams: SearchParams }) {
   const stores = await StoreServiceApi.getList()
   const params = searchParams[SETTINGS.KEY_ACTIVE_OPTIONS] as string || ""

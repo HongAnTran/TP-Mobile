@@ -1,5 +1,9 @@
 import fetchApiClient from "@/api/instances/clientInstance";
-import { QuestionCreate } from "@/types/Questions.type";
+import {
+  QuestionCreate,
+  QuestionDetail,
+  QuestionParams,
+} from "@/types/Questions.type";
 
 class QuestionsServiceClient {
   private url: string = "/questions";
@@ -7,9 +11,15 @@ class QuestionsServiceClient {
   constructor() {}
   async create(data: QuestionCreate) {
     const response = await fetchApiClient.post<{ status: boolean }>(
-      this.url,
+      this.url + "/create",
       data
     );
+    return response;
+  }
+  async getList(data: QuestionParams) {
+    const response = await fetchApiClient.get<QuestionDetail[]>(this.url, {
+      params: data,
+    });
     return response;
   }
 }

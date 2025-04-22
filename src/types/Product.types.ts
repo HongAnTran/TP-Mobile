@@ -2,7 +2,6 @@ import { Attribute, AttributeValue } from "./Attributes.type";
 import { Brand } from "./Brand.type";
 import { CategoryProduct } from "./categoryProduct";
 import { ResList } from "./Common.type";
-import { Customer } from "./Customer.type";
 
 type ProductId = number;
 
@@ -18,10 +17,10 @@ interface Product {
   description_html: string | null;
   brand_id: number | null;
   available: boolean;
-  average_rating :number
-  rating_count :number
+  average_rating: number;
+  rating_count: number;
   status: ProductStatus;
-  thumnail_url: string
+  thumnail_url: string;
   created_at: string;
   updated_at: string | null;
   published_at: string | null;
@@ -133,7 +132,6 @@ type ProductOrder = {
   variant: ProductVariant;
 };
 
-
 interface ProductsParams {
   include?: string[];
   status?: ProductStatus;
@@ -175,7 +173,6 @@ type ProductInList = Pick<
   | "thumnail_url"
 >;
 type Products = ResList<ProductInList>;
-
 
 export type {
   Product,

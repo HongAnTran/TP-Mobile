@@ -10,9 +10,12 @@ interface QuestionCreate {
   customer_id?: number;
   email: string;
   phone: string;
-  full_name?: string;
+  full_name: string;
 }
-
+interface QuestionAnswer {
+  content: string;
+  created_at: string;
+}
 interface QuestionDetail {
   id: number;
   content: string;
@@ -21,6 +24,7 @@ interface QuestionDetail {
   email: string;
   phone: string;
   customer: Customer | null;
+  answers: QuestionAnswer[];
   status: QuestionStatus;
   like_count: number;
   full_name?: string;

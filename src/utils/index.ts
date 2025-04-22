@@ -18,14 +18,14 @@ function convetNumberToPriceVND(priceNumber: ProductVariant["price"]) {
   //formating data
   output = formatter.format(Math.round(priceNumber)).replace(/\./g, ",");
 
-  return output + "₫"
+  return output + "₫";
 }
 
 function findVariantMinPrice(variants: ProductVariant[]) {
   let minPriceVariant = variants[0];
   let minPrice = Infinity;
 
-  variants.forEach(variant => {
+  variants.forEach((variant) => {
     const price = variant.price;
     if (price < minPrice) {
       minPrice = price;
@@ -45,8 +45,16 @@ function arraysEqualIgnoringOrder(arr1: any[], arr2: any[]): boolean {
 
   return sortedArr1.every((value, index) => value === sortedArr2[index]);
 }
-function findVariantActiveOption(variants: ProductVariant[], optionActive: number[]) {
-  return variants.find(variant => arraysEqualIgnoringOrder(variant.attribute_values.map(value => value.id), optionActive))
+function findVariantActiveOption(
+  variants: ProductVariant[],
+  optionActive: number[]
+) {
+  return variants.find((variant) =>
+    arraysEqualIgnoringOrder(
+      variant.attribute_values.map((value) => value.id),
+      optionActive
+    )
+  );
 }
 
 function fillArrayToLength(arr: any[], length: number, data: any = null) {
@@ -61,39 +69,41 @@ export function fillArray(length: number) {
 }
 
 function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
 
 interface ObjectWithArrayValues {
   [key: string]: string | string[] | number[];
 }
-function objectToSearchParamsValue(obj: ObjectWithArrayValues): { [key: string]: string; } {
+function objectToSearchParamsValue(obj: ObjectWithArrayValues): {
+  [key: string]: string;
+} {
   const processedObj: { [key: string]: string } = {};
   for (const key in obj) {
     if (Array.isArray(obj[key])) {
-      processedObj[key] = (obj[key] as (string | number)[]).join(',');
+      processedObj[key] = (obj[key] as (string | number)[]).join(",");
     } else {
-      processedObj[key] = obj[key] ? obj[key].toString() : ""
+      processedObj[key] = obj[key] ? obj[key].toString() : "";
     }
   }
-  return processedObj
+  return processedObj;
 }
 
 function objectToSearchParams(data: ObjectWithArrayValues): string {
-  const obj = objectToSearchParamsValue(data)
+  const obj = objectToSearchParamsValue(data);
   return Object.keys(obj)
-    .filter(key => obj[key] !== undefined && obj[key] !== null && obj[key] !== '')
-    .map(key => `${encodeURIComponent(key)}=${obj[key]}`)
-    .join('&');
+    .filter(
+      (key) => obj[key] !== undefined && obj[key] !== null && obj[key] !== ""
+    )
+    .map((key) => `${encodeURIComponent(key)}=${obj[key]}`)
+    .join("&");
 }
-
 
 function formatDate(date: string): string {
   const dateObj = new Date(date);
-  const day = dateObj.getDate();  // Lấy ngày từ 1-31
-  const month = dateObj.getMonth() + 1;  // Lấy tháng từ 0-11, cộng thêm 1 để phù hợp với tháng thực tế từ 1-12
-  const year = dateObj.getFullYear();  // Lấy năm đầy đủ
+  const day = dateObj.getDate(); // Lấy ngày từ 1-31
+  const month = dateObj.getMonth() + 1; // Lấy tháng từ 0-11, cộng thêm 1 để phù hợp với tháng thực tế từ 1-12
+  const year = dateObj.getFullYear(); // Lấy năm đầy đủ
 
   // Chuyển ngày và tháng thành chuỗi và thêm '0' phía trước nếu chỉ có một chữ số
   const dayFormatted = day < 10 ? `0${day}` : day.toString();
@@ -103,16 +113,48 @@ function formatDate(date: string): string {
   return `${dayFormatted}/${monthFormatted}/${year}`;
 }
 
+export function formatDateCompareToday(dateString: string): string {
+  const date = new Date(dateString);
+  const now = new Date();
+
+  const isToday =
+    date.getDate() === now.getDate() &&
+    date.getMonth() === now.getMonth() &&
+    date.getFullYear() === now.getFullYear();
+
+  if (isToday) {
+    const diffMs = now.getTime() - date.getTime();
+    const diffSeconds = Math.floor(diffMs / 1000);
+    const diffMinutes = Math.floor(diffSeconds / 60);
+    const diffHours = Math.floor(diffMinutes / 60);
+
+    if (diffHours > 0) {
+      return `${diffHours} tiếng trước`;
+    } else if (diffMinutes > 0) {
+      return `${diffMinutes} phút trước`;
+    } else {
+      return `Mới đây`;
+    }
+  }
+
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
 
 function checkIsClient() {
-  return typeof window !== "undefined"
+  return typeof window !== "undefined";
 }
 
 function generateUniqueId() {
-  return 'id-' + crypto.randomUUID();
+  return "id-" + crypto.randomUUID();
 }
 
-function debounce<T extends (...args: any[]) => void>(func: T, wait: number): (...args: Parameters<T>) => void {
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null;
 
   return function (...args: Parameters<T>): void {
@@ -127,9 +169,21 @@ function debounce<T extends (...args: any[]) => void>(func: T, wait: number): (.
   };
 }
 
-function convertHotlineToTel(phone :string){
-
-  return phone.replaceAll(".","")
+function convertHotlineToTel(phone: string) {
+  return phone.replaceAll(".", "");
 }
 
-export {convertHotlineToTel, debounce, convetNumberToPriceVND, findVariantMinPrice, generateUniqueId, findVariantActiveOption, fillArrayToLength, sleep, objectToSearchParamsValue, objectToSearchParams, formatDate, checkIsClient }
+export {
+  convertHotlineToTel,
+  debounce,
+  convetNumberToPriceVND,
+  findVariantMinPrice,
+  generateUniqueId,
+  findVariantActiveOption,
+  fillArrayToLength,
+  sleep,
+  objectToSearchParamsValue,
+  objectToSearchParams,
+  formatDate,
+  checkIsClient,
+};
