@@ -27,9 +27,9 @@ interface QuestionDetail {
   answers: QuestionAnswer[];
   status: QuestionStatus;
   like_count: number;
-  full_name?: string;
-  created_at: Date;
-  updated_at: Date;
+  full_name: string;
+  created_at: string;
+  updated_at: string;
 }
 interface QuestionParams {
   product_id?: number;

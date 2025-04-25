@@ -17,6 +17,8 @@ import { useToast } from '@/components/ui/use-toast'
 import { vietnamPhoneRegex } from '@/utils/regex'
 import useProfile from '@/hooks/useProfile'
 import { formatDateCompareToday } from '@/utils'
+import { Avatar } from '@radix-ui/react-avatar'
+import { AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const schema = object().shape({
     full_name: string().trim().required("Vui lòng nhập họ tên của bạn"),
@@ -118,30 +120,52 @@ function ProductQuestionsList({ list }: { list: QuestionDetail[] }) {
     }
 
     return (
-        <div className=' p-4 bg-white rounded-lg shadow-lg border overflow-hidden'>
-            <div className=' flex flex-col gap-3'>
-                {list.map(item => {
-                    return (
-                        <div key={item.id} className=' p-4 bg-white rounded-lg shadow-lg border overflow-hidden'>
-                            <p>{item.content}</p>
-                            <p className=' text-sm text-gray-500'>Người hỏi: {item.full_name}</p>
-                            <p className=' text-sm text-gray-500'>Ngày hỏi: {new Date(item.created_at).toLocaleDateString()}</p>
-                            <div className=' mt-2 mr-2 flex flex-col gap-2'>
-                                {item.answers.map((answer, index) => {
-                                    return (
-                                        <div key={index} className=' p-4 bg-gray-100 rounded-lg shadow-lg border overflow-hidden'>
-                                            <p>{answer.content}</p>
-                                            <p className=' text-sm text-gray-500'>Người trả lời: Quản trị viên</p>
-                                            <p className=' text-sm text-gray-500'>Ngày trả lời: {formatDateCompareToday(answer.created_at)}</p>
-                                        </div>
-                                    )
-                                })
-                                }
+        <div className=' flex flex-col gap-3'>
+            {list.map(item => {
+                return (
+                    <div key={item.id} className=''>
+                        <div className=' flex items-center justify-between mb-2'>
+                            <div className=' flex items-center gap-2'>
+                                <Avatar className=' w-8 h-8 border rounded-full'>
+                                    <AvatarImage src={
+                                        item.customer?.avatar || undefined
+                                    } alt={item.customer?.full_name} />
+                                    <AvatarFallback>{item.full_name[0]}</AvatarFallback>
+                                </Avatar>
+                                <p className=' text-sm '>{item.full_name}</p>
                             </div>
+                            <p className=' text-sm text-gray-500'>{formatDateCompareToday(item.created_at)}</p>
                         </div>
-                    )
-                })}
-            </div>
+                        <div className='  p-3 bg-white rounded-lg shadow-lg border overflow-hidden'>
+                            <p>{item.content}</p>
+                        </div>
+                        <div className=' mt-3 ml-5 flex flex-col gap-2'>
+                            {item.answers.map((answer, index) => {
+                                return (
+                                    <div key={index} >
+                                        <div className=' flex items-center justify-between mb-2'>
+                                            <div className=' flex items-center gap-2'>
+                                                <Avatar className=' w-8 h-8 border rounded-full'>
+                                                    <AvatarImage src={
+                                                        'avatar_default.png'
+                                                    } alt={"TP mobile"} />
+                                                    <AvatarFallback>{"TP"}</AvatarFallback>
+                                                </Avatar>
+                                                <p className=' text-sm '>Quản trị viên</p>
+                                            </div>
+                                            <p className=' text-sm text-gray-500'>{formatDateCompareToday(answer.created_at)}</p>
+                                        </div>
+                                        <div className='  p-3 bg-white rounded-lg shadow-lg border overflow-hidden'>
+                                            <p>{answer.content}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                            }
+                        </div>
+                    </div>
+                )
+            })}
         </div>
     )
 }
