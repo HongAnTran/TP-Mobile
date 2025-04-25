@@ -19,9 +19,12 @@ import { cn } from '@/lib/utils';
 import PriceText from '../common/PriceText';
 import ProductsServiceClientApi from '@/services/client/ProductsService';
 
-const placeholders = ["Bạn đang muốn tìm gì...?", "Nhập tên sản phẩm...", "Ipad giá rẻ..."]; // Các placeholder bạn muốn sử dụng
-
-export default function SearchInput({ className }: { className?: string }) {
+const placeholders = ["Bạn đang muốn tìm gì...?", "Ipad air...", "Ipad pro m2..."];
+export default function SearchInput({ className, onSelect, viewAll = true }: {
+  className?: string
+  onSelect?: (product: ProductInList) => void
+  viewAll?: boolean
+}) {
   const [productsSearch, setProductsSearch] = useState<ProductInList[]>([])
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -95,7 +98,7 @@ export default function SearchInput({ className }: { className?: string }) {
           <InputController
             inputProps={{
               placeholder: placeholder,
-              className: cn(" text-[#f8f8d9]   placeholder:text-[#f8f8d9] rounded-lg  border-2  ", className),
+              className: cn(" text-[#f8f8d9] bg-primary placeholder:text-[#f8f8d9] rounded-lg  border-2  ", className),
               autoComplete: "off",
               onFocus: () => {
                 if (productsSearch.length) {
@@ -120,11 +123,11 @@ export default function SearchInput({ className }: { className?: string }) {
       <HoverCardContent className=' w-[400px] bg-primary    '>
         {productsSearch.length ? <ul className=' flex flex-col gap-3  '>
           {productsSearch.map(product => {
-            return <ProductItemSearch key={product.id} product={product} />
+            return <ProductItemSearch onSelect={onSelect} key={product.id} product={product} />
           })}
-          <p className=' text-[#f8f8d9]    text-center' onClick={() => {
+          {viewAll && <p className=' text-[#f8f8d9]  cursor-pointer   text-center' onClick={() => {
             router.push(`${routes.search}?keyword=${keyword}`)
-          }} >Xem tất cả</p>
+          }} >Xem tất cả</p>}
         </ul> : <TypographyP className='  text-[#f8f8d9]  '>Không có kết quả</TypographyP>}
       </HoverCardContent>
     </HoverCard>
@@ -135,9 +138,21 @@ export default function SearchInput({ className }: { className?: string }) {
 }
 
 
-function ProductItemSearch({ product }: { product: ProductInList }) {
+function ProductItemSearch({ product, onSelect }: {
+  product: ProductInList,
+  onSelect?: (product: ProductInList) => void
+
+
+}) {
   return (
-    <Link href={`${routes.products}/${product.slug}`} className=' group'>
+    <Link href={onSelect ? "#" : `${routes.products}/${product.slug}`} className=' group'
+      onClick={(e) => {
+        e.preventDefault()
+        if (onSelect) {
+          onSelect(product)
+        }
+      }}
+    >
       <li className=' flex gap-2 py-1 border-b'>
 
         <div>

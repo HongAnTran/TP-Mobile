@@ -25,6 +25,7 @@ const routes = {
   deliveryPolicy: "/chinh-sach-giao-hang",
   installmentPolicy: "/chinh-sach-tra-gop",
   introduce: "/gioi-thieu-tpmobile",
+  registerConsultation: "/dang-ky-nhan-tu-van",
 };
 
 const privateRoutes = {

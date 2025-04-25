@@ -81,11 +81,7 @@ data-styled.g2[id="sc-gsTCUz"] {
 .gXKGT {
     padding: 0;
     margin: 0;
-    line-height: 1.5;
     width: 100%;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.5;
 }
 
 /*!sc*/
@@ -108,7 +104,7 @@ data-styled.g4[id="sc-hKgILt"] {
     font-family: inherit;
     font-weight: inherit;
     font-size: inherit;
-    text-align: center;
+    /* text-align: center; */
     cursor: pointer;
     display: block;
     background: none;
@@ -131,8 +127,6 @@ data-styled.g4[id="sc-hKgILt"] {
     position: relative;
     padding-top: 16px;
     padding-bottom: 16px;
-    padding-left: 20px;
-    padding-right: 20px;
     width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -349,8 +343,6 @@ data-styled.g18[id="sc-kstrdz"] {
     word-wrap: break-word;
     word-break: break-word;
     min-height: 64px !important;
-    padding-left: 66px;
-    padding-right: 66px;
     padding-top: 10px;
     padding-bottom: 10px;
 }

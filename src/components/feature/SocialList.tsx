@@ -35,7 +35,7 @@ export default function SocialList({ itemClass = "w-9 h-9" }: { itemClass?: stri
 
   ]
   return (
-    <div className=' flex gap-4'>
+    <div className=' flex gap-6'>
       {
         items.map((item, index) => {
           return <Link title={item.title} target="_blank" href={item.href} key={index} className=' 

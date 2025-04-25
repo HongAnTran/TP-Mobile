@@ -47,8 +47,6 @@ function SessionHeaderPage() {
               <NavLink activeClassName='bg-white  text-[#EF6837]' className=' w-full text-xs p-3  justify-center lg:px-6 lg:py-4  bg-white/20 rounded-md lg:rounded-xl  font-bold text-white inline-flex  hover:text-[#EF6837] hover:bg-white' absolute href={menu.link}>		{menu.text}</NavLink>
             </li>
           })}
-
-
         </ul>
       </div>
     </div>

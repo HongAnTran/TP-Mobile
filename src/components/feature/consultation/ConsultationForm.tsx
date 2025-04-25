@@ -8,6 +8,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import SelectController from '@/components/common/inputs/SelectController'
+import TextAreaController from '@/components/common/inputs/TextAreaController'
 
 const schemas = z.object({
     name: z.string().min(2, { message: "Tên không được để trống" }),
@@ -53,6 +54,8 @@ export default function ConsultationForm({
 
                     label='Số điện thoại' />
                 <div className='grid lg:grid-cols-2 gap-4 grid-cols-1'>
+                    <InputController
+                        control={control} name="email" label='Email' inputProps={{ type: "email", required: true }} />
                     <SelectController control={control} name="gender"
                         label='Xưng hô'
                         items={[
@@ -68,10 +71,12 @@ export default function ConsultationForm({
                             }
                         ]}
                     />
-                    <InputController control={control} name="email" label='Email' inputProps={{ type: "email" }} />
 
                 </div>
-                <InputController control={control} name="message" label='Tin nhắn' inputProps={{ type: "text" }} />
+                <TextAreaController textAreaProps={{
+                    rows: 2, placeholder: "Nội dung tin nhắn"
+
+                }} control={control} name="message" label='Tin nhắn' />
             </div>
             <Button className=' w-full uppercase font-bold' type='submit'
                 disabled={isSubmitting}
