@@ -2,19 +2,21 @@ import React from 'react'
 import { FacebookIcon, InstagramLogoIcon, TiktokIcon, ZaloIcon, } from '../icons'
 import Link from "@/components/common/Link";
 import Image from 'next/image';
+import { convertHotlineToTel } from '@/utils';
+import CONFIG from '@/consts/config';
 
 
 export default function SocialList({ itemClass = "w-9 h-9" }: { itemClass?: string }) {
   const items = [
     {
-      icon: <Image width={100} height={100} className={itemClass} src={"https://cdn.tpmobile.com.vn/image/upload/v1744301355/tpmobile-images-public/qmlmwbgox7vc0w7mpxow.webp"} alt='facebook' />,
+      icon: <FacebookIcon className=' w-9 h-9' />,
       href: "https://www.facebook.com/store.tpmobile",
       title: "facebook"
     },
     {
-      icon: <Image width={100} height={100} className={itemClass} src={"https://cdn.tpmobile.com.vn/image/upload/v1744301368/tpmobile-images-public/m9dfjovsmuzospjvx9lj.webp"} alt='zalo' />,
+      icon: <Image width={100} height={100} className={itemClass} src={"https://cdn.tpmobile.com.vn/image/upload/v1745679130/tpmobile-images-public/zalo-icon-circle-1.webp"} alt='zalo' />,
 
-      href: "https://zalo.me/0347907042",
+      href: `https://zalo.me/${convertHotlineToTel(CONFIG.HOTLINE)}`,
       title: "zalo"
 
     },

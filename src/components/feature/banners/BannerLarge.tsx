@@ -23,7 +23,7 @@ const datas: BannerHeroItem[] = [
   {
     image: "/Apple-iPad-Air-2024-PNG.png",
     title: "Ipad Air 7",
-    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 17,990,000₫",
+    description: "Bảo hành 12 tháng - bảo hành lâu nhất Hồ Chí Minh giá chỉ từ 16,490,000₫",
     link: "/san-pham/ipad-air-7-11-inch-wifi-new-seal"
   },
 ]

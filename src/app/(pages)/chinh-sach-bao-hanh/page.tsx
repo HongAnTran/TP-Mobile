@@ -87,8 +87,14 @@ export default async function Page() {
                             <TableCell>6 tháng</TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell className="font-medium">Bảo hành lỗi nhà sản xuất sau 30 ngày</TableCell>
-                            <TableCell>Có</TableCell>
+                            <TableCell className="font-medium">Hỗ trợ thay pin</TableCell>
+                            <TableCell>50% phí thay pin loại A (trọn đời)</TableCell>
+                            <TableCell>Không áp dụng</TableCell>
+                            <TableCell>Không áp dụng</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell className="font-medium">Hỗ trợ sửa linh kiện</TableCell>
+                            <TableCell>20% chi phí (trọn đời)</TableCell>
                             <TableCell>Không áp dụng</TableCell>
                             <TableCell>Không áp dụng</TableCell>
                         </TableRow>
