@@ -29,10 +29,10 @@ export default function ProductCard({ product, className }: { product: ProductIn
       > */}
       <Card className={cn(' border border-gray-300 group relative   hover:shadow-2xl', className)}>
         <CardContent className="flex flex-col   gap-2 h-full py-4 p-2 lg:p-4">
-            <Link href={`${routes.products}/${product.slug}`}  className=' relative w-full aspect-square overflow-hidden p-[2px] flex-shrink-0'>
-              <ProductCardImage images={product.images} title={product.title} />
-            </Link>
-            {/* <Button onClick={(e) => {
+          <Link href={`${routes.products}/${product.slug}`} className=' relative w-full aspect-square overflow-hidden p-[2px] flex-shrink-0'>
+            <ProductCardImage images={product.images} title={product.title} />
+          </Link>
+          {/* <Button onClick={(e) => {
               e.preventDefault();
               e.stopPropagation()
               setOpen(true)
@@ -40,10 +40,10 @@ export default function ProductCard({ product, className }: { product: ProductIn
              className=' hidden  lg:block   absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 z-20 transition-transform duration-300 ' >Xem nhanh
              </Button> */}
           <div className=' flex-1 flex flex-col gap-1  justify-between'>
-            <Link href={`${routes.products}/${product.slug}`}  className=' flex-shrink-0'>
+            <Link href={`${routes.products}/${product.slug}`} className=' flex-shrink-0'>
               <CardTitle className='  text-sm  hover:text-blue-500 transition-colors line-clamp-2' >{product.title}</CardTitle>
             </Link>
-            <ProductCardPrice  product={product} />
+            <ProductCardPrice product={product} />
           </div>
 
           <div className=' flex justify-between items-center mt-auto pt-2 border-t border-gray-200'>
@@ -74,7 +74,7 @@ function ProductCardImage({ images, title }: Pick<Product, "images" | "title">) 
 
     return <div className=' w-full h-full bg-gray-400'></div>
   }
-  const firstImage = images?.[0]
+  const firstImage = images?.[0] || '/fallbackimg.svg'
   // const secondImage = images?.[1]
   return (
     <>
@@ -105,16 +105,16 @@ function ProductCardPrice({ product }: { product: ProductInList }) {
   return (
     <>
 
-    <div className='mb-1 flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
-      <PriceText className='text-red-600 font-bold' price={product.price} />
-      {isSale ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
-    </div>
-    {isSale ? <div className=' flex items-center gap-1'>
-      <span className=' text-sm text-gray-500'>Giảm</span>
-      <PriceText className='text-blue-500' price={priceSale} />
-    </div>
-    : null}
-</>
+      <div className='mb-1 flex  md:flex-row flex-col-reverse  md:items-center gap-2'>
+        <PriceText className='text-red-600 font-bold' price={product.price} />
+        {isSale ? <PriceText className=' line-through  text-gray-600' price={product.compare_at_price} /> : null}
+      </div>
+      {isSale ? <div className=' flex items-center gap-1'>
+        <span className=' text-sm text-gray-500'>Giảm</span>
+        <PriceText className='text-blue-500' price={priceSale} />
+      </div>
+        : null}
+    </>
   )
 
 

@@ -32,11 +32,11 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug = params.slug
   const category = await getCategoryDetail(slug)
-  const {meta_data} =  category
+  const { meta_data } = category
   const titleShow = meta_data?.meta_title ? meta_data?.meta_title : category.title
   const desShow = meta_data?.meta_description ? meta_data?.meta_description : category.description
   const keywords = meta_data?.meta_keywords ? meta_data?.meta_keywords : ""
-  const image = meta_data?.meta_image ? meta_data?.meta_image : category.image 
+  const image = meta_data?.meta_image ? meta_data?.meta_image : category.image
   const DOMAIN = process.env.DOMAIN
   return {
     title: titleShow,
@@ -81,7 +81,7 @@ export default async function page({ params, searchParams }: { params: { slug: s
   const slug = params.slug
   const caregory = await getCategoryDetail(slug)
   const key = JSON.stringify(searchParams)
-
+  console.log(caregory)
   const keys = Object.keys(searchParams)
   const values = keys.reduce((pre: any, key) => {
     return pre[key] = searchParams[key] ? searchParams[key].split(",") : []
@@ -105,8 +105,10 @@ export default async function page({ params, searchParams }: { params: { slug: s
             isActive: true
           }]} />
 
-        <div className=' mt-8'>
-          <TitleWithIcon title={caregory.title}/>
+        <div className=' mt-6'>
+          <TitleWithIcon component="h1" title={caregory.title} />
+
+
         </div>
         <div className=' mt-8'>
           <div className=' grid grid-cols-12 gap-8 relative'>
@@ -125,7 +127,7 @@ export default async function page({ params, searchParams }: { params: { slug: s
                 }}
                   slug={`${routes.category}/${slug}`} />
               </Suspense>
-
+              {caregory.description && <div className=' mt-4 bg-white rounded-lg p-4' dangerouslySetInnerHTML={{ __html: caregory.description }}></div>}
             </div>
           </div>
 
@@ -133,6 +135,6 @@ export default async function page({ params, searchParams }: { params: { slug: s
 
 
       </div>
-    </div>
+    </div >
   )
 }

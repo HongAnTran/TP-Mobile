@@ -56,7 +56,7 @@ function generateArticleJsonLD(article: Article): Record<string, any> {
   const DOMAIN = process.env.DOMAIN
   const titleShow = article.meta_data?.meta_title || article.title;
   const desShow = article.meta_data?.meta_description || article.description || undefined;
-  const imageUrl = article.thumnal_url || "https://example.com/default-image.jpg";
+  const imageUrl = article.thumnal_url;
   return {
     "@context": "https://schema.org",
     "@type": "Article",

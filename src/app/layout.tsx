@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   keywords: "iPad, TP Mobile, mua iPad, bảo hành iPad, cửa hàng iPad , ipad like new , ipad cũ, ipad cu ,ipad pro",
   openGraph: {
     type: 'website',
-    url: process.env.DOMAIN,
+    // url: process.env.DOMAIN,
     title: "TP MOBILE STORE",
     description: "TP Mobile Store, bán iPad có tâm nhất Sài Gòn, bảo hành lâu nhất Hồ Chí Minh. Chuyên cung cấp iPad chính hãng, chất lượng cao với dịch vụ tận tâm và chế độ bảo hành dài hạn, TP Mobile cam kết mang đến trải nghiệm tốt nhất cho khách hàng.",
     images: [

@@ -52,7 +52,7 @@ export default function ArticleCardList({
             href={`${routes.artice}/${article.slug}`}>
             {article.thumnal_url ? (
               <Image
-                src={article.thumnal_url}
+                src={article.thumnal_url || '/fallbackimg.svg'}
 
                 alt={article.title || "Thumbnail"}
                 priority={preloadImage ? true : false}

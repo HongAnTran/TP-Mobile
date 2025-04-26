@@ -11,13 +11,13 @@ class ArticeService {
       params: params,
       next: {
         tags: [this.url],
-        revalidate: 60 * 60 * 24 * 30,
+        revalidate: 1000 * 5,
       },
     });
   }
   async getDetail(slug: string) {
     return fetchApi.get<Article>(`${this.url}/${slug}`, {
-      next: { tags: [this.url, slug], revalidate: 60 * 60 * 24 * 30 },
+      next: { tags: [this.url, slug], revalidate: 1000 * 60 * 60 },
     });
   }
 }
