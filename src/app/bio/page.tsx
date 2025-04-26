@@ -22,18 +22,18 @@ export default async function page() {
         {
             label: `Xem bảng giá`,
             url: routes.category,
-            icon: <ShoppingCartOutlinedIcon color="inherit" fontSize="large" />
+            icon: <ShoppingCartOutlinedIcon color="inherit" fontSize="medium" />
 
         },
         {
             label: `Đăng ký nhận tư vấn`,
-            icon: <ContactPhoneOutlinedIcon color="inherit" fontSize="large" />,
+            icon: <ContactPhoneOutlinedIcon color="inherit" fontSize="medium" />,
             url: routes.registerConsultation,
         },
         {
             label: `Hotline: ${CONFIG.HOTLINE}`,
             url: `tel:${convertHotlineToTel(CONFIG.HOTLINE)}`,
-            icon: <LocalPhoneOutlinedIcon color="inherit" fontSize="large" />
+            icon: <LocalPhoneOutlinedIcon color="inherit" fontSize="medium" />
 
         }
     ]
@@ -50,7 +50,7 @@ export default async function page() {
                 />
                 <div className="flex h-full w-full flex-1 flex-col justify-between px-4 pb-8 pt-16      sm:pb-16">
                     {/* <div className="mx-auto h-full w-full  "> */}
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center mb-3">
                         <div className="h-[10rem] sm:h-[16rem]" id="profile-picture">
                             <div
                                 style={{
@@ -137,7 +137,7 @@ export default async function page() {
                                             >
                                                 <div className="h-full w-full pl-4">
 
-                                                    <p className="sc-hKgILt uppercase text-gray-600 sc-bYEvPH gXKGT bMzUWC text-lg font-bold">{
+                                                    <p className="sc-hKgILt uppercase text-gray-600 sc-bYEvPH gXKGT bMzUWC text-base font-bold">{
                                                         data.label
                                                     }</p>
                                                 </div>
