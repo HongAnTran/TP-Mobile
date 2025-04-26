@@ -341,9 +341,9 @@ data-styled.g18[id="sc-kstrdz"] {
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
-    min-height: 64px !important;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /* min-height: 64px !important; */
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 /*!sc*/

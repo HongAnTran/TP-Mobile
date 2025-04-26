@@ -48,7 +48,7 @@ export default async function page() {
                             "html {\n        /* Colors */\n        --bodyText: #ffffff;\n        --linkBackground: #f8f8d9;\n        --linkText: #333;\n        --linkHoverBackground: #f8f8d9;\n        --linkHoverText: #333;\n        --profileBackground: #0e2038;\n        --heroBackground: #062c53;\n        --defaultAvatarBackground: #000000;\n        --defaultAvatarText: #FFFFFF;\n        --profileTitleText: #ffffff;\n        --profileDescriptionText: #ffffff;\n        --socialLinkFill: #ffffff;\n        --bannerBackground: #f8f8d9;\n        --bannerText: #333;\n\n        /* Border Radius */\n        --linkRadius: 0;\n\n        /* Font Family */\n        --profileFontFamilyPrimary: space mono;\n        --profileFontFamilySecondary: inter;\n\n        /* Font Weight */\n        --profileFontWeightNormal: 400;\n        --profileFontWeightBold: 700;\n        --profileDescriptionFontWeight: 500;\n        --linkTextFontWeight: 500;\n        --headerFontWeight: 700;\n        --embedLinkTextFontWeight: 500;\n        --signupSubmitTextFontWeight: 700;\n        --bannerFontWeight: 700;\n  \n        /* Font Size */\n        --profileDescriptionFontSize: 14px;\n        --linkTextFontSize: 14px;\n        --headerFontSize: 20px;\n        --embedLinkTextFontSize: 14px;\n        --signupSubmitTextFontSize: 14px;\n        --linkHeaderFontSize: 14px;\n        --bannerFontSize: 14px;\n\n        /* Line Height */\n        --profileDescriptionLineHeight: 1.5;\n        --headerLineHeight: 1.5;\n      }\n      \n      @media screen and (min-width: 768px) {\n        html {\n          /* Font Size */\n          --profileDescriptionFontSize: 16px;\n          --linkTextFontSize: 16px;\n          --headerFontSize: 20px;\n          --embedLinkTextFontSize: 16px;\n          --signupSubmitTextFontSize: 16px;\n          --linkHeaderFontSize: 16px;\n          --bannerFontSize: 16px;\n        }\n      }\n      "
                     }}
                 />
-                <div className="flex h-full w-full flex-1 flex-col justify-between px-4 pb-8    pt-28 sm:pb-16">
+                <div className="flex h-full w-full flex-1 flex-col justify-between px-4 pb-8 pt-16      sm:pb-16">
                     {/* <div className="mx-auto h-full w-full  "> */}
                     <div className="flex flex-col items-center">
                         <div className="h-[10rem] sm:h-[16rem]" id="profile-picture">
@@ -56,11 +56,11 @@ export default async function page() {
                                 style={{
                                     backgroundColor: "#062c53",
                                     backgroundImage:
-                                        "url(https://cdn.tpmobile.com.vn/image/upload/v1745584673/tpmobile-images-public/avt_1.webp)",
+                                        "url(https://cdn.tpmobile.com.vn/image/upload/v1745683419/tpmobile-images-public/avt1.webp)",
                                     mask:
                                         "radial-gradient(100% 100% at center top, #000 60%, transparent 100%)"
                                 }}
-                                className="absolute left-0 top-0 z-[-1] h-[18rem] w-screen overflow-x-clip bg-cover bg-center bg-no-repeat sm:left-1/2 sm:top-5 sm:h-[28rem] sm:w-[580px] sm:-translate-x-1/2 sm:rounded-lg "
+                                className="absolute left-0 top-0 z-[-1] h-[14rem] w-screen overflow-x-clip bg-cover bg-center bg-no-repeat sm:left-1/2 sm:top-5 sm:h-[28rem] sm:w-[580px] sm:-translate-x-1/2 sm:rounded-lg "
                             >
                                 <div
                                     className="h-full backdrop-blur-[30px]"
