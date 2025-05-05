@@ -79,7 +79,8 @@ export default async function Page() {
                     </li>
                     <li>
                         Hotline: <Link className=' text-blue-500 font-semibold' href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`}>
-                            034 790 7042
+                            {CONFIG.HOTLINE}
+
                         </Link>
                     </li>
 

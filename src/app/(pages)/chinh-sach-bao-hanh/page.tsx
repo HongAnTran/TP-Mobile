@@ -135,7 +135,7 @@ export default async function Page() {
                         Số sê-ri bị loại bỏ hoặc xóa khỏi sản phẩm.
                     </li>
                 </ul>
-                <p className=' mb-2 text-xl'><strong>4. DỊCH VỤ HỖ TRỢ KHÁCH HÀNG:</strong></p>
+                {/* <p className=' mb-2 text-xl'><strong>4. DỊCH VỤ HỖ TRỢ KHÁCH HÀNG:</strong></p>
                 <ul className='  list-disc pl-10 font-semibold space-y-2 mb-4 '>
                     <li>
                         Hỗ trợ kiểm tra & vệ sinh máy miễn phí trọn đời.
@@ -148,7 +148,7 @@ export default async function Page() {
                         Hotline tư vấn miễn phí – Liên hệ ngay để được hỗ trợ tốt nhất!
                     </li>
 
-                </ul>
+                </ul> */}
 
                 <p><Link className=' text-blue-500 font-semibold' href={routes.stores}>Đến ngay TP Mobile</Link> hoặc liên hệ Hotline để được tư vấn chi tiết!
                 </p>
@@ -161,7 +161,7 @@ export default async function Page() {
                     </li>
                     <li>
                         Hotline: <Link className=' text-blue-500 font-semibold' href={`tel:${convertHotlineToTel(CONFIG.HOTLINE)}`}>
-                            034 790 7042
+                            {CONFIG.HOTLINE}
                         </Link>
                     </li>
 
