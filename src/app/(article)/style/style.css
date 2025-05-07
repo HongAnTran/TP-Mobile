@@ -1,9 +1,9 @@
-figure {
+#artice-detai lfigure {
     text-align: center;
     margin: 1em auto;
   }
   
-  img {
+  #artice-detail img {
     display: block;
     margin: auto;
   }
@@ -14,6 +14,6 @@ figure {
     color: blue
   }
 
- ul{
+  #artice-detail ul{
   list-style:disc;
  }
